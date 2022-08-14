@@ -1,6 +1,19 @@
 # hello-astro
 
-Test repository for playing around with [Astro](https://astro.build)
+Test repository for playing around with [Astro](https://astro.build).
+
+Uses the following integrations:
+
+* @astrojs/image
+* @astrojs/sitemap
+* @astrojs/rss
+* @astrojs/tailwind
+* astro-icon
+* astro-seo
+
+In addition, SVG and PNG illustrations sourced from [Undraw](https://undraw.co)
+
+Contains a bare bones port of [hello-gatsby-starter](https://github.com/hellotham/hello-gatsby-starter)
 
 ## 🚀 Project Structure
 

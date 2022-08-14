@@ -7,14 +7,23 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "format": "prettier --write .",
     "astro": "astro"
   },
   "devDependencies": {
+    "@astrojs/image": "^0.3.4",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
-    "astro": "^1.0.3"
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/forms": "^0.5.2",
+    "@tailwindcss/line-clamp": "^0.4.0",
+    "@tailwindcss/typography": "^0.5.4",
+    "astro": "^1.0.5",
+    "prettier-plugin-astro": "^0.5.0"
   },
   "dependencies": {
-    "@astrojs/rss": "^1.0.0"
+    "@astrojs/rss": "^1.0.0",
+    "astro-icon": "^0.7.3",
+    "astro-seo": "^0.5.1"
   }
 }

@@ -1,0 +1,7 @@
+pnpm-lock.yaml
+dist
+node_modules
+src/pages/blog/*.md
+astro
+astro.build
+astro.new

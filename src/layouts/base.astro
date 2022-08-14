@@ -1,0 +1,26 @@
+---
+import { SEO } from 'astro-seo'
+import Header from '../components/header.astro'
+import Footer from '../components/footer.astro'
+
+const { frontmatter } = Astro.props
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO
+      title={frontmatter.title}
+      description={frontmatter.description}
+    />
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>

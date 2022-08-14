@@ -1,0 +1,30 @@
+---
+import { Image } from '@astrojs/image/components'
+
+export interface Props {
+  title: string
+  description?: string
+  image?: string
+}
+
+const { title, description, image } = Astro.props as Props
+
+const defaultImage = '../images/undraw/undraw_my_feed_inj0.png'
+
+// ugly hack to circumvent astro issue with dynamic import
+// https://github.com/withastro/astro/issues/3373
+const images = import.meta.glob('../images/**/*')
+const imagesrc = await images[image || defaultImage]() as Record<string,any>
+---
+<div class="mb-4 md:mb-0 w-full max-w-screen-xl mx-auto relative h-96">
+  <div class="absolute left-0 bottom-0 w-full h-full z-10 bg-gradient-to-t from-gray-700"></div>
+  <Image
+    src={imagesrc.default}
+    alt={title}
+    class="absolute left-0 top-0 w-full h-full z-0 object-contain"
+  />
+  <div class="p-4 absolute bottom-0 left-0 z-20">
+    <h2 class="text-4xl font-bold text-white leading-tight">{title}</h2>
+    <h2 class="text-xl font-medium italic text-purple-200">{description}</h2>
+  </div>
+</div>

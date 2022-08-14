@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/base.astro'
+import PageHero from '../components/pagehero.astro'
+
+const { frontmatter } = Astro.props
+---
+<Base frontmatter>
+  <main class="mt-10">
+    <article class="post">
+      <header>
+        <PageHero
+          title={frontmatter.title}
+          description={frontmatter.description}
+          image={frontmatter.image}
+        />
+      </header>
+      <section class="px-4 lg:px-0 mt-12 mb-24 max-w-screen-lg mx-auto prose prose-purple lg:prose-xl">
+        <slot />
+      </section>
+    </article>
+  </main>
+</Base>

@@ -1,0 +1,63 @@
+---
+import AstroImage from '../svg/astro/full-logo-light.svg'
+import TailwindImage from '../svg/undraw/undraw_tailwind_css_1egw.svg'
+import CoreImage from '../svg/undraw/undraw_static_assets_rpm6.svg'
+
+const callouts = [
+  {
+    name: 'Astro',
+    description:
+      'Build faster websites with less client-side Javascript',
+    imageSrc: AstroImage,
+    imageAlt: 'Gatsby drawing',
+    href: 'https://gatsbyjs.com',
+  },
+  {
+    name: 'TailwindCSS',
+    description:
+      'A utility-first CSS framework that can be composed to build any design, directly in your markup',
+    imageSrc: TailwindImage,
+    imageAlt: 'TailwindCSS drawing',
+    href: 'https://tailwindcss.com',
+  },
+  {
+    name: 'HTML/CSS/Javascript',
+    description: 'The core building blocks of the web',
+    imageSrc: CoreImage,
+    imageAlt: 'Core Web',
+    href: 'https://w3.org',
+  },
+]
+---
+
+<div class="bg-purple-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto py-16 sm:py-24 lg:py-32 lg:max-w-none">
+      <h2 class="text-4xl font-extrabold text-purple-800">Find Out More</h2>
+      <div
+        class="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6"
+      >
+        {
+          callouts.map(callout => (
+            <div class="group relative">
+              <div class="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+                <img
+                  src={callout.imageSrc}
+                  alt={callout.imageAlt}
+                  class="w-full h-full object-center object-contain"
+                />
+              </div>
+              <h3 class="mt-6 text-2xl text-purple-500">
+                <a href={callout.href}>
+                  <span class="absolute inset-0" />
+                  {callout.name}
+                </a>
+              </h3>
+              <p class="text-base text-gray-900">{callout.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
