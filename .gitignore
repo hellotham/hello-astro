@@ -19,6 +19,6 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-astro
+examples
 astro.build
 astro.new
