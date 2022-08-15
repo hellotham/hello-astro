@@ -20,7 +20,18 @@ export type SiteMetadataType = {
   buildTime: string
 }
 
-const SiteMetadata: SiteMetadataType = {
+export interface Frontmatter {
+  published: boolean
+  title: string
+  description?: string
+  author?: string
+  date?: string
+  featuredpost: boolean
+  image?: string
+  tags?: string[]
+}
+
+export const SiteMetadata: SiteMetadataType = {
   title: 'Hello Astro',
   description: 'An Astro starter for corporate/marketing/blog websites.',
   author: {
@@ -43,4 +54,10 @@ const SiteMetadata: SiteMetadataType = {
   buildTime: new Date().toString(),
 }
 
-export default SiteMetadata
+export const NavigationLinks = [
+  { name: 'Home', href: '', current: false },
+  { name: 'About', href: 'about', current: false },
+  { name: 'Contact', href: 'contact', current: false },
+  { name: 'Privacy', href: 'privacy', current: false },
+  { name: 'Blog', href: 'blog', current: false },
+]

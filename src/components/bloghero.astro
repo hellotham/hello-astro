@@ -1,0 +1,39 @@
+---
+import type { Frontmatter } from '../config'
+import Tags from '../components/tags.astro'
+import Img from '../components/img.astro'
+
+export interface Props {
+  frontmatter: Frontmatter
+}
+
+const { frontmatter } = Astro.props as Props
+---
+<div class="mb-4 md:mb-0 w-full max-w-screen-xl mx-auto relative h-96">
+  <div class="absolute left-0 bottom-0 w-full h-full z-10 bg-gradient-to-t from-gray-700"></div>
+  <Img
+    src={frontmatter.image}
+    alt="featured image"
+    cls="absolute left-0 w-full h-full top-0 z-0 object-cover"
+  />
+  <div class="p-4 absolute bottom-0 left-0 z-20">
+    {frontmatter.tags ? <Tags tags={frontmatter.tags} /> : ''}
+    <h2 class="text-4xl font-bold text-white leading-tight">{frontmatter.title}</h2>
+    <h2 class="text-xl font-medium italic text-purple-200">{frontmatter.description}</h2>
+    {frontmatter.author ? (
+      <div class="flex mt-3">
+        <Img
+          src="../images/astro/logomark-light.png"
+          alt="Author profile"
+          cls="h-10 w-10 rounded-full mr-2 object-cover"
+        />
+        <div>
+          <p class="font-semibold text-purple-200 text-sm">{frontmatter.author}</p>
+          <p class="font-semibold text-purple-400 text-xs">{frontmatter.date?.slice(0, 10)}</p>
+        </div>
+      </div>
+    ) : (
+      ''
+    )}
+  </div>
+</div>

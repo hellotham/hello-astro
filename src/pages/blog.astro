@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/base.astro'
+import PageHero from '../components/pagehero.astro'
+import BlogRoll from '../components/blogroll.astro'
+
+const frontmatter = {
+  title: 'Blog',
+  description: 'Articles published from time to time',
+  image: '../images/undraw/undraw_my_feed_inj0.png'
+}
+
+const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
+  (a, b) =>
+    new Date(b.frontmatter.date).valueOf() -
+    new Date(a.frontmatter.date).valueOf()
+)
+// console.log(posts)
+// posts.map(post => console.log(post.frontmatter))
+---
+
+<Base frontmatter={frontmatter}>
+  <header>
+    <PageHero
+      title={frontmatter.title}
+      description={frontmatter.description}
+      image={frontmatter.image}
+    />
+  </header>
+  <main class="mt-10 bg-gray-100">
+    <BlogRoll posts={posts} />
+  </main>
+</Base>

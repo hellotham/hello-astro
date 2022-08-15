@@ -1,0 +1,14 @@
+---
+import BlogCard from '../components/blogcard.astro'
+
+export interface Props {
+  posts: Record<string, any>[]
+}
+
+const { posts } = Astro.props as Props
+
+const POSTS_PER_PAGE = 12
+---
+<div class="space-y-12 lg:space-y-0 flex flex-wrap mb-24">
+  {posts.map(post => <BlogCard post={post} />)}
+</div>

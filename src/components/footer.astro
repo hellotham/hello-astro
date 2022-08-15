@@ -1,69 +1,116 @@
 ---
-import siteMetadata from '../sitemetadata'
+import { SiteMetadata } from '../config'
 
 import { Icon } from 'astro-icon'
 
 import Logo from '../svg/astro/logomark-light.svg'
 
-const social = siteMetadata.social
+const social = SiteMetadata.social
 
 const socialLinks = [
-  { name: 'LinkedIn', link: 'linkedin' in social ? social.linkedin : null, icon: "linkedin" },
-  { name: 'Facebook', link: 'facebook' in social ? social.facebook : null, icon: "facebook" },
-  { name: 'Instagram', link: 'instagram' in social ? social.instagram : null, icon: "instagram" },
-  { name: 'Twitter', link: 'twitter' in social ? social.twitter : null, icon: "twitter" },
-  { name: 'Github', link: 'github' in social ? social.github : null, icon: "github" },
+  {
+    name: 'LinkedIn',
+    link: 'linkedin' in social ? social.linkedin : null,
+    icon: 'linkedin',
+  },
+  {
+    name: 'Facebook',
+    link: 'facebook' in social ? social.facebook : null,
+    icon: 'facebook',
+  },
+  {
+    name: 'Instagram',
+    link: 'instagram' in social ? social.instagram : null,
+    icon: 'instagram',
+  },
+  {
+    name: 'Twitter',
+    link: 'twitter' in social ? social.twitter : null,
+    icon: 'twitter',
+  },
+  {
+    name: 'Github',
+    link: 'github' in social ? social.github : null,
+    icon: 'github',
+  },
 ]
 ---
+
 <footer class="text-gray-600">
-  <div class="container fixed bottom-0 inset-x-0 bg-gray-100 px-4 py-4 mx-auto flex items-center md:flex-row flex-col">
-    <a class="flex title-font font-medium items-center lg:justify-start justify-center text-gray-900" href="/">
-      <img src={Logo} alt="Footer Logo" width="150" />
+  <div
+    class="container fixed bottom-0 inset-x-0 bg-gray-100 px-4 py-4 mx-auto flex items-center md:flex-row flex-col"
+  >
+    <a
+      class="flex title-font font-medium items-center lg:justify-start justify-center text-gray-900"
+      href="/"
+    >
+      <img src={Logo} alt="Footer Logo" width="32" />
       <span class="sr-only">Logo</span>
     </a>
-    <p class="text-sm text-gray-600 md:ml-4 md:pl-4 md:border-l-2 md:border-purple-300 md:py-2 md:mt-0 mt-4">
+    <p
+      class="text-sm text-gray-600 md:ml-4 md:pl-4 md:border-l-2 md:border-purple-300 md:py-2 md:mt-0 mt-4"
+    >
       © {new Date().getFullYear()} MIT licence
-      <a href="https://hellotham.com" class="ml-1 text-purple-600 hover:text-pink-600"
+      <a
+        href="https://hellotham.com"
+        class="ml-1 text-purple-600 hover:text-pink-600"
         rel="noopener noreferrer"
-        target="_blank">
+        target="_blank"
+      >
         Hello Tham Pty Ltd
       </a>
     </p>
-    <p class="text-sm text-gray-600 md:ml-4 md:pl-4 md:border-l-2 md:border-purple-300 md:py-2 md:mt-0 mt-4">
+    <p
+      class="text-sm text-gray-600 md:ml-4 md:pl-4 md:border-l-2 md:border-purple-300 md:py-2 md:mt-0 mt-4"
+    >
       <a href="/privacy" class="ml-1 text-purple-600 hover:text-pink-600">
         Privacy Policy
       </a>
     </p>
-    <p class="text-sm text-gray-600 md:ml-4 md:pl-4 md:border-l-2 md:border-purple-300 md:py-2 md:mt-0 mt-4">
-      <a href="/rss.xml" class="ml-1 text-purple-600 hover:text-pink-600"
+    <p
+      class="text-sm text-gray-600 md:ml-4 md:pl-4 md:border-l-2 md:border-purple-300 md:py-2 md:mt-0 mt-4"
+    >
+      <a
+        href="/rss.xml"
+        class="ml-1 text-purple-600 hover:text-pink-600"
         rel="noopener noreferrer"
-        target="_blank">
+        target="_blank"
+      >
         RSS
       </a>
     </p>
-    <p class="text-sm text-gray-600 md:ml-4 md:pl-4 md:border-l-2 md:border-purple-300 md:py-2 md:mt-0 mt-4">
-      <a href="/sitemap/sitemap-index.xml" class="ml-1 text-purple-600 hover:text-pink-600"
+    <p
+      class="text-sm text-gray-600 md:ml-4 md:pl-4 md:border-l-2 md:border-purple-300 md:py-2 md:mt-0 mt-4"
+    >
+      <a
+        href="/sitemap/sitemap-index.xml"
+        class="ml-1 text-purple-600 hover:text-pink-600"
         rel="noopener noreferrer"
-        target="_blank">
+        target="_blank"
+      >
         Sitemap
       </a>
     </p>
-    <span class="inline-flex md:ml-auto md:mt-0 mt-4 justify-center md:justify-start">
-      {socialLinks.map(s =>
-        s.link ? (
-          <a
-            href={s.link}
-            class="ml-3 text-purple-600 hover:text-pink-600"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <Icon pack="simple-icons" name={s.icon} class=" h-5 w-5" />
-            <span class="sr-only">{s.name}</span>
-          </a>
-        ) : (
-          ''
+    <span
+      class="inline-flex md:ml-auto md:mt-0 mt-4 justify-center md:justify-start"
+    >
+      {
+        socialLinks.map(s =>
+          s.link ? (
+            <a
+              href={s.link}
+              class="ml-3 text-purple-600 hover:text-pink-600"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Icon pack="simple-icons" name={s.icon} class=" h-5 w-5" />
+              <span class="sr-only">{s.name}</span>
+            </a>
+          ) : (
+            ''
+          )
         )
-      )}
+      }
     </span>
   </div>
 </footer>

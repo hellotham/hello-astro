@@ -1,20 +1,21 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-import sitemap from '@astrojs/sitemap';
+import { defineConfig } from 'astro/config'
+import tailwind from '@astrojs/tailwind'
+import sitemap from '@astrojs/sitemap'
+import image from '@astrojs/image'
 
-import image from "@astrojs/image";
+import mdx from '@astrojs/mdx'
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
     ssr: {
-      external: ['svgo']
-    }
+      external: ['svgo'],
+    },
   },
   site: 'https://christinetham.github.io',
   base: '/hello-astro',
-  integrations: [tailwind(), sitemap(), image()],
+  integrations: [tailwind(), sitemap(), image(), mdx()],
   experimental: {
-    integrations: true
-  }
-});
+    integrations: true,
+  },
+})
