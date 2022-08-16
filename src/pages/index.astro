@@ -4,7 +4,7 @@ import Header from '../components/header.astro'
 import Hero from '../components/hero.astro'
 import Features from '../components/features.astro'
 import FindOutMore from '../components/findoutmore.astro'
-// import LatestArticles from '../components/latestarticles.astro'
+import LatestArticles from '../components/latestarticles.astro'
 import CTA from '../components/cta.astro'
 import Footer from '../components/footer.astro'
 
@@ -15,6 +15,13 @@ const ogimage = {
   width: 1342,
   height: 1024,
 }
+
+const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
+  (a, b) =>
+    new Date(b.frontmatter.date).valueOf() -
+    new Date(a.frontmatter.date).valueOf()
+)
+const latestPosts = posts.filter(post => !post.frontmatter.draft)
 ---
 
 <html lang="en">
@@ -35,7 +42,7 @@ const ogimage = {
     <Hero />
     <Features />
     <FindOutMore />
-    <!-- <LatestArticles /> -->
+    <LatestArticles posts={latestPosts} />
     <CTA />
     <div class="p-24 md:p-12 bg-white"></div>
     <Footer />

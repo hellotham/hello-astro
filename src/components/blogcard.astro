@@ -36,7 +36,7 @@ const { post } = Astro.props as Props
       <p class="sr-only">{post.frontmatter.title}</p>
     </a>
     <div class="p-6">
-      {post.frontmatter.tags ? <Tags tags={post.frontmatter.tags} /> : ''}
+      {post.frontmatter.tags && <Tags tags={post.frontmatter.tags} />}
       <a href={post.url}>
         <h1
           class="title-font text-xl font-bold text-purple-600 hover:text-pink-600 mt-2"

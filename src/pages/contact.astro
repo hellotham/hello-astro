@@ -73,19 +73,20 @@ const contactMethods = [
         <div class="lg:col-span-1">
           <div class="px-4 sm:px-0">
             {
-              contactMethods.map(method =>
-                method.link && (
-                  <p class="mt-2 flex items-center text-sm text-gray-500">
-                    <Icon pack="bi" name={method.icon} class="h-5 w-5" />
-                    <span>&nbsp;{method.name}:&nbsp;</span>
-                    <a
-                      href={method.link}
-                      class="text-purple-600 hover:text-pink-600"
-                    >
-                      {method.link}
-                    </a>
-                  </p>
-                )
+              contactMethods.map(
+                method =>
+                  method.link && (
+                    <p class="mt-2 flex items-center text-sm text-gray-500">
+                      <Icon pack="bi" name={method.icon} class="h-5 w-5" />
+                      <span>&nbsp;{method.name}:&nbsp;</span>
+                      <a
+                        href={method.link}
+                        class="text-purple-600 hover:text-pink-600"
+                      >
+                        {method.link}
+                      </a>
+                    </p>
+                  )
               )
             }
           </div>
