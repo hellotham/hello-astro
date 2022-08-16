@@ -42,7 +42,7 @@ Inside this starter, you'll see the following folders and files:
 
 Astro looks for `.astro`, `.md` or `.mdx` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-`src/components/` is where we lput any Astro components or and similarly `src/layouts/` for layouts.
+`src/components/` is where we put any Astro components and similarly `src/layouts/` for layouts.
 
 Images can be placed in `src/images/` or `src/svg/` depending on type.
 

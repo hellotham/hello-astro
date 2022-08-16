@@ -16,4 +16,5 @@ const images = import.meta.glob('../svg/**/*')
 // }
 const image = (await images[src || defaultImage]()) as Record<string, any>
 ---
+
 <img src={image.default} {...attrs} />

@@ -1,0 +1,97 @@
+---
+import { Icon } from 'astro-icon'
+import WithMap from '../layouts/withmap.astro'
+import Map from '../components/map.astro'
+import PageHero from '../components/pagehero.astro'
+import { SiteMetadata } from '../config'
+
+const frontmatter = {
+  title: 'Contact Us',
+  description:
+    'Our presence is real and digital. Contact us through the following ways.',
+  coverSVG: '../svg/undraw/undraw_contact_us.svg',
+  socialImage: '../images/undraw/undraw_contact_us.png',
+}
+
+// Default coordinates are that of Sydney, NSW, Australia
+const [latitude, longitude] = [-33.86785, 151.20732]
+
+const contactMethods = [
+  {
+    name: 'Email',
+    link: 'email' in SiteMetadata.social ? SiteMetadata.social.email : null,
+    icon: 'envelope',
+  },
+  {
+    name: 'Phone',
+    link: 'phone' in SiteMetadata.social ? SiteMetadata.social.phone : null,
+    icon: 'telephone',
+  },
+  {
+    name: 'LinkedIn',
+    link:
+      'linkedin' in SiteMetadata.social ? SiteMetadata.social.linkedin : null,
+    icon: 'linkedin',
+  },
+  {
+    name: 'Facebook',
+    link:
+      'facebook' in SiteMetadata.social ? SiteMetadata.social.facebook : null,
+    icon: 'facebook',
+  },
+  {
+    name: 'Instagram',
+    link:
+      'instagram' in SiteMetadata.social ? SiteMetadata.social.instagram : null,
+    icon: 'instagram',
+  },
+  {
+    name: 'Twitter',
+    link: 'twitter' in SiteMetadata.social ? SiteMetadata.social.twitter : null,
+    icon: 'twitter',
+  },
+  {
+    name: 'Github',
+    link: 'github' in SiteMetadata.social ? SiteMetadata.social.github : null,
+    icon: 'github',
+  },
+]
+---
+
+<WithMap frontmatter={frontmatter}>
+  <header>
+    <PageHero
+      title={frontmatter.title}
+      description={frontmatter.description}
+      coverSVG={frontmatter.coverSVG}
+      socialImage={frontmatter.socialImage}
+    />
+  </header>
+  <main class="mt-10">
+    <div class="mt-10 sm:mt-0 p-8 bg-purple-100">
+      <div class="lg:grid lg:grid-cols-3 lg:gap-6">
+        <div class="lg:col-span-1">
+          <div class="px-4 sm:px-0">
+            {
+              contactMethods.map(method =>
+                method.link && (
+                  <p class="mt-2 flex items-center text-sm text-gray-500">
+                    <Icon pack="bi" name={method.icon} class="h-5 w-5" />
+                    <span>&nbsp;{method.name}:&nbsp;</span>
+                    <a
+                      href={method.link}
+                      class="text-purple-600 hover:text-pink-600"
+                    >
+                      {method.link}
+                    </a>
+                  </p>
+                )
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    <Map latitude={latitude} longitude={longitude} zoom={11} />
+  </main>
+</WithMap>

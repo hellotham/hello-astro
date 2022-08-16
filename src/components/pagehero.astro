@@ -10,7 +10,8 @@ export interface Props {
   socialImage?: string
 }
 
-const { title, description, coverSVG, coverImage, socialImage } = Astro.props as Props
+const { title, description, coverSVG, coverImage, socialImage } =
+  Astro.props as Props
 ---
 
 <div class="mb-4 md:mb-0 w-full max-w-screen-xl mx-auto relative h-96">
@@ -18,19 +19,20 @@ const { title, description, coverSVG, coverImage, socialImage } = Astro.props as
     class="absolute left-0 bottom-0 w-full h-full z-10 bg-gradient-to-t from-gray-700"
   >
   </div>
-  {coverSVG
-    ?
-    <SVGImg
-      src={coverSVG}
-      alt={title}
-      class="absolute left-0 top-0 w-full h-full z-0 object-contain"
-    />
-    :
-    <Img
-      src={coverImage || socialImage}
-      alt={title}
-      class="absolute left-0 top-0 w-full h-full z-0 object-contain"
-    />
+  {
+    coverSVG ? (
+      <SVGImg
+        src={coverSVG}
+        alt={title}
+        class="absolute left-0 top-0 w-full h-full z-0 object-contain"
+      />
+    ) : (
+      <Img
+        src={coverImage || socialImage}
+        alt={title}
+        class="absolute left-0 top-0 w-full h-full z-0 object-contain"
+      />
+    )
   }
   <div class="p-4 absolute bottom-0 left-0 z-20">
     <h2 class="text-4xl font-bold text-white leading-tight">{title}</h2>
