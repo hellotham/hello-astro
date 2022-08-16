@@ -1,11 +1,9 @@
 ---
 layout: ../../layouts/blog.astro
-published: true
 title: Markdown Cheat Sheet
 description: A quick reference to the Markdown syntax.
 author: Matt Cone
-date: 2020-07-31T00:00:00.000Z
-featuredpost: false
+date: 2022-08-10T00:00:00.000Z
 image: ../images/undraw/undraw_design_components_9vy6.png
 tags:
   - Markdown

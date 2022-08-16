@@ -21,14 +21,15 @@ export type SiteMetadataType = {
 }
 
 export interface Frontmatter {
-  published: boolean
+  draft?: boolean
   title: string
   description?: string
   author?: string
   date?: string
-  featuredpost: boolean
   image?: string
   tags?: string[]
+  file?: string
+  url?:string
 }
 
 export const SiteMetadata: SiteMetadataType = {

@@ -14,6 +14,7 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
     new Date(b.frontmatter.date).valueOf() -
     new Date(a.frontmatter.date).valueOf()
 )
+const nonDraftPosts = posts.filter((post) => !post.frontmatter.draft)
 // console.log(posts)
 // posts.map(post => console.log(post.frontmatter))
 ---
@@ -27,6 +28,6 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
     />
   </header>
   <main class="mt-10 bg-gray-100">
-    <BlogRoll posts={posts} />
+    <BlogRoll posts={nonDraftPosts} />
   </main>
 </Base>

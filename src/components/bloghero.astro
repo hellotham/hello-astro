@@ -14,7 +14,7 @@ const { frontmatter } = Astro.props as Props
   <Img
     src={frontmatter.image}
     alt="featured image"
-    cls="absolute left-0 w-full h-full top-0 z-0 object-cover"
+    class="absolute left-0 w-full h-full top-0 z-0 object-cover"
   />
   <div class="p-4 absolute bottom-0 left-0 z-20">
     {frontmatter.tags ? <Tags tags={frontmatter.tags} /> : ''}
@@ -25,7 +25,7 @@ const { frontmatter } = Astro.props as Props
         <Img
           src="../images/astro/logomark-light.png"
           alt="Author profile"
-          cls="h-10 w-10 rounded-full mr-2 object-cover"
+          class="h-10 w-10 rounded-full mr-2 object-cover"
         />
         <div>
           <p class="font-semibold text-purple-200 text-sm">{frontmatter.author}</p>

@@ -17,7 +17,7 @@ const { post } = Astro.props as Props
       <Img
         src={post.frontmatter.image}
         alt={post.frontmatter.title + ' featured image'}
-        cls="relative w-full h-48 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:h-40 object-center object-cover"
+        class="relative w-full h-48 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:h-40 object-center object-cover"
       />
       <p class="sr-only">{post.frontmatter.title}</p>
     </a>

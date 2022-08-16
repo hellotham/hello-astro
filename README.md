@@ -25,13 +25,22 @@ Inside of your Astro project, you'll see the following folders and files:
 │   └── favicon.ico
 ├── src/
 │   ├── components/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   │   └── header.astro
+│   ├── images/
+│   │   └── image.png
+│   ├── layouts/
+│   │   └── base.astro
+│   ├── pages/
+│   │   ├── index.astro
+│   │   └── blog/
+│   │       └── 2022-08-01-post.md
+│   ├── svg/
+│   │   └── image.svg
+│   └── config.ts
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Astro looks for `.astro`, `.md` or `.mdx` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
 There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components or layouts.
 
@@ -43,9 +52,11 @@ All commands are run from the root of the project, from a terminal:
 
 | Command                | Action                                             |
 | :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site to `./dist/`            |
-| `npm run preview`      | Preview your build locally, before deploying       |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `npm run astro --help` | Get help using the Astro CLI                       |
+| `yarn`              | Installs dependencies                                 |
+| `yarn dev`          | Starts local dev server at `localhost:3000`           |
+| `yarn build`        | Build your production site to `./dist/`               |
+| `yarn preview`      | Preview your build locally, before deploying          |
+| `yarn format`       | Pretty print the source code                          |
+| `yarn lint`         | Check the source code for errors                      |
+| `yarn astro ...`    | Run CLI commands like `astro add`, `astro preview`    |
+| `yarn astro --help` | Get help using the Astro CLI                          |

@@ -8,6 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "format": "prettier --write .",
+    "lint": "astro check && tsc --noEmit",
     "astro": "astro"
   },
   "devDependencies": {
