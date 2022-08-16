@@ -1,4 +1,6 @@
 ---
+import type { MarkdownInstance } from 'astro'
+import type { Frontmatter } from '../config'
 import { SEO } from 'astro-seo'
 import Header from '../components/header.astro'
 import Hero from '../components/hero.astro'
@@ -10,18 +12,12 @@ import Footer from '../components/footer.astro'
 
 import OGImage from '../images/undraw/undraw_design_inspiration.png'
 
-const ogimage = {
-  src: OGImage,
-  width: 1342,
-  height: 1024,
-}
-
-const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
+const posts = (await Astro.glob('./blog/*.{md,mdx}')) as MarkdownInstance<Frontmatter>[]
+const latestPosts = posts.sort(
   (a, b) =>
-    new Date(b.frontmatter.date).valueOf() -
-    new Date(a.frontmatter.date).valueOf()
-)
-const latestPosts = posts.filter(post => !post.frontmatter.draft)
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+).filter(post => !post.frontmatter.draft)
 ---
 
 <html lang="en">

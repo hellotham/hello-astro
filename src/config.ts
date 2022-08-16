@@ -25,7 +25,7 @@ export interface Frontmatter {
   title: string
   description?: string
   author?: string
-  publishDate?: string
+  publishDate: string
   coverSVG?: string
   coverImage?: string
   socialImage?: string

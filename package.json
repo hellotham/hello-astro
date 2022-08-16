@@ -20,6 +20,7 @@
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.4",
+    "@types/lodash": "^4.14.182",
     "astro": "^1.0.5",
     "prettier-plugin-astro": "^0.5.0"
   },
