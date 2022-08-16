@@ -6,7 +6,8 @@ import BlogRoll from '../components/blogroll.astro'
 const frontmatter = {
   title: 'Blog',
   description: 'Articles published from time to time',
-  image: '../images/undraw/undraw_my_feed_inj0.png'
+  coverSVG: '../svg/undraw/undraw_my_feed.svg',
+  socialImage: '../images/undraw/undraw_my_feed.png',
 }
 
 const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
@@ -14,7 +15,7 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
     new Date(b.frontmatter.date).valueOf() -
     new Date(a.frontmatter.date).valueOf()
 )
-const nonDraftPosts = posts.filter((post) => !post.frontmatter.draft)
+const nonDraftPosts = posts.filter(post => !post.frontmatter.draft)
 // console.log(posts)
 // posts.map(post => console.log(post.frontmatter))
 ---
@@ -24,7 +25,8 @@ const nonDraftPosts = posts.filter((post) => !post.frontmatter.draft)
     <PageHero
       title={frontmatter.title}
       description={frontmatter.description}
-      image={frontmatter.image}
+      coverSVG={frontmatter.coverSVG}
+      socialImage={frontmatter.socialImage}
     />
   </header>
   <main class="mt-10 bg-gray-100">

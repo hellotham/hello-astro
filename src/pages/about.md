@@ -1,9 +1,9 @@
 ---
-published: true
+layout: ../layouts/page.astro
 title: About
 description: Description of Hello Gatsby Starter
-layout: ../layouts/page.astro
-image: ../images/undraw/undraw_About_me_re_82bv.png
+coverSVG: ../svg/undraw/undraw_about_me.svg
+socialImage: ../images/undraw/undraw_about_me.png
 ---
 
 This is starter template for a full featured marketing and blog website based on the following:

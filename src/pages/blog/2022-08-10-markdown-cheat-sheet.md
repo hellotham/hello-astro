@@ -3,8 +3,9 @@ layout: ../../layouts/blog.astro
 title: Markdown Cheat Sheet
 description: A quick reference to the Markdown syntax.
 author: Matt Cone
-date: 2022-08-10T00:00:00.000Z
-image: ../images/undraw/undraw_design_components_9vy6.png
+publishDate: 2022-08-10T00:00:00.000Z
+coverSVG: ../svg/undraw/undraw_design_components.svg
+socialImage: ../images/undraw/undraw_design_components.png
 tags:
   - Markdown
 ---

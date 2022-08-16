@@ -3,7 +3,8 @@ published: true
 title: Privacy Policy
 description: Information collection and use
 layout: ../layouts/page.astro
-image: ../images/undraw/undraw_privacy_protection_nlwy.png
+coverSVG: ../svg/undraw/undraw_privacy_protection.svg
+socialImage: ../images/undraw/undraw_privacy_protection.png
 ---
 
 We are committed to maintaining the trust of visitors to this website. We promise to handle and store your data fairly and legally at all times.

@@ -1,15 +1,13 @@
 ---
-import { Image } from '@astrojs/image/components'
-
 export type Props = astroHTML.JSX.ImgHTMLAttributes
 
-const { src, alt, width, height, ...attrs } = Astro.props as Props
+const { src, ...attrs } = Astro.props as Props
 
-const defaultImage = '../images/undraw/undraw_my_feed_inj0.png'
+const defaultImage = '../svg/undraw/undraw_my_feed_inj0.svg'
 
 // ugly hack to circumvent astro issue with dynamic import
 // https://github.com/withastro/astro/issues/3373
-const images = import.meta.glob('../images/**/*')
+const images = import.meta.glob('../svg/**/*')
 // console.log(images)
 // for (const path in images) {
 //   images[path]().then((image) => {
@@ -18,5 +16,4 @@ const images = import.meta.glob('../images/**/*')
 // }
 const image = (await images[src || defaultImage]()) as Record<string, any>
 ---
-
-<Image src={image.default} {alt} {width} {height} class={attrs.class} />
+<img src={image.default} {...attrs} />

@@ -3,8 +3,9 @@ layout: ../../layouts/blog.astro
 title: MIT Licence
 description: The MIT License, explained.
 author: Rob Landley
-date: 2022-08-09T00:00:00.000Z
-image: ../images/undraw/undraw_open_source_1qxw.png
+publishDate: 2022-08-09T00:00:00.000Z
+coverSVG: ../svg/undraw/undraw_open_source.svg
+socialImage: ../images/undraw/undraw_open_source.png
 tags:
   - MIT
   - licence

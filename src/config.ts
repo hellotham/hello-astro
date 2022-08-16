@@ -25,11 +25,13 @@ export interface Frontmatter {
   title: string
   description?: string
   author?: string
-  date?: string
-  image?: string
+  publishDate?: string
+  coverSVG?: string
+  coverImage?: string
+  socialImage?: string
   tags?: string[]
   file?: string
-  url?:string
+  url?: string
 }
 
 export const SiteMetadata: SiteMetadataType = {

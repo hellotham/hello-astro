@@ -5,14 +5,15 @@ import PageHero from '../components/pagehero.astro'
 const { frontmatter } = Astro.props
 ---
 
-<Base frontmatter>
+<Base {frontmatter}>
   <main class="mt-10">
     <article class="post">
       <header>
         <PageHero
           title={frontmatter.title}
           description={frontmatter.description}
-          image={frontmatter.image}
+          coverSVG={frontmatter.coverSVG}
+          socialImage={frontmatter.socialImage}
         />
       </header>
       <section
