@@ -9,9 +9,8 @@ const { latitude, longitude, zoom } = Astro.props as Props
 ---
 
 <div id="map" class="mb-3 h-96"></div>
-<script is:inline>
-  var loc = [-33.86785, 151.20732]
-  var zoom = 11
+<script is:inline define:vars={{ latitude, longitude, zoom }}>
+  var loc = [latitude, longitude]
   var map = L.map('map').setView(loc, zoom)
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
