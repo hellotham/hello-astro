@@ -1889,6 +1889,11 @@ hastscript@^7.0.0:
     property-information "^6.0.0"
     space-separated-tokens "^2.0.0"
 
+hero-patterns@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/hero-patterns/-/hero-patterns-2.1.0.tgz#f99109197bdfb8a8a352bdf86e255eaf5fab89de"
+  integrity sha512-cHob8+etbF3kl+ylmvFQORBdFx3njmFUv+JIbu4i+GVNvfCgvNkWolkBhYU9fE2cecx+DGxLSiSNq+F5NWJrTQ==
+
 html-entities@^2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-2.3.3.tgz#117d7626bece327fc8baace8868fa6f5ef856e46"
@@ -3495,6 +3500,11 @@ sax@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
+
+schema-dts@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/schema-dts/-/schema-dts-1.1.0.tgz#33227971076ef1daa33e56a3127a8aae030e81c9"
+  integrity sha512-vdmbs/5ycj4zyKpZIDqTcy+IZi4s7c38RVAYuDmRi7zgxUT8wRWPMLzg0jr7FjdVunYu9yZ00F3+XcZTTFcTOQ==
 
 section-matter@^1.0.0:
   version "1.0.0"

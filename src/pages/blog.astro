@@ -13,8 +13,8 @@ const frontmatter = {
   publishDate: "2022-08-08T00:00:00.000Z"
 }
 
-const posts = (await Astro.glob('./blog/*.{md,mdx}')) as MarkdownInstance<Frontmatter>[]
-const nonDraftPosts = posts.sort(
+const allPosts = (await Astro.glob('./blog/*.{md,mdx}')) as MarkdownInstance<Frontmatter>[]
+const posts = allPosts.sort(
   (a, b) =>
     new Date(b.frontmatter.publishDate).valueOf() -
     new Date(a.frontmatter.publishDate).valueOf()
@@ -34,6 +34,6 @@ const nonDraftPosts = posts.sort(
     />
   </header>
   <main class="mt-10 bg-gray-100">
-    <BlogRoll posts={nonDraftPosts} />
+    <BlogRoll posts={posts} />
   </main>
 </Base>

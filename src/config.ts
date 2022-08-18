@@ -3,10 +3,17 @@ export type SiteMetadataType = {
   description: string
   author: {
     name: string
+    twitter?: string
     url: string
-    summary: string
+    summary?: string
   }
-  location: string
+  org: {
+    name: string
+    twitter?: string
+    url: string
+    summary?: string
+  }
+  location?: string
   repository: string
   social: {
     email: string
@@ -38,7 +45,15 @@ export const SiteMetadata: SiteMetadataType = {
   title: 'Hello Astro',
   description: 'An Astro starter for corporate/marketing/blog websites.',
   author: {
+    name: 'Chris Tham',
+    twitter: 'chris1tham',
+    url: 'https://christham.net',
+    summary:
+      'Outrageous actualiser.',
+  },
+  org: {
     name: 'Hello Tham',
+    twitter: 'hellothamcom',
     url: 'https://hellotham.com',
     summary:
       'Hello Tham is a boutique management consulting firm. We specialise in Business and IT strategies, operating models, strategic roadmaps, enterprise architecture, analytics and business process design.',

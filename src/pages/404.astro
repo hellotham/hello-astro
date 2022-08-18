@@ -1,0 +1,23 @@
+---
+import type { Frontmatter } from '../config'
+import Base from '../layouts/base.astro'
+import PageHero from '../components/pagehero.astro'
+
+const frontmatter: Frontmatter = {
+  title: '404: Not found',
+  description: "You just hit a route that doesn't exist... the sadness.",
+  coverSVG: '../svg/undraw/undraw_page_not_found.svg',
+  socialImage: '../images/undraw/undraw_page_not_found.png',
+  publishDate: "2022-08-08T00:00:00.000Z"
+}
+---
+<Base frontmatter={frontmatter}>
+  <header>
+    <PageHero
+      title={frontmatter.title}
+      description={frontmatter.description}
+      coverSVG={frontmatter.coverSVG}
+      socialImage={frontmatter.socialImage}
+    />
+  </header>
+</Base>

@@ -22,12 +22,14 @@
     "@tailwindcss/typography": "^0.5.4",
     "@types/lodash": "^4.14.183",
     "astro": "^1.0.6",
-    "prettier-plugin-astro": "^0.5.0"
+    "prettier-plugin-astro": "^0.5.0",
+    "schema-dts": "^1.1.0"
   },
   "dependencies": {
     "@astrojs/rss": "^1.0.0",
     "astro-icon": "^0.7.3",
     "astro-seo": "^0.5.1",
+    "hero-patterns": "^2.1.0",
     "leaflet": "^1.8.0",
     "lodash": "^4.17.21"
   }

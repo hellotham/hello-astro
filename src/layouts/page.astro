@@ -1,6 +1,10 @@
 ---
+import type { Frontmatter } from '../config'
 import Base from '../layouts/base.astro'
 import PageHero from '../components/pagehero.astro'
+export interface Props {
+  frontmatter: Frontmatter
+}
 
 const { frontmatter } = Astro.props
 ---

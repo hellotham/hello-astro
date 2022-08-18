@@ -1,0 +1,163 @@
+---
+import type { Frontmatter } from '../config'
+import type { Article, BreadcrumbList, Organization, Person, WebSite, WithContext } from 'schema-dts'
+import  { SiteMetadata } from '../config'
+
+export interface Props {
+  frontmatter: Frontmatter
+}
+
+const { frontmatter } = Astro.props as Props
+
+const type = (frontmatter.url && frontmatter.url.includes('blog')) ? 'post' : 'page'
+const email = SiteMetadata.social.email.replace('mailto:', '')
+const year = parseInt(SiteMetadata.buildTime.slice(0, 4))
+import Logo from '../images/astro/logomark-light.png'
+
+const defaultImage = '../images/undraw/undraw_design_inspiration.png'
+const images = import.meta.glob('../images/**/*')
+const image = (await images[frontmatter.socialImage || defaultImage]()) as Record<string, any>
+
+const website: WithContext<WebSite> = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  about: {
+    '@id': import.meta.env.BASE_URL + 'about',
+  },
+  audience: 'public',
+  abstract: SiteMetadata.description,
+  author: {
+    '@id': SiteMetadata.author.url,
+  },
+  copyrightHolder: {
+    '@id': SiteMetadata.org.url,
+  },
+  copyrightYear: year,
+  creator: {
+    '@id': SiteMetadata.author.url,
+  },
+  description: SiteMetadata.description,
+  image: {
+    '@type': 'ImageObject',
+    url: image.default.src,
+    width: image.default.width,
+    height: image.default.height,
+  },
+  inLanguage: 'en',
+  name: SiteMetadata.title,
+  publisher: {
+    '@id': SiteMetadata.org.url,
+  },
+  url: import.meta.env.BASE_URL,
+}
+
+const organization: WithContext<Organization> = {
+  '@context': 'https://schema.org',
+  '@id': SiteMetadata.org.url,
+  '@type': 'Organization',
+  address: SiteMetadata.location,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: email,
+    telephone: SiteMetadata.social.phone.replace('tel:', ''),
+  },
+  description: SiteMetadata.org.summary,
+  email: email,
+  founder: {
+    '@id': SiteMetadata.org.url,
+  },
+  location: SiteMetadata.location,
+  image: {
+    '@type': 'ImageObject',
+    url: Logo.src,
+    width: Logo.width.toString(),
+    height: Logo.height.toString(),
+  },
+  logo: {
+    '@type': 'ImageObject',
+    url: Logo.src,
+  },
+  name: SiteMetadata.org.name,
+  sameAs: Object.values(SiteMetadata.social),
+  url: SiteMetadata.org.url,
+}
+
+const breadcrumbList: WithContext<BreadcrumbList> = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  description: 'Breadcrumbs list',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      item: {
+        '@id': import.meta.env.BASE_URL,
+        name: SiteMetadata.title,
+      },
+      position: 1,
+    },
+    {
+      '@type': 'ListItem',
+      item: {
+        '@id': frontmatter.url as string,
+        name: frontmatter.title,
+      },
+      position: 2,
+    },
+  ],
+  numberOfItems: 2,
+  name: 'Breadcrumbs',
+}
+
+const person: WithContext<Person> = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': SiteMetadata.author.url,
+  name: SiteMetadata.author.name,
+  url: SiteMetadata.author.url,
+  worksFor: {
+    '@id': import.meta.env.BASE_URL,
+  },
+}
+
+const article: WithContext<Article> = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  articleSection: type,
+  author: {
+    '@id': SiteMetadata.author.url,
+  },
+  copyrightHolder: {
+    '@id': SiteMetadata.org.url,
+  },
+  copyrightYear: year,
+  creativeWorkStatus: 'Published',
+  creator: {
+    '@id': SiteMetadata.author.url,
+  },
+  dateCreated: frontmatter.publishDate,
+  dateModified: SiteMetadata.buildTime,
+  datePublished: frontmatter.publishDate,
+  description: frontmatter.description,
+  headline: frontmatter.title,
+  keywords: frontmatter.tags && frontmatter.tags.join(', '),
+  image: {
+    '@type': 'ImageObject',
+    url: image.default.src,
+    width: image.default.width,
+    height: image.default.height,
+  },
+  inLanguage: 'en',
+  mainEntityOfPage: SiteMetadata.org.url,
+  name: frontmatter.title,
+  publisher: {
+    '@id': SiteMetadata.org.url,
+  },
+  url: frontmatter.url,
+}
+
+---
+<script is:inline set:html={JSON.stringify(website)} type="application/ld+json"></script>
+<script is:inline set:html={JSON.stringify(organization)} type="application/ld+json"></script>
+<script is:inline set:html={JSON.stringify(breadcrumbList)} type="application/ld+json"></script>
+<script is:inline set:html={JSON.stringify(person)} type="application/ld+json"></script>
+<script is:inline set:html={JSON.stringify(article)} type="application/ld+json"></script>
