@@ -1,3 +1,5 @@
+import type { MarkdownInstance } from 'astro'
+
 export type SiteMetadataType = {
   title: string
   description: string
@@ -41,6 +43,12 @@ export interface Frontmatter {
   url?: string
 }
 
+export interface TagType {
+  tag: string
+  count: number
+  pages: MarkdownInstance<Frontmatter>[]
+}
+
 export const SiteMetadata: SiteMetadataType = {
   title: 'Hello Astro',
   description: 'An Astro starter for corporate/marketing/blog websites.',
@@ -78,4 +86,5 @@ export const NavigationLinks = [
   { name: 'Contact', href: 'contact', current: false },
   { name: 'Privacy', href: 'privacy', current: false },
   { name: 'Blog', href: 'blog', current: false },
+  { name: 'Tags', href: 'tags', current: false },
 ]

@@ -30,6 +30,6 @@ This website is open source (MIT licence) - fork it and customise for your needs
 - Tags index page and individual tag pages
 - Support for RSS feed, sitemap and robots.txt
 - Automatic optimization of images in Markdown/MDX posts
-- SVG design (unDraw, Hero Patterns, HeroIcons)
+- SVG design (unDraw, Hero Patterns, Iconify)
 - Support for code syntax highlighting
 - Full SEO support including Open Graph, Twitter Cards and Schema.org via JSON-LD
