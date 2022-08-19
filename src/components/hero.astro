@@ -1,5 +1,6 @@
 ---
-import FeaturedImage from '../svg/undraw/undraw_design_inspiration.svg'
+import SVGImg from '../components/svgimg.astro'
+import { FeaturedSVG } from '../config'
 ---
 
 <div class="relative bg-white overflow-hidden">
@@ -65,9 +66,9 @@ import FeaturedImage from '../svg/undraw/undraw_design_inspiration.svg'
     </div>
   </div>
   <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-purple-100">
-    <img
+    <SVGImg
       class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-      src={FeaturedImage}
+      src={FeaturedSVG}
       alt="featured"
     />
   </div>

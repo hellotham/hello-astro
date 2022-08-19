@@ -2,49 +2,17 @@
 import { SiteMetadata } from '../config'
 
 import { Icon } from 'astro-icon'
-
-import Logo from '../svg/astro/logomark-light.svg'
-
-const social = SiteMetadata.social
-
-const socialLinks = [
-  {
-    name: 'LinkedIn',
-    link: 'linkedin' in social ? social.linkedin : null,
-    icon: 'linkedin',
-  },
-  {
-    name: 'Facebook',
-    link: 'facebook' in social ? social.facebook : null,
-    icon: 'facebook',
-  },
-  {
-    name: 'Instagram',
-    link: 'instagram' in social ? social.instagram : null,
-    icon: 'instagram',
-  },
-  {
-    name: 'Twitter',
-    link: 'twitter' in social ? social.twitter : null,
-    icon: 'twitter',
-  },
-  {
-    name: 'Github',
-    link: 'github' in social ? social.github : null,
-    icon: 'github',
-  },
-]
 ---
 
 <footer class="text-gray-600">
   <div
-    class="container fixed bottom-0 inset-x-0 bg-gray-100 px-4 py-4 mx-auto flex items-center md:flex-row flex-col"
+    class="container fixed z-20 bottom-0 inset-x-0 bg-gray-100 px-4 py-4 mx-auto flex items-center md:flex-row flex-col"
   >
     <a
       class="flex title-font font-medium items-center lg:justify-start justify-center text-gray-900"
       href="/"
     >
-      <img src={Logo} alt="Footer Logo" width="32" />
+      <img src={SiteMetadata.logo} alt="Footer Logo" width="32" />
       <span class="sr-only">Logo</span>
     </a>
     <p
@@ -98,7 +66,7 @@ const socialLinks = [
       class="inline-flex md:ml-auto md:mt-0 mt-4 justify-center md:justify-start"
     >
       {
-        socialLinks.map(s =>
+        SiteMetadata.social.map(s =>
           s.link ? (
             <a
               href={s.link}

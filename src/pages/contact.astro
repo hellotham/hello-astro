@@ -7,56 +7,11 @@ import { SiteMetadata } from '../config'
 
 const frontmatter = {
   title: 'Contact Us',
-  description:
-    'Our presence is real and digital. Contact us through the following ways.',
+  description: 'Our presence is real and digital. Contact us through the following ways.',
   coverSVG: '../svg/undraw/undraw_contact_us.svg',
   socialImage: '../images/undraw/undraw_contact_us.png',
-  publishDate: '2022-08-08T00:00:00.000Z',
+  publishDate: SiteMetadata.buildTime,
 }
-
-// Default coordinates are that of Sydney, NSW, Australia
-const [latitude, longitude] = [-33.86785, 151.20732]
-
-const contactMethods = [
-  {
-    name: 'Email',
-    link: 'email' in SiteMetadata.social ? SiteMetadata.social.email : null,
-    icon: 'envelope',
-  },
-  {
-    name: 'Phone',
-    link: 'phone' in SiteMetadata.social ? SiteMetadata.social.phone : null,
-    icon: 'telephone',
-  },
-  {
-    name: 'LinkedIn',
-    link:
-      'linkedin' in SiteMetadata.social ? SiteMetadata.social.linkedin : null,
-    icon: 'linkedin',
-  },
-  {
-    name: 'Facebook',
-    link:
-      'facebook' in SiteMetadata.social ? SiteMetadata.social.facebook : null,
-    icon: 'facebook',
-  },
-  {
-    name: 'Instagram',
-    link:
-      'instagram' in SiteMetadata.social ? SiteMetadata.social.instagram : null,
-    icon: 'instagram',
-  },
-  {
-    name: 'Twitter',
-    link: 'twitter' in SiteMetadata.social ? SiteMetadata.social.twitter : null,
-    icon: 'twitter',
-  },
-  {
-    name: 'Github',
-    link: 'github' in SiteMetadata.social ? SiteMetadata.social.github : null,
-    icon: 'github',
-  },
-]
 ---
 
 <WithMap frontmatter={frontmatter}>
@@ -74,7 +29,7 @@ const contactMethods = [
         <div class="lg:col-span-1">
           <div class="px-4 sm:px-0">
             {
-              contactMethods.map(
+              SiteMetadata.social.map(
                 method =>
                   method.link && (
                     <p class="mt-2 flex items-center text-sm text-gray-500">
@@ -94,6 +49,6 @@ const contactMethods = [
         </div>
       </div>
     </div>
-    <Map latitude={latitude} longitude={longitude} zoom={11} />
+    <Map loc={SiteMetadata.latlng} zoom={11} />
   </main>
 </WithMap>

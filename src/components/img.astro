@@ -1,11 +1,10 @@
 ---
 import { Image } from '@astrojs/image/components'
+import { defaultImage } from '../config'
 
 export type Props = astroHTML.JSX.ImgHTMLAttributes
 
 const { src, alt, width, height, ...attrs } = Astro.props as Props
-
-const defaultImage = '../images/undraw/undraw_my_feed_inj0.png'
 
 // ugly hack to circumvent astro issue with dynamic import
 // https://github.com/withastro/astro/issues/3373

@@ -18,7 +18,6 @@ const { frontmatter } = Astro.props as Props
 
 const type =
   frontmatter.url && frontmatter.url.includes('blog') ? 'post' : 'page'
-const email = SiteMetadata.social.email.replace('mailto:', '')
 const year = parseInt(SiteMetadata.buildTime.slice(0, 4))
 import Logo from '../images/astro/logomark-light.png'
 
@@ -68,11 +67,10 @@ const organization: WithContext<Organization> = {
   address: SiteMetadata.location,
   contactPoint: {
     '@type': 'ContactPoint',
-    email: email,
-    telephone: SiteMetadata.social.phone.replace('tel:', ''),
+    email: SiteMetadata.org.email,
   },
   description: SiteMetadata.org.summary,
-  email: email,
+  email: SiteMetadata.org.email,
   founder: {
     '@id': SiteMetadata.org.url,
   },
@@ -88,7 +86,7 @@ const organization: WithContext<Organization> = {
     url: Logo.src,
   },
   name: SiteMetadata.org.name,
-  sameAs: Object.values(SiteMetadata.social),
+  sameAs: Object.values(SiteMetadata.social.map(social => social.link)),
   url: SiteMetadata.org.url,
 }
 

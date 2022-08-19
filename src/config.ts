@@ -1,34 +1,5 @@
 import type { MarkdownInstance } from 'astro'
 
-export type SiteMetadataType = {
-  title: string
-  description: string
-  author: {
-    name: string
-    twitter?: string
-    url: string
-    summary?: string
-  }
-  org: {
-    name: string
-    twitter?: string
-    url: string
-    summary?: string
-  }
-  location?: string
-  repository: string
-  social: {
-    email: string
-    phone: string
-    facebook: string
-    instagram: string
-    twitter: string
-    linkedin: string
-    github: string
-  }
-  buildTime: string
-}
-
 export interface Frontmatter {
   draft?: boolean
   title: string
@@ -49,35 +20,73 @@ export interface TagType {
   pages: MarkdownInstance<Frontmatter>[]
 }
 
-export const SiteMetadata: SiteMetadataType = {
+export const SiteMetadata = {
   title: 'Hello Astro',
   description: 'An Astro starter for corporate/marketing/blog websites.',
+  logo: '/logo.svg',
   author: {
     name: 'Chris Tham',
     twitter: 'chris1tham',
     url: 'https://christham.net',
+    email: 'chris@christham.net',
     summary: 'Outrageous actualiser.',
   },
   org: {
     name: 'Hello Tham',
     twitter: 'hellothamcom',
     url: 'https://hellotham.com',
+    email: 'info@hellotham.com',
     summary:
       'Hello Tham is a boutique management consulting firm. We specialise in Business and IT strategies, operating models, strategic roadmaps, enterprise architecture, analytics and business process design.',
   },
   location: 'Rivendell, Middle Earth',
+  latlng: [-33.86785, 151.20732] as [number, number],
   repository: 'https://github.com/hellotham/hello-astro',
-  social: {
-    email: 'mailto:info@contact.me',
-    phone: 'tel:+61234567890',
-    facebook: 'https://www.facebook.com',
-    instagram: 'https://www.instagram.com',
-    twitter: 'https://twitter.com',
-    linkedin: 'https://www.linkedin.com',
-    github: 'https://github.com',
-  },
+  social: [
+    {
+      name: 'Email',
+      link: 'mailto:info@hellothamcom',
+      icon: 'envelope',
+    },
+    {
+      name: 'Phone',
+      link: '555-5555',
+      icon: 'telephone',
+    },
+    {
+      name: 'LinkedIn',
+      link: 'https://www.linkedin.com/hellothamcom',
+      icon: 'linkedin',
+    },
+    {
+      name: 'Facebook',
+      link: 'https://www.facebook.com/hellothamcom',
+      icon: 'facebook',
+    },
+    {
+      name: 'Instagram',
+      link: 'https://www.instagram.com/hellothamcom',
+      icon: 'instagram',
+    },
+    {
+      name: 'Twitter',
+      link: 'https://twitter.com/hellothamcom',
+      icon: 'twitter',
+    },
+    {
+      name: 'Github',
+      link: 'https://github.com/hellothamcom',
+      icon: 'github',
+    },
+  ],
   buildTime: new Date().toString(),
 }
+
+export const Logo = '../svg/astro/logomark-light.svg'
+export const PrimaryLogo = '../svg/astro/full-logo-light.svg'
+export const FeaturedSVG = '../svg/undraw/undraw_design_inspiration.svg'
+export const defaultSVG = '../svg/undraw/undraw_my_feed_inj0.svg'
+export const defaultImage = '../images/undraw/undraw_my_feed_inj0.png'
 
 export const NavigationLinks = [
   { name: 'Home', href: '', current: false },

@@ -1,9 +1,8 @@
 ---
+import { defaultSVG } from '../config'
 export type Props = astroHTML.JSX.ImgHTMLAttributes
 
 const { src, ...attrs } = Astro.props as Props
-
-const defaultImage = '../svg/undraw/undraw_my_feed_inj0.svg'
 
 // ugly hack to circumvent astro issue with dynamic import
 // https://github.com/withastro/astro/issues/3373
@@ -14,7 +13,7 @@ const images = import.meta.glob<string>('../svg/**/*', { import: 'default' })
 //     console.log(path, image)
 //   })
 // }
-const image = await images[src || defaultImage]()
+const image = await images[src || defaultSVG]()
 ---
 
 <img src={image} {...attrs} />
