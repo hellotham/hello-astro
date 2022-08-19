@@ -9,14 +9,8 @@ const defaultImage = '../images/undraw/undraw_my_feed_inj0.png'
 
 // ugly hack to circumvent astro issue with dynamic import
 // https://github.com/withastro/astro/issues/3373
-const images = import.meta.glob('../images/**/*', { import: 'default' })
-// console.log(images)
-// for (const path in images) {
-//   images[path]().then((image) => {
-//     console.log(path, image)
-//   })
-// }
+const images = import.meta.glob<ImageMetadata>('../images/**/*', { import: 'default' })
 const image = await images[src || defaultImage]()
 ---
 
-<Image src={image.default} {alt} {width} {height} class={attrs.class} />
+<Image src={image} {alt} {width} {height} class={attrs.class} />

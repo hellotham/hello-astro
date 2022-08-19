@@ -7,7 +7,7 @@ const defaultImage = '../svg/undraw/undraw_my_feed_inj0.svg'
 
 // ugly hack to circumvent astro issue with dynamic import
 // https://github.com/withastro/astro/issues/3373
-const images = import.meta.glob('../svg/**/*', { import: 'default' })
+const images = import.meta.glob<string>('../svg/**/*', { import: 'default' })
 // console.log(images)
 // for (const path in images) {
 //   images[path]().then((image) => {
