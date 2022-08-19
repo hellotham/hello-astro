@@ -23,7 +23,6 @@ export interface TagType {
 export const SiteMetadata = {
   title: 'Hello Astro',
   description: 'An Astro starter for corporate/marketing/blog websites.',
-  logo: '/logo.svg',
   author: {
     name: 'Chris Tham',
     twitter: 'chris1tham',
@@ -83,10 +82,11 @@ export const SiteMetadata = {
 }
 
 export const Logo = '../svg/astro/logomark-light.svg'
+export const LogoImage = '../images/astro/full-logo-light.png'
 export const PrimaryLogo = '../svg/astro/full-logo-light.svg'
 export const FeaturedSVG = '../svg/undraw/undraw_design_inspiration.svg'
-export const defaultSVG = '../svg/undraw/undraw_my_feed_inj0.svg'
-export const defaultImage = '../images/undraw/undraw_my_feed_inj0.png'
+export const DefaultSVG = '../svg/undraw/undraw_my_feed.svg'
+export const DefaultImage = '../images/undraw/undraw_my_feed.png'
 
 export const NavigationLinks = [
   { name: 'Home', href: '', current: false },

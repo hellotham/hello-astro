@@ -1,7 +1,7 @@
 ---
-import { SiteMetadata } from '../config'
-
 import { Icon } from 'astro-icon'
+import { SiteMetadata, Logo } from '../config'
+import SVGImg from '../components/svgimg.astro'
 ---
 
 <footer class="text-gray-600">
@@ -12,7 +12,7 @@ import { Icon } from 'astro-icon'
       class="flex title-font font-medium items-center lg:justify-start justify-center text-gray-900"
       href="/"
     >
-      <img src={SiteMetadata.logo} alt="Footer Logo" width="32" />
+      <SVGImg src={Logo} alt="Footer Logo" width="32" />
       <span class="sr-only">Logo</span>
     </a>
     <p

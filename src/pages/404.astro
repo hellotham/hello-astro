@@ -1,5 +1,6 @@
 ---
 import type { Frontmatter } from '../config'
+import { SiteMetadata } from '../config'
 import Base from '../layouts/base.astro'
 import PageHero from '../components/pagehero.astro'
 
@@ -8,7 +9,7 @@ const frontmatter: Frontmatter = {
   description: "You just hit a route that doesn't exist... the sadness.",
   coverSVG: '../svg/undraw/undraw_page_not_found.svg',
   socialImage: '../images/undraw/undraw_page_not_found.png',
-  publishDate: '2022-08-08T00:00:00.000Z',
+  publishDate: SiteMetadata.buildTime,
 }
 ---
 

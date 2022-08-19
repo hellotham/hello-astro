@@ -1,4 +1,5 @@
 ---
+import { SEO } from 'astro-seo'
 import type { Frontmatter } from '../config'
 import type {
   Article,
@@ -8,7 +9,7 @@ import type {
   WebSite,
   WithContext,
 } from 'schema-dts'
-import { SiteMetadata } from '../config'
+import { SiteMetadata, DefaultImage, LogoImage } from '../config'
 
 export interface Props {
   frontmatter: Frontmatter
@@ -19,13 +20,30 @@ const { frontmatter } = Astro.props as Props
 const type =
   frontmatter.url && frontmatter.url.includes('blog') ? 'post' : 'page'
 const year = parseInt(SiteMetadata.buildTime.slice(0, 4))
-import Logo from '../images/astro/logomark-light.png'
 
-const defaultImage = '../images/undraw/undraw_design_inspiration.png'
-const images = import.meta.glob('../images/**/*')
-const image = (await images[
-  frontmatter.socialImage || defaultImage
-]()) as Record<string, any>
+const images = import.meta.glob<ImageMetadata>('../images/**/*', { import: 'default' })
+const image = await images[frontmatter.socialImage || DefaultImage]()
+const logo = await images[LogoImage || DefaultImage]()
+
+const openGraph = {
+  basic: {
+    title: frontmatter.title,
+    type: 'website',
+    image: image.src,
+  },
+  optional: {
+    description: frontmatter.description,
+    siteName: SiteMetadata.title,
+  },
+  image: {
+    alt: 'cover image',
+  },
+}
+const twitter = {
+  card: frontmatter.socialImage ? 'summary_large_image' : 'summary',
+  site: SiteMetadata.title,
+  creator: SiteMetadata.author.twitter,
+}
 
 const website: WithContext<WebSite> = {
   '@context': 'https://schema.org',
@@ -48,9 +66,9 @@ const website: WithContext<WebSite> = {
   description: SiteMetadata.description,
   image: {
     '@type': 'ImageObject',
-    url: image.default.src,
-    width: image.default.width,
-    height: image.default.height,
+    url: image.src,
+    width: image.width.toString(),
+    height: image.height.toString(),
   },
   inLanguage: 'en',
   name: SiteMetadata.title,
@@ -77,13 +95,13 @@ const organization: WithContext<Organization> = {
   location: SiteMetadata.location,
   image: {
     '@type': 'ImageObject',
-    url: Logo.src,
-    width: Logo.width.toString(),
-    height: Logo.height.toString(),
+    url: logo.src,
+    width: logo.width.toString(),
+    height: logo.height.toString(),
   },
   logo: {
     '@type': 'ImageObject',
-    url: Logo.src,
+    url: logo.src,
   },
   name: SiteMetadata.org.name,
   sameAs: Object.values(SiteMetadata.social.map(social => social.link)),
@@ -150,9 +168,9 @@ const article: WithContext<Article> = {
   keywords: frontmatter.tags && frontmatter.tags.join(', '),
   image: {
     '@type': 'ImageObject',
-    url: image.default.src,
-    width: image.default.width,
-    height: image.default.height,
+    url: image.src,
+    width: image.width.toString(),
+    height: image.height.toString(),
   },
   inLanguage: 'en',
   mainEntityOfPage: SiteMetadata.org.url,
@@ -164,6 +182,12 @@ const article: WithContext<Article> = {
 }
 ---
 
+<SEO
+  title={SiteMetadata.title + ' | ' + frontmatter.title}
+  description={frontmatter.description}
+  {openGraph}
+  {twitter}
+/>
 <script is:inline set:html={JSON.stringify(website)} type="application/ld+json"
 ></script>
 <script

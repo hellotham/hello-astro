@@ -1,5 +1,5 @@
 ---
-import { defaultSVG } from '../config'
+import { DefaultSVG } from '../config'
 export type Props = astroHTML.JSX.ImgHTMLAttributes
 
 const { src, ...attrs } = Astro.props as Props
@@ -13,7 +13,7 @@ const images = import.meta.glob<string>('../svg/**/*', { import: 'default' })
 //     console.log(path, image)
 //   })
 // }
-const image = await images[src || defaultSVG]()
+const image = await images[src || DefaultSVG]()
 ---
 
 <img src={image} {...attrs} />

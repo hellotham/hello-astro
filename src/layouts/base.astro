@@ -1,8 +1,6 @@
 ---
 import type { Frontmatter } from '../config'
-import { SiteMetadata } from '../config'
-import { SEO } from 'astro-seo'
-import JsonLD from '../components/jsonld.astro'
+import SEO from '../components/seo.astro'
 import Header from '../components/header.astro'
 import Footer from '../components/footer.astro'
 export interface Props {
@@ -10,26 +8,6 @@ export interface Props {
 }
 
 const { frontmatter } = Astro.props as Props
-
-const openGraph = {
-  basic: {
-    title: frontmatter.title,
-    type: 'website',
-    image: frontmatter.socialImage,
-  },
-  optional: {
-    description: frontmatter.description,
-    siteName: SiteMetadata.title,
-  },
-  image: {
-    alt: 'cover image',
-  },
-}
-const twitter = {
-  card: frontmatter.socialImage ? 'summary_large_image' : 'summary',
-  site: SiteMetadata.title,
-  creator: SiteMetadata.author.twitter,
-}
 ---
 
 <!DOCTYPE html>
@@ -37,15 +15,13 @@ const twitter = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/x-icon" href="{'/favicon.ico}" />
-    <meta name="generator" content={Astro.generator} />
-    <SEO
-      title={SiteMetadata.title + ' | ' + frontmatter.title}
-      description={frontmatter.description}
-      {openGraph}
-      {twitter}
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href={import.meta.env.BASE_URL + 'favicon.ico'}
     />
-    <JsonLD frontmatter={frontmatter} />
+    <meta name="generator" content={Astro.generator} />
+    <SEO frontmatter={frontmatter} />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
   </head>
