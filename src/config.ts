@@ -56,8 +56,7 @@ export const SiteMetadata: SiteMetadataType = {
     name: 'Chris Tham',
     twitter: 'chris1tham',
     url: 'https://christham.net',
-    summary:
-      'Outrageous actualiser.',
+    summary: 'Outrageous actualiser.',
   },
   org: {
     name: 'Hello Tham',
@@ -67,7 +66,7 @@ export const SiteMetadata: SiteMetadataType = {
       'Hello Tham is a boutique management consulting firm. We specialise in Business and IT strategies, operating models, strategic roadmaps, enterprise architecture, analytics and business process design.',
   },
   location: 'Rivendell, Middle Earth',
-  repository: 'https://github.com/ChristineTham/hello-astro',
+  repository: 'https://github.com/hellotham/hello-astro',
   social: {
     email: 'mailto:info@contact.me',
     phone: 'tel:+61234567890',

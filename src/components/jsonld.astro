@@ -1,7 +1,14 @@
 ---
 import type { Frontmatter } from '../config'
-import type { Article, BreadcrumbList, Organization, Person, WebSite, WithContext } from 'schema-dts'
-import  { SiteMetadata } from '../config'
+import type {
+  Article,
+  BreadcrumbList,
+  Organization,
+  Person,
+  WebSite,
+  WithContext,
+} from 'schema-dts'
+import { SiteMetadata } from '../config'
 
 export interface Props {
   frontmatter: Frontmatter
@@ -9,14 +16,17 @@ export interface Props {
 
 const { frontmatter } = Astro.props as Props
 
-const type = (frontmatter.url && frontmatter.url.includes('blog')) ? 'post' : 'page'
+const type =
+  frontmatter.url && frontmatter.url.includes('blog') ? 'post' : 'page'
 const email = SiteMetadata.social.email.replace('mailto:', '')
 const year = parseInt(SiteMetadata.buildTime.slice(0, 4))
 import Logo from '../images/astro/logomark-light.png'
 
 const defaultImage = '../images/undraw/undraw_design_inspiration.png'
 const images = import.meta.glob('../images/**/*')
-const image = (await images[frontmatter.socialImage || defaultImage]()) as Record<string, any>
+const image = (await images[
+  frontmatter.socialImage || defaultImage
+]()) as Record<string, any>
 
 const website: WithContext<WebSite> = {
   '@context': 'https://schema.org',
@@ -154,10 +164,21 @@ const article: WithContext<Article> = {
   },
   url: frontmatter.url,
 }
-
 ---
-<script is:inline set:html={JSON.stringify(website)} type="application/ld+json"></script>
-<script is:inline set:html={JSON.stringify(organization)} type="application/ld+json"></script>
-<script is:inline set:html={JSON.stringify(breadcrumbList)} type="application/ld+json"></script>
-<script is:inline set:html={JSON.stringify(person)} type="application/ld+json"></script>
-<script is:inline set:html={JSON.stringify(article)} type="application/ld+json"></script>
+
+<script is:inline set:html={JSON.stringify(website)} type="application/ld+json"
+></script>
+<script
+  is:inline
+  set:html={JSON.stringify(organization)}
+  type="application/ld+json"
+></script>
+<script
+  is:inline
+  set:html={JSON.stringify(breadcrumbList)}
+  type="application/ld+json"
+></script>
+<script is:inline set:html={JSON.stringify(person)} type="application/ld+json"
+></script>
+<script is:inline set:html={JSON.stringify(article)} type="application/ld+json"
+></script>

@@ -1,6 +1,6 @@
 ---
 import type { Frontmatter } from '../config'
-import  { SiteMetadata } from '../config'
+import { SiteMetadata } from '../config'
 import { SEO } from 'astro-seo'
 import JsonLD from '../components/jsonld.astro'
 import Header from '../components/header.astro'
@@ -15,20 +15,20 @@ const openGraph = {
   basic: {
     title: frontmatter.title,
     type: 'website',
-    image: frontmatter.socialImage
+    image: frontmatter.socialImage,
   },
   optional: {
     description: frontmatter.description,
-    siteName: SiteMetadata.title
+    siteName: SiteMetadata.title,
   },
   image: {
-    alt: "cover image"
-  }
+    alt: 'cover image',
+  },
 }
 const twitter = {
   card: frontmatter.socialImage ? 'summary_large_image' : 'summary',
   site: SiteMetadata.title,
-  creator: SiteMetadata.author.twitter
+  creator: SiteMetadata.author.twitter,
 }
 ---
 
@@ -46,7 +46,8 @@ const twitter = {
       {twitter}
     />
     <JsonLD frontmatter={frontmatter} />
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" />
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
   </head>
   <body>
     <Header />
