@@ -25,14 +25,14 @@ export const SiteMetadata = {
   description: 'An Astro starter for corporate/marketing/blog websites.',
   author: {
     name: 'Chris Tham',
-    twitter: 'chris1tham',
+    twitter: '@chris1tham',
     url: 'https://christham.net',
     email: 'chris@christham.net',
     summary: 'Outrageous actualiser.',
   },
   org: {
     name: 'Hello Tham',
-    twitter: 'hellothamcom',
+    twitter: '@hellothamcom',
     url: 'https://hellotham.com',
     email: 'info@hellotham.com',
     summary:

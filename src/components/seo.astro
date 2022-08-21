@@ -44,7 +44,7 @@ const openGraph = {
 }
 const twitter = {
   card: frontmatter.socialImage ? 'summary_large_image' : 'summary',
-  site: SiteMetadata.title,
+  site: SiteMetadata.org.twitter,
   creator: SiteMetadata.author.twitter,
 }
 
@@ -184,19 +184,6 @@ const article: WithContext<Article> = {
   description={frontmatter.description}
   {openGraph}
   {twitter}
-  extend={{
-    // extending the default link tags
-    link: [{ rel: "icon", href: siteurl + "favicon.ico" }],
-    // extending the default meta tags
-    meta: [
-      {
-        name: "twitter:image",
-        content: image,
-      },
-      { name: "twitter:title", content: frontmatter.title },
-      { name: "twitter:description", content: frontmatter.description },
-    ],
-  }}
   />
 <script is:inline set:html={JSON.stringify(website)} type="application/ld+json"
 ></script>
