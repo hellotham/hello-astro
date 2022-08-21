@@ -17,27 +17,30 @@ export interface Props {
 
 const { frontmatter } = Astro.props as Props
 
-const type =
-  frontmatter.url && frontmatter.url.includes('blog') ? 'post' : 'page'
+const siteurl = new URL(import.meta.env.BASE_URL, Astro.url)
+const type = Astro.url.toString().includes('blog') ? 'post' : 'page'
 const year = parseInt(SiteMetadata.buildTime.slice(0, 4))
-
-const images = import.meta.glob<ImageMetadata>('../images/**/*', { import: 'default' })
-const image = await images[frontmatter.socialImage || DefaultImage]()
-const logo = await images[LogoImage || DefaultImage]()
+const image = new URL(frontmatter.socialImage || DefaultImage, siteurl).toString()
+const logo = new URL(LogoImage, siteurl).toString()
 
 const openGraph = {
   basic: {
     title: frontmatter.title,
     type: 'website',
-    image: image.src,
+    image: image,
   },
   optional: {
     description: frontmatter.description,
     siteName: SiteMetadata.title,
   },
   image: {
-    alt: 'cover image',
+    alt: frontmatter.title,
   },
+  article: {
+    author: frontmatter.author,
+    publishedTime: SiteMetadata.buildTime,
+    tags: frontmatter.tags,
+  }
 }
 const twitter = {
   card: frontmatter.socialImage ? 'summary_large_image' : 'summary',
@@ -49,7 +52,7 @@ const website: WithContext<WebSite> = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   about: {
-    '@id': import.meta.env.BASE_URL + 'about',
+    '@id': new URL('about', siteurl).toString(),
   },
   audience: 'public',
   abstract: SiteMetadata.description,
@@ -66,16 +69,14 @@ const website: WithContext<WebSite> = {
   description: SiteMetadata.description,
   image: {
     '@type': 'ImageObject',
-    url: image.src,
-    width: image.width.toString(),
-    height: image.height.toString(),
+    url: image,
   },
   inLanguage: 'en',
   name: SiteMetadata.title,
   publisher: {
     '@id': SiteMetadata.org.url,
   },
-  url: import.meta.env.BASE_URL,
+  url: siteurl.toString(),
 }
 
 const organization: WithContext<Organization> = {
@@ -95,13 +96,11 @@ const organization: WithContext<Organization> = {
   location: SiteMetadata.location,
   image: {
     '@type': 'ImageObject',
-    url: logo.src,
-    width: logo.width.toString(),
-    height: logo.height.toString(),
+    url: logo,
   },
   logo: {
     '@type': 'ImageObject',
-    url: logo.src,
+    url: logo,
   },
   name: SiteMetadata.org.name,
   sameAs: Object.values(SiteMetadata.social.map(social => social.link)),
@@ -116,7 +115,7 @@ const breadcrumbList: WithContext<BreadcrumbList> = {
     {
       '@type': 'ListItem',
       item: {
-        '@id': import.meta.env.BASE_URL,
+        '@id': siteurl.toString(),
         name: SiteMetadata.title,
       },
       position: 1,
@@ -124,7 +123,7 @@ const breadcrumbList: WithContext<BreadcrumbList> = {
     {
       '@type': 'ListItem',
       item: {
-        '@id': frontmatter.url as string,
+        '@id': Astro.url.toString(),
         name: frontmatter.title,
       },
       position: 2,
@@ -141,7 +140,7 @@ const person: WithContext<Person> = {
   name: SiteMetadata.author.name,
   url: SiteMetadata.author.url,
   worksFor: {
-    '@id': import.meta.env.BASE_URL,
+    '@id': SiteMetadata.org.url,
   },
 }
 
@@ -168,9 +167,7 @@ const article: WithContext<Article> = {
   keywords: frontmatter.tags && frontmatter.tags.join(', '),
   image: {
     '@type': 'ImageObject',
-    url: image.src,
-    width: image.width.toString(),
-    height: image.height.toString(),
+    url: image,
   },
   inLanguage: 'en',
   mainEntityOfPage: SiteMetadata.org.url,
@@ -178,7 +175,7 @@ const article: WithContext<Article> = {
   publisher: {
     '@id': SiteMetadata.org.url,
   },
-  url: frontmatter.url,
+  url: siteurl.toString(),
 }
 ---
 

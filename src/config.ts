@@ -82,11 +82,11 @@ export const SiteMetadata = {
 }
 
 export const Logo = '../svg/astro/logomark-light.svg'
-export const LogoImage = '../images/astro/full-logo-light.png'
+export const LogoImage = '/images/astro/full-logo-light.png'
 export const PrimaryLogo = '../svg/astro/full-logo-light.svg'
 export const FeaturedSVG = '../svg/undraw/undraw_design_inspiration.svg'
 export const DefaultSVG = '../svg/undraw/undraw_my_feed.svg'
-export const DefaultImage = '../images/undraw/undraw_my_feed.png'
+export const DefaultImage = '/images/undraw/undraw_my_feed.png'
 
 export const NavigationLinks = [
   { name: 'Home', href: '', current: false },
