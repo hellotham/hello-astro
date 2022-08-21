@@ -3,6 +3,7 @@ import type { Frontmatter } from '../config'
 import SEO from '../components/seo.astro'
 import Header from '../components/header.astro'
 import Footer from '../components/footer.astro'
+
 export interface Props {
   frontmatter: Frontmatter
 }
@@ -24,6 +25,7 @@ const { frontmatter } = Astro.props as Props
     <SEO frontmatter={frontmatter} />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
+    <slot name="in-head"/>
   </head>
   <body>
     <Header />
