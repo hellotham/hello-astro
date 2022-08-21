@@ -20,8 +20,8 @@ const { frontmatter } = Astro.props as Props
 const siteurl = new URL(import.meta.env.BASE_URL, Astro.url)
 const type = Astro.url.toString().includes('blog') ? 'post' : 'page'
 const year = parseInt(SiteMetadata.buildTime.slice(0, 4))
-const image = new URL(frontmatter.socialImage || DefaultImage, siteurl).toString()
-const logo = new URL(LogoImage, siteurl).toString()
+const image = siteurl + (frontmatter.socialImage || DefaultImage).slice(1)
+const logo = siteurl + LogoImage.slice(1)
 
 const openGraph = {
   basic: {
