@@ -1,5 +1,7 @@
 # hello-astro
 
+![screenshot](https://github.com/hellotham/hello-astro/raw/main/screenshot-light.png)
+
 Hello Astro is a full featured [Astro](https://astro.build) corporate/marketing/blog starter theme written in Typescript and TailwindCSS. It supports Markdown and MDX based pages and blog posts.
 
 Uses the following integrations:
