@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/page.astro
-title: Privacy Policy
-description: Information collection and use
+title: Privacy
+description: Our policy regarding information collection and use
 publishDate: '2022-08-08T00:00:00.000Z'
 coverSVG: ../svg/undraw/undraw_privacy_protection.svg
 socialImage: /images/undraw/undraw_privacy_protection.png

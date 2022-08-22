@@ -29,30 +29,30 @@ const callouts = [
 ]
 ---
 
-<div class="bg-purple-100">
+<div class="bg-purple-100 dark:bg-purple-900">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-2xl mx-auto py-16 sm:py-24 lg:py-32 lg:max-w-none">
-      <h2 class="text-4xl font-extrabold text-purple-800">Find Out More</h2>
+      <h2 class="text-4xl font-extrabold text-purple-800 dark:text-purple-100">Find Out More</h2>
       <div
         class="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6"
       >
         {
           callouts.map(callout => (
             <div class="group relative">
-              <div class="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+              <div class="relative w-full h-80 bg-white dark:bg-purple-600 rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
                 <img
                   src={callout.imageSrc}
                   alt={callout.imageAlt}
                   class="w-full h-full object-center object-contain"
                 />
               </div>
-              <h3 class="mt-6 text-2xl text-purple-500">
+              <h3 class="mt-6 text-2xl text-purple-500 dark:text-purple-300">
                 <a href={callout.href}>
                   <span class="absolute inset-0" />
                   {callout.name}
                 </a>
               </h3>
-              <p class="text-base text-gray-900">{callout.description}</p>
+              <p class="text-base text-gray-900 dark:text-gray-100">{callout.description}</p>
             </div>
           ))
         }

@@ -1,11 +1,17 @@
 ---
+import type { Frontmatter } from '../config'
 import { Icon } from 'astro-icon'
 import { NavigationLinks, Logo, PrimaryLogo } from '../config'
 import SVGImg from '../components/svgimg.astro'
-import type { Metadata } from 'astro/dist/types/runtime/server';
+
+export interface Props {
+  frontmatter: Frontmatter
+}
+
+const { frontmatter } = Astro.props as Props
 ---
 
-<nav x-data="{ isOpen: false }">
+<nav x-data="{ isOpen: false }" class="dark:bg-gray-800">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -13,7 +19,7 @@ import type { Metadata } from 'astro/dist/types/runtime/server';
         <button
           type="button"
           @click="isOpen = !isOpen"
-          class="inline-flex items-center justify-center p-2 rounded-md text-purple-600 hover:text-pink-600 hover:bg-purple-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-300"
+          class="inline-flex items-center justify-center p-2 rounded-md text-purple-600 hover:text-pink-600 hover:bg-purple-200 dark:text-purple-300 dark:hover:text-pink-300 dark:hover:bg-purple-800 dark:focus:ring-purple-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-300"
           aria-controls="mobile-menu"
           aria-expanded="false"
         >
@@ -38,9 +44,9 @@ import type { Metadata } from 'astro/dist/types/runtime/server';
         class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
       >
         <div class="flex-shrink-0 flex items-center">
-          <SVGImg class="block lg:hidden h-8 w-auto" src={Logo} alt="Logo" />
+          <SVGImg class="block lg:hidden h-8 w-auto dark:bg-gray-100" src={Logo} alt="Logo" />
           <SVGImg
-            class="hidden lg:block h-8 w-auto"
+            class="hidden lg:block h-10 w-auto dark:bg-gray-100 p-1 rounded-md"
             src={PrimaryLogo}
             alt="Logo"
           />
@@ -52,12 +58,12 @@ import type { Metadata } from 'astro/dist/types/runtime/server';
                 <a
                   href={import.meta.env.BASE_URL + item.href}
                   class={
-                    (item.current
-                      ? 'bg-purple-200 text-pink-600'
-                      : 'text-purple-600 hover:bg-purple-200 hover:text-pink-600') +
+                    ((frontmatter.title == item.name)
+                      ? 'bg-purple-200 text-pink-600 dark:bg-purple-800 dark:text-pink-300'
+                      : 'text-purple-600 hover:bg-purple-200 hover:text-pink-600 dark:text-purple-200 dark:hover:bg-purple-800 dark:hover:text-pink-300') +
                     ' px-3 py-2 rounded-md text-lg font-medium'
                   }
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={(frontmatter.title == item.name) ? 'page' : undefined}
                 >
                   {item.name}
                 </a>
@@ -69,6 +75,23 @@ import type { Metadata } from 'astro/dist/types/runtime/server';
       <div
         class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
       >
+        <button
+            x-data="{
+                toggle: () => {
+                    if (localStorage.theme === 'dark') {
+                        localStorage.theme = 'light';
+                        document.documentElement.classList.remove('dark');
+                    } else {
+                        localStorage.theme = 'dark';
+                        document.documentElement.classList.add('dark');
+                    }
+                },
+            }"
+            class="mt-2 px-3 py-2 bg-pink-400 dark:bg-pink-800 rounded-lg font-semibold text-white dark:text-gray-200 focus:outline-none"
+            @click="toggle"
+        >
+            Light / Dark
+        </button>
         <!-- Right nav -->
       </div>
     </div>
@@ -86,18 +109,18 @@ import type { Metadata } from 'astro/dist/types/runtime/server';
     class="sm:hidden"
     id="mobile-menu"
   >
-    <div class="px-2 pt-2 pb-3 space-y-1">
+    <div class="px-2 pt-2 pb-3 space-y-1 dark:bg-gray-800">
       {
         NavigationLinks.map(item => (
           <a
             href={import.meta.env.BASE_URL + item.href}
             class={
-              (item.current
-                ? 'bg-purple-200 text-pink-600'
-                : 'text-purple-600 hover:bg-purple-200 hover:text-pink-600') +
+              ((frontmatter.title == item.name)
+                ? 'bg-purple-200 text-pink-600 dark:bg-purple-800 dark:text-pink-300'
+                : 'text-purple-600 hover:bg-purple-200 hover:text-pink-600 dark:text-purple-200 dark:hover:bg-purple-800 dark:hover:text-pink-300') +
               ' px-2 pt-2 pb-3 space-y-1'
             }
-            aria-current={item.current ? 'page' : undefined}
+            aria-current={(frontmatter.title == item.name) ? 'page' : undefined}
           >
             {item.name}
           </a>

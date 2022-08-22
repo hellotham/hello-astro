@@ -29,20 +29,20 @@ const features = [
 ]
 ---
 
-<div class="py-12 bg-gray-100">
+<div class="py-12 bg-gray-100 dark:bg-gray-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="lg:text-center">
       <h2
-        class="text-base text-purple-800 font-semibold tracking-wide uppercase"
+        class="text-base text-purple-800 dark:text-purple-300 font-semibold tracking-wide uppercase"
       >
         Features
       </h2>
       <p
-        class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+        class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl"
       >
         Comprehensive Astro Starter
       </p>
-      <p class="mt-4 max-w-2xl text-xl text-gray-600 lg:mx-auto">
+      <p class="mt-4 max-w-2xl text-xl text-gray-600 dark:text-gray-300 lg:mx-auto">
         This is a good starting point for a corporate/marketing or blog website,
         including support for MDX and SEO.
       </p>
@@ -56,7 +56,7 @@ const features = [
           features.map(feature => (
             <div class="relative">
               <dt>
-                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-purple-500 text-white">
+                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-purple-500 dark:bg-purple-400 text-white dark:text-black">
                   <Icon
                     class="h-6 w-6"
                     aria-hidden="true"
@@ -64,11 +64,11 @@ const features = [
                     name={feature.icon}
                   />
                 </div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">
+                <p class="ml-16 text-lg leading-6 font-medium text-gray-900 dark:text-gray-200">
                   {feature.name}
                 </p>
               </dt>
-              <dd class="mt-2 ml-16 text-base text-gray-600">
+              <dd class="mt-2 ml-16 text-base text-gray-600 dark:text-gray-400">
                 {feature.description}
               </dd>
             </div>

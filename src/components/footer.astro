@@ -4,24 +4,24 @@ import { SiteMetadata, Logo } from '../config'
 import SVGImg from '../components/svgimg.astro'
 ---
 
-<footer class="text-gray-600">
+<footer class="text-gray-600 dark:text-gray-400">
   <div
-    class="container fixed z-20 bottom-0 inset-x-0 bg-gray-100 px-4 py-4 mx-auto flex items-center md:flex-row flex-col"
+    class="container fixed z-20 bottom-0 inset-x-0 bg-gray-100  dark:bg-gray-800 px-4 py-4 mx-auto flex items-center md:flex-row flex-col"
   >
     <a
-      class="flex title-font font-medium items-center lg:justify-start justify-center text-gray-900"
+      class="flex title-font font-medium items-center lg:justify-start justify-center text-gray-900 dark:text:gray-100"
       href="/"
     >
-      <SVGImg src={Logo} alt="Footer Logo" width="32" />
+      <SVGImg src={Logo} alt="Footer Logo" width="32" class="dark:bg-gray-100"/>
       <span class="sr-only">Logo</span>
     </a>
     <p
-      class="text-sm text-gray-600 md:ml-4 md:pl-4 md:border-l-2 md:border-purple-300 md:py-2 md:mt-0 mt-4"
+      class="text-sm text-gray-600 dark:text-gray-300 md:ml-4 md:pl-4 md:border-l-2 md:border-purple-300 dark:md:border-purple-600 md:py-2 md:mt-0 mt-4"
     >
       © {new Date().getFullYear()} MIT licence
       <a
         href="https://hellotham.com"
-        class="ml-1 text-purple-600 hover:text-pink-600"
+        class="ml-1 text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300"
         rel="noopener noreferrer"
         target="_blank"
       >
@@ -29,11 +29,11 @@ import SVGImg from '../components/svgimg.astro'
       </a>
     </p>
     <p
-      class="text-sm text-gray-600 md:ml-4 md:pl-4 md:border-l-2 md:border-purple-300 md:py-2 md:mt-0 mt-4"
+      class="text-sm text-gray-600 dark:text-gray-300 md:ml-4 md:pl-4 md:border-l-2 md:border-purple-300 dark:md:border-purple-600 md:py-2 md:mt-0 mt-4"
     >
       <a
         href={import.meta.env.BASE_URL + 'privacy'}
-        class="ml-1 text-purple-600 hover:text-pink-600"
+        class="ml-1 text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300"
       >
         Privacy Policy
       </a>
@@ -43,7 +43,7 @@ import SVGImg from '../components/svgimg.astro'
     >
       <a
         href={import.meta.env.BASE_URL + 'rss.xml'}
-        class="ml-1 text-purple-600 hover:text-pink-600"
+        class="ml-1 text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300"
         rel="noopener noreferrer"
         target="_blank"
       >
@@ -51,11 +51,11 @@ import SVGImg from '../components/svgimg.astro'
       </a>
     </p>
     <p
-      class="text-sm text-gray-600 md:ml-4 md:pl-4 md:border-l-2 md:border-purple-300 md:py-2 md:mt-0 mt-4"
+      class="text-sm text-gray-600 dark:text-gray-300 md:ml-4 md:pl-4 md:border-l-2 md:border-purple-300 dark:md:border-purple-600 md:py-2 md:mt-0 mt-4"
     >
       <a
         href={import.meta.env.BASE_URL + 'sitemap/sitemap-index.xml'}
-        class="ml-1 text-purple-600 hover:text-pink-600"
+        class="ml-1 text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300"
         rel="noopener noreferrer"
         target="_blank"
       >
@@ -70,7 +70,7 @@ import SVGImg from '../components/svgimg.astro'
           s.link ? (
             <a
               href={s.link}
-              class="ml-3 text-purple-600 hover:text-pink-600"
+              class="ml-3 text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300"
               rel="noopener noreferrer"
               target="_blank"
             >
