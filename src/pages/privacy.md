@@ -9,19 +9,15 @@ socialImage: /images/undraw/undraw_privacy_protection.png
 
 We are committed to maintaining the trust of visitors to this website. We promise to handle and store your data fairly and legally at all times.
 
-You have the right to view, amend, or delete the personal information that we hold. If you have any questions about what data we collect or how we use it, please let us know by emailing: info@contact.me.
+You have the right to view, amend, or delete the personal information that we hold. If you have any questions about what data we collect or how we use it, please let us know by emailing: info@hellotham.com.
 
 ## Personal information that we collect and why we collect it
 
-We may collect personally identifiable information from you for the following reasons:
+We do not collect personally identifiable information from you.
 
-### You contacted us via the contact form
+### Information collected by others
 
-When you complete the form to contact us, we will store your email address and any personal details associated with the contact form. We don’t rent, sell or trade this information with other organisations and businesses for marketing purposes.
-
-### You visited this website
-
-When you load this website, we collect the following information in the form of server logs:
+When you load this website, our hosting provider may collect the following information in the form of server logs:
 
 - Your IP address
 - Date and time of the request for the page load
