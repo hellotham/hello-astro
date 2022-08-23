@@ -24,16 +24,20 @@ const { frontmatter } = Astro.props as Props
     <meta name="generator" content={Astro.generator} />
     <SEO frontmatter={frontmatter} />
     <script is-inline>
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
         document.documentElement.classList.add('dark')
       } else {
         document.documentElement.classList.remove('dark')
       }
     </script>
-    <slot name="in-head"/>
+    <slot name="in-head" />
   </head>
   <body class="dark:bg-gray-900">
-    <Header frontmatter={frontmatter}/>
+    <Header frontmatter={frontmatter} />
     <slot />
     <Footer />
   </body>

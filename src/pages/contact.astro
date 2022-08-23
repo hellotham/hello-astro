@@ -7,8 +7,7 @@ import { SiteMetadata } from '../config'
 
 const frontmatter = {
   title: 'Contact',
-  description:
-    'Our presence is real and digital. Contact us through the following ways.',
+  description: 'Our presence is real and digital. Contact us through the following ways.',
   coverSVG: '../svg/undraw/undraw_contact_us.svg',
   socialImage: '/images/undraw/undraw_contact_us.png',
   publishDate: SiteMetadata.buildTime,
@@ -24,32 +23,53 @@ const frontmatter = {
       socialImage={frontmatter.socialImage}
     />
   </header>
-  <main class="mt-10">
-    <div class="mt-10 sm:mt-0 p-8 bg-purple-100 dark:bg-purple-900">
-      <div class="lg:grid lg:grid-cols-3 lg:gap-6">
-        <div class="lg:col-span-1">
-          <div class="px-4 sm:px-0">
-            {
-              SiteMetadata.social.map(
-                method =>
-                  method.link && (
-                    <p class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-300">
-                      <Icon pack="bi" name={method.icon} class="h-5 w-5" />
-                      <span>&nbsp;{method.name}:&nbsp;</span>
-                      <a
-                        href={method.link}
-                        class="text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300"
-                      >
-                        {method.link}
-                      </a>
-                    </p>
-                  )
-              )
-            }
+  <main>
+    <section class="mb-20 text-gray-800 dark:text-gray-100 mx-auto max-w-7xl">
+      <div class="block bg-white dark:bg-gray-900 lg:my-8">
+        <div class="flex flex-wrap items-center">
+          <div
+            class="grow-0 shrink-0 basis-auto block w-full lg:flex lg:w-6/12 xl:w-4/12"
+          >
+            <div class="w-full">
+              <Map loc={SiteMetadata.latlng} zoom={11} />
+            </div>
+          </div>
+          <div class="grow-0 shrink-0 basis-auto w-full lg:w-6/12 xl:w-8/12">
+            <div class="flex flex-wrap pt-8 lg:pt-0">
+              {
+                SiteMetadata.social.map(
+                  method =>
+                    method.link && (
+                      <div class="mb-12 grow-0 shrink-0 basis-auto w-full md:w-6/12 lg:w-full xl:w-6/12 px-3 md:px-6 xl:px-12">
+                        <div class="flex items-start">
+                          <div class="shrink-0">
+                            <Icon
+                              pack="bi"
+                              name={method.icon}
+                              class="p-4 bg-purple-600 text-white rounded-md shadow-md w-14 h-14 flex items-center justify-center"
+                            />
+                          </div>
+                          <div class="grow ml-6">
+                            <p class="font-bold mb-1">{method.name}</p>
+                            <p>
+                              {' '}
+                              <a
+                                href={method.link}
+                                class="text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300"
+                              >
+                                {method.link}
+                              </a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                )
+              }
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <Map loc={SiteMetadata.latlng} zoom={11} />
+    </section>
   </main>
 </WithMap>
