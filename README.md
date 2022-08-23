@@ -6,10 +6,12 @@ Hello Astro is a full featured [Astro](https://astro.build) corporate/marketing/
 
 Uses the following integrations:
 
+- @astrojs/mdx
 - @astrojs/image
 - @astrojs/sitemap
 - @astrojs/rss
 - @astrojs/tailwind
+- @astrojs/alpinejs
 - astro-icon
 - astro-seo
 

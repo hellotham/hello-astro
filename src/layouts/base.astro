@@ -23,8 +23,6 @@ const { frontmatter } = Astro.props as Props
     />
     <meta name="generator" content={Astro.generator} />
     <SEO frontmatter={frontmatter} />
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
     <script is-inline>
       if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark')

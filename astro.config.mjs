@@ -1,22 +1,23 @@
-import { defineConfig } from 'astro/config'
-import tailwind from '@astrojs/tailwind'
-import sitemap from '@astrojs/sitemap'
-import image from '@astrojs/image'
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
+import image from '@astrojs/image';
+import mdx from '@astrojs/mdx';
 
-import mdx from '@astrojs/mdx'
+import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
     ssr: {
-      external: ['svgo'],
-    },
+      external: ['svgo']
+    }
   },
   site: 'https://hellotham.github.io',
   base: '/hello-astro',
-  integrations: [tailwind(), sitemap(), image(), mdx()],
+  integrations: [tailwind(), sitemap(), image(), mdx(), alpinejs()],
   experimental: {
-    integrations: true,
+    integrations: true
   },
   markdown: {
     shikiConfig: {
@@ -28,7 +29,7 @@ export default defineConfig({
       // https://github.com/shikijs/shiki/blob/main/docs/languages.md
       langs: [],
       // Enable word wrap to prevent horizontal scrolling
-      wrap: true,
-    },
-  },
-})
+      wrap: true
+    }
+  }
+});
