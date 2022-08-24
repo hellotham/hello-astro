@@ -15,11 +15,6 @@
   resolved "https://registry.yarnpkg.com/@astrojs/alpinejs/-/alpinejs-0.1.0.tgz#7b7909558aea620ac3a0796b2e3d06be3a90e7a0"
   integrity sha512-4CRXoovV3YuKG0cvgDBlINV6IdfN4WS2E+JGZwXXrRYOE+5DCezFOVCCwARezmUEIbxKDP85LIW1axqXpDWD4w==
 
-"@astrojs/compiler@^0.19.0":
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.19.0.tgz#ea25fea3ba59ce7734c2bcc65a5fd1e372329943"
-  integrity sha512-8nvyxZTfCXLyRmYfTttpJT6EPhfBRg0/q4J/Jj3/pNPLzp+vs05ZdktsY6QxAREaOMAnNEtSqcrB4S5DsXOfRg==
-
 "@astrojs/compiler@^0.23.3":
   version "0.23.3"
   resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.23.3.tgz#25af8efda9c92dbc8745341c3a2544caa4c689dc"
@@ -80,10 +75,10 @@
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
-"@astrojs/mdx@^0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.10.0.tgz#cd3f572cb063a66646e0c3c18e80ebb47ec24d4a"
-  integrity sha512-nQcYzjPB8p0KWyP8g/8V6Rnxd7+5/VzNP4JLvQWUFs6mo7Akq98y4i+QjOl9/k5erzikl96Uul70MS/rjBheNQ==
+"@astrojs/mdx@^0.10.1":
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.10.1.tgz#ff3912ddced7c835adc46b1852a181ddfe82bf7c"
+  integrity sha512-SuSGxIiEfv1A4Ts6bDrBTdjNs5Xclr7DUczhgyFbYIIueCgRoh7teCsE2lZu9m4zvq4UTO7jWCb6W6QpCrykBw==
   dependencies:
     "@astrojs/prism" "^1.0.1"
     "@mdx-js/mdx" "^2.1.2"
@@ -653,9 +648,9 @@
     "@types/unist" "*"
 
 "@types/node@*":
-  version "18.7.11"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.11.tgz#486e72cfccde88da24e1f23ff1b7d8bfb64e6250"
-  integrity sha512-KZhFpSLlmK/sdocfSAjqPETTMd0ug6HIMIAwkwUpU79olnZdQtMxpQP+G1wDzCH7na+FltSIhbaZuKdwZ8RDrw==
+  version "18.7.12"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.12.tgz#18caab95fbcd03573661d1d0e709093ba8cb7682"
+  integrity sha512-caqFX7GwvZ4KLnhpI9CfiMkgHKp6kvFAIgpkha0cjO7bAQvB6dWe+q3fTHmm7fQvv59pd4tPj77nriq2M6U2dw==
 
 "@types/node@^17.0.5":
   version "17.0.45"
@@ -843,10 +838,10 @@ astro-seo@^0.5.1:
   resolved "https://registry.yarnpkg.com/astro-seo/-/astro-seo-0.5.1.tgz#5d9470c26eaf35737f730051b3ef189ecff94359"
   integrity sha512-SzT3yh0yQ3wu3U6Tp8xseBlmD6Gt3tcEqSekMpxWE+jgpb/ugooZA+MqZXuPd6kH6uRQENHflGAWD3w2S3EbUw==
 
-astro@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-1.0.7.tgz#267abca8fc3b25074c7fe0e825eebc7a88155b0b"
-  integrity sha512-QKG+/RbqZ3NNlLO3JuqJjYtdYUDM05H5UljURl1a9gM6WyuGobMkubW5Bhu1l6HmySZ6x7AZSnqsfcmHxdCxCQ==
+astro@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-1.0.8.tgz#a7b449698a4df1cafb63ec40c7224fe4bfb59e04"
+  integrity sha512-cWey5M/EjdgeZCRlOAB6YP05ui3U9ZfHPdb4r5HmumOE/1w8auDqRiHPpb2RCGYD7RpxOXcJu5XfJL4V2F1UpQ==
   dependencies:
     "@astrojs/compiler" "^0.23.3"
     "@astrojs/language-server" "^0.20.0"
@@ -1345,9 +1340,9 @@ eastasianwidth@^0.2.0:
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
 electron-to-chromium@^1.4.202:
-  version "1.4.226"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.226.tgz#837ea1d19b8305a913cd5f31d135681c4b6d63b1"
-  integrity sha512-CvevLaSiUp0u12K0e+QhMX1hn724nSUNO9ToBek+FMHk/5RofrQs5MChjrD0re0IwqxDFxFMSZD+uic05i2Z5w==
+  version "1.4.228"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.228.tgz#3baff13cf54198c2045f9bdd8b64db93aafd7f33"
+  integrity sha512-XfDHCvou7CsDMlFwb0WZ1tWmW48e7Sn7VBRyPfZsZZila9esRsJl1trO+OqDNV97GggFSt0ISbWslKXfQkG//g==
 
 emmet@^2.3.0:
   version "2.3.6"
@@ -3222,12 +3217,12 @@ preferred-pm@^3.0.3:
     path-exists "^4.0.0"
     which-pm "2.0.0"
 
-prettier-plugin-astro@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-astro/-/prettier-plugin-astro-0.5.1.tgz#bab28d0cfb09cceb63c8400dd20ce628621549c1"
-  integrity sha512-u6Ueb5dJFLzSkWwBFdx1rf/bSsdWt9arLWgvcxbDO9hS6kZs9QZHvYdZyJmywaYlH606eHA4578ncjY0bdDSQw==
+prettier-plugin-astro@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-astro/-/prettier-plugin-astro-0.5.3.tgz#6e2f21979ab1bd905f63a816b829aeb2a3698927"
+  integrity sha512-g4uJ/7k1rJeIWBifeBgTqzgV5gmMTG+lOmOvUZvtIh1R91aqa+yYMzbysIlsJKRaRyWefejrOpvpIuEePBDAyw==
   dependencies:
-    "@astrojs/compiler" "^0.19.0"
+    "@astrojs/compiler" "^0.23.3"
     prettier "^2.7.1"
     sass-formatter "^0.7.2"
     synckit "^0.7.0"
@@ -3238,9 +3233,9 @@ prettier@^2.7.1:
   integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
 
 prismjs@^1.28.0:
-  version "1.28.0"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.28.0.tgz#0d8f561fa0f7cf6ebca901747828b149147044b6"
-  integrity sha512-8aaXdYvl1F7iC7Xm1spqSaY/OJBpYW3v+KJ+F17iYxvdc8sfjW194COK5wVhMZX45tGteiBQgdvD/nhxcRwylw==
+  version "1.29.0"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.29.0.tgz#f113555a8fa9b57c35e637bba27509dcf802dd12"
+  integrity sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==
 
 prompts@^2.4.2:
   version "2.4.2"

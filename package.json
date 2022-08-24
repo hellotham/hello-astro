@@ -14,7 +14,7 @@
   "devDependencies": {
     "@astrojs/alpinejs": "^0.1.0",
     "@astrojs/image": "^0.3.6",
-    "@astrojs/mdx": "^0.10.0",
+    "@astrojs/mdx": "^0.10.1",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
     "@tailwindcss/aspect-ratio": "^0.4.0",
@@ -23,8 +23,8 @@
     "@tailwindcss/typography": "^0.5.4",
     "@types/alpinejs": "^3.0.0",
     "alpinejs": "^3.0.0",
-    "astro": "^1.0.7",
-    "prettier-plugin-astro": "^0.5.1",
+    "astro": "^1.0.8",
+    "prettier-plugin-astro": "^0.5.3",
     "schema-dts": "^1.1.0"
   },
   "dependencies": {
