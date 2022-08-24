@@ -11,7 +11,7 @@ export interface Props {
   posts: MarkdownInstance<Frontmatter>[]
 }
 
-const { id } = Astro.params
+// const { id } = Astro.params
 const { tag, posts } = Astro.props as Props
 
 const frontmatter: Frontmatter = {

@@ -34,10 +34,13 @@ const { frontmatter } = Astro.props as Props
         document.documentElement.classList.remove('dark')
       }
     </script>
+    <style is:inline>
+      [x-cloak] { display: none !important; }
+    </style>
     <slot name="in-head" />
   </head>
   <body class="dark:bg-gray-900">
-    <Header frontmatter={frontmatter} />
+    <Header />
     <slot />
     <Footer />
   </body>

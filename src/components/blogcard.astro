@@ -54,7 +54,10 @@ const { post } = Astro.props as Props
         <span
           class="text-gray-500 dark:text-gray-400 inline-flex items-center leading-none text-xs"
         >
-          <Icon class="w-4 h-4 mr-1" pack="heroicons-outline" name="user-circle"
+          <Icon
+            class="w-4 h-4 mr-1"
+            pack="heroicons-outline"
+            name="user-circle"
           />
           {post.frontmatter.author}
         </span>

@@ -14,5 +14,5 @@ const { loc, zoom } = Astro.props as Props
     maxZoom: 19,
     attribution: '© OpenStreetMap',
   }).addTo(map)
-  var marker = L.marker(loc).addTo(map)
+  L.marker(loc).addTo(map)
 </script>
