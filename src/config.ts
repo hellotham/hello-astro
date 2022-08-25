@@ -96,3 +96,5 @@ export const NavigationLinks = [
   { name: 'Blog', href: 'blog' },
   { name: 'Tags', href: 'tags' },
 ]
+
+export const PAGE_SIZE = 12
