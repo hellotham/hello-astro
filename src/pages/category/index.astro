@@ -1,93 +1,10 @@
 ---
 import type { MarkdownInstance } from 'astro'
 import type { Frontmatter } from '../../config'
+import { CategoryDetail } from '../../config'
 import Base from '../../layouts/base.astro'
 import PageHero from '../../components/pagehero.astro'
-import {
-  jupiter,
-  cutout,
-  pianoMan,
-  pieFactory,
-  graphPaper,
-  charlieBrown,
-  autumn,
-  temple,
-  deathStar,
-  churchOnSunday,
-  overlappingHexagons,
-  bamboo,
-  bathroomFloor,
-  corkScrew,
-  happyIntersection,
-  kiwi,
-  lips,
-  lisbon,
-  steelBeams,
-  tinyCheckers,
-  fancyRectangles,
-  heavyRain,
-  cage,
-  connections,
-  flippedDiamonds,
-  houndstooth,
-  morphingDiamonds,
-  zigZag,
-  aztec,
-  bankNote,
-  boxes,
-  diagonalLines,
-  endlessClouds,
-  eyes,
-  groovy,
-  melt,
-  parkayFloor,
-  pixelDots,
-  signal,
-  wallpaper,
-} from 'hero-patterns'
-
-const patterns = [
-  steelBeams('#9c92ac', 0.5),
-  jupiter('#9c92ac', 0.5),
-  cutout('#9c92ac', 0.5),
-  pianoMan('#9c92ac', 0.5),
-  pieFactory('#9c92ac', 0.5),
-  graphPaper('#9c92ac', 0.5),
-  charlieBrown('#9c92ac', 0.5),
-  autumn('#9c92ac', 0.5),
-  temple('#9c92ac', 0.5),
-  deathStar('#9c92ac', 0.5),
-  churchOnSunday('#9c92ac', 0.5),
-  overlappingHexagons('#9c92ac', 0.5),
-  bamboo('#9c92ac', 0.5),
-  bathroomFloor('#9c92ac', 0.5),
-  corkScrew('#9c92ac', 0.5),
-  happyIntersection('#9c92ac', 0.5),
-  kiwi('#9c92ac', 0.5),
-  lips('#9c92ac', 0.5),
-  lisbon('#9c92ac', 0.5),
-  tinyCheckers('#9c92ac', 0.5),
-  fancyRectangles('#9c92ac', 0.5),
-  heavyRain('#9c92ac', 0.5),
-  cage('#9c92ac', 0.5),
-  connections('#9c92ac', 0.5),
-  flippedDiamonds('#9c92ac', 0.5),
-  houndstooth('#9c92ac', 0.5),
-  morphingDiamonds('#9c92ac', 0.5),
-  zigZag('#9c92ac', 0.5),
-  aztec('#9c92ac', 0.5),
-  bankNote('#9c92ac', 0.5),
-  boxes('#9c92ac', 0.5),
-  diagonalLines('#9c92ac', 0.5),
-  endlessClouds('#9c92ac', 0.5),
-  eyes('#9c92ac', 0.5),
-  groovy('#9c92ac', 0.5),
-  melt('#9c92ac', 0.5),
-  parkayFloor('#9c92ac', 0.5),
-  pixelDots('#9c92ac', 0.5),
-  signal('#9c92ac', 0.5),
-  wallpaper('#9c92ac', 0.5),
-]
+import SVGImg from '../../components/svgimg.astro'
 
 const frontmatter: Frontmatter = {
   title: 'Categories',
@@ -120,35 +37,26 @@ const categories = Array.from(new Set(posts.flatMap(post => post.frontmatter.cat
       socialImage={frontmatter.socialImage}
     />
   </header>
-  <main class="mt-10 dark:bg-gray-900">
-    <div
-      class="mx-4 mt-6 mb-24 grid grid-cols-2 gap-y-4 sm:grid-cols-3 md:grid-cols-4 gap-x-4 lg:grid-cols-5 xl:grid-cols-6 xl:gap-y-6 xl:gap-x-6"
-    >
-      {
-        categories.map((category, i) => (
-            <a
-              href={`${import.meta.env.BASE_URL}category/${category}/`}
-              class="group"
-            >
-              <section
-                class="relative w-full h-24 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl  transition duration-300 ease-in-out"
-                style={{
-                  backgroundColor: '#dfdbe5',
-                  // backgroundImage: `url(${OGImage})`,
-                  backgroundImage: patterns[i % patterns.length],
-                }}
-              >
-                <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out" />
-                <div class="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
-                  <h3 class="text-center text-white text-2xl font-bold">
-                    <span class="absolute inset-0" />
-                    {category}
-                  </h3>
-                </div>
-              </section>
-            </a>
-          ))
-      }
+  <main class="mt-8 bg-gray-100 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto pb-72 sm:pb-32 lg:pb-24 lg:max-w-none">    
+        <div class="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
+          {categories.map((category) => (
+            <div class="group relative">
+              <div class="relative w-full h-80 bg-purple-100 dark:bg-purple-900 rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+                <SVGImg src={CategoryDetail.filter(cat => cat.category == category)[0].coverSVG} alt={CategoryDetail.filter(cat => cat.category == category)[0].description} class="w-full h-full object-center object-cover" />
+              </div>
+              <h3 class="inline-block py-1 px-3 rounded bg-purple-600 hover:bg-pink-600 text-white text-xs font-medium tracking-tight uppercase">
+                <a href={`${import.meta.env.BASE_URL}category/${category}/`}>
+                  <span class="absolute inset-0"></span>
+                  {category}
+                </a>
+              </h3>
+              <p class="text-base text-gray-900 dark:text-gray-400">{CategoryDetail.filter(cat => cat.category == category)[0].description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </main>
 </Base>

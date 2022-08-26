@@ -99,4 +99,19 @@ export const NavigationLinks = [
   { name: 'Tags', href: 'tags' },
 ]
 
+export const CategoryDetail = [
+  {
+    category: 'instructions',
+    coverSVG: '../svg/undraw/undraw_instruction_manual.svg',
+    socialImage: '/images/undraw/undraw_instruction_manual.png',
+    description: 'Guidelines on using this starter.'
+  },
+  {
+    category: 'information',
+    coverSVG: '../svg/undraw/undraw_instant_information.svg',
+    socialImage: '/images/undraw/undraw_instant_information.png',
+    description: 'Information articles.'
+  },
+]
+
 export const PAGE_SIZE = 3

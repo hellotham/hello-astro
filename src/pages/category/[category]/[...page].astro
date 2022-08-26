@@ -1,7 +1,7 @@
 ---
 import type { MarkdownInstance, PaginateFunction, Page } from 'astro'
 import type { Frontmatter } from '../../../config'
-import { SiteMetadata, PAGE_SIZE } from '../../../config'
+import { SiteMetadata, CategoryDetail, PAGE_SIZE } from '../../../config'
 import Base from '../../../layouts/base.astro'
 import PageHero from '../../../components/pagehero.astro'
 import BlogRoll from '../../../components/blogroll.astro'
@@ -14,9 +14,12 @@ export interface Props {
 const { category } = Astro.params
 const { page } = Astro.props as Props
 
+const detail = CategoryDetail.filter(cat => cat.category == category)
+
 const frontmatter: Frontmatter = {
   title: 'Category: ' + category + (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
   description:
+    (detail && detail[0].description) + ' ' +
     'Showing articles ' +
     (page.start + 1) +
     '-' +
@@ -24,8 +27,8 @@ const frontmatter: Frontmatter = {
     ' (total ' +
     page.total +
     ')',
-  coverSVG: '../svg/undraw/undraw_building_websites.svg',
-  socialImage: '/images/undraw/undraw_building_websites.png',
+  coverSVG: (detail && detail[0].coverSVG) || '../svg/undraw/undraw_building_websites.svg',
+  socialImage: (detail && detail[0].socialImage) || '/images/undraw/undraw_building_websites.png',
   publishDate: SiteMetadata.buildTime,
 }
 
