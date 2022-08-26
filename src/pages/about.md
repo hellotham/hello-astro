@@ -29,7 +29,7 @@ This website is open source (MIT licence) - fork it and customise for your needs
 
 - Full-featured blog with frontmatter (title, description, author, date, image, tags)
 - High performance low overhead with minimal Javascript (AlpineJS)
-- Pagination for blog pages
+- Pagination for blog and tag pages
 - Tags index page and individual tag pages
 - Support for RSS feed, sitemap and robots.txt
 - Automatic optimization of images in Markdown/MDX posts
