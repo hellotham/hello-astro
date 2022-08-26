@@ -10,10 +10,10 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@astrojs/alpinejs@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/alpinejs/-/alpinejs-0.1.0.tgz#7b7909558aea620ac3a0796b2e3d06be3a90e7a0"
-  integrity sha512-4CRXoovV3YuKG0cvgDBlINV6IdfN4WS2E+JGZwXXrRYOE+5DCezFOVCCwARezmUEIbxKDP85LIW1axqXpDWD4w==
+"@astrojs/alpinejs@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/alpinejs/-/alpinejs-0.1.1.tgz#33202e5c4ac2e04b511831ec7fa4b3f848c87942"
+  integrity sha512-G8xfxi4RfK8251WhZObnFGmPQt0780aqEI7bo09mYoVC5YCA3w7Nh6Bo8Vj6CW1Zmhh14nuK5/umSnWK9ihS1w==
 
 "@astrojs/compiler@^0.23.3", "@astrojs/compiler@^0.23.4":
   version "0.23.4"
@@ -32,12 +32,14 @@
     slash "^4.0.0"
     tiny-glob "^0.2.9"
 
-"@astrojs/language-server@^0.20.0":
-  version "0.20.3"
-  resolved "https://registry.yarnpkg.com/@astrojs/language-server/-/language-server-0.20.3.tgz#27b4f88c8e1630b7d38ebda277dd56c3d0aac60b"
-  integrity sha512-MuzTsSpUjtmMXfrBThtZwgO39Jc+Bbl5hLevumkp01N/YCKE+Iipd3ELSdbk7+TPiuBV+/SKrVmaQPvJBnWPkA==
+"@astrojs/language-server@^0.23.0":
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/@astrojs/language-server/-/language-server-0.23.0.tgz#01ce8968494097a7506633f606bb6569d52b4819"
+  integrity sha512-vWQOPipssNUivHIytKX9Zw7TSYVIb1sItDEuZvaWIcim8Q3n7sbigaPpakeVhNh8EbstMMuYswUffJuUemueAw==
   dependencies:
     "@vscode/emmet-helper" "^2.8.4"
+    prettier "^2.7.1"
+    prettier-plugin-astro "^0.5.3"
     source-map "^0.7.3"
     typescript "~4.6.4"
     vscode-css-languageservice "^6.0.1"
@@ -48,10 +50,10 @@
     vscode-languageserver-types "^3.17.1"
     vscode-uri "^3.0.3"
 
-"@astrojs/markdown-remark@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-1.0.0.tgz#14adf79e02e744ee8a1342fa89aa858ccc6160d2"
-  integrity sha512-yQIMvVjSMs4ZQHffT2nBgXiqVHKOwIgd6xC0o5XkcbXxyspxjRGpHyiAp/WKEdKsUeXwjVuL8b+6lhAYByd+lw==
+"@astrojs/markdown-remark@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-1.1.0.tgz#99e06d52ee3e2d7cdea82bb6655fa63b4aae173f"
+  integrity sha512-8PkcOFeMbAb+4PEC/YakTEtJ4TCGQ2n4M3R/XEAu17gsTZkjJMP+z9pbV5ye0b/+qrYZOlpjGSu8dA1ysPk5kg==
   dependencies:
     "@astrojs/micromark-extension-mdx-jsx" "^1.0.3"
     "@astrojs/prism" "^1.0.0"
@@ -75,10 +77,10 @@
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
-"@astrojs/mdx@^0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.10.1.tgz#ff3912ddced7c835adc46b1852a181ddfe82bf7c"
-  integrity sha512-SuSGxIiEfv1A4Ts6bDrBTdjNs5Xclr7DUczhgyFbYIIueCgRoh7teCsE2lZu9m4zvq4UTO7jWCb6W6QpCrykBw==
+"@astrojs/mdx@^0.10.2":
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.10.2.tgz#6480695b40003ef246c781546fbf2bc2fb69940e"
+  integrity sha512-wayFVQx22DSfDD2JnVvPHqJDZNDdbfUu2kfTc3ecf8v6QGa0DqNI97zvfJwtHWJkpJxpbjI7Yw5IF6vdNXvJNg==
   dependencies:
     "@astrojs/prism" "^1.0.1"
     "@mdx-js/mdx" "^2.1.2"
@@ -838,14 +840,14 @@ astro-seo@^0.6.0:
   resolved "https://registry.yarnpkg.com/astro-seo/-/astro-seo-0.6.0.tgz#d46f98baa929f2111dd702662806fa741a9ac02a"
   integrity sha512-nR+dJlAyQhX6s0oAmbBqPq3KCZax/zVAerFsclGiJQ2znOkS/7L+RGjziS4M9Q3OQxm3FMfqIKHp9Ns73Q81ww==
 
-astro@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-1.0.9.tgz#87b44c9be9e595133b9f5acd0dbf9f56b39352dd"
-  integrity sha512-Pa/7wLIuXFs+sgdVxUTT0QHe+9yKQVE21jxZU/p2ZzcUrAB+8JN32fHEG28QTwEx+NuwTqvC5xTvDBXLZJGtqw==
+astro@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-1.1.0.tgz#00153ed2a0938a6b68fb2887b9fff1baf40a801f"
+  integrity sha512-Bi8vxRMEnXei78XvegprNXFETFS9t5/yu514ACpLD8Fx3iGU74rH3zpyxzVpkNED3Dt1lx2/QfVyjEfj6DJ1ZA==
   dependencies:
     "@astrojs/compiler" "^0.23.4"
-    "@astrojs/language-server" "^0.20.0"
-    "@astrojs/markdown-remark" "^1.0.0"
+    "@astrojs/language-server" "^0.23.0"
+    "@astrojs/markdown-remark" "^1.1.0"
     "@astrojs/telemetry" "^1.0.0"
     "@astrojs/webapi" "^1.0.0"
     "@babel/core" "^7.18.2"
@@ -1340,9 +1342,9 @@ eastasianwidth@^0.2.0:
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
 electron-to-chromium@^1.4.202:
-  version "1.4.230"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.230.tgz#666909fdf5765acb1348b69752ee9955dc1664b7"
-  integrity sha512-3pwjAK0qHSDN9+YAF4fJknsSruP7mpjdWzUSruIJD/JCH77pEh0SorEyb3xVaKkfwk2tzjOt2D8scJ0KAdfXLA==
+  version "1.4.232"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.232.tgz#67a0a874b0057662244230d18d3a9847c135a9d9"
+  integrity sha512-nd+FW8xHjM+PxNWG44nKnwHaBDdVpJUZuI2sS2JJPt/QpdombnmoCRWEEQNnzaktdIQhsNWdD+dlqxwO8Bn99g==
 
 emmet@^2.3.0:
   version "2.3.6"

@@ -17,7 +17,7 @@ Uses the following integrations:
 
 In addition, SVG and PNG illustrations sourced from [Undraw](https://undraw.co)
 
-Contains a bare bones port of [hello-gatsby-starter](https://github.com/hellotham/hello-gatsby-starter)
+This project initially started as a bare bones port of [hello-gatsby-starter](https://github.com/hellotham/hello-gatsby-starter), but now contains more features (light/dark modes, category pages and more!)
 
 ## 🚀 Project Structure
 
