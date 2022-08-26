@@ -9,6 +9,7 @@ export interface Frontmatter {
   coverSVG?: string
   coverImage?: string
   socialImage?: string
+  categories?: string[]
   tags?: string[]
   file?: string
   url?: string
@@ -94,6 +95,7 @@ export const NavigationLinks = [
   { name: 'Contact', href: 'contact' },
   { name: 'Privacy', href: 'privacy' },
   { name: 'Blog', href: 'blog' },
+  { name: 'Categories', href: 'category' },
   { name: 'Tags', href: 'tags' },
 ]
 

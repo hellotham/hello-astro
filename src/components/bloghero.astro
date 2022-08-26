@@ -1,5 +1,7 @@
 ---
+import { Icon } from 'astro-icon'
 import type { Frontmatter } from '../config'
+import Categories from '../components/categories.astro'
 import Tags from '../components/tags.astro'
 import SVGImg from '../components/svgimg.astro'
 import Img from '../components/img.astro'
@@ -32,33 +34,34 @@ const { frontmatter } = Astro.props as Props
     )
   }
   <div class="p-4 absolute bottom-0 left-0 z-20">
-    {frontmatter.tags ? <Tags tags={frontmatter.tags} /> : ''}
+    <Categories categories={frontmatter.categories} />
     <h2 class="text-4xl font-bold text-white leading-tight">
       {frontmatter.title}
     </h2>
     <h2 class="text-xl font-medium italic text-purple-200">
       {frontmatter.description}
     </h2>
-    {
-      frontmatter.author ? (
-        <div class="flex mt-3">
+    <span class="flex mt-3">
+      {frontmatter.author && (
+        <span class="flex items-center mr-6">
           <SVGImg
             src="../svg/astro/logomark-light.svg"
             alt="Author profile"
             class="h-10 w-10 rounded-full mr-2 object-cover"
           />
-          <div>
-            <p class="font-semibold text-purple-200 text-sm">
-              {frontmatter.author}
-            </p>
-            <p class="font-semibold text-purple-400 text-xs">
-              {frontmatter.publishDate?.slice(0, 10)}
-            </p>
-          </div>
-        </div>
-      ) : (
-        ''
-      )
-    }
+          <Icon class="w-6 h-6 mr-1 text-purple-200" pack="heroicons-outline" name="user-circle" />
+          <span class="font-semibold text-purple-200">
+            {frontmatter.author}
+          </span>
+        </span>
+      )}
+      <span class="flex items-center">
+        <Icon class="w-6 h-6 mr-1 text-purple-200" pack="heroicons-outline" name="calendar" />
+        <span class="font-semibold text-purple-200 ml-1">
+          {frontmatter.publishDate?.slice(0, 10)}
+        </span>
+      </span>
+    </span>
+    <Tags tags={frontmatter.tags} />
   </div>
 </div>

@@ -1,0 +1,69 @@
+---
+import type { MarkdownInstance, PaginateFunction, Page } from 'astro'
+import type { Frontmatter } from '../../../config'
+import { SiteMetadata, PAGE_SIZE } from '../../../config'
+import Base from '../../../layouts/base.astro'
+import PageHero from '../../../components/pagehero.astro'
+import BlogRoll from '../../../components/blogroll.astro'
+import PaginateControl from '../../../components/paginatecontrol.astro'
+
+export interface Props {
+  page: Page<MarkdownInstance<Frontmatter>>
+}
+
+const { category } = Astro.params
+const { page } = Astro.props as Props
+
+const frontmatter: Frontmatter = {
+  title: 'Category: ' + category + (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
+  description:
+    'Showing articles ' +
+    (page.start + 1) +
+    '-' +
+    (page.end + 1) +
+    ' (total ' +
+    page.total +
+    ')',
+  coverSVG: '../svg/undraw/undraw_building_websites.svg',
+  socialImage: '/images/undraw/undraw_building_websites.png',
+  publishDate: SiteMetadata.buildTime,
+}
+
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+  const allPosts = (await Astro.glob(
+    '../../blog/*.{md,mdx}'
+  )) as MarkdownInstance<Frontmatter>[]
+  const posts = allPosts
+    .sort(
+      (a, b) =>
+        new Date(b.frontmatter.publishDate).valueOf() -
+        new Date(a.frontmatter.publishDate).valueOf()
+    )
+    .filter(post => !post.frontmatter.draft)
+
+  const categories = Array.from(new Set(posts.flatMap(post => post.frontmatter.categories)))
+
+  return categories.map(category => {
+    return paginate(posts.filter(post => category && post.frontmatter.categories?.includes(category)), {
+      params: { category },
+      pageSize: PAGE_SIZE
+    })
+  })
+}
+---
+
+<Base frontmatter={frontmatter}>
+  <header>
+    <PageHero
+      title={frontmatter.title}
+      description={frontmatter.description}
+      coverSVG={frontmatter.coverSVG}
+      socialImage={frontmatter.socialImage}
+    >
+    <PaginateControl page={page} />
+  </PageHero>
+  </header>
+  <main class="mt-10 bg-gray-100 dark:bg-gray-900">
+    <BlogRoll posts={page.data} />
+  </main>
+</Base>

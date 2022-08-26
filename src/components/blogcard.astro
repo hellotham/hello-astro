@@ -4,6 +4,7 @@ import type { MarkdownInstance } from 'astro'
 import type { Frontmatter } from '../config'
 import SVGImg from '../components/svgimg.astro'
 import Img from '../components/img.astro'
+import Categories from '../components/categories.astro'
 import Tags from '../components/tags.astro'
 
 export interface Props {
@@ -36,7 +37,7 @@ const { post } = Astro.props as Props
       <p class="sr-only">{post.frontmatter.title}</p>
     </a>
     <div class="p-6">
-      {post.frontmatter.tags && <Tags tags={post.frontmatter.tags} />}
+      <Categories categories={post.frontmatter.categories} />
       <a href={post.url}>
         <h1
           class="title-font text-xl font-bold text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300 mt-2"
@@ -51,21 +52,24 @@ const { post } = Astro.props as Props
           <Icon class="w-4 h-4 mr-1" pack="heroicons-outline" name="calendar" />
           {post.frontmatter.publishDate}
         </span>
-        <span
-          class="text-gray-500 dark:text-gray-400 inline-flex items-center leading-none text-xs"
-        >
-          <Icon
-            class="w-4 h-4 mr-1"
-            pack="heroicons-outline"
-            name="user-circle"
-          />
-          {post.frontmatter.author}
-        </span>
+        {post.frontmatter.author && (
+          <span
+            class="text-gray-500 dark:text-gray-400 inline-flex items-center leading-none text-xs"
+          >
+            <Icon
+              class="w-4 h-4 mr-1"
+              pack="heroicons-outline"
+              name="user-circle"
+            />
+            {post.frontmatter.author}
+          </span>
+        )}
       </div>
 
       <p class="mt-3 italic text-sm text-gray-600 dark:text-gray-300">
         {post.frontmatter.description}
       </p>
+      <Tags tags={post.frontmatter.tags} />
     </div>
   </div>
 </section>

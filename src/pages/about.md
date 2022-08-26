@@ -29,11 +29,13 @@ This website is open source (MIT licence) - fork it and customise for your needs
 
 - Full-featured blog with frontmatter (title, description, author, date, image, tags)
 - High performance low overhead with minimal Javascript (AlpineJS)
-- Pagination for blog and tag pages
+- Categories index page and individual category pages
 - Tags index page and individual tag pages
+- Pagination for blog and tag pages
 - Support for RSS feed, sitemap and robots.txt
 - Automatic optimization of images in Markdown/MDX posts
 - SVG design (unDraw, Hero Patterns, Iconify)
 - Support for code syntax highlighting
 - Full SEO support including Open Graph, Twitter Cards and Schema.org via JSON-LD
-- Full support for Light and dark UI modes, as well as following system preferences, in accordance to TailwindCSS recommendation.
+- Full support for Light and dark UI modes, as well as following system preferences, in accordance to TailwindCSS recommendation
+- Customised 404 error page
