@@ -10,7 +10,7 @@ const { tags } = Astro.props as Props
     {
       tags.map(tag => (
         <a
-          href={`${import.meta.env.BASE_URL}tags/${encodeURIComponent(tag)}/`}
+          href={`${import.meta.env.BASE_URL}tag/${encodeURIComponent(tag)}/`}
           class="inline-block py-1 px-3 rounded text-purple-900 hover:bg-purple-300 hover:text-black bg-pink-100 font-semibold text-xs"
         >
           #{tag}

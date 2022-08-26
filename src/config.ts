@@ -95,7 +95,7 @@ export const NavigationLinks = [
   { name: 'Contact', href: 'contact' },
   { name: 'Privacy', href: 'privacy' },
   { name: 'Blog', href: 'blog' },
-  { name: 'Categories', href: 'category' },
+  { name: 'Categories', href: 'categories' },
   { name: 'Tags', href: 'tags' },
 ]
 
