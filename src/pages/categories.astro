@@ -1,10 +1,10 @@
 ---
 import type { MarkdownInstance } from 'astro'
-import type { Frontmatter } from '../../config'
-import { CategoryDetail } from '../../config'
-import Base from '../../layouts/base.astro'
-import PageHero from '../../components/pagehero.astro'
-import SVGImg from '../../components/svgimg.astro'
+import type { Frontmatter } from '../config'
+import { CategoryDetail } from '../config'
+import Base from '../layouts/base.astro'
+import PageHero from '../components/pagehero.astro'
+import SVGImg from '../components/svgimg.astro'
 
 const frontmatter: Frontmatter = {
   title: 'Categories',
@@ -15,7 +15,7 @@ const frontmatter: Frontmatter = {
 }
 
 const allPosts = (await Astro.glob(
-  '../blog/*.{md,mdx}'
+  './blog/*.{md,mdx}'
 )) as MarkdownInstance<Frontmatter>[]
 const posts = allPosts
   .sort(

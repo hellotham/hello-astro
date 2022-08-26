@@ -1,8 +1,8 @@
 ---
 import type { MarkdownInstance } from 'astro'
-import type { Frontmatter, TagType } from '../../config'
-import Base from '../../layouts/base.astro'
-import PageHero from '../../components/pagehero.astro'
+import type { Frontmatter, TagType } from '../config'
+import Base from '../layouts/base.astro'
+import PageHero from '../components/pagehero.astro'
 import {
   jupiter,
   cutout,
@@ -98,7 +98,7 @@ const frontmatter: Frontmatter = {
 }
 
 const allPosts = (await Astro.glob(
-  '../blog/*.{md,mdx}'
+  './blog/*.{md,mdx}'
 )) as MarkdownInstance<Frontmatter>[]
 const posts = allPosts
   .sort(
