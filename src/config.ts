@@ -97,4 +97,4 @@ export const NavigationLinks = [
   { name: 'Tags', href: 'tags' },
 ]
 
-export const PAGE_SIZE = 12
+export const PAGE_SIZE = 3

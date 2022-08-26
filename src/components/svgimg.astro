@@ -16,4 +16,4 @@ const images = import.meta.glob<string>('../svg/**/*', { import: 'default' })
 const image = await images[src || DefaultSVG]()
 ---
 
-<img src={import.meta.env.BASE_URL + image.slice(1)} {...attrs} />
+<img src={image} {...attrs} />

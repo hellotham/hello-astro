@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon'
-import type { MarkdownInstance, Page } from 'astro'
+import type { MarkdownInstance, Page, PaginateFunction } from 'astro'
 import type { Frontmatter } from '../../config'
 import { SiteMetadata, PAGE_SIZE } from '../../config'
 import Base from '../../layouts/base.astro'
@@ -29,7 +29,7 @@ const frontmatter: Frontmatter = {
   publishDate: SiteMetadata.buildTime,
 }
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const allPosts = (await Astro.glob(
     '../blog/*.{md,mdx}'
   )) as MarkdownInstance<Frontmatter>[]
