@@ -43,7 +43,7 @@ const categories = Array.from(new Set(posts.flatMap(post => post.frontmatter.cat
         <div class="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
           {categories.map((category) => (
             <div class="group relative">
-              <div class="relative w-full h-80 bg-purple-100 dark:bg-purple-900 rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+              <div class="relative w-full h-80 mb-4 bg-purple-100 dark:bg-purple-600 rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
                 <SVGImg src={CategoryDetail.filter(cat => cat.category == category)[0].coverSVG} alt={CategoryDetail.filter(cat => cat.category == category)[0].description} class="w-full h-full object-center object-cover" />
               </div>
               <h3 class="inline-block py-1 px-3 rounded bg-purple-600 hover:bg-pink-600 text-white text-xs font-medium tracking-tight uppercase">
