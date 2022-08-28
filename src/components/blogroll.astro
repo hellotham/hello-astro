@@ -7,7 +7,7 @@ export interface Props {
   posts: MarkdownInstance<Frontmatter>[]
 }
 
-const { posts } = Astro.props as Props
+const { posts } = Astro.props
 ---
 
 <div class="space-y-12 lg:space-y-0 flex flex-wrap mb-24 dark:bg-gray-900">

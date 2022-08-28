@@ -3,7 +3,7 @@ export interface Props {
   tags?: string[]
 }
 
-const { tags } = Astro.props as Props
+const { tags } = Astro.props
 ---
 {tags &&
   <div class="flex flex-row flex-wrap items-start gap-2 mt-2">

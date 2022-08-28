@@ -15,7 +15,7 @@ export interface Props {
   frontmatter: Frontmatter
 }
 
-const { frontmatter } = Astro.props as Props
+const { frontmatter } = Astro.props
 
 const siteurl = new URL(import.meta.env.BASE_URL, Astro.url)
 const type = Astro.url.toString().includes('blog') ? 'post' : 'page'
