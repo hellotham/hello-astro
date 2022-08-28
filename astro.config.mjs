@@ -8,8 +8,8 @@ import robotsTxt from 'astro-robots-txt'
 
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
-import rehypeRaw from 'rehype-raw'
 import remarkPlantUML from '@akebifiky/remark-simple-plantuml'
+import remarkCodeExtra from 'remark-code-extra'
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,9 +26,19 @@ export default defineConfig({
   },
   markdown: {
     extendDefaultPlugins: true,
-    remarkPlugins: [remarkMath, remarkPlantUML],
-    rehypePlugins: [rehypeKatex, rehypeRaw],
-    remarkRehype: { allowDangerousHtml: true },
+    remarkPlugins: [
+      remarkMath,
+      remarkPlantUML,
+      [remarkCodeExtra, {
+        transform: node => (node.lang == 'markmap' || node.lang == 'mermaid') && ({ 
+          transform: node => {
+            node.data.hProperties.className = [node.lang]
+            node.data.hChildren = [{type: 'text', value: node.value}]
+          }
+        })
+      }]
+    ],
+    rehypePlugins: [rehypeKatex],
     shikiConfig: {
       theme: 'github-light',
       langs: [],

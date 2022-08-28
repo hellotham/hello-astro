@@ -36,8 +36,8 @@ This project initially started as a bare bones port of [hello-gatsby-starter](ht
 - Full support for Light and dark UI modes, as well as following system preferences, in accordance to TailwindCSS recommendation
 - Customised 404 error page
 - Display math equations using KaTeX via remark-math/rehype-katex
-- Display Mermaid diagrams (requires `<div class="mermaid">` wrap and using the `withmermaid` layout, for now)
-- Display Markmap diagrams (requires `<div class="markmap">` wrap and using the `withmarkmap` layout, for now)
+- Display Mermaid diagrams (as a code block with language `mermaid` and using the `withmermaid` layout, for now)
+- Display Markmap diagrams (as a code block with language `markmap` and using the `withmarkmap` layout, for now)
 - Display PlantUML diagrams (as a code block with language `plantuml`)
 
 ## External Packages 

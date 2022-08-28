@@ -29,7 +29,7 @@
     "astro-robots-txt": "^0.3.8",
     "prettier-plugin-astro": "^0.5.3",
     "rehype-katex": "^6.0.2",
-    "rehype-raw": "^6.1.1",
+    "remark-code-extra": "^1.0.1",
     "remark-math": "^5.1.1",
     "schema-dts": "^1.1.0"
   },

@@ -18,10 +18,11 @@ tags:
 ## Mindmap
 
 Sample mindmap diagram rendered by [markmap](https://markmap.js.org)
-<div class="markmap">
+
+```markmap
 # markmap
 - beautiful
 - useful
 - easy
 - interactive
-</div>
+```

@@ -19,24 +19,24 @@ tags:
 
 ## Simple Example
 
-<div class="mermaid">
+```mermaid
 graph LR
     Start --> Stop
-</div>
+```
 
 ## flowchart
 
-<div class="mermaid">
+```mermaid
 flowchart LR
     A[Hard edge] -->|Link text| B(Round edge)
     B --> C{Decision}
     C -->|One| D[Result one]
     C -->|Two| E[Result two]
-</div>
+```
 
 ## Sequence Diagram
 
-<div class="mermaid">
+```mermaid
 sequenceDiagram
     participant Alice
     participant Bob
@@ -48,11 +48,11 @@ sequenceDiagram
     John-->>Alice: Great!
     John->>Bob: How about you?
     Bob-->>John: Jolly good!
-</div>
+```
 
 ## Class Diagram
 
-<div class="mermaid">
+```mermaid
 classDiagram
 Class01 <|-- AveryLongClass : Cool
 Class03 *-- Class04
@@ -67,20 +67,20 @@ Class01 : size()
 Class01 : int chimp
 Class01 : int gorilla
 Class08 <--> C2: Cool label
-</div>
+```
 
 ## Entity Relationship Diagram
 
-<div class="mermaid">
+```mermaid
 erDiagram
     CUSTOMER ||--o{ ORDER : places
     ORDER ||--|{ LINE-ITEM : contains
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
-</div>
+```
 
 ## State Diagram
 
-<div class="mermaid">
+```mermaid
 stateDiagram-v2
     [*] --> Still
     Still --> [*]
@@ -88,11 +88,11 @@ stateDiagram-v2
     Moving --> Still
     Moving --> Crash
     Crash --> [*]
-</div>
+```
 
 ## Gantt Chart
 
-<div class="mermaid">
+```mermaid
 gantt
 dateFormat  YYYY-MM-DD
 title Adding GANTT diagram to mermaid
@@ -102,4 +102,4 @@ Completed task            :done,    des1, 2014-01-06,2014-01-08
 Active task               :active,  des2, 2014-01-09, 3d
 Future task               :         des3, after des2, 5d
 Future task2               :         des4, after des3, 5d
-</div>
+```
