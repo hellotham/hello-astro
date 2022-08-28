@@ -25,6 +25,7 @@
     "@types/leaflet": "^1.7.11",
     "alpinejs": "^3.0.0",
     "astro": "1.1.1",
+    "astro-robots-txt": "^0.3.8",
     "prettier-plugin-astro": "^0.5.3",
     "rehype-katex": "^6.0.2",
     "remark-math": "^5.1.1",
@@ -33,7 +34,6 @@
   "dependencies": {
     "@astrojs/rss": "^1.0.0",
     "astro-icon": "^0.7.3",
-    "astro-robots-txt": "^0.3.8",
     "astro-seo": "^0.6.0",
     "hero-patterns": "^2.1.0",
     "katex": "^0.16.1",
