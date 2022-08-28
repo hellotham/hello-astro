@@ -3,6 +3,7 @@ import tailwind from '@astrojs/tailwind'
 import sitemap from '@astrojs/sitemap'
 import image from '@astrojs/image'
 import mdx from '@astrojs/mdx'
+import katex from 'astro-katex'
 
 import alpinejs from '@astrojs/alpinejs'
 
@@ -15,7 +16,7 @@ export default defineConfig({
   },
   site: 'https://hellotham.github.io',
   base: '/hello-astro',
-  integrations: [tailwind(), sitemap(), image(), mdx(), alpinejs()],
+  integrations: [tailwind(), sitemap(), image(), mdx(), alpinejs(), katex()],
   experimental: {
     integrations: true,
   },

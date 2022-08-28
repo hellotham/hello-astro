@@ -1,0 +1,17 @@
+---
+import type { Frontmatter } from '../config'
+import Blog from '../layouts/blog.astro'
+import AstroKatex from 'astro-katex/AstroKatex.astro'
+
+export interface Props {
+  frontmatter: Frontmatter
+}
+
+const { frontmatter } = Astro.props as Props
+---
+
+<Blog frontmatter={frontmatter}>
+  <AstroKatex>
+    <slot />
+  </AstroKatex>
+</Blog>
