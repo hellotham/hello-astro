@@ -5,8 +5,8 @@ title: Mermaid Diagrams (Part 2)
 description: Non working mermaid diagrams.
 author: Chris Tham
 publishDate: 2022-08-21T00:00:00.000Z
-coverSVG: ../svg/undraw/undraw_scrum_board.svg
-socialImage: /images/undraw/undraw_scrum_board.png
+coverSVG: ../svg/undraw/undraw_mind_map.svg
+socialImage: /images/undraw/undraw_mind_map.png
 categories:
   - information
 tags:
