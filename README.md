@@ -14,6 +14,7 @@ Uses the following integrations:
 - @astrojs/alpinejs
 - astro-icon
 - astro-seo
+- astro-robots-txt
 
 In addition, SVG and PNG illustrations sourced from [Undraw](https://undraw.co)
 

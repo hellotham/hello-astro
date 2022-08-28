@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap'
 import image from '@astrojs/image'
 import mdx from '@astrojs/mdx'
 import alpinejs from '@astrojs/alpinejs'
+import robotsTxt from 'astro-robots-txt'
 
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
@@ -18,7 +19,7 @@ export default defineConfig({
   },
   site: 'https://hellotham.github.io',
   base: '/hello-astro',
-  integrations: [tailwind(), sitemap(), image(), mdx(), alpinejs()],
+  integrations: [tailwind(), sitemap(), image(), mdx(), alpinejs(), robotsTxt()],
   experimental: {
     integrations: true,
   },
