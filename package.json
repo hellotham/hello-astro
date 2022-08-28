@@ -32,7 +32,6 @@
     "astro-icon": "^0.7.3",
     "astro-seo": "^0.6.0",
     "hero-patterns": "^2.1.0",
-    "lunr": "^2.3.9",
-    "nanostores": "^0.6.0"
+    "lunr": "^2.3.9"
   }
 }

@@ -1,74 +1,59 @@
 ---
-import lunr from 'lunr'
 import { Icon } from 'astro-icon'
-import { PostStore } from '../store.js'
-const documents = PostStore.get()
 ---
 
 <script is:inline src="https://unpkg.com/lunr/lunr.js"></script>
 <script is:inline>
-  let lunrDocuments = []
-</script>
-<script define:vars={{ documents }}>
-  lunrDocuments = documents
-</script>
-<script is:inline>
-  let lunrIndex = {}
-  fetch(import.meta.env.BASE_URL + 'search-index.json')
-    .then(res => res.json())
-    .then(data => {
-      lunrIndex = lunr.Index.load(data)
-    })
-  function initSearch() {
-    return {
-      isLoading: false,
-      searchResults: '',
-      searchText: '',
-      fetchIndex() {
-        this.isLoading = true
-        fetch(import.meta.env.BASE_URL + 'search-index.json')
-          .then(res => res.json())
-          .then(data => {
-            this.isLoading = false
-            this.idx = lunr.Index.load(data)
-          })
-      },
-      lunr_search(term) {
-        document.getElementById('lunrsearchresults').innerHTML =
-          '<ul class="relative grid gap-6 bg-white dark:bg-gray-700 dark:text-gray-100 px-5 py-6 sm:gap-8 sm:p-8"></ul>'
-        if (term) {
-          document.getElementById('lunrsearchtitle').innerHTML =
-            "Search results for '" + term + "'"
-          //put results on the screen.
-          const results = lunrIndex.search(term)
-          console.log(results)
-          if (results.length > 0) {
-            //if results
-            for (var i = 0; i < results.length; i++) {
-              // more statements
-              const url = results[i]['ref']
-              const doc = lunrDocuments.filter(doc => doc.url == url)[0]
-              document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML =
-                document.querySelectorAll('#lunrsearchresults ul')[0]
-                  .innerHTML +
-                '<li class="-m-3 p-3 flex items-start rounded-lg hover:bg-purple-200 dark:hover:bg-purple-900"><a href="' +
-                url +
-                '"><p class="text-base font-medium text-gray-900 dark:text-gray-100">' +
-                doc.title +
-                '<p><p class="mt-1 text-sm text-gray-500 dark:text-gray-400">' +
-                doc.description +
-                '</p></a></li>'
-            }
-          } else {
+function initSearch() {
+  return {
+    searchResults: '',
+    searchText: '',
+    idx: null,
+    doc: null,
+    async lunr_search(term) {
+      if (!this.doc) {
+        const res = await fetch(import.meta.env.BASE_URL + 'search-docs.json')
+        this.doc = await res.json()
+      }
+      if (!this.idx) {
+        const res = await fetch(import.meta.env.BASE_URL + 'search-index.json')
+        const data = await res.json()
+        this.idx = lunr.Index.load(data)
+      }
+      document.getElementById('lunrsearchresults').innerHTML =
+        '<ul class="relative grid gap-6 bg-white dark:bg-gray-700 dark:text-gray-100 px-5 py-6 sm:gap-8 sm:p-8"></ul>'
+      if (term) {
+        document.getElementById('lunrsearchtitle').innerHTML =
+          "Search results for '" + term + "'"
+        //put results on the screen.
+        const results = this.idx.search(term)
+        if (results.length > 0) {
+          //if results
+          for (var i = 0; i < results.length; i++) {
+            // more statements
+            const url = results[i]['ref']
+            const doc = this.doc.filter(doc => doc.url == url)[0]
             document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML =
-              'No results found...'
+              document.querySelectorAll('#lunrsearchresults ul')[0]
+                .innerHTML +
+              '<li class="-m-3 p-3 flex items-start rounded-lg hover:bg-purple-200 dark:hover:bg-purple-900"><a href="' +
+              url +
+              '"><p class="text-base font-medium text-gray-900 dark:text-gray-100">' +
+              doc.title +
+              '<p><p class="mt-1 text-sm text-gray-500 dark:text-gray-400">' +
+              doc.description +
+              '</p></a></li>'
           }
+        } else {
+          document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML =
+            'No results found...'
         }
+      }
 
-        return false
-      },
-    }
+      return false
+    },
   }
+}
 </script>
 <div x-data="initSearch()">
   <div class="flex justify-center">
@@ -90,7 +75,6 @@ const documents = PostStore.get()
           class="btn inline-block px-2 py-2 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out items-center"
           type="button"
           id="button-addon2"
-          x-bind:disabled="isLoading"
           x-on:click="lunr_search(searchText); searchResults = true"
         >
           <svg
