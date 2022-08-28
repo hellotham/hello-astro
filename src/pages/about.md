@@ -26,8 +26,9 @@ This is starter template for a full featured marketing and blog website based on
 - [KaTeX](https://katex.org)
 - [Mermaid](https://mermaid-js.github.io/mermaid/#/)
 - [Markmap](https://markmap.js.org)
+- [PlantUML](https://plantuml.com)
 
-It follows the [JAMstack architecture](https://jamstack.org) by using Git as a single source of truth, and is deployed on Gatsby Cloud.
+It follows the [JAMstack architecture](https://jamstack.org) by using Git as a single source of truth, and the demo is deployed on Github Pages.
 
 This website is open source (MIT licence) - fork it and customise for your needs.
 
@@ -49,3 +50,4 @@ This website is open source (MIT licence) - fork it and customise for your needs
 - Display math equations using KaTeX via remark-math/rehype-katex
 - Display Mermaid diagrams (requires `<div class="mermaid">` wrap and using the `withmermaid` layout, for now)
 - Display Markmap diagrams (requires `<div class="markmap">` wrap and using the `withmarkmap` layout, for now)
+- Display PlantUML diagrams (as a code block with language `plantuml`)

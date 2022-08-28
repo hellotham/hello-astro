@@ -15,7 +15,7 @@ tags:
   - mindmap
 ---  
 
-# Mindmap
+## Mindmap
 
 Sample mindmap diagram rendered by [markmap](https://markmap.js.org)
 <div class="markmap">
