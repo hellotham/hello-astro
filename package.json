@@ -38,6 +38,8 @@
     "hero-patterns": "^2.1.0",
     "katex": "^0.16.1",
     "leaflet": "^1.8.0",
-    "lunr": "^2.3.9"
+    "lunr": "^2.3.9",
+    "markmap-lib": "^0.14.1",
+    "markmap-view": "^0.14.0"
   }
 }

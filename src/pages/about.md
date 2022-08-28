@@ -24,6 +24,7 @@ This is starter template for a full featured marketing and blog website based on
 - [remark-math and rehype-katex](https://github.com/remarkjs/remark-math)
 - [Lunr](https://lunrjs.com)
 - [KaTeX](https://katex.org)
+- [Mermaid](https://mermaid-js.github.io/mermaid/#/)
 
 It follows the [JAMstack architecture](https://jamstack.org) by using Git as a single source of truth, and is deployed on Gatsby Cloud.
 
@@ -45,3 +46,4 @@ This website is open source (MIT licence) - fork it and customise for your needs
 - Full support for Light and dark UI modes, as well as following system preferences, in accordance to TailwindCSS recommendation
 - Customised 404 error page
 - Display math equations using KaTeX via remark-math/rehype-katex
+- Display Mermaid diagrams (requires `<div class="mermaid">` wrap and using the `withmermaid` layout for now)

@@ -3,7 +3,7 @@ layout: ../../layouts/withmermaid.astro
 title: Mermaid Diagrams
 description: Generate mermaid diagrams in blog posts.
 author: Chris Tham
-publishDate: 2022-08-22T00:00:00.000Z
+publishDate: 2022-08-20T00:00:00.000Z
 coverSVG: ../svg/undraw/undraw_scrum_board.svg
 socialImage: /images/undraw/undraw_scrum_board.png
 categories:
@@ -11,6 +11,10 @@ categories:
 tags:
   - mermaid
   - diagram
+  - flowchart
+  - sequence
+  - class
+  - ER
 ---
 
 ## Simple Example
