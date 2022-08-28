@@ -23,7 +23,7 @@
     "@tailwindcss/typography": "^0.5.4",
     "@types/alpinejs": "^3.0.0",
     "alpinejs": "^3.0.0",
-    "astro": "^1.1.0",
+    "astro": "1.1.1",
     "prettier-plugin-astro": "^0.5.3",
     "schema-dts": "^1.1.0"
   },
@@ -31,6 +31,8 @@
     "@astrojs/rss": "^1.0.0",
     "astro-icon": "^0.7.3",
     "astro-seo": "^0.6.0",
-    "hero-patterns": "^2.1.0"
+    "hero-patterns": "^2.1.0",
+    "lunr": "^2.3.9",
+    "nanostores": "^0.6.0"
   }
 }

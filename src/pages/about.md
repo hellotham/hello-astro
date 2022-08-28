@@ -20,6 +20,7 @@ This is starter template for a full featured marketing and blog website based on
 - [Open Graph](https://ogp.me/) used by [Facebook](https://developers.facebook.com/docs/sharing/webmasters/#markup)
 - [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards)
 - [AlpineJS](https://alpinejs.dev)
+- [Lunr](https://lunrjs.com)
 
 It follows the [JAMstack architecture](https://jamstack.org) by using Git as a single source of truth, and is deployed on Gatsby Cloud.
 
@@ -29,9 +30,10 @@ This website is open source (MIT licence) - fork it and customise for your needs
 
 - Full-featured blog with frontmatter (title, description, author, date, image, tags)
 - High performance low overhead with minimal Javascript (AlpineJS)
+- Full text client based search of blog pages via lunrjs
 - Categories index page and individual category pages
 - Tags index page and individual tag pages
-- Pagination for blog and tag pages
+- Pagination for blog, category and tag pages
 - Support for RSS feed, sitemap and robots.txt
 - Automatic optimization of images in Markdown/MDX posts
 - SVG design (unDraw, Hero Patterns, Iconify)

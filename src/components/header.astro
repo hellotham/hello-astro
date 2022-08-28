@@ -1,11 +1,12 @@
 ---
 import { Icon } from 'astro-icon'
 import { NavigationLinks, Logo, PrimaryLogo } from '../config'
+import Search from '../components/search.astro'
 import SVGImg from '../components/svgimg.astro'
 ---
 
 <nav x-data="{ isOpen: false }" class="dark:bg-gray-800">
-  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+  <div class="mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button-->
@@ -78,6 +79,7 @@ import SVGImg from '../components/svgimg.astro'
       <div
         class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
       >
+        <Search />
         <div class="ml-3 relative" x-data="{ themeOpen: false }">
           <div>
             <button

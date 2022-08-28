@@ -1,0 +1,199 @@
+---
+import lunr from 'lunr'
+import { Icon } from 'astro-icon'
+import { PostStore } from '../store.js'
+const documents = PostStore.get()
+---
+
+<script is:inline src="https://unpkg.com/lunr/lunr.js"></script>
+<script is:inline>
+  let lunrDocuments = []
+</script>
+<script define:vars={{ documents }}>
+  lunrDocuments = documents
+</script>
+<script is:inline>
+  let lunrIndex = {}
+  fetch(import.meta.env.BASE_URL + 'search-index.json')
+    .then(res => res.json())
+    .then(data => {
+      lunrIndex = lunr.Index.load(data)
+    })
+  function initSearch() {
+    return {
+      isLoading: false,
+      searchResults: '',
+      searchText: '',
+      fetchIndex() {
+        this.isLoading = true
+        fetch(import.meta.env.BASE_URL + 'search-index.json')
+          .then(res => res.json())
+          .then(data => {
+            this.isLoading = false
+            this.idx = lunr.Index.load(data)
+          })
+      },
+      lunr_search(term) {
+        document.getElementById('lunrsearchresults').innerHTML =
+          '<ul class="relative grid gap-6 bg-white dark:bg-gray-700 dark:text-gray-100 px-5 py-6 sm:gap-8 sm:p-8"></ul>'
+        if (term) {
+          document.getElementById('lunrsearchtitle').innerHTML =
+            "Search results for '" + term + "'"
+          //put results on the screen.
+          const results = lunrIndex.search(term)
+          console.log(results)
+          if (results.length > 0) {
+            //if results
+            for (var i = 0; i < results.length; i++) {
+              // more statements
+              const url = results[i]['ref']
+              const doc = lunrDocuments.filter(doc => doc.url == url)[0]
+              document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML =
+                document.querySelectorAll('#lunrsearchresults ul')[0]
+                  .innerHTML +
+                '<li class="-m-3 p-3 flex items-start rounded-lg hover:bg-purple-200 dark:hover:bg-purple-900"><a href="' +
+                url +
+                '"><p class="text-base font-medium text-gray-900 dark:text-gray-100">' +
+                doc.title +
+                '<p><p class="mt-1 text-sm text-gray-500 dark:text-gray-400">' +
+                doc.description +
+                '</p></a></li>'
+            }
+          } else {
+            document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML =
+              'No results found...'
+          }
+        }
+
+        return false
+      },
+    }
+  }
+</script>
+<div x-data="initSearch()">
+  <div class="flex justify-center">
+    <div class="xl:w-64">
+      <div class="input-group relative flex items-stretch w-full">
+        <input
+          type="search"
+          x-model="searchText"
+          class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-500 bg-white dark:text-gray-300 dark:bg-gray-900 bg-clip-padding border border-solid border-purple-300 dark:border-purple-700 rounded transition ease-in-out m-0 focus:text-gray-700 focus:border-purple-500 dark:focus:text-gray-100 dark:focus:border-purple-600 focus:outline-none"
+          id="lunrsearch"
+          name="q"
+          maxlength="255"
+          value=""
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="button-addon2"
+        />
+        <button
+          class="btn inline-block px-2 py-2 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out items-center"
+          type="button"
+          id="button-addon2"
+          x-bind:disabled="isLoading"
+          x-on:click="lunr_search(searchText); searchResults = true"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            data-icon="search"
+            class="w-4"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <path
+              fill="currentColor"
+              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    x-show="searchResults"
+    x-cloak
+    class="relative z-50"
+    aria-labelledby="slide-over-title"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div
+      x-show="searchResults"
+      x-transition:enter="ease-in-out duration-500"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="ease-in-out duration-500"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+    >
+    </div>
+
+    <div class="fixed inset-0 overflow-hidden">
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10"
+        >
+          <div
+            x-show="searchResults"
+            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:enter-start="translate-x-full"
+            x-transition:enter-end="translate-x-0"
+            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:leave-start="translate-x-0"
+            x-transition:leave-end="translate-x-full"
+            class="pointer-events-auto relative w-screen max-w-md"
+          >
+            <div
+              x-show="searchResults"
+              x-transition:enter="ease-in-out duration-500"
+              x-transition:enter-start="opacity-0"
+              x-transition:enter-end="opacity-100"
+              x-transition:leave="ease-in-out duration-500"
+              x-transition:leave-start="opacity-100"
+              x-transition:leave-end="opacity-0"
+              class="absolute top-0 left-0 -ml-8 flex pt-4 pr-2 sm:-ml-10 sm:pr-4"
+            >
+              <button
+                type="button"
+                class="rounded-md text-purple-300 hover:text-pink-300 focus:outline-none focus:ring-2 focus:ring-white"
+                x-on:click="searchResults = false"
+              >
+                <span class="sr-only">Close panel</span>
+                <Icon class="h-6 w-6" pack="heroicons-outline" name="x" />
+              </button>
+            </div>
+
+            <div
+              class="flex h-full flex-col overflow-y-scroll bg-white dark:bg-gray-800 py-6 shadow-xl"
+            >
+              <div class="px-4 sm:px-6">
+                <h2
+                  class="text-lg font-medium text-gray-900 dark:text-gray-100"
+                  id="lunrsearchtitle"
+                  class="modal-title"
+                >
+                  Search results
+                </h2>
+              </div>
+              <div
+                id="lunrsearchmodal"
+                class="relative mt-6 flex-1 px-4 sm:px-6"
+              >
+                <div
+                  id="lunrsearchresults"
+                  class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden"
+                >
+                  <ul></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

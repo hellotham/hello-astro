@@ -9,7 +9,7 @@ export interface Props {
 const { frontmatter } = Astro.props
 ---
 
-<Base {frontmatter}>
+<Base frontmatter={frontmatter}>
   <main class="mt-10 dark:bg-gray-900">
     <article class="post">
       <header>
