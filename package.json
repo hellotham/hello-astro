@@ -22,6 +22,7 @@
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.4",
     "@types/alpinejs": "^3.0.0",
+    "@types/leaflet": "^1.7.11",
     "alpinejs": "^3.0.0",
     "astro": "1.1.1",
     "prettier-plugin-astro": "^0.5.3",
@@ -33,7 +34,8 @@
     "astro-katex": "^1.0.5",
     "astro-seo": "^0.6.0",
     "hero-patterns": "^2.1.0",
-    "katex": "^0.16.0",
+    "katex": "^0.16.1",
+    "leaflet": "^1.8.0",
     "lunr": "^2.3.9"
   }
 }

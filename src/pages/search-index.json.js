@@ -7,9 +7,8 @@ const documents = posts.map(post => ({
   title: post.frontmatter.title,
   description: post.frontmatter.description,
   author: post.frontmatter.author,
-  content: post.rawContent(),
+  content: post.file.search(/.mdx$/) >= 0 ? '' : post.rawContent(),
 }))
-
 const idx = lunr(function () {
   this.ref('url')
   this.field('title')

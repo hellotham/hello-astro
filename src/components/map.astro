@@ -1,4 +1,6 @@
 ---
+import 'leaflet/dist/leaflet.css'
+// import LeafletJS from 'leaflet/dist/leaflet.js'
 export interface Props {
   loc: [number, number]
   zoom: number
@@ -6,13 +8,20 @@ export interface Props {
 
 const { loc, zoom } = Astro.props as Props
 ---
-
+<!-- <script is:inline type="module" src={LeafletJS}>
+</script> -->
+<script
+  is:inline
+  src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+  integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+  crossorigin=""
+></script>
 <div id="map" class="mb-3 h-96"></div>
-<script is:inline define:vars={{ loc, zoom }}>
+<script define:vars={{ loc, zoom }}>
   var map = L.map('map').setView(loc, zoom)
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    attribution: '© OpenStreetMap',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map)
   L.marker(loc).addTo(map)
 </script>
