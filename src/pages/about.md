@@ -21,6 +21,8 @@ This is starter template for a full featured marketing and blog website based on
 - [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards)
 - [AlpineJS](https://alpinejs.dev)
 - [Lunr](https://lunrjs.com)
+- [remark-math and rehype-katex](https://github.com/remarkjs/remark-math)
+- [Lunr](https://lunrjs.com)
 - [KaTeX](https://katex.org)
 
 It follows the [JAMstack architecture](https://jamstack.org) by using Git as a single source of truth, and is deployed on Gatsby Cloud.
@@ -42,4 +44,4 @@ This website is open source (MIT licence) - fork it and customise for your needs
 - Full SEO support including Open Graph, Twitter Cards and Schema.org via JSON-LD
 - Full support for Light and dark UI modes, as well as following system preferences, in accordance to TailwindCSS recommendation
 - Customised 404 error page
-- Display math equations using KaTeX
+- Display math equations using KaTeX via remark-math/rehype-katex

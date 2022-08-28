@@ -3,9 +3,11 @@ import tailwind from '@astrojs/tailwind'
 import sitemap from '@astrojs/sitemap'
 import image from '@astrojs/image'
 import mdx from '@astrojs/mdx'
-import katex from 'astro-katex'
-
 import alpinejs from '@astrojs/alpinejs'
+
+import rehypeKatex from 'rehype-katex'
+import remarkMath from 'remark-math'
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,11 +18,14 @@ export default defineConfig({
   },
   site: 'https://hellotham.github.io',
   base: '/hello-astro',
-  integrations: [tailwind(), sitemap(), image(), mdx(), alpinejs(), katex()],
+  integrations: [tailwind(), sitemap(), image(), mdx(), alpinejs()],
   experimental: {
     integrations: true,
   },
   markdown: {
+    extendDefaultPlugins: true,
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
       // https://github.com/shikijs/shiki/blob/main/docs/themes.md
