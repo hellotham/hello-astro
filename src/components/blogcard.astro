@@ -50,18 +50,24 @@ const { post } = Astro.props
           class="text-gray-500 dark:text-gray-400 mr-3 inline-flex items-center leading-none text-xs pr-3 py-1 border-r-2 border-purple-200 dark:border-purple-600"
         >
           <Icon class="w-4 h-4 mr-1" pack="heroicons-outline" name="calendar" />
-          {post.frontmatter.publishDate}
+          {post.frontmatter.publishDate?.slice(0, 10)}
+        </span>
+        <span
+          class="text-gray-500 dark:text-gray-400 mr-3 inline-flex items-center leading-none text-xs pr-3 py-1 border-r-2 border-purple-200 dark:border-purple-600"
+        >
+          <Icon class="w-4 h-4 mr-1" pack="heroicons-outline" name="clock" />
+          {post.frontmatter.minutesRead}
         </span>
         {post.frontmatter.author && (
           <span
-            class="text-gray-500 dark:text-gray-400 inline-flex items-center leading-none text-xs"
+          class="text-gray-500 dark:text-gray-400 inline-flex items-center leading-none text-xs"
           >
-            <Icon
-              class="w-4 h-4 mr-1"
-              pack="heroicons-outline"
-              name="user-circle"
-            />
-            {post.frontmatter.author}
+          <Icon
+          class="w-4 h-4 mr-1"
+          pack="heroicons-outline"
+          name="user-circle"
+          />
+          {post.frontmatter.author}
           </span>
         )}
       </div>

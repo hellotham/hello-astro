@@ -13,6 +13,7 @@ export interface Frontmatter {
   tags?: string[]
   file?: string
   url?: string
+  minutesRead?: string
 }
 
 export interface TagType {

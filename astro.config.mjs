@@ -10,6 +10,7 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import remarkPlantUML from '@akebifiky/remark-simple-plantuml'
 import remarkCodeExtra from 'remark-code-extra'
+import { remarkReadingTime } from './remark-reading-time.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,6 +28,7 @@ export default defineConfig({
   markdown: {
     extendDefaultPlugins: true,
     remarkPlugins: [
+      remarkReadingTime,
       remarkMath,
       remarkPlantUML,
       [remarkCodeExtra, {

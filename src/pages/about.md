@@ -9,7 +9,7 @@ socialImage: /images/undraw/undraw_about_me.png
 
 This is starter template for a full featured marketing and blog website based on the following:
 
-- [Astro](https://astro.build/)
+- [Astro](https://astro.build/) as a modern static site generator
 - [TypeScript](https://www.typescriptlang.org/)
 - [TailwindCSS](https://tailwindcss.com) and [TailwindUI](https://tailwindui.com)
 - [Iconify](https://iconify.design/)
@@ -20,15 +20,11 @@ This is starter template for a full featured marketing and blog website based on
 - [Open Graph](https://ogp.me/) used by [Facebook](https://developers.facebook.com/docs/sharing/webmasters/#markup)
 - [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards)
 - [AlpineJS](https://alpinejs.dev)
-- [Lunr](https://lunrjs.com)
-- [remark-math and rehype-katex](https://github.com/remarkjs/remark-math)
-- [Lunr](https://lunrjs.com)
-- [KaTeX](https://katex.org)
-- [Mermaid](https://mermaid-js.github.io/mermaid/#/)
-- [Markmap](https://markmap.js.org)
-- [PlantUML](https://plantuml.com)
+- Local full text search using [Lunr](https://lunrjs.com)
+- Math equations using [KaTeX](https://katex.org) via [remark-math and rehype-katex](https://github.com/remarkjs/remark-math)
+- Diagrams using [Mermaid](https://mermaid-js.github.io/mermaid/#/), [Markmap](https://markmap.js.org) and [PlantUML](https://plantuml.com)
 
-It follows the [JAMstack architecture](https://jamstack.org) by using Git as a single source of truth, and the demo is deployed on Github Pages.
+It follows the [JAMstack architecture](https://jamstack.org) by automatically building a static version from the Git repository. The demo is deployed on Github Pages.
 
 This website is open source (MIT licence) - fork it and customise for your needs.
 
@@ -51,3 +47,4 @@ This website is open source (MIT licence) - fork it and customise for your needs
 - Display Mermaid diagrams (as a code block with language `mermaid` and using the `withmermaid` layout, for now)
 - Display Markmap diagrams (as a code block with language `markmap` and using the `withmarkmap` layout, for now)
 - Display PlantUML diagrams (as a code block with language `plantuml`)
+- Calculates and show reading time for blog posts
