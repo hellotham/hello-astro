@@ -28,6 +28,7 @@
     "astro-robots-txt": "^0.3.8",
     "prettier-plugin-astro": "^0.5.3",
     "rehype-katex": "^6.0.2",
+    "rehype-raw": "^6.1.1",
     "remark-math": "^5.1.1",
     "schema-dts": "^1.1.0"
   },
@@ -38,8 +39,6 @@
     "hero-patterns": "^2.1.0",
     "katex": "^0.16.1",
     "leaflet": "^1.8.0",
-    "lunr": "^2.3.9",
-    "markmap-lib": "^0.14.1",
-    "markmap-view": "^0.14.0"
+    "lunr": "^2.3.9"
   }
 }

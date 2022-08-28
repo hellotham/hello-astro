@@ -6,8 +6,9 @@ import mdx from '@astrojs/mdx'
 import alpinejs from '@astrojs/alpinejs'
 import robotsTxt from 'astro-robots-txt'
 
-import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import rehypeRaw from 'rehype-raw'
 
 
 // https://astro.build/config
@@ -26,7 +27,8 @@ export default defineConfig({
   markdown: {
     extendDefaultPlugins: true,
     remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [rehypeKatex, rehypeRaw],
+    remarkRehype: { allowDangerousHtml: true },
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
       // https://github.com/shikijs/shiki/blob/main/docs/themes.md
