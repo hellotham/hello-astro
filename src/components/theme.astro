@@ -1,0 +1,107 @@
+---
+import { Icon } from 'astro-icon'
+---
+
+<div class="ml-3 relative" x-data="{ themeOpen: false }">
+  <div>
+    <button
+      type="button"
+      class="inline-flex justify-center w-full rounded-md border border-purple-300 dark:purple-700 shadow-sm px-4 py-2 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-100 hover:bg-purple-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-purple-300 dark:focus:ring-offset-purple-700 focus:ring-purple-500"
+      id="menu-button"
+      aria-expanded="true"
+      aria-haspopup="true"
+      x-on:click="themeOpen = !themeOpen"
+    >
+      Light / Dark
+      <Icon
+        class="-mr-1 ml-2 h-5 w-5"
+        aria-hidden="true"
+        pack="heroicons-solid"
+        name="chevron-down"
+      />
+    </button>
+  </div>
+  <ul
+    x-show="themeOpen"
+    x-cloak
+    x-transition:enter="transition ease-out duration-100"
+    x-transition:enter-start="transform opacity-0 scale-95"
+    x-transition:enter-end="transform opacity-100 scale-100"
+    x-transition:leave="transition ease-in duration-75"
+    x-transition:leave-start="transform opacity-100 scale-100"
+    x-transition:leave-end="transform opacity-0 scale-95"
+    class="absolute z-20 mt-1 w-full bg-white dark:bg-gray-800 shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
+    tabindex="-1"
+    role="listbox"
+    aria-labelledby="listbox-label"
+    aria-activedescendant="listbox-option-3"
+  >
+    <li
+      class="text-gray-900 hover:text-white hover:bg-purple-600 dark:bg-gray-900 dark:text-white dark:hover:text-gray-900 dark:hover:bg-purple-300 cursor-default select-none relative py-2 pl-2 pr-4"
+      id="listbox-option-0"
+      role="option"
+      x-on:click="localStorage.removeItem('theme'); window.location.reload()"
+    >
+      <div class="flex items-center">
+        <Icon class="h-6 w-6" pack="heroicons-outline" name="star" />
+        <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
+        <span
+          class="ml-2 block truncate"
+          x-bind:class="localStorage.theme ? 'font-normal' : 'font-semibold'"
+          >System</span
+        >
+      </div>
+      <span
+        x-show="!localStorage.theme"
+        class="text-purple-600 hover:text-white absolute inset-y-0 right-0 flex items-center pr-4"
+      >
+        <!-- Heroicon name: solid/check -->
+        <Icon class="h-5 w-5" pack="heroicons-solid" name="check" />
+      </span>
+    </li>
+    <li
+      class="text-gray-900 hover:text-white hover:bg-purple-600 dark:bg-gray-900 dark:text-white dark:hover:text-gray-900 dark:hover:bg-purple-300 cursor-default select-none relative py-2 pl-2 pr-4"
+      id="listbox-option-0"
+      role="option"
+      x-on:click="localStorage.theme = 'light'; window.location.reload()"
+    >
+      <div class="flex items-center">
+        <Icon class="h-6 w-6" pack="heroicons-outline" name="sun" />
+        <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
+        <span
+          class="ml-2 block truncate"
+          x-bind:class="localStorage.theme == 'light' ? 'font-semibold' : 'font-normal'"
+          >Light</span
+        >
+      </div>
+      <span
+        x-show="localStorage.theme == 'light'"
+        class="text-purple-600 hover:text-white absolute inset-y-0 right-0 flex items-center pr-4"
+      >
+        <Icon class="h-5 w-5" pack="heroicons-solid" name="check" />
+      </span>
+    </li>
+    <li
+      class="text-gray-900 hover:text-white hover:bg-purple-600 dark:bg-gray-900 dark:text-white dark:hover:text-gray-900 dark:hover:bg-purple-300 cursor-default select-none relative py-2 pl-2 pr-4"
+      id="listbox-option-0"
+      role="option"
+      x-on:click="localStorage.theme = 'dark'; window.location.reload()"
+    >
+      <div class="flex items-center">
+        <Icon class="h-6 w-6" pack="heroicons-solid" name="moon" />
+        <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
+        <span
+          class="ml-2 block truncate"
+          x-bind:class="localStorage.theme == 'dark' ? 'font-semibold' : 'font-normal'"
+          >Dark</span
+        >
+      </div>
+      <span
+        x-show="localStorage.theme == 'dark'"
+        class="text-purple-600 hover:text-white absolute inset-y-0 right-0 flex items-center pr-4"
+      >
+        <Icon class="h-5 w-5" pack="heroicons-solid" name="check" />
+      </span>
+    </li>
+  </ul>
+</div>
