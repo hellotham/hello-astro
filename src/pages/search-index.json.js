@@ -7,6 +7,8 @@ const documents = posts.map(post => ({
   title: post.frontmatter.title,
   description: post.frontmatter.description,
   author: post.frontmatter.author,
+  categories: post.frontmatter.categories.join(' '),
+  tags: post.frontmatter.tags.join(' '),
   content: post.file.search(/.mdx$/) >= 0 ? '' : post.rawContent(),
 }))
 const idx = lunr(function () {
@@ -14,6 +16,8 @@ const idx = lunr(function () {
   this.field('title')
   this.field('description')
   this.field('author')
+  this.field('categories')
+  this.field('tags')
   this.field('content')
 
   documents.forEach(function (doc) {
