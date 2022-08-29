@@ -1,6 +1,4 @@
 ---
-import 'leaflet/dist/leaflet.css'
-// import LeafletJS from 'leaflet/dist/leaflet.js'
 export interface Props {
   loc: [number, number]
   zoom: number
@@ -8,8 +6,9 @@ export interface Props {
 
 const { loc, zoom } = Astro.props
 ---
-<!-- <script is:inline type="module" src={LeafletJS}>
-</script> -->
+<link is:inline rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+crossorigin=""/>
 <script
   is:inline
   src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
