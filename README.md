@@ -24,7 +24,7 @@ This project initially started as a bare bones port of [hello-gatsby-starter](ht
 
 - Full-featured blog with frontmatter (title, description, author, date, image, tags)
 - High performance low overhead with minimal Javascript (AlpineJS)
-- Full text client based search of blog pages via lunrjs
+- Full text client based search of blog pages via lunrjs (search index only loaded on first invocation of search on a page)
 - Categories index page and individual category pages
 - Tags index page and individual tag pages
 - Pagination for blog, category and tag pages
@@ -37,7 +37,9 @@ This project initially started as a bare bones port of [hello-gatsby-starter](ht
 - Customised 404 error page
 - Display math equations using KaTeX via remark-math/rehype-katex (enclosed in `$`...`$` or `$$`...`$$`)
 - Display Mermaid, Markmap, PlantUML diagrams (authored as a code block with language `mermaid`, `markmap` and `plantuml`)
+- Display map at geo coordinates and zoom level using `Map` component (need to also include `extra: ['map']` is frontmatter to load CSS/JS assets for page)
 - Calculates and show reading time for blog posts
+- CSS/JS assets of external libraries loaded only when needed on a per page and per package basis - no unnecessary bloat
 
 ## External Packages 
 
@@ -57,6 +59,8 @@ The start uses the following external packages:
 - Local full text search using [Lunr](https://lunrjs.com)
 - Math equations using [KaTeX](https://katex.org) via [remark-math and rehype-katex](https://github.com/remarkjs/remark-math)
 - Diagrams using [Mermaid](https://mermaid-js.github.io/mermaid/#/), [Markmap](https://markmap.js.org) and [PlantUML](https://plantuml.com)
+- Open Street Map using [Leaflet](https://leafletjs.com/)
+- [reading-time](https://github.com/ngryman/reading-time)
 
 It follows the [JAMstack architecture](https://jamstack.org) by automatically building a static version from the Git repository. The demo is deployed on Github Pages.
 

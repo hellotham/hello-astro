@@ -79,11 +79,14 @@ const otherPosts = posts.slice(1, 5)
           </div>
           <a href={newestPost.url}>
             <h1
-              class="text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300 text-4xl font-bold mt-2 mb-2 leading-tight"
+              class="text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300 text-4xl font-bold mt-2 leading-tight"
             >
               {newestPost.frontmatter.title}
             </h1>
           </a>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            {newestPost.frontmatter.publishDate?.slice(0, 10)}
+          </p>
           <p class="text-gray-600 dark:text-gray-400 mb-4">
             {newestPost.frontmatter.description}
           </p>
@@ -122,13 +125,16 @@ const otherPosts = posts.slice(1, 5)
                     <Tags tags={post.frontmatter.tags} />
                   )}
                   <a href={post.url}>
-                    <div class="md:mt-0 text-gray-800 dark:text-gray-200 font-semibold text-xl mb-2">
+                    <div class="md:mt-1 text-gray-800 dark:text-gray-200 font-semibold text-xl">
                       {post.frontmatter.title}
                     </div>
-                  </a>
-                  <p class="block md:hidden p-2 pl-0 pt-1 text-sm text-gray-600 dar:text-gray-400">
-                    {post.frontmatter.description}
-                  </p>
+                    </a>
+                    <p class="block text-sm text-gray-600 dar:text-gray-400">
+                      {post.frontmatter.publishDate?.slice(0, 10)}
+                    </p>
+                    <p class="block md:hidden text-sm text-gray-600 dar:text-gray-400">
+                      {post.frontmatter.description}
+                    </p>
                 </div>
               </div>
             ))
