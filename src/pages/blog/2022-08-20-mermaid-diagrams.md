@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/withmermaid.astro
+layout: ../../layouts/blog.astro
 title: Mermaid Diagrams
 description: Generate mermaid diagrams in blog posts.
 author: Chris Tham

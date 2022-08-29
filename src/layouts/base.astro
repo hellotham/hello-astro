@@ -37,11 +37,34 @@ const { frontmatter } = Astro.props
     <style is:inline>
       [x-cloak] { display: none !important; }
     </style>
+    {frontmatter.extra?.includes('math') &&
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.1/dist/katex.min.css" integrity="sha384-pe7s+HmY6KvqRkrRRUr4alQJ0SkmzCft3RpK1ttGMa7qk8Abp/MEa/4wgceRHloO" crossorigin="anonymous">
+    }
+    {frontmatter.extra?.includes('markmap') &&
+      <style>
+        .markmap > svg {
+          width: 100%;
+          height: 400px;
+        }
+        </style>
+      }
     <slot name="in-head" />
-  </head>
-  <body class="dark:bg-gray-900">
-    <Header />
-    <slot />
-    <Footer />
+    </head>
+    <body class="dark:bg-gray-900">
+      {frontmatter.extra?.includes('mermaid') &&
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+        <script>
+          mermaid.initialize({startOnLoad:true});
+        </script>
+      }
+      <Header />
+    {frontmatter.extra?.includes('mermaid') &&
+      <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    }
+      <slot />
+      <Footer />
+      {frontmatter.extra?.includes('markmap') &&
+        <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+      }
   </body>
 </html>

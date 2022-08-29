@@ -43,8 +43,6 @@ This website is open source (MIT licence) - fork it and customise for your needs
 - Full SEO support including Open Graph, Twitter Cards and Schema.org via JSON-LD
 - Full support for Light and dark UI modes, as well as following system preferences, in accordance to TailwindCSS recommendation
 - Customised 404 error page
-- Display math equations using KaTeX via remark-math/rehype-katex (using the `withmath` layout, for now))
-- Display Mermaid diagrams (as a code block with language `mermaid` and using the `withmermaid` layout, for now)
-- Display Markmap diagrams (as a code block with language `markmap` and using the `withmarkmap` layout, for now)
-- Display PlantUML diagrams (as a code block with language `plantuml`)
+- Display math equations using KaTeX via remark-math/rehype-katex (enclosed in `$`...`$` or `$$`...`$$`)
+- Display Mermaid, Markmap, PlantUML diagrams (authored as a code block with language `mermaid`, `markmap` and `plantuml`)
 - Calculates and show reading time for blog posts

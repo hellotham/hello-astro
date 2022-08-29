@@ -9,8 +9,8 @@ import robotsTxt from 'astro-robots-txt'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import remarkPlantUML from '@akebifiky/remark-simple-plantuml'
-import remarkCodeExtra from 'remark-code-extra'
-import { remarkReadingTime } from './remark-reading-time.mjs';
+import { remarkReadingTime } from './remark-plugins/remark-reading-time.mjs';
+import { remarkDiagram } from './remark-plugins/remark-diagram.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -31,14 +31,7 @@ export default defineConfig({
       remarkReadingTime,
       remarkMath,
       remarkPlantUML,
-      [remarkCodeExtra, {
-        transform: node => (node.lang == 'markmap' || node.lang == 'mermaid') && ({ 
-          transform: node => {
-            node.data.hProperties.className = [node.lang]
-            node.data.hChildren = [{type: 'text', value: node.value}]
-          }
-        })
-      }]
+      remarkDiagram,
     ],
     rehypePlugins: [rehypeKatex],
     shikiConfig: {

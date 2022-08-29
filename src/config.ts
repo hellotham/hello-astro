@@ -14,6 +14,7 @@ export interface Frontmatter {
   file?: string
   url?: string
   minutesRead?: string
+  extra?: string[]
 }
 
 export interface TagType {

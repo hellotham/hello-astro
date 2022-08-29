@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/withmarkmap.astro
+layout: ../../layouts/blog.astro
 title: Mind Map Diagram
 description: MDX post illustrating the use of Markmap component to generate mind map diagrams.
 author: Chris Tham
