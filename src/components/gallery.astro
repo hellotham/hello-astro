@@ -1,0 +1,126 @@
+---
+import { Image } from '@astrojs/image/components'
+export interface Props {
+  folder: string
+}
+
+const { folder } = Astro.props
+
+const imageFiles = import.meta.glob<ImageMetadata>('../images/gallery/**/*.{png,webp,jpg,jpeg}', { import: 'default', eager: true })
+const folderFiles = Object.keys(imageFiles).filter(image => image.search(folder) >= 0)
+const images = folderFiles.map(image => imageFiles[image])
+const imagetitles = folderFiles.map(image => image.slice(0, image.lastIndexOf('.')).slice(image.lastIndexOf('/') + 1))
+console.log(images)
+---
+<link rel="stylesheet" href='https://unpkg.com/photoswipe/dist/photoswipe.css' crossorigin="anonymous">
+<link rel="stylesheet" href='https://unpkg.com/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css' crossorigin="anonymous">
+<style>
+  .gallery {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (min-width: 480px) {
+    .gallery {
+      column-count: 1;
+      column-gap: 3px;
+    }
+  }
+
+  /* Small Devices, Tablets */
+  @media only screen and (min-width: 768px) {
+    .gallery {
+      column-count: 2;
+      column-gap: 3px;
+    }
+  }
+
+  /* Medium Devices, Desktops */
+  @media only screen and (min-width: 992px) {
+    .gallery { /* Masonry container */
+      column-count: 2;
+      column-gap: 3px;
+    }
+  }
+
+  /* Large Devices, Wide Screens */
+  @media only screen and (min-width: 1200px) {
+    .gallery {
+      column-count: 3;
+      column-gap: 0.2rem;
+      width: 100%;
+    }
+  }
+
+  /* Masonry bricks or child elements */
+  .gallery-item {
+    background-color: #eee;
+    display: inline-block;
+    margin: 0 0 0.2rem;
+    width: auto;
+  }
+
+  .pswp--custom-icon-colors {
+    --pswp-icon-color: $rosely5;
+    --pswp-icon-color-secondary: $rosely8;
+  }
+
+  .pswp__dynamic-caption--aside {
+    max-width: 300px;
+    padding: 20px 15px 20px 20px;
+    margin-top: 70px;
+  }
+
+  .pswp__dynamic-caption--below {
+    max-width: 700px;
+    padding: 15px 0 0;
+  }
+
+  .pswp__dynamic-caption--mobile {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
+  }
+</style>
+<p><i><small>Please click on any photo to view full screen.</small></i></p>
+<div id="gallery" class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
+  {images.map((image, i) => (
+    <figure itemscope itemtype="http://schema.org/ImageObject" class="image gallery-item">
+    <a href={image.src} itemprop="contentUrl" data-pswp-width={image.width} data-pswp-height={image.height}>
+      <Image src={image} alt={imagetitles[i]} width={600} height={image.height * 600/image.width} format="webp" class="galleryImage" />
+      <span class="pswp-caption-content">
+        {imagetitles[i]}
+        <span>{' (' + image.format.toString() + ')'}</span>
+      </span>
+    </a>
+    <figcaption itemprop="caption description" >
+      {imagetitles[i]}
+    </figcaption>
+    </figure>
+
+  ))}
+</div>
+<script type="module">
+import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js';
+import PhotoSwipeDynamicCaption from 'https://unpkg.com/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.esm.js';
+
+const lightbox = new PhotoSwipeLightbox({
+  mainClass: 'pswp--custom-icon-colors',
+  gallerySelector: '#gallery',
+  childSelector: 'a',
+  pswpModule: () => import('https://unpkg.com/photoswipe'),
+  paddingFn: (viewportSize) => {
+    return {
+      top: 0, bottom: 30, left: 0, right: 0
+    }
+  },
+});
+
+const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+  captionContent: '.pswp-caption-content',
+  type: 'below',
+});
+
+lightbox.init();
+</script>

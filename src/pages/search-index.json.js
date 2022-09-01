@@ -1,6 +1,6 @@
 import lunr from 'lunr'
 
-const postImportResult = import.meta.glob('./blog/*.{md,mdx}', { eager: true })
+const postImportResult = import.meta.glob('./blog/**/*.{md,mdx}', { eager: true })
 const posts = Object.values(postImportResult).filter(post => !post.frontmatter.draft)
 const documents = posts.map(post => ({
   url: post.url,

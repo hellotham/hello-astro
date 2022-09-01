@@ -25,6 +25,7 @@ This is starter template for a full featured marketing and blog website based on
 - Diagrams using [Mermaid](https://mermaid-js.github.io/mermaid/#/), [Markmap](https://markmap.js.org) and [PlantUML](https://plantuml.com)
 - Open Street Map using [Leaflet](https://leafletjs.com/)
 - [reading-time](https://github.com/ngryman/reading-time)
+- [PhotoSwipe](https://photoswipe.com)
 
 It follows the [JAMstack architecture](https://jamstack.org) by automatically building a static version from the Git repository. The demo is deployed on Github Pages.
 
@@ -39,7 +40,6 @@ This website is open source (MIT licence) - fork it and customise for your needs
 - Tags index page and individual tag pages
 - Pagination for blog, category and tag pages
 - Support for RSS feed, sitemap and robots.txt
-- Automatic optimization of images in Markdown/MDX posts
 - SVG design (unDraw, Hero Patterns, Iconify)
 - Support for code syntax highlighting
 - Full SEO support including Open Graph, Twitter Cards and Schema.org via JSON-LD
@@ -50,3 +50,4 @@ This website is open source (MIT licence) - fork it and customise for your needs
 - Display map at geo coordinates and zoom level using `Map` component (need to also include `extra: ['map']` is frontmatter to load CSS/JS assets for page)
 - Calculates and show reading time for blog posts
 - CSS/JS assets of external libraries loaded only when needed on a per page and per package basis - no unnecessary bloat
+- Photo gallery and lightbox

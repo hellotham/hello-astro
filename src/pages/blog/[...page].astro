@@ -30,7 +30,7 @@ const frontmatter: Frontmatter = {
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const allPosts = (await Astro.glob<MarkdownInstance<Frontmatter>>(
-    '../blog/*.{md,mdx}'
+    '../blog/**/*.{md,mdx}'
   ))
   const posts = allPosts
     .sort(
