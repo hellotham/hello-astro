@@ -10,7 +10,7 @@ const imageFiles = import.meta.glob<ImageMetadata>('../images/gallery/**/*.{png,
 const folderFiles = Object.keys(imageFiles).filter(image => image.search(folder) >= 0)
 const images = folderFiles.map(image => imageFiles[image])
 const imagetitles = folderFiles.map(image => image.slice(0, image.lastIndexOf('.')).slice(image.lastIndexOf('/') + 1))
-console.log(images)
+// console.log(images)
 ---
 <link rel="stylesheet" href='https://unpkg.com/photoswipe/dist/photoswipe.css' crossorigin="anonymous">
 <link rel="stylesheet" href='https://unpkg.com/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css' crossorigin="anonymous">
@@ -54,17 +54,9 @@ console.log(images)
     }
   }
 
-  /* Masonry bricks or child elements */
-  .gallery-item {
-    background-color: #eee;
-    display: inline-block;
-    margin: 0 0 0.2rem;
-    width: auto;
-  }
-
   .pswp--custom-icon-colors {
-    --pswp-icon-color: $rosely5;
-    --pswp-icon-color-secondary: $rosely8;
+    --pswp-icon-color: #eee;
+    --pswp-icon-color-secondary: #663399;
   }
 
   .pswp__dynamic-caption--aside {
@@ -83,18 +75,18 @@ console.log(images)
     padding: 10px 15px;
   }
 </style>
-<p><i><small>Please click on any photo to view full screen.</small></i></p>
-<div id="gallery" class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
+<p class="text-sm text-gray-500 italic">Please click on any photo to view full screen.</p>
+<div id="gallery" class="w-full block mx-auto columns-1 gap-1 sm:columns-2 lg:columns-3 not-prose" itemscope itemtype="http://schema.org/ImageGallery">
   {images.map((image, i) => (
-    <figure itemscope itemtype="http://schema.org/ImageObject" class="image gallery-item">
+    <figure itemscope itemtype="http://schema.org/ImageObject" class="inline-block text-gray-800 dark:text-gray-300 bg-gray-300 dark:bg-gray-800 text-sm text-center italic rounded">
     <a href={image.src} itemprop="contentUrl" data-pswp-width={image.width} data-pswp-height={image.height}>
-      <Image src={image} alt={imagetitles[i]} width={600} height={image.height * 600/image.width} format="webp" class="galleryImage" />
+      <Image src={image} alt={imagetitles[i]} width={600} height={image.height * 600/image.width} format="webp" class="rounded" />
       <span class="pswp-caption-content">
         {imagetitles[i]}
         <span>{' (' + image.format.toString() + ')'}</span>
       </span>
     </a>
-    <figcaption itemprop="caption description" >
+    <figcaption itemprop="caption description" class="rounded">
       {imagetitles[i]}
     </figcaption>
     </figure>
