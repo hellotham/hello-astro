@@ -39,7 +39,8 @@ This project initially started as a bare bones port of [hello-gatsby-starter](ht
 - Display map at geo coordinates and zoom level using `Map` component (need to also include `extra: ['map']` is frontmatter to load CSS/JS assets for page)
 - Calculates and show reading time for blog posts
 - CSS/JS assets of external libraries loaded only when needed on a per page and per package basis - no unnecessary bloat
-- Photo gallery and lightbox (including display of EXIF tags)
+- Photo gallery and lightbox using PhotoSwipe (including display of EXIF tags)
+- Carousel component using Swiper
 
 ## External Packages 
 
@@ -63,6 +64,7 @@ The start uses the following external packages:
 - [reading-time](https://github.com/ngryman/reading-time)
 - [PhotoSwipe](https://photoswipe.com)
 - [exifr](https://mutiny.cz/exifr/)
+- [Swiper](https://swiperjs.com/)
 
 It follows the [JAMstack architecture](https://jamstack.org) by automatically building a static version from the Git repository. The demo is deployed on Github Pages.
 
