@@ -1,0 +1,46 @@
+---
+import { SIDEBAR } from '../config'
+
+type Props = {
+  currentPage: string
+}
+
+const { currentPage } = Astro.props as Props
+const currentPageMatch = currentPage.slice(1)
+---
+<div class="hidden lg:sticky lg:top-16 lg:-ml-6 lg:block lg:h-[calc(100vh-4rem)] lg:flex-none lg:overflow-y-auto lg:py-16 lg:pl-6 bg-purple-50 dark:bg-gray-800">
+  <nav aria-labelledby="grid-left" class="text-base lg:text-sm w-64 pr-8 xl:w-72 xl:pr-16">
+    <ul role="list" class="space-y-9">
+      {
+        Object.entries(SIDEBAR).map(([header, children]) => (
+          <li>
+            <div class="nav-group">
+              <h2 class="font-display font-medium text-purple-800 dark:text-white">{header}</h2>
+              <ul role="list"
+              class="mt-2 space-y-1 border-l-2 border-purple-200 dark:border-purple-700 lg:mt-4 lg:space-y-2 lg:border-purple-300">
+                {children.map(child => {
+                  const url = import.meta.env.BASE_URL + child.link
+                  return (
+                    <li class="relative">
+                      <a
+                        href={url}
+                        aria-current={ currentPageMatch.search(child.link) >= 0 ? 'page' : false }
+                        class={currentPageMatch.search(child.link) >= 0 ?
+                          "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full font-semibold text-pink-500 before:bg-pink-500"
+                        :
+                          "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-gray-500 before:hidden before:bg-purple-400 hover:text-purple-700 hover:before:block dark:text-gray-400 dark:before:bg-purple-500 dark:hover:text-purple-300"
+                        }
+                      >
+                        {child.text}
+                      </a>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</div>

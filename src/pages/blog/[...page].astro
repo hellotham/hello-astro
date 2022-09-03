@@ -52,6 +52,18 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
       coverSVG={frontmatter.coverSVG}
       socialImage={frontmatter.socialImage}
     >
+      <a
+        href={import.meta.env.BASE_URL + 'categories'}
+        class="inline-block px-2 py-1 mt-2 rounded-md text-white bg-purple-600 hover:bg-pink-600 text-base md:text-lg"
+      >
+        Categories
+      </a>
+      <a
+        href={import.meta.env.BASE_URL + 'tags'}
+        class="inline-block px-2 py-1 mt-2 ml-4 rounded-md text-white bg-purple-600 hover:bg-pink-600 text-base md:text-lg"
+      >
+        Tags
+      </a>
       <PaginateControl page={page} />
     </PageHero>
   </header>

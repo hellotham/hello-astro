@@ -54,3 +54,4 @@ This website is open source (MIT licence) - fork it and customise for your needs
 - CSS/JS assets of external libraries loaded only when needed on a per page and per package basis - no unnecessary bloat
 - Photo gallery and lightbox using PhotoSwipe (including display of EXIF tags)
 - Carousel component using Swiper
+- Documentation pages (modelled after astro docs starter but using Tailwind)

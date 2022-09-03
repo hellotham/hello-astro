@@ -1,0 +1,21 @@
+---
+import TableOfContents from './tableofcontents.astro'
+import MoreMenu from './moremenu.astro'
+import type { MarkdownHeading } from 'astro'
+
+type Props = {
+  headings: MarkdownHeading[]
+  githubEditUrl: string
+}
+
+const { headings, githubEditUrl } = Astro.props as Props
+---
+
+<div class="hidden xl:sticky xl:top-16 xl:-mr-6 xl:block xl:h-[calc(100vh-4rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6">
+  <nav aria-labelledby="on-this-page-title" class="w-56">
+    <div>
+      <TableOfContents headings={headings} />
+      <MoreMenu editHref={githubEditUrl} />
+    </div>
+  </nav>
+</div>

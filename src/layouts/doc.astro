@@ -1,0 +1,43 @@
+---
+import type { Frontmatter } from '../config'
+import Base from './base.astro'
+import PageContent from '../components/pagecontent.astro'
+import LeftSidebar from '../components/leftsidebar.astro'
+import RightSidebar from '../components/rightsidebar.astro'
+import * as CONFIG from '../config'
+import type { MarkdownHeading } from 'astro'
+
+type Props = {
+  frontmatter: Frontmatter
+  headings: MarkdownHeading[]
+}
+
+const { frontmatter, headings } = Astro.props
+const currentPage = Astro.url.toString()
+const currentFile = `src/pages/${Astro.url.pathname.replace(import.meta.env.BASE_URL, '').replace(/\/$/, '')}.md`
+const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`
+---
+
+<Base frontmatter={frontmatter}>
+  <main class="relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12 bg-white dark:bg-slate-900">
+    <aside id="grid-left" class="grid-sidebar" title="Site Navigation">
+      <LeftSidebar currentPage={currentPage} />
+    </aside>
+    <div id="grid-main">
+      <PageContent
+        frontmatter={frontmatter}
+        headings={headings}
+        githubEditUrl={githubEditUrl}
+      >
+      <section
+        class="prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold dark:prose-a:text-sky-400 prose-a:no-underline prose-a:shadow-[inset_0_-2px_0_0_var(--tw-prose-background,#fff),inset_0_calc(-1*(var(--tw-prose-underline-size,4px)+2px))_0_0_var(--tw-prose-underline,theme(colors.sky.300))] hover:prose-a:[--tw-prose-underline-size:6px] dark:[--tw-prose-background:theme(colors.slate.900)] dark:prose-a:shadow-[inset_0_calc(-1*var(--tw-prose-underline-size,2px))_0_0_var(--tw-prose-underline,theme(colors.sky.800))] dark:hover:prose-a:[--tw-prose-underline-size:6px] prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10 dark:prose-hr:border-slate-800"
+      >
+        <slot />
+      </section>
+      </PageContent>
+    </div>
+    <aside id="grid-right" class="grid-sidebar" title="Table of Contents">
+      <RightSidebar headings={headings} githubEditUrl={githubEditUrl} />
+    </aside>
+  </main>
+</Base>

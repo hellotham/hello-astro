@@ -1,0 +1,31 @@
+---
+import type { Frontmatter } from '../config'
+import MoreMenu from './moremenu.astro'
+import TableOfContents from './tableofcontents.astro'
+import type { MarkdownHeading } from 'astro'
+
+type Props = {
+  frontmatter: Frontmatter
+  headings: MarkdownHeading[]
+  githubEditUrl: string
+}
+
+const { frontmatter, headings, githubEditUrl } = Astro.props as Props
+const title = frontmatter.title
+---
+
+<article id="article" class="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
+  <section class="mb-9 space-y-1">
+    <p class="font-display text-sm font-medium text-purple-600 dark:text-purple-300">
+      {frontmatter.section}
+    </p>
+    <h1 class="font-display text-3xl tracking-tight text-slate-900 dark:text-white">{title}</h1>
+    <nav class="block sm:hidden">
+      <TableOfContents headings={headings} />
+    </nav>
+    <slot />
+  </section>
+  <nav class="block sm:hidden">
+    <MoreMenu editHref={githubEditUrl} />
+  </nav>
+</article>

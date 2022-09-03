@@ -10,6 +10,6 @@ export interface Props {
 const { posts } = Astro.props
 ---
 
-<div class="space-y-12 lg:space-y-0 flex flex-wrap mb-24 dark:bg-gray-900">
+<div class="space-y-12 lg:space-y-0 flex flex-wrap dark:bg-gray-900">
   {posts.map(post => <BlogCard post={post} />)}
 </div>

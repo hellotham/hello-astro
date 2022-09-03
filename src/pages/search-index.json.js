@@ -1,14 +1,14 @@
 import lunr from 'lunr'
 
-const postImportResult = import.meta.glob('./blog/**/*.{md,mdx}', { eager: true })
+const postImportResult = import.meta.glob('./**/*.{md,mdx}', { eager: true })
 const posts = Object.values(postImportResult).filter(post => !post.frontmatter.draft)
 const documents = posts.map(post => ({
   url: post.url,
   title: post.frontmatter.title,
   description: post.frontmatter.description,
   author: post.frontmatter.author,
-  categories: post.frontmatter.categories.join(' '),
-  tags: post.frontmatter.tags.join(' '),
+  categories: post.frontmatter.categories && post.frontmatter.categories.join(' '),
+  tags: post.frontmatter.tags && post.frontmatter.tags.join(' '),
   content: post.file.search(/.mdx$/) >= 0 ? '' : post.rawContent(),
 }))
 const idx = lunr(function () {
