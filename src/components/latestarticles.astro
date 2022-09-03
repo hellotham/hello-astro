@@ -1,7 +1,7 @@
 ---
 import type { MarkdownInstance } from 'astro'
 import type { Frontmatter } from '../config'
-import Tags from '../components/tags.astro'
+import Categories from '../components/categories.astro'
 import SVGImg from '../components/svgimg.astro'
 import Img from '../components/img.astro'
 
@@ -72,8 +72,8 @@ const otherPosts = posts.slice(1, 5)
           </a>
           <div class="mt-4">
             {
-              newestPost.frontmatter.tags && (
-                <Tags tags={newestPost.frontmatter.tags} />
+              newestPost.frontmatter.categories && (
+                <Categories categories={newestPost.frontmatter.categories} />
               )
             }
           </div>
@@ -121,8 +121,8 @@ const otherPosts = posts.slice(1, 5)
                   )}
                 </a>
                 <div class="bg-white dark:bg-gray-800 rounded px-4 md:col-span-2">
-                  {post.frontmatter.tags && (
-                    <Tags tags={post.frontmatter.tags} />
+                  {post.frontmatter.categories && (
+                    <Categories categories={post.frontmatter.categories} />
                   )}
                   <a href={post.url}>
                     <div class="md:mt-1 text-gray-800 dark:text-gray-100 font-semibold text-xl">

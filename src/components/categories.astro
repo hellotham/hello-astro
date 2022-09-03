@@ -6,7 +6,7 @@ export interface Props {
 const { categories } = Astro.props
 ---
 {categories &&
-  <div class="flex flex-row flex-wrap items-start gap-2">
+  <div class="flex flex-row flex-wrap items-start gap-2 pb-2">
     {
       categories.map(category => (
         <a
