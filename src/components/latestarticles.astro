@@ -107,7 +107,7 @@ const otherPosts = posts.slice(1, 5)
                     <SVGImg
                       src={post.frontmatter.coverSVG}
                       alt={post.frontmatter.title + ' featured image'}
-                      class="block lg:block rounded-md h-64 md:h-32 m-4 md:m-0 object-cover bg-purple-100 dark:bg-purple-800"
+                      class="block lg:block rounded-md w-full h-64 md:h-32 m-4 md:m-0 object-cover bg-purple-100 dark:bg-purple-800"
                     />
                   ) : (
                     <Img
@@ -116,7 +116,7 @@ const otherPosts = posts.slice(1, 5)
                         post.frontmatter.socialImage
                       }
                       alt={post.frontmatter.title + ' featured image'}
-                      class="block lg:block rounded-md h-64 md:h-32 m-4 md:m-0 object-cover bg-purple-100 dark:bg-purple-800"
+                      class="block lg:block rounded-md w-full h-64 md:h-32 m-4 md:m-0 object-cover bg-purple-100 dark:bg-purple-800"
                     />
                   )}
                 </a>
