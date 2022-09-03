@@ -125,14 +125,14 @@ const otherPosts = posts.slice(1, 5)
                     <Tags tags={post.frontmatter.tags} />
                   )}
                   <a href={post.url}>
-                    <div class="md:mt-1 text-gray-800 dark:text-gray-200 font-semibold text-xl">
+                    <div class="md:mt-1 text-gray-800 dark:text-gray-100 font-semibold text-xl">
                       {post.frontmatter.title}
                     </div>
                     </a>
-                    <p class="block text-sm text-gray-600 dar:text-gray-400">
+                    <p class="block text-sm text-gray-600 dark:text-gray-300">
                       {post.frontmatter.publishDate?.slice(0, 10)}
                     </p>
-                    <p class="block md:hidden text-sm text-gray-600 dar:text-gray-400">
+                    <p class="block md:hidden text-sm text-gray-600 dark:text-gray-300">
                       {post.frontmatter.description}
                     </p>
                 </div>
