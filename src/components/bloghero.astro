@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon'
-import type { Frontmatter } from '../config'
+import { authorDetail, Frontmatter } from '../config'
 import Categories from '../components/categories.astro'
 import Tags from '../components/tags.astro'
 import SVGImg from '../components/svgimg.astro'
@@ -44,9 +44,9 @@ const { frontmatter } = Astro.props
     <span class="flex mt-3">
       {frontmatter.author && (
         <span class="flex items-center mr-6">
-          <SVGImg
-            src="../svg/astro/logomark-light.svg"
-            alt="Author profile"
+          <Img
+            src={authorDetail(frontmatter.author).image}
+            alt={frontmatter.author}
             class="h-10 w-10 rounded-full mr-2 object-cover"
           />
           <Icon class="w-6 h-6 mr-1 text-purple-200" pack="heroicons-outline" name="user-circle" />
