@@ -1,7 +1,7 @@
 ---
 import type { MarkdownInstance } from 'astro'
 import type { Frontmatter } from '../config'
-import { CategoryDetail } from '../config'
+import { CategoryDetail, SiteMetadata } from '../config'
 import Base from '../layouts/base.astro'
 import PageHero from '../components/pagehero.astro'
 import SVGImg from '../components/svgimg.astro'
@@ -11,7 +11,7 @@ const frontmatter: Frontmatter = {
   description: 'Categories for articles',
   coverSVG: '../svg/undraw/undraw_windows.svg',
   socialImage: '/images/undraw/undraw_windows.png',
-  publishDate: '2022-08-08T00:00:00.000Z',
+  publishDate: SiteMetadata.buildTime,
 }
 
 const allPosts = (await Astro.glob(
@@ -26,6 +26,20 @@ const posts = allPosts
   .filter(post => !post.frontmatter.draft)
 
 const categories = Array.from(new Set(posts.flatMap(post => post.frontmatter.categories)))
+
+function categoryDetail(category: string | undefined) {
+  const details = CategoryDetail.filter(cat => cat.category == category)
+
+  if (details.length == 1) {
+    return details[0]
+  }
+  return {
+    category: 'category',
+    coverSVG: '../svg/undraw/undraw_instant_information.svg',
+    socialImage: '/images/undraw/undraw_instant_information.png',
+    description: 'Category ' + category
+  }
+}
 ---
 
 <Base frontmatter={frontmatter}>
@@ -44,7 +58,7 @@ const categories = Array.from(new Set(posts.flatMap(post => post.frontmatter.cat
           {categories.map((category) => (
             <div class="group relative">
               <div class="relative w-full h-80 mb-4 bg-purple-100 dark:bg-purple-600 rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-                <SVGImg src={CategoryDetail.filter(cat => cat.category == category)[0].coverSVG} alt={CategoryDetail.filter(cat => cat.category == category)[0].description} class="w-full h-full object-center object-cover" />
+                <SVGImg src={categoryDetail(category).coverSVG} alt={categoryDetail(category).description} class="w-full h-full object-center object-cover" />
               </div>
               <h3 class="inline-block py-1 px-3 rounded bg-purple-600 hover:bg-pink-600 text-white text-xs font-medium tracking-tight uppercase">
                 <a href={`${import.meta.env.BASE_URL}category/${category}/`}>
@@ -52,7 +66,7 @@ const categories = Array.from(new Set(posts.flatMap(post => post.frontmatter.cat
                   {category}
                 </a>
               </h3>
-              <p class="text-base text-gray-900 dark:text-gray-400">{CategoryDetail.filter(cat => cat.category == category)[0].description}</p>
+              <p class="text-base text-gray-900 dark:text-gray-400">{categoryDetail(category).description}</p>
             </div>
           ))}
         </div>

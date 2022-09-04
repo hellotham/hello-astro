@@ -18,19 +18,19 @@ const { post } = Astro.props
   <div
     class="h-full border-1 border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden p-2"
   >
-    <a href={post.url} class="aspect-w-3 aspect-h-2">
+    <a href={post.url}>
       {
         post.frontmatter.coverSVG ? (
           <SVGImg
             src={post.frontmatter.coverSVG}
             alt={post.frontmatter.title + ' featured image'}
-            class="relative w-full h-48 bg-purple-100 dark:bg-purple-800 rounded-lg overflow-hidden group-hover:opacity-75 sm:h-40 object-center object-cover"
+            class="relative w-full h-64 bg-purple-100 dark:bg-purple-800 rounded-lg overflow-hidden group-hover:opacity-75 object-center object-cover"
           />
         ) : (
           <Img
             src={post.frontmatter.coverImage || post.frontmatter.socialImage}
             alt={post.frontmatter.title + ' featured image'}
-            class="relative w-full h-48 bg-purple-100 dark:bg-purple-800 rounded-lg overflow-hidden group-hover:opacity-75 sm:h-40 object-center object-cover"
+            class="relative w-full h-64 bg-purple-100 dark:bg-purple-800 rounded-lg overflow-hidden group-hover:opacity-75 object-center object-cover"
           />
         )
       }

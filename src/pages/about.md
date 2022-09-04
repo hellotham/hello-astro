@@ -38,9 +38,7 @@ This website is open source (MIT licence) - fork it and customise for your needs
 - Full-featured blog with frontmatter (title, description, author, date, image, tags)
 - High performance low overhead with minimal Javascript (AlpineJS)
 - Full text client based search of blog pages via lunrjs (search index only loaded on first invocation of search on a page)
-- Categories index page and individual category pages
-- Tags index page and individual tag pages
-- Pagination for blog, category and tag pages
+- Index page and individual pages for authors, categories and tags, including pagination
 - Support for RSS feed, sitemap and robots.txt
 - SVG design (unDraw, Hero Patterns, Iconify)
 - Support for code syntax highlighting

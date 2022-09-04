@@ -1,6 +1,7 @@
 ---
 import type { MarkdownInstance } from 'astro'
 import type { Frontmatter, TagType } from '../config'
+import { SiteMetadata } from '../config'
 import Base from '../layouts/base.astro'
 import PageHero from '../components/pagehero.astro'
 import {
@@ -92,9 +93,9 @@ const patterns = [
 const frontmatter: Frontmatter = {
   title: 'Tags',
   description: 'Articles by tags',
-  coverSVG: '../svg/undraw/undraw_windows.svg',
-  socialImage: '/images/undraw/undraw_windows.png',
-  publishDate: '2022-08-08T00:00:00.000Z',
+  coverSVG: '../svg/undraw/undraw_add_notes.svg',
+  socialImage: '/images/undraw/undraw_add_notes.png',
+  publishDate: SiteMetadata.buildTime,
 }
 
 const allPosts = (await Astro.glob(

@@ -114,6 +114,31 @@ export const CategoryDetail = [
   },
 ]
 
+export const AuthorDetail = [
+  {
+    name: 'Chris Tham',
+    description: 'Hello World',
+    contact: 'chris@christham.net',
+    image: '../images/authors/Chris Tham.jpg'
+  }
+]
+
+export const DefaultAuthor = {
+  name: 'Hello Astro',
+  image: '../images/authors/default.png',
+  contact: 'info@hellotham.com',
+  description: 'Astronaut'
+}
+
+export function authorDetail(author: string | undefined) {
+  const details = AuthorDetail.filter(person => person.name == author)
+
+  if (details.length == 1) {
+    return details[0]
+  }
+  return DefaultAuthor
+}
+
 export const PAGE_SIZE = 6
 
 export const GITHUB_EDIT_URL = `https://github.com/hellotham/hello-astro`
