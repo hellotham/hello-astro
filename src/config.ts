@@ -86,10 +86,10 @@ export const SiteMetadata = {
 }
 
 export const Logo = '../svg/astro/logomark-light.svg'
-export const LogoImage = '/images/astro/full-logo-light.png'
+export const LogoImage = '../images/astro/full-logo-light.png'
 export const FeaturedSVG = '../svg/undraw/undraw_design_inspiration.svg'
 export const DefaultSVG = '../svg/undraw/undraw_my_feed.svg'
-export const DefaultImage = '/images/undraw/undraw_my_feed.png'
+export const DefaultImage = '../images/undraw/undraw_my_feed.png'
 
 export const NavigationLinks = [
   { name: 'Home', href: '' },
@@ -103,17 +103,30 @@ export const CategoryDetail = [
   {
     category: 'instructions',
     coverSVG: '../svg/undraw/undraw_instruction_manual.svg',
-    socialImage: '/images/undraw/undraw_instruction_manual.png',
+    socialImage: '../images/undraw/undraw_instruction_manual.png',
     description: 'Guidelines on using this starter.'
   },
   {
     category: 'information',
     coverSVG: '../svg/undraw/undraw_instant_information.svg',
-    socialImage: '/images/undraw/undraw_instant_information.png',
+    socialImage: '../images/undraw/undraw_instant_information.png',
     description: 'Information articles.'
   },
 ]
 
+export function categoryDetail(category: string | undefined) {
+  const details = CategoryDetail.filter(cat => cat.category == category)
+
+  if (details.length == 1) {
+    return details[0]
+  }
+  return {
+    category: 'General',
+    coverSVG: '../svg/undraw/undraw_instant_information.svg',
+    socialImage: '../images/undraw/undraw_instant_information.png',
+    description: 'Category ' + category,
+  }
+}
 export const AuthorDetail = [
   {
     name: 'Chris Tham',

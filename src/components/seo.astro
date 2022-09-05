@@ -20,14 +20,15 @@ const { frontmatter } = Astro.props
 const siteurl = new URL(import.meta.env.BASE_URL, Astro.url)
 const type = Astro.url.toString().includes('blog') ? 'post' : 'page'
 const year = parseInt(SiteMetadata.buildTime.slice(0, 4))
-const image = siteurl + (frontmatter.socialImage || DefaultImage).slice(1)
-const logo = siteurl + LogoImage.slice(1)
+const images = import.meta.glob<ImageMetadata>('../images/**/*', { import: 'default' })
+const image = await images[frontmatter.socialImage || frontmatter.coverImage || DefaultImage]()
+const logo = await images[LogoImage]()
 
 const openGraph = {
   basic: {
     title: frontmatter.title,
     type: 'website',
-    image: image,
+    image: image.src,
   },
   optional: {
     description: frontmatter.description,
@@ -69,7 +70,7 @@ const website: WithContext<WebSite> = {
   description: SiteMetadata.description,
   image: {
     '@type': 'ImageObject',
-    url: image,
+    url: image.src,
   },
   inLanguage: 'en',
   name: SiteMetadata.title,
@@ -96,11 +97,11 @@ const organization: WithContext<Organization> = {
   location: SiteMetadata.location,
   image: {
     '@type': 'ImageObject',
-    url: logo,
+    url: logo.src,
   },
   logo: {
     '@type': 'ImageObject',
-    url: logo,
+    url: logo.src,
   },
   name: SiteMetadata.org.name,
   sameAs: Object.values(SiteMetadata.social.map(social => social.link)),
@@ -167,7 +168,7 @@ const article: WithContext<Article> = {
   keywords: frontmatter.tags && frontmatter.tags.join(', '),
   image: {
     '@type': 'ImageObject',
-    url: image,
+    url: image.src,
   },
   inLanguage: 'en',
   mainEntityOfPage: SiteMetadata.org.url,

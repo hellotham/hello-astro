@@ -1,7 +1,7 @@
 ---
 import type { MarkdownInstance } from 'astro'
 import type { Frontmatter } from '../config'
-import { CategoryDetail, SiteMetadata } from '../config'
+import { categoryDetail, SiteMetadata } from '../config'
 import Base from '../layouts/base.astro'
 import PageHero from '../components/pagehero.astro'
 import SVGImg from '../components/svgimg.astro'
@@ -10,7 +10,7 @@ const frontmatter: Frontmatter = {
   title: 'Categories',
   description: 'Categories for articles',
   coverSVG: '../svg/undraw/undraw_windows.svg',
-  socialImage: '/images/undraw/undraw_windows.png',
+  socialImage: '../images/undraw/undraw_windows.png',
   publishDate: SiteMetadata.buildTime,
 }
 
@@ -26,20 +26,6 @@ const posts = allPosts
   .filter(post => !post.frontmatter.draft)
 
 const categories = Array.from(new Set(posts.flatMap(post => post.frontmatter.categories)))
-
-function categoryDetail(category: string | undefined) {
-  const details = CategoryDetail.filter(cat => cat.category == category)
-
-  if (details.length == 1) {
-    return details[0]
-  }
-  return {
-    category: 'category',
-    coverSVG: '../svg/undraw/undraw_instant_information.svg',
-    socialImage: '/images/undraw/undraw_instant_information.png',
-    description: 'Category ' + category
-  }
-}
 ---
 
 <Base frontmatter={frontmatter}>

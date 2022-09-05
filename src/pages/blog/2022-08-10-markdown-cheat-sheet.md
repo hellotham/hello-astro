@@ -5,7 +5,7 @@ description: A quick reference to the Markdown syntax.
 author: Matt Cone
 publishDate: 2022-08-10T00:00:00.000Z
 coverSVG: ../svg/undraw/undraw_design_components.svg
-socialImage: /images/undraw/undraw_design_components.png
+socialImage: ../images/undraw/undraw_design_components.png
 categories:
   - information
 tags:
