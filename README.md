@@ -118,3 +118,8 @@ All commands are run from the root of the project, from a terminal:
 | `yarn lint`         | Check the source code for errors                   |
 | `yarn astro ...`    | Run CLI commands like `astro add`, `astro preview` |
 | `yarn astro --help` | Get help using the Astro CLI                       |
+
+## Release History
+
+* 1.0.0: Initial Release
+* 1.0.1: Moved social images to src, improved coverImage processing
