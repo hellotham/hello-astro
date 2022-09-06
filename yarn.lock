@@ -3216,6 +3216,16 @@ periscopic@^3.0.0:
     estree-walker "^3.0.0"
     is-reference "^3.0.0"
 
+photoswipe-dynamic-caption-plugin@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/photoswipe-dynamic-caption-plugin/-/photoswipe-dynamic-caption-plugin-1.2.4.tgz#51488139550776a03436333ad9158786e3e0e21c"
+  integrity sha512-7gPO8BHnOGZ0nXVhziltDqe7cAhDmaolGaU6LC3vggi4dcTHJBsGnxuqpk2EXw6vJ/JOeS0MqyGGUXupYbZk5w==
+
+photoswipe@^5.3.2:
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/photoswipe/-/photoswipe-5.3.2.tgz#814d26197ba59076828ddefd41b7f9ed5eb355a8"
+  integrity sha512-QJrf0kGa3tYX3sUascZymkT+ZIkgw8YNcwL+hGqoLTyphcn9vSTEab7tmCnA1tthgVzWQRgPjX9psuk7yFrTcA==
+
 picocolors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
