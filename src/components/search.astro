@@ -2,7 +2,10 @@
 import { Icon } from 'astro-icon'
 ---
 
-<script is:inline src="https://unpkg.com/lunr/lunr.min.js"></script>
+
+<script>
+  import lunr from 'lunr'
+</script>
 <div x-data={`
 {
   searchResults: false,
