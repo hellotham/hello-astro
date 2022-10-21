@@ -121,5 +121,6 @@ All commands are run from the root of the project, from a terminal:
 
 ## Release History
 
-* 1.0.0: Initial Release
-* 1.0.1: Moved social images to src, improved coverImage processing
+- 1.0.0: Initial Release
+- 1.0.1: Moved social images to src, improved coverImage processing
+- 1.0.2: Upgrade packages to latest
