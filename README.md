@@ -124,3 +124,4 @@ All commands are run from the root of the project, from a terminal:
 - 1.0.0: Initial Release
 - 1.0.1: Moved social images to src, improved coverImage processing
 - 1.0.2: Upgrade packages to latest
+- 1.1.0: Update to astro v2.x, now works with node 18 and 19
