@@ -1,6 +1,8 @@
 ---
-import type { MarkdownInstance, PaginateFunction, Page } from 'astro'
+import type { PaginateFunction, Page } from 'astro'
+import type { CollectionEntry } from 'astro:content'
 import { Frontmatter , SiteMetadata, authorDetail, PAGE_SIZE } from '../../../config'
+import { getCollection } from 'astro:content'
 import Base from '../../../layouts/base.astro'
 import Img from '../../../components/img.astro'
 import PageHero from '../../../components/pagehero.astro'
@@ -8,7 +10,7 @@ import BlogRoll from '../../../components/blogroll.astro'
 import PaginateControl from '../../../components/paginatecontrol.astro'
 
 export interface Props {
-  page: Page<MarkdownInstance<Frontmatter>>
+  page: Page<CollectionEntry<'blog'>>
 }
 
 const { author } = Astro.params
@@ -33,21 +35,13 @@ const frontmatter: Frontmatter = {
 }
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
-  const allPosts = (await Astro.glob(
-    '../../blog/*.{md,mdx}'
-  )) as MarkdownInstance<Frontmatter>[]
-  const posts = allPosts
-    .sort(
-      (a, b) =>
-        new Date(b.frontmatter.publishDate).valueOf() -
-        new Date(a.frontmatter.publishDate).valueOf()
-    )
-    .filter(post => !post.frontmatter.draft)
+  const allPosts = await getCollection('blog')
+  const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate).filter(p => !p.data.draft)
 
-    const authors = Array.from(new Set(posts.flatMap(post => post.frontmatter.author)))
+    const authors = Array.from(new Set(posts.flatMap(post => post.data.author)))
 
   return authors.map(author => {
-    return paginate(posts.filter(post => author && post.frontmatter.author?.includes(author)), {
+    return paginate(posts.filter(post => author && post.data.author?.includes(author)), {
       params: { author },
       pageSize: PAGE_SIZE
     })

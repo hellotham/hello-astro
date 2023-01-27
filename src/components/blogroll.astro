@@ -1,10 +1,9 @@
 ---
-import type { MarkdownInstance } from 'astro'
-import type { Frontmatter } from '../config'
+import type { CollectionEntry } from 'astro:content'
 import BlogCard from '../components/blogcard.astro'
 
 export interface Props {
-  posts: MarkdownInstance<Frontmatter>[]
+  posts: CollectionEntry<'blog'>[]
 }
 
 const { posts } = Astro.props

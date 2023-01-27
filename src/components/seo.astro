@@ -19,7 +19,7 @@ const { frontmatter } = Astro.props
 
 const siteurl = new URL(import.meta.env.BASE_URL, Astro.url)
 const type = Astro.url.toString().includes('blog') ? 'post' : 'page'
-const year = parseInt(SiteMetadata.buildTime.slice(0, 4))
+const year = parseInt(SiteMetadata.buildTime.toString().slice(0, 4))
 const images = import.meta.glob<ImageMetadata>('../images/**/*', { import: 'default' })
 const image = await images[frontmatter.socialImage || frontmatter.coverImage || DefaultImage]()
 const logo = await images[LogoImage]()

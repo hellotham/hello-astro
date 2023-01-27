@@ -1,12 +1,11 @@
 ---
-import type { MarkdownInstance } from 'astro'
-import type { Frontmatter } from '../config'
+import type { CollectionEntry } from 'astro:content'
 import Categories from '../components/categories.astro'
 import SVGImg from '../components/svgimg.astro'
 import Img from '../components/img.astro'
 
 export interface Props {
-  posts: MarkdownInstance<Frontmatter>[]
+  posts: CollectionEntry<'blog'>[]
 }
 
 const { posts } = Astro.props
@@ -49,22 +48,22 @@ const otherPosts = posts.slice(1, 5)
         <div
           class="mb-4 lg:mb-0 p-4 lg:p-0 relative rounded block xl:col-span-2"
         >
-          <a href={newestPost.url}>
-            <span class="sr-only">{newestPost.frontmatter.title}</span>
+          <a href={new URL(import.meta.env.BASE_URL + '/blog/' + newestPost.slug, Astro.url)}>
+            <span class="sr-only">{newestPost.data.title}</span>
             {
-              newestPost.frontmatter.coverSVG ? (
+              newestPost.data.coverSVG ? (
                 <SVGImg
-                  src={newestPost.frontmatter.coverSVG}
-                  alt={newestPost.frontmatter.title + ' featured image'}
+                  src={newestPost.data.coverSVG}
+                  alt={newestPost.data.title + ' featured image'}
                   class="rounded-md w-full h-64 md:h-80 object-cover bg-purple-100 dark:bg-purple-800"
                 />
               ) : (
                 <Img
                   src={
-                    newestPost.frontmatter.coverImage ||
-                    newestPost.frontmatter.socialImage
+                    newestPost.data.coverImage ||
+                    newestPost.data.socialImage
                   }
-                  alt={newestPost.frontmatter.title + ' featured image'}
+                  alt={newestPost.data.title + ' featured image'}
                   class="rounded-md w-full h-64 md:h-80 object-cover bg-purple-100 dark:bg-purple-800"
                 />
               )
@@ -72,68 +71,68 @@ const otherPosts = posts.slice(1, 5)
           </a>
           <div class="mt-4">
             {
-              newestPost.frontmatter.categories && (
-                <Categories categories={newestPost.frontmatter.categories} />
+              newestPost.data.categories && (
+                <Categories categories={newestPost.data.categories} />
               )
             }
           </div>
-          <a href={newestPost.url}>
+          <a href={new URL(import.meta.env.BASE_URL + '/blog/' + newestPost.slug, Astro.url)}>
             <h1
               class="text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300 text-4xl font-bold mt-2 leading-tight"
             >
-              {newestPost.frontmatter.title}
+              {newestPost.data.title}
             </h1>
           </a>
           <p class="text-gray-600 dark:text-gray-400 mb-4">
-            {newestPost.frontmatter.publishDate?.slice(0, 10)}
+            {newestPost.data.publishDate?.toISOString().slice(0, 10)}
           </p>
           <p class="text-gray-600 dark:text-gray-400 mb-4">
-            {newestPost.frontmatter.description}
+            {newestPost.data.description}
           </p>
           <a
-            href={newestPost.url}
+            href={new URL(import.meta.env.BASE_URL + '/blog/' + newestPost.slug, Astro.url)}
             class="inline-block px-6 py-3 mt-2 rounded-md bg-purple-600 hover:bg-pink-600 text-white dark:bg-purple-300 dark:hover:bg-pink-300 dark:text-black"
           >
             Read more
-            <span class="sr-only">{newestPost.frontmatter.title}</span>
+            <span class="sr-only">{newestPost.data.title}</span>
           </a>
         </div>
         <div class="w-full">
           {
             otherPosts.map(post => (
               <div class="rounded w-full md:grid md:grid-cols-3 mb-10">
-                <a href={post.url}>
-                  {post.frontmatter.coverSVG ? (
+                <a href={new URL(import.meta.env.BASE_URL + '/blog/' + post.slug, Astro.url)}>
+                  {post.data.coverSVG ? (
                     <SVGImg
-                      src={post.frontmatter.coverSVG}
-                      alt={post.frontmatter.title + ' featured image'}
+                      src={post.data.coverSVG}
+                      alt={post.data.title + ' featured image'}
                       class="block lg:block rounded-md w-full h-64 md:h-32 m-4 md:m-0 object-cover bg-purple-100 dark:bg-purple-800"
                     />
                   ) : (
                     <Img
                       src={
-                        post.frontmatter.socialImage ||
-                        post.frontmatter.socialImage
+                        post.data.socialImage ||
+                        post.data.socialImage
                       }
-                      alt={post.frontmatter.title + ' featured image'}
+                      alt={post.data.title + ' featured image'}
                       class="block lg:block rounded-md w-full h-64 md:h-32 m-4 md:m-0 object-cover bg-purple-100 dark:bg-purple-800"
                     />
                   )}
                 </a>
                 <div class="bg-white dark:bg-gray-800 rounded px-4 md:col-span-2">
-                  {post.frontmatter.categories && (
-                    <Categories categories={post.frontmatter.categories} />
+                  {post.data.categories && (
+                    <Categories categories={post.data.categories} />
                   )}
-                  <a href={post.url}>
+                  <a href={new URL(import.meta.env.BASE_URL + '/blog/' + post.slug, Astro.url)}>
                     <div class="md:mt-1 text-gray-800 dark:text-gray-100 font-semibold text-xl">
-                      {post.frontmatter.title}
+                      {post.data.title}
                     </div>
                     </a>
                     <p class="block text-sm text-gray-600 dark:text-gray-300">
-                      {post.frontmatter.publishDate?.slice(0, 10)}
+                      {post.data.publishDate?.toISOString().slice(0, 10)}
                     </p>
                     <p class="block md:hidden text-sm text-gray-600 dark:text-gray-300">
-                      {post.frontmatter.description}
+                      {post.data.description}
                     </p>
                 </div>
               </div>

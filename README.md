@@ -1,12 +1,19 @@
 # hello-astro
 
-Hello Astro is a full featured [Astro](https://astro.build) corporate/marketing/blog starter theme written in Typescript and TailwindCSS. It supports Markdown and MDX based pages and blog posts.
+Hello Astro is a full featured [Astro](https://astro.build) multi-purpose starter theme written in Typescript and TailwindCSS. It supports Markdown and MDX based pages and blog posts.
 
 ![Light](https://github.com/hellotham/hello-astro/raw/main/screenshot-light.png)
 
 ![Dark](https://github.com/hellotham/hello-astro/raw/main/screenshot-dark.png)
 
 ![Lighthouse](https://github.com/hellotham/hello-astro/raw/main/lighthouse.png)
+
+Hello Astro can used for any/all of the following:
+
+- corporate/marketing site
+- blog
+- documentation site
+- portfolio site supporting photo galleries
 
 Uses the following integrations:
 
@@ -125,3 +132,5 @@ All commands are run from the root of the project, from a terminal:
 - 1.0.1: Moved social images to src, improved coverImage processing
 - 1.0.2: Upgrade packages to latest
 - 1.1.0: Update to astro v2.x, now works with node 18 and 19
+- 2.0.0: New version supporting Astro collections! Also clarified that this is a
+  multipurpose theme. Search can now include both Markdown and MDX pages!
