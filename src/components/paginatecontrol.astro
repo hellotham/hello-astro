@@ -1,10 +1,10 @@
 ---
 import { Icon } from 'astro-icon'
-import type { MarkdownInstance, Page } from 'astro'
-import type { Frontmatter } from '../config'
+import type { CollectionEntry } from 'astro:content'
+import type { Page } from 'astro'
 
 export interface Props {
-  page: Page<MarkdownInstance<Frontmatter>>
+  page: Page<CollectionEntry<'blog'>>
 }
 
 // const { id } = Astro.params

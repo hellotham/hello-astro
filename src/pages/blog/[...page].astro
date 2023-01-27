@@ -1,6 +1,8 @@
 ---
-import type { MarkdownInstance, Page, PaginateFunction } from 'astro'
+import type { Page, PaginateFunction } from 'astro'
+import type { CollectionEntry } from 'astro:content'
 import type { Frontmatter } from '../../config'
+import { getCollection } from 'astro:content'
 import { SiteMetadata, PAGE_SIZE } from '../../config'
 import Base from '../../layouts/base.astro'
 import PageHero from '../../components/pagehero.astro'
@@ -8,7 +10,7 @@ import BlogRoll from '../../components/blogroll.astro'
 import PaginateControl from '../../components/paginatecontrol.astro'
 
 export interface Props {
-  page: Page<MarkdownInstance<Frontmatter>>
+  page: Page<CollectionEntry<'blog'>>
 }
 
 const { page } = Astro.props
@@ -29,16 +31,8 @@ const frontmatter: Frontmatter = {
 }
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
-  const allPosts = (await Astro.glob<MarkdownInstance<Frontmatter>>(
-    '../blog/**/*.{md,mdx}'
-  ))
-  const posts = allPosts
-    .sort(
-      (a, b) =>
-        new Date(b.frontmatter.publishDate).valueOf() -
-        new Date(a.frontmatter.publishDate).valueOf()
-    )
-    .filter(post => !post.frontmatter.draft)
+  const allPosts = await getCollection('blog')
+  const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate).filter(p => !p.data.draft)
 
   return paginate(posts, { pageSize: PAGE_SIZE })
 }

@@ -1,15 +1,15 @@
+import { getCollection } from 'astro:content'
 import lunr from 'lunr'
 
-const postImportResult = import.meta.glob('./**/*.{md,mdx}', { eager: true })
-const posts = Object.values(postImportResult).filter(post => !post.frontmatter.draft)
+const posts = await getCollection('blog', (p) => { return !p.data.draft})
 const documents = posts.map(post => ({
-  url: post.url,
-  title: post.frontmatter.title,
-  description: post.frontmatter.description,
-  author: post.frontmatter.author,
-  categories: post.frontmatter.categories && post.frontmatter.categories.join(' '),
-  tags: post.frontmatter.tags && post.frontmatter.tags.join(' '),
-  content: post.file.search(/.mdx$/) >= 0 ? '' : post.rawContent(),
+  url: import.meta.env.BASE_URL + '/blog/' + post.slug,
+  title: post.data.title,
+  description: post.data.description,
+  author: post.data.author,
+  categories: post.data.categories && post.data.categories.join(' '),
+  tags: post.data.tags && post.data.tags.join(' '),
+  content: post.body,
 }))
 const idx = lunr(function () {
   this.ref('url')

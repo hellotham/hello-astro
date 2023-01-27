@@ -7,7 +7,7 @@ coverSVG: ../svg/undraw/undraw_about_me.svg
 socialImage: ../images/undraw/undraw_about_me.png
 ---
 
-This is starter template for a full featured marketing and blog website based on the following:
+This is multi-purpose Astro starter template based on the following:
 
 - [Astro](https://astro.build/) as a modern static site generator
 - [TypeScript](https://www.typescriptlang.org/)
@@ -31,7 +31,14 @@ This is starter template for a full featured marketing and blog website based on
 
 It follows the [JAMstack architecture](https://jamstack.org) by automatically building a static version from the Git repository. The demo is deployed on Github Pages.
 
-This website is open source (MIT licence) - fork it and customise for your needs.
+Hello Astro can used for any/all of the following:
+
+- corporate/marketing site
+- blog
+- documentation site
+- portfolio site supporting photo galleries
+
+This starter is open source (MIT licence) - fork it and customise for your needs.
 
 ## Features
 

@@ -1,5 +1,5 @@
 ---
-import type { MarkdownInstance } from 'astro'
+import { getCollection } from 'astro:content'
 import type { Frontmatter } from '../config'
 import { SiteMetadata } from '../config'
 import Base from '../layouts/base.astro'
@@ -17,16 +17,8 @@ const frontmatter: Frontmatter = {
   publishDate: SiteMetadata.buildTime,
 }
 
-const posts = (await Astro.glob(
-  './blog/**/*.{md,mdx}'
-)) as MarkdownInstance<Frontmatter>[]
-const latestPosts = posts
-  .sort(
-    (a, b) =>
-      new Date(b.frontmatter.publishDate).valueOf() -
-      new Date(a.frontmatter.publishDate).valueOf()
-  )
-  .filter(post => !post.frontmatter.draft)
+const posts = await getCollection('blog')
+const latestPosts = posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate).filter(p => !p.data.draft)
 ---
 
 <Base frontmatter={frontmatter}>

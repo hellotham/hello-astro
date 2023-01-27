@@ -61,7 +61,7 @@ const svgimg = frontmatter.coverSVG || (frontmatter.coverImage ? null : category
       <span class="flex items-center mr-6">
         <Icon class="w-6 h-6 mr-1 text-purple-200" pack="heroicons-outline" name="calendar" />
         <span class="font-semibold text-purple-200 ml-1">
-          {frontmatter.publishDate?.slice(0, 10)}
+          {frontmatter.publishDate?.toString().slice(0, 10)}
         </span>
       </span>
       <span class="flex items-center">
