@@ -134,3 +134,4 @@ All commands are run from the root of the project, from a terminal:
 - 1.1.0: Update to astro v2.x, now works with node 18 and 19
 - 2.0.0: New version supporting Astro collections! Also clarified that this is a
   multipurpose theme. Search can now include both Markdown and MDX pages!
+- 2.0.1: Updated screenshots, and improved landing page.
