@@ -21,7 +21,7 @@ const svgimg = post.data.coverSVG || (post.data.coverImage ? null : categoryDeta
   <div
     class="h-full border-1 border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden p-2"
   >
-    <a href={new URL(import.meta.env.BASE_URL + '/blog/' + post.slug, Astro.url)}>
+    <a href={new URL(import.meta.env.BASE_URL + 'blog/' + post.slug, Astro.url)}>
       {
         svgimg ? (
           <SVGImg
@@ -41,7 +41,7 @@ const svgimg = post.data.coverSVG || (post.data.coverImage ? null : categoryDeta
     </a>
     <div class="p-6">
       <Categories categories={post.data.categories} />
-      <a href={import.meta.env.BASE_URL + '/blog/' + post.slug}>
+      <a href={import.meta.env.BASE_URL + 'blog/' + post.slug}>
         <h1
           class="title-font text-xl font-bold text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300 mt-2"
         >
