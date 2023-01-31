@@ -76,7 +76,7 @@ const otherPosts = posts.slice(1, 5)
               )
             }
           </div>
-          <a href={new URL(import.meta.env.BASE_URL + '/blog/' + newestPost.slug, Astro.url)}>
+          <a href={new URL(import.meta.env.BASE_URL + 'blog/' + newestPost.slug, Astro.url)}>
             <h1
               class="text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300 text-4xl font-bold mt-2 leading-tight"
             >
@@ -90,7 +90,7 @@ const otherPosts = posts.slice(1, 5)
             {newestPost.data.description}
           </p>
           <a
-            href={new URL(import.meta.env.BASE_URL + '/blog/' + newestPost.slug, Astro.url)}
+            href={new URL(import.meta.env.BASE_URL + 'blog/' + newestPost.slug, Astro.url)}
             class="inline-block px-6 py-3 mt-2 rounded-md bg-purple-600 hover:bg-pink-600 text-white dark:bg-purple-300 dark:hover:bg-pink-300 dark:text-black"
           >
             Read more
@@ -101,7 +101,7 @@ const otherPosts = posts.slice(1, 5)
           {
             otherPosts.map(post => (
               <div class="rounded w-full md:grid md:grid-cols-3 mb-10">
-                <a href={new URL(import.meta.env.BASE_URL + '/blog/' + post.slug, Astro.url)}>
+                <a href={new URL(import.meta.env.BASE_URL + 'blog/' + post.slug, Astro.url)}>
                   {post.data.coverSVG ? (
                     <SVGImg
                       src={post.data.coverSVG}
@@ -123,7 +123,7 @@ const otherPosts = posts.slice(1, 5)
                   {post.data.categories && (
                     <Categories categories={post.data.categories} />
                   )}
-                  <a href={new URL(import.meta.env.BASE_URL + '/blog/' + post.slug, Astro.url)}>
+                  <a href={new URL(import.meta.env.BASE_URL + 'blog/' + post.slug, Astro.url)}>
                     <div class="md:mt-1 text-gray-800 dark:text-gray-100 font-semibold text-xl">
                       {post.data.title}
                     </div>
