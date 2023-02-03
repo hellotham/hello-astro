@@ -48,7 +48,7 @@ const otherPosts = posts.slice(1, 5)
         <div
           class="mb-4 lg:mb-0 p-4 lg:p-0 relative rounded block xl:col-span-2"
         >
-          <a href={new URL(import.meta.env.BASE_URL + '/blog/' + newestPost.slug, Astro.url)}>
+          <a href={import.meta.env.BASE_URL + 'blog/' + newestPost.slug}>
             <span class="sr-only">{newestPost.data.title}</span>
             {
               newestPost.data.coverSVG ? (
@@ -76,7 +76,7 @@ const otherPosts = posts.slice(1, 5)
               )
             }
           </div>
-          <a href={new URL(import.meta.env.BASE_URL + 'blog/' + newestPost.slug, Astro.url)}>
+          <a href={import.meta.env.BASE_URL + 'blog/' + newestPost.slug}>
             <h1
               class="text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300 text-4xl font-bold mt-2 leading-tight"
             >
@@ -84,13 +84,13 @@ const otherPosts = posts.slice(1, 5)
             </h1>
           </a>
           <p class="text-gray-600 dark:text-gray-400 mb-4">
-            {newestPost.data.publishDate?.toISOString().slice(0, 10)}
+            {newestPost.data.publishDate?.toDateString()}
           </p>
           <p class="text-gray-600 dark:text-gray-400 mb-4">
             {newestPost.data.description}
           </p>
           <a
-            href={new URL(import.meta.env.BASE_URL + 'blog/' + newestPost.slug, Astro.url)}
+            href={import.meta.env.BASE_URL + 'blog/' + newestPost.slug}
             class="inline-block px-6 py-3 mt-2 rounded-md bg-purple-600 hover:bg-pink-600 text-white dark:bg-purple-300 dark:hover:bg-pink-300 dark:text-black"
           >
             Read more
@@ -123,13 +123,13 @@ const otherPosts = posts.slice(1, 5)
                   {post.data.categories && (
                     <Categories categories={post.data.categories} />
                   )}
-                  <a href={new URL(import.meta.env.BASE_URL + 'blog/' + post.slug, Astro.url)}>
+                  <a href={import.meta.env.BASE_URL + 'blog/' + post.slug}>
                     <div class="md:mt-1 text-gray-800 dark:text-gray-100 font-semibold text-xl">
                       {post.data.title}
                     </div>
                     </a>
                     <p class="block text-sm text-gray-600 dark:text-gray-300">
-                      {post.data.publishDate?.toISOString().slice(0, 10)}
+                      {post.data.publishDate?.toDateString()}
                     </p>
                     <p class="block md:hidden text-sm text-gray-600 dark:text-gray-300">
                       {post.data.description}

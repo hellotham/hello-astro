@@ -20,19 +20,13 @@ const detail = categoryDetail(category as string)
 
 const frontmatter: Frontmatter = {
   title: 'Category: ' + category + (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
-  description:
-    detail.description + ' ' +
-    'Showing articles ' +
-    (page.start + 1) +
-    '-' +
-    (page.end + 1) +
-    ' (total ' +
-    page.total +
-    ')',
+  description: detail.description,
   coverSVG: detail.coverSVG,
   socialImage: detail.socialImage,
   publishDate: SiteMetadata.buildTime,
 }
+
+const currentPage = Astro.url.pathname.replace(/(\/\d*)?\/$/, '')
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const allPosts = await getCollection('blog')
@@ -57,7 +51,7 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
       coverSVG={frontmatter.coverSVG}
       socialImage={frontmatter.socialImage}
     >
-    <PaginateControl page={page} />
+    <PaginateControl base={currentPage} page={page} />
   </PageHero>
   </header>
   <main class="mt-10 bg-gray-100 dark:bg-gray-900">

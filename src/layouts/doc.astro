@@ -1,9 +1,12 @@
 ---
-import type { Frontmatter } from '../config'
+import type { CollectionEntry } from 'astro:content'
+import type { Frontmatter, Sidebar } from '../config'
+import { getCollection } from 'astro:content'
 import Base from './base.astro'
 import PageContent from '../components/pagecontent.astro'
 import LeftSidebar from '../components/leftsidebar.astro'
 import RightSidebar from '../components/rightsidebar.astro'
+import NextPrev from '../components/nextprev.astro'
 import * as CONFIG from '../config'
 import type { MarkdownHeading } from 'astro'
 
@@ -14,14 +17,39 @@ type Props = {
 
 const { frontmatter, headings } = Astro.props
 const currentPage = Astro.url.toString()
-const currentFile = `src/pages/${Astro.url.pathname.replace(import.meta.env.BASE_URL, '').replace(/\/$/, '')}.md`
+const currentFile = `src/content/${Astro.url.pathname.replace(import.meta.env.BASE_URL, '').replace(/\/$/, '')}.md`
 const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`
+
+const allDocs = await getCollection('doc')
+const docs = allDocs.sort((a, b) => a.data.weight - b.data.weight).filter(p => !p.data.draft)
+const sections = Array.from(
+  new Set(docs.map(doc => doc.data.section))
+) as string[]
+let sidebar = {} as Sidebar
+sections.forEach(
+  section =>
+    (sidebar[section] = docs
+      .filter(doc => doc.data.section == section)
+      .map(doc => ({ text: doc.data.title, link: import.meta.env.BASE_URL + "bio/" + doc.slug })))
+)
+let prev: CollectionEntry<'doc'>
+let next: CollectionEntry<'doc'>
+docs.forEach((doc, i) => {
+  if (currentPage.search(doc.slug) >= 0) {
+    if (i > 0) {
+      prev = docs[i - 1]
+    }
+    if (i < docs.length - 1) {
+      next = docs[i + 1]
+    }
+  }
+})
 ---
 
 <Base frontmatter={frontmatter}>
   <main class="relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12 bg-white dark:bg-slate-900">
     <aside id="grid-left" class="grid-sidebar" title="Site Navigation">
-      <LeftSidebar currentPage={currentPage} />
+      <LeftSidebar currentPage={currentPage} sidebar={sidebar} />
     </aside>
     <div id="grid-main">
       <PageContent
@@ -34,6 +62,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`
       >
         <slot />
       </section>
+      <NextPrev base={import.meta.env.BASE_URL + 'doc/'} prev={prev} next={next} />
       </PageContent>
     </div>
     <aside id="grid-right" class="grid-sidebar" title="Table of Contents">

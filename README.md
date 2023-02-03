@@ -135,3 +135,6 @@ All commands are run from the root of the project, from a terminal:
 - 2.0.0: New version supporting Astro collections! Also clarified that this is a
   multipurpose theme. Search can now include both Markdown and MDX pages!
 - 2.0.1: Updated screenshots, and improved landing page.
+- 2.1.0: updated to latest packages, fixed dev links, backported features from
+  personal blog, including Next/Prev links, photo gallery support in Markdown,
+  and improved pagination control.

@@ -30,7 +30,7 @@ const docCollection = defineCollection({
       draft: z.boolean().optional(),
       layout: z.string(),
       section: z.string(),
-      weight: z.number().optional(),
+      weight: z.number().default(0),
       title: z.string(),
       description: z.string(),
       images: z.array(z.string()).optional(),

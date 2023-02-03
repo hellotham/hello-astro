@@ -3,6 +3,7 @@ import type { Frontmatter } from '../config'
 import SEO from '../components/seo.astro'
 import Header from '../components/header.astro'
 import Footer from '../components/footer.astro'
+import Gallery from '../components/gallery.astro'
 
 export interface Props {
   frontmatter: Frontmatter
@@ -62,6 +63,8 @@ const { frontmatter } = Astro.props
       }
       <Header />
       <slot />
+      {frontmatter.gallery && <Gallery folder={frontmatter.gallery} />}
+      <slot name="before-footer" />
       <Footer />
       {frontmatter.extra?.includes('markmap') &&
         <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>

@@ -4,11 +4,12 @@ import type { CollectionEntry } from 'astro:content'
 import type { Page } from 'astro'
 
 export interface Props {
+  base: string
   page: Page<CollectionEntry<'blog'>>
 }
 
 // const { id } = Astro.params
-const { page } = Astro.props
+const { base, page } = Astro.props
 ---
 
 <div class="mt-4 flex items-center">
@@ -56,7 +57,7 @@ const { page } = Astro.props
           {Array.from({ length: page.lastPage }, (_, index) => index + 1).map(
             i => (
               <a
-                href={import.meta.env.BASE_URL + 'blog/' + (i > 1 ? i : '')}
+                href={base + '/' + (i > 1 ? i : '')}
                 aria-current="page"
                 class:list={[
                   i == page.currentPage
@@ -89,4 +90,5 @@ const { page } = Astro.props
       </div>
     )
   }
+  <p class="italic text-white ml-4">Articles {page.start + 1}-{page.end + 1} (total {page.total})</p>
 </div>
