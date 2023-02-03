@@ -89,14 +89,23 @@ Inside this starter, you'll see the following folders and files:
 ├── src/
 │   ├── components/
 │   │   └── header.astro
+│   ├── content/
+│   │   ├── blog/
+│   │   |   └── 2022-08-01-post.md
+│   │   └── doc/
+│   │       └── documentation-page.md
 │   ├── images/
-│   │   └── image.png
+│   │   ├── image.png
+│   │   └── gallery/
+│   │       └── gallery-name/
+│   │           └── image.jpg
 │   ├── layouts/
-│   │   └── base.astro
+│   │   ├── base.astro
+│   │   ├── blog.astro
+│   │   └── doc.astro
 │   ├── pages/
 │   │   ├── index.astro
-│   │   └── blog/
-│   │       └── 2022-08-01-post.md
+│   │   └── contact.astro
 │   ├── svg/
 │   │   └── image.svg
 │   └── config.ts
@@ -108,6 +117,8 @@ Astro looks for `.astro`, `.md` or `.mdx` files in the `src/pages/` directory. E
 `src/components/` is where we put any Astro components and similarly `src/layouts/` for layouts.
 
 Images can be placed in `src/images/` or `src/svg/` depending on type.
+
+Blog and documentation content are created as collections of Markdown or MDX files in `src/content`.
 
 Any static assets, like images, can be placed in the `public/` directory.
 
