@@ -24,7 +24,7 @@ const { frontmatter } = Astro.props
     />
     <meta name="generator" content={Astro.generator} />
     <SEO frontmatter={frontmatter} />
-    <script is-inline>
+    <script is:inline>
       if (
         localStorage.theme === 'dark' ||
         (!('theme' in localStorage) &&
