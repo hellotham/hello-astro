@@ -1,15 +1,6 @@
 ---
-import type { Frontmatter } from '../config'
-import SEO from '../components/seo.astro'
 import Header from '../components/header.astro'
-import Footer from '../components/footer.astro'
-import Gallery from '../components/gallery.astro'
 
-export interface Props {
-  frontmatter: Frontmatter
-}
-
-const { frontmatter } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -23,51 +14,11 @@ const { frontmatter } = Astro.props
       href={new URL(import.meta.env.BASE_URL + 'favicon.ico', Astro.url)}
     />
     <meta name="generator" content={Astro.generator} />
-    <SEO frontmatter={frontmatter} />
-    <script is:inline>
-      if (
-        localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
-    </script>
-    <style is:inline>
-      [x-cloak] { display: none !important; }
-      </style>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-        crossorigin=""/>
-{frontmatter.extra?.includes('math') &&
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.1/dist/katex.min.css" integrity="sha384-pe7s+HmY6KvqRkrRRUr4alQJ0SkmzCft3RpK1ttGMa7qk8Abp/MEa/4wgceRHloO" crossorigin="anonymous">
-    }
-    {frontmatter.extra?.includes('markmap') &&
-      <style>
-        .markmap > svg {
-          width: 100%;
-          height: 400px;
-        }
-        </style>
-      }
+
     <slot name="in-head" />
     </head>
     <body class="dark:bg-gray-900">
-      {frontmatter.extra?.includes('mermaid') &&
-        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-        <script>
-          mermaid.initialize({startOnLoad:true});
-        </script>
-      }
-      <Header />
       <slot />
-      {frontmatter.gallery && <Gallery folder={frontmatter.gallery} />}
       <slot name="before-footer" />
-      <Footer />
-      {frontmatter.extra?.includes('markmap') &&
-        <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
-      }
   </body>
 </html>

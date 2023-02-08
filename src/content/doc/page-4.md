@@ -23,6 +23,7 @@ title: Markdown Page!
 lang: en
 layout: ~/layouts/MainLayout.astro
 ---
+```
 
 # Markdown example
 
