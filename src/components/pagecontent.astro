@@ -1,11 +1,11 @@
 ---
-import type { Frontmatter } from '../config'
+import type { CollectionEntry } from 'astro:content'
 import MoreMenu from './moremenu.astro'
 import TableOfContents from './tableofcontents.astro'
 import type { MarkdownHeading } from 'astro'
 
 type Props = {
-  frontmatter: Frontmatter
+  frontmatter: CollectionEntry<'doc'>['data']
   headings: MarkdownHeading[]
   githubEditUrl: string
 }

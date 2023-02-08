@@ -19,10 +19,11 @@ const { frontmatter } = Astro.props
 
 const siteurl = new URL(import.meta.env.BASE_URL, Astro.url)
 const type = Astro.url.toString().includes('blog') ? 'post' : 'page'
-const year = parseInt(SiteMetadata.buildTime.toString().slice(0, 4))
+const year = SiteMetadata.buildTime.getFullYear()
 const images = import.meta.glob<ImageMetadata>('../images/**/*', { import: 'default' })
 const image = await images[frontmatter.socialImage || frontmatter.coverImage || DefaultImage]()
 const logo = await images[LogoImage]()
+const publishDate = new Date(frontmatter.publishDate)
 
 const openGraph = {
   basic: {
@@ -39,7 +40,7 @@ const openGraph = {
   },
   article: {
     author: frontmatter.author,
-    publishedTime: SiteMetadata.buildTime,
+    publishedTime: SiteMetadata.buildTime.toISOString(),
     tags: frontmatter.tags,
   },
 }
@@ -160,9 +161,9 @@ const article: WithContext<Article> = {
   creator: {
     '@id': SiteMetadata.author.url,
   },
-  dateCreated: frontmatter.publishDate,
-  dateModified: SiteMetadata.buildTime,
-  datePublished: frontmatter.publishDate,
+  dateCreated: publishDate.toISOString(),
+  dateModified: SiteMetadata.buildTime.toISOString(),
+  datePublished: publishDate.toISOString(),
   description: frontmatter.description,
   headline: frontmatter.title,
   keywords: frontmatter.tags && frontmatter.tags.join(', '),

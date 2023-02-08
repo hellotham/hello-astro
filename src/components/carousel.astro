@@ -15,11 +15,6 @@ const imageFiles = import.meta.glob<ImageMetadata>('../images/gallery/**/*.{png,
 const folderFiles = Object.keys(imageFiles).filter(image => imagepaths.includes(image))
 const images = folderFiles.map(image => imageFiles[image])
 ---
-
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
-/>
 <div
   style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
   class:list={[ "swiper mySwiper not-prose max-w-screen-xl mx-auto rounded-lg w-full", `h-[500px]` ]}
@@ -43,8 +38,12 @@ const images = folderFiles.map(image => imageFiles[image])
 </div>
 
 <!-- Swiper JS -->
-<script is:inline src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script is:inline>
+<script>
+  // @ts-ignore
+  import Swiper from 'swiper/bundle'
+
+  // import Swiper styles
+  import 'swiper/css/bundle'
   var swiper = new Swiper('.mySwiper', {
     cssMode: true,
     lazy: true,
@@ -65,5 +64,5 @@ const images = folderFiles.map(image => imageFiles[image])
     },
     mousewheel: true,
     keyboard: true,
-})
+  })
 </script>

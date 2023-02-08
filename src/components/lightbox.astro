@@ -104,7 +104,6 @@ for (let i in images) {
   import 'photoswipe/style.css'
   import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
   import PhotoSwipeLightbox from 'photoswipe/lightbox'
-  import PhotoSwipe from 'photoswipe'
   import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin'
 
   class LightboxInner extends HTMLElement {
@@ -117,7 +116,7 @@ for (let i in images) {
         mainClass: 'pswp--custom-icon-colors',
         gallerySelector: '#' + id,
         childSelector: 'a',
-        pswpModule: () => PhotoSwipe,
+        pswpModule: () => import('photoswipe'),
         paddingFn: (viewportSize) => {
           return {
             top: 0, bottom: 30, left: 0, right: 0

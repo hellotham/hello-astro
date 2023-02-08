@@ -44,8 +44,10 @@
     "astro-seo": "^0.7.0",
     "hero-patterns": "^2.1.0",
     "katex": "^0.16.4",
+    "leaflet": "^1.9.3",
     "lunr": "^2.3.9",
     "photoswipe": "^5.3.5",
-    "photoswipe-dynamic-caption-plugin": "^1.2.7"
+    "photoswipe-dynamic-caption-plugin": "^1.2.7",
+    "swiper": "^9.0.3"
   }
 }

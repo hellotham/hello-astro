@@ -3,24 +3,6 @@ import type { CollectionEntry } from 'astro:content'
 
 export type Frontmatter = CollectionEntry<'blog'>['data']
 
-// export interface Frontmatter {
-//   draft?: boolean
-//   title: string
-//   description?: string
-//   author?: string
-//   publishDate: string
-//   coverSVG?: string
-//   coverImage?: string
-//   socialImage?: string
-//   categories?: string[]
-//   tags?: string[]
-//   file?: string
-//   url?: string
-//   minutesRead?: string
-//   extra?: string[]
-//   section?: string[]
-// }
-
 export interface TagType {
   tag: string
   count: number

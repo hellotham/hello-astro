@@ -16,8 +16,8 @@ const { frontmatter } = Astro.props
 const currentPage = Astro.url.pathname
 const allPosts = await getCollection('blog')
 const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate).filter(p => !p.data.draft)
-let prev: CollectionEntry<'blog'>
-let next: CollectionEntry<'blog'>
+let prev: CollectionEntry<'blog'> | undefined
+let next: CollectionEntry<'blog'> | undefined
 posts.forEach((post, i) => {
   if (currentPage.search(post.slug) >= 0) {
     if (i > 0) {

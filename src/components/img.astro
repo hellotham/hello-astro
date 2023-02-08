@@ -12,4 +12,4 @@ const images = import.meta.glob<ImageMetadata>('../images/**/*', { import: 'defa
 const image = await images[src || DefaultImage]()
 ---
 
-<Image src={image} {alt} {width} {height} class={attrs.class} />
+<Image src={image} alt={alt!} width={Number(width)} height={Number(height)} class={attrs.class} />
