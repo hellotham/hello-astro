@@ -149,3 +149,5 @@ All commands are run from the root of the project, from a terminal:
 - 2.1.0: updated to latest packages, fixed dev links, backported features from
   personal blog, including Next/Prev links, photo gallery support in Markdown,
   and improved pagination control.
+- 2.2.0: Fixed lint errors, reimplemented map, lightbox and carousel to use
+  leaflet, photoswipe and swiper packages instead of relying on external CDN.
