@@ -1,5 +1,6 @@
 ---
-
+import 'photoswipe/style.css'
+import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
 import { Image } from '@astrojs/image/components'
 import exifr from 'exifr'
 
@@ -13,16 +14,14 @@ const { id, images } = Astro.props
 const imageFiles = import.meta.glob<ImageMetadata>('../images/**/*.{png,webp,jpg,jpeg}', { import: 'default', eager: true })
 const imageSrcs = images.map(image => imageFiles[image])
 const imagetitles = images.map(image => image.slice(0, image.lastIndexOf('.')).slice(image.lastIndexOf('/') + 1))
-// console.log(images)
 const exifs = [] as Record<string, any>[]
 for (let i in images) {
   const exif = await exifr.parse(images[i].replace('../', './src/'))
   exifs.push(exif)
 }
-// console.log(exifs)
 
 ---
-<style is:inline>
+<style>
   .gallery {
       width: 100%;
       display: block;
@@ -101,8 +100,6 @@ for (let i in images) {
             ))}
 </lightbox-inner>
 <script>
-  import 'photoswipe/style.css'
-  import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
   import PhotoSwipeLightbox from 'photoswipe/lightbox'
   import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin'
 

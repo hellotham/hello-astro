@@ -17,6 +17,7 @@ export default defineConfig({
   vite: {
     ssr: {
       external: ['svgo'],
+      noExternal: ['swiper', 'leaflet'],
     },
   },
   site: 'https://hellotham.github.io',
