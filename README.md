@@ -152,3 +152,4 @@ All commands are run from the root of the project, from a terminal:
 - 2.2.0: Fixed lint errors, reimplemented map, lightbox and carousel to use
   leaflet, photoswipe and swiper packages instead of relying on external CDN.
 - 2.2.1: Update to astro 2.0.10, fixed asset loading issue with base
+- 2.3.0: Removed layout from blog and doc content

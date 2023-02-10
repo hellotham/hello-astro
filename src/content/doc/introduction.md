@@ -2,7 +2,6 @@
 section: Section Header
 title: Introduction
 description: Docs intro
-layout: ../../layouts/doc.astro
 ---
 
 **Welcome to Astro!**

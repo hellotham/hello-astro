@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/blog.astro
 title: Sample Gallery post (Markdown!)
 description: Test post with a photo gallery and lightbox (using PhotoSwipe)
 author: Chris Tham

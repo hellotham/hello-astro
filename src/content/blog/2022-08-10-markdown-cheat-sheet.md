@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/blog.astro
 title: Markdown Cheat Sheet
 description: A quick reference to the Markdown syntax.
 author: Matt Cone

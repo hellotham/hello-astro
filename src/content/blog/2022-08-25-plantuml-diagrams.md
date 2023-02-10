@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/blog.astro
 title: PlantUML Diagrams
 description: Generate PlantUML diagrams in blog posts.
 author: Chris Tham

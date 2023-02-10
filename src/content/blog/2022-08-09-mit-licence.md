@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/blog.astro
 title: MIT Licence
 description: The MIT License, explained.
 author: Chris Tham

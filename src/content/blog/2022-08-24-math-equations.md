@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/blog.astro
 title: Math Equations
 description: Display math equations in blog posts!
 author: Chris Tham

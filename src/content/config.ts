@@ -5,14 +5,10 @@ import { z, defineCollection } from 'astro:content'
 const blogCollection = defineCollection({
     schema: z.object({
       draft: z.boolean().optional(),
-      layout: z.string().optional(),
       title: z.string(),
       description: z.string(),
       author: z.string().optional(),
       publishDate: z.date(),
-      // publishDate: z.string().datetime({ offset: true }),
-      // publishDate: z.string().transform((str: string) => new Date(str)),
-      // publishDate: z.string().transform((str: string | Date) => new Date(str)),
       coverSVG: z.string().optional(),
       coverImage: z.string().optional(),
       socialImage: z.string().optional(),
@@ -28,7 +24,6 @@ const blogCollection = defineCollection({
 const docCollection = defineCollection({
     schema: z.object({
       draft: z.boolean().optional(),
-      layout: z.string(),
       section: z.string(),
       weight: z.number().default(0),
       title: z.string(),
