@@ -4,12 +4,12 @@ import type { Frontmatter } from '../config'
 import { categoryDetail, SiteMetadata } from '../config'
 import Base from '../layouts/base.astro'
 import PageHero from '../components/pagehero.astro'
-import SVGImg from '../components/svgimg.astro'
+import Img from '../components/img.astro'
 
 const frontmatter: Frontmatter = {
   title: 'Categories',
   description: 'Categories for articles',
-  coverSVG: '../svg/undraw/undraw_windows.svg',
+  coverSVG: '../images/svg/undraw/undraw_windows.svg',
   socialImage: '../images/undraw/undraw_windows.png',
   publishDate: SiteMetadata.buildTime,
 }
@@ -36,7 +36,7 @@ const categories = Array.from(new Set(latestPosts.flatMap(post => post.data.cate
           {categories.map((category) => (
             <div class="group relative">
               <div class="relative w-full h-80 mb-4 bg-purple-100 dark:bg-purple-600 rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-                <SVGImg src={categoryDetail(category).coverSVG} alt={categoryDetail(category).description} class="w-full h-full object-center object-cover" />
+                <Img src={categoryDetail(category).coverSVG} alt={categoryDetail(category).description} class="w-full h-full object-center object-cover" />
               </div>
               <h3 class="inline-block py-1 px-3 rounded bg-purple-600 hover:bg-pink-600 text-white text-xs font-medium tracking-tight uppercase">
                 <a href={`${import.meta.env.BASE_URL}category/${category}/`}>

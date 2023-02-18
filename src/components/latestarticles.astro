@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import Categories from '../components/categories.astro'
-import SVGImg from '../components/svgimg.astro'
 import Img from '../components/img.astro'
 
 export interface Props {
@@ -50,24 +49,15 @@ const otherPosts = posts.slice(1, 5)
         >
           <a href={import.meta.env.BASE_URL + 'blog/' + newestPost.slug}>
             <span class="sr-only">{newestPost.data.title}</span>
-            {
-              newestPost.data.coverSVG ? (
-                <SVGImg
-                  src={newestPost.data.coverSVG}
-                  alt={newestPost.data.title + ' featured image'}
-                  class="rounded-md w-full h-64 md:h-80 object-cover bg-purple-100 dark:bg-purple-800"
-                />
-              ) : (
-                <Img
-                  src={
-                    newestPost.data.coverImage ||
-                    newestPost.data.socialImage
-                  }
-                  alt={newestPost.data.title + ' featured image'}
-                  class="rounded-md w-full h-64 md:h-80 object-cover bg-purple-100 dark:bg-purple-800"
-                />
-              )
-            }
+              <Img
+                src={
+                  newestPost.data.coverSVG ||
+                  newestPost.data.coverImage ||
+                  newestPost.data.socialImage
+                }
+                alt={newestPost.data.title + ' featured image'}
+                class="rounded-md w-full h-64 md:h-80 object-cover bg-purple-100 dark:bg-purple-800"
+              />
           </a>
           <div class="mt-4">
             {
@@ -102,22 +92,15 @@ const otherPosts = posts.slice(1, 5)
             otherPosts.map(post => (
               <div class="rounded w-full md:grid md:grid-cols-3 mb-10">
                 <a href={new URL(import.meta.env.BASE_URL + 'blog/' + post.slug, Astro.url)}>
-                  {post.data.coverSVG ? (
-                    <SVGImg
-                      src={post.data.coverSVG}
-                      alt={post.data.title + ' featured image'}
-                      class="block lg:block rounded-md w-full h-64 md:h-32 m-4 md:m-0 object-cover bg-purple-100 dark:bg-purple-800"
-                    />
-                  ) : (
-                    <Img
-                      src={
-                        post.data.socialImage ||
-                        post.data.socialImage
-                      }
-                      alt={post.data.title + ' featured image'}
-                      class="block lg:block rounded-md w-full h-64 md:h-32 m-4 md:m-0 object-cover bg-purple-100 dark:bg-purple-800"
-                    />
-                  )}
+                  <Img
+                    src={
+                      post.data.coverSVG ||
+                      post.data.coverImage ||
+                      post.data.socialImage
+                    }
+                    alt={post.data.title + ' featured image'}
+                    class="block lg:block rounded-md w-full h-64 md:h-32 m-4 md:m-0 object-cover bg-purple-100 dark:bg-purple-800"
+                  />
                 </a>
                 <div class="bg-white dark:bg-gray-800 rounded px-4 md:col-span-2">
                   {post.data.categories && (

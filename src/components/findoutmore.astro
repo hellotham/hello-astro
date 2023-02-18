@@ -1,13 +1,11 @@
 ---
-import AstroImage from '../svg/astro/full-logo-light.svg'
-import TailwindImage from '../svg/undraw/undraw_tailwind_css.svg'
-import CoreImage from '../svg/undraw/undraw_static_assets.svg'
+import Img from '../components/img.astro'
 
 const callouts = [
   {
     name: 'Astro',
     description: 'Build faster websites with less client-side Javascript',
-    imageSrc: AstroImage,
+    imageSrc: '../images/svg/astro/full-logo-light.svg',
     imageAlt: 'Astro logo',
     href: 'https://astro.build',
   },
@@ -15,14 +13,14 @@ const callouts = [
     name: 'TailwindCSS',
     description:
       'A utility-first CSS framework that can be composed to build any design, directly in your markup',
-    imageSrc: TailwindImage,
+    imageSrc: '../images/svg/undraw/undraw_tailwind_css.svg',
     imageAlt: 'TailwindCSS drawing',
     href: 'https://tailwindcss.com',
   },
   {
     name: 'HTML/CSS/Javascript',
     description: 'The core building blocks of the web',
-    imageSrc: CoreImage,
+    imageSrc: '../images/svg/undraw/undraw_static_assets.svg',
     imageAlt: 'Core Web',
     href: 'https://w3.org',
   },
@@ -42,7 +40,7 @@ const callouts = [
           callouts.map(callout => (
             <div class="group relative">
               <div class="relative w-full h-80 bg-white dark:bg-purple-600 rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-                <img
+                <Img
                   src={callout.imageSrc}
                   alt={callout.imageAlt}
                   class="w-full h-full object-center object-contain"

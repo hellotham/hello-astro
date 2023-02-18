@@ -18,7 +18,7 @@ const { page } = Astro.props
 const frontmatter: Frontmatter = {
   title: 'Blog' + (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
   description: 'View our articles.',
-  coverSVG: '../svg/undraw/undraw_my_feed.svg',
+  coverSVG: '../images/svg/undraw/undraw_my_feed.svg',
   socialImage: '../images/undraw/undraw_my_feed.png',
   publishDate: SiteMetadata.buildTime,
 }

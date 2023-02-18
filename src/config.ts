@@ -70,10 +70,10 @@ export const SiteMetadata = {
   buildTime: new Date(),
 }
 
-export const Logo = '../svg/astro/logomark-light.svg'
+export const Logo = '../images/svg/astro/logomark-light.svg'
 export const LogoImage = '../images/astro/full-logo-light.png'
-export const FeaturedSVG = '../svg/undraw/undraw_design_inspiration.svg'
-export const DefaultSVG = '../svg/undraw/undraw_my_feed.svg'
+export const FeaturedSVG = '../images/svg/undraw/undraw_design_inspiration.svg'
+export const DefaultSVG = '../images/svg/undraw/undraw_my_feed.svg'
 export const DefaultImage = '../images/undraw/undraw_my_feed.png'
 
 export const NavigationLinks = [
@@ -87,13 +87,13 @@ export const NavigationLinks = [
 export const CategoryDetail = [
   {
     category: 'instructions',
-    coverSVG: '../svg/undraw/undraw_instruction_manual.svg',
+    coverSVG: '../images/svg/undraw/undraw_instruction_manual.svg',
     socialImage: '../images/undraw/undraw_instruction_manual.png',
     description: 'Guidelines on using this starter.'
   },
   {
     category: 'information',
-    coverSVG: '../svg/undraw/undraw_instant_information.svg',
+    coverSVG: '../images/svg/undraw/undraw_instant_information.svg',
     socialImage: '../images/undraw/undraw_instant_information.png',
     description: 'Information articles.'
   },
@@ -107,7 +107,7 @@ export function categoryDetail(category: string | undefined) {
   }
   return {
     category: 'General',
-    coverSVG: '../svg/undraw/undraw_instant_information.svg',
+    coverSVG: '../images/svg/undraw/undraw_instant_information.svg',
     socialImage: '../images/undraw/undraw_instant_information.png',
     description: 'Category ' + category,
   }
