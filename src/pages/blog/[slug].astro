@@ -1,4 +1,5 @@
 ---
+import type { Frontmatter } from '../../config'
 import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
 import Layout from '../../layouts/blog.astro'
@@ -17,8 +18,8 @@ type Props = {
 
 // 2. When its time to render, you can get the entry directly from the prop
 const { entry } = Astro.props;
-const { Content } = await entry.render()
+const { Content, remarkPluginFrontmatter } = await entry.render()
 ---
-<Layout frontmatter={entry.data}>
+<Layout frontmatter={remarkPluginFrontmatter as Frontmatter}>
   <Content />
 </Layout>
