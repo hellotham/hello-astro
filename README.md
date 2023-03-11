@@ -106,8 +106,6 @@ Inside this starter, you'll see the following folders and files:
 │   ├── pages/
 │   │   ├── index.astro
 │   │   └── contact.astro
-│   ├── svg/
-│   │   └── image.svg
 │   └── config.ts
 └── package.json
 ```
@@ -116,11 +114,11 @@ Astro looks for `.astro`, `.md` or `.mdx` files in the `src/pages/` directory. E
 
 `src/components/` is where we put any Astro components and similarly `src/layouts/` for layouts.
 
-Images can be placed in `src/images/` or `src/svg/` depending on type.
+Images can be placed in `src/images/`.
 
 Blog and documentation content are created as collections of Markdown or MDX files in `src/content`.
 
-Any static assets, like images, can be placed in the `public/` directory.
+Any static assets, eg. images, can be placed in the `public/` directory.
 
 ## 🧞 Commands
 
@@ -154,3 +152,5 @@ All commands are run from the root of the project, from a terminal:
 - 2.2.1: Update to astro 2.0.10, fixed asset loading issue with base
 - 2.3.0: Removed layout from blog and doc content
 - 2.4.0:`@astrojs/images` now support `svg` so no need for special handling
+- 2.4.1: Use rendered frontmatter for blog and doc posts, fixes issue with diagrams not rendering.
+- 2.4.2: Updated packages
