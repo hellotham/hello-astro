@@ -2,24 +2,21 @@
 import 'photoswipe/style.css'
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
 import { Image } from 'astro:assets'
-// import exifr from 'exifr'
 
 export interface Props {
   id: string
   images: ImageMetadata[]
+  exifs?: Record<string, any>[]
 }
 
-const { id, images } = Astro.props
+const { id, images, exifs } = Astro.props
 
-// const imageFiles = import.meta.glob<ImageMetadata>('../assets/**/*.{png,webp,jpg,jpeg}', { import: 'default', eager: true })
-// const imageSrcs = images.map(image => imageFiles[image])
-const imagetitles = images.map(image => image.src.slice(0, image.src.lastIndexOf('.')).slice(image.src.lastIndexOf('/') + 1))
-// const exifs = [] as Record<string, any>[]
-// for (let i in images) {
-//   const exif = await exifr.parse(images[i].replace('../', './src/'))
-//   exifs.push(exif)
-// }
-// {exifs[i] && <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model  + ')'}</span>}
+const imagetitles = images.map(image => {
+  let img = image.src.slice(0, image.src.lastIndexOf('.'))
+  img = img.slice(0, img.lastIndexOf('.'))
+  img = img.slice(img.lastIndexOf('/') + 1)
+  return img
+})
 ---
 <style>
   .gallery {
@@ -93,6 +90,7 @@ const imagetitles = images.map(image => image.src.slice(0, image.src.lastIndexOf
           </a>
           <figcaption itemprop="caption description" class="rounded">
             {imagetitles[i]}
+            {exifs && exifs[i] && <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model  + ')'}</span>}
             </figcaption>
             </figure>
             
