@@ -87,18 +87,19 @@ Inside this starter, you'll see the following folders and files:
 ├── public/
 │   └── favicon.ico
 ├── src/
+│   ├── assets/
+│   │   ├── image.png
+│   │   └── gallery/
+│   │       └── gallery-name/
+│   │           └── image.jpg
 │   ├── components/
 │   │   └── header.astro
 │   ├── content/
 │   │   ├── blog/
 │   │   |   └── 2022-08-01-post.md
-│   │   └── doc/
-│   │       └── documentation-page.md
-│   ├── images/
-│   │   ├── image.png
-│   │   └── gallery/
-│   │       └── gallery-name/
-│   │           └── image.jpg
+│   │   ├── doc/
+│   │   |   └── documentation-page.md
+|   │   └── config.ts
 │   ├── layouts/
 │   │   ├── base.astro
 │   │   ├── blog.astro
