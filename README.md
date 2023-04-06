@@ -114,7 +114,7 @@ Astro looks for `.astro`, `.md` or `.mdx` files in the `src/pages/` directory. E
 
 `src/components/` is where we put any Astro components and similarly `src/layouts/` for layouts.
 
-Images can be placed in `src/images/`.
+Images can be placed in `src/assets/`.
 
 Blog and documentation content are created as collections of Markdown or MDX files in `src/content`.
 

@@ -1,25 +1,25 @@
 ---
 import 'photoswipe/style.css'
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
-import { Image } from '@astrojs/image/components'
-import exifr from 'exifr'
+import { Image } from 'astro:assets'
+// import exifr from 'exifr'
 
 export interface Props {
   id: string
-  images: string[]
+  images: ImageMetadata[]
 }
 
 const { id, images } = Astro.props
 
-const imageFiles = import.meta.glob<ImageMetadata>('../images/**/*.{png,webp,jpg,jpeg}', { import: 'default', eager: true })
-const imageSrcs = images.map(image => imageFiles[image])
-const imagetitles = images.map(image => image.slice(0, image.lastIndexOf('.')).slice(image.lastIndexOf('/') + 1))
-const exifs = [] as Record<string, any>[]
-for (let i in images) {
-  const exif = await exifr.parse(images[i].replace('../', './src/'))
-  exifs.push(exif)
-}
-
+// const imageFiles = import.meta.glob<ImageMetadata>('../assets/**/*.{png,webp,jpg,jpeg}', { import: 'default', eager: true })
+// const imageSrcs = images.map(image => imageFiles[image])
+const imagetitles = images.map(image => image.src.slice(0, image.src.lastIndexOf('.')).slice(image.src.lastIndexOf('/') + 1))
+// const exifs = [] as Record<string, any>[]
+// for (let i in images) {
+//   const exif = await exifr.parse(images[i].replace('../', './src/'))
+//   exifs.push(exif)
+// }
+// {exifs[i] && <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model  + ')'}</span>}
 ---
 <style>
   .gallery {
@@ -83,13 +83,12 @@ for (let i in images) {
   }
 </style>
 <lightbox-inner data-id={id}>
-  {imageSrcs.map((image, i) => (
+  {images.map((image, i) => (
     <figure itemscope itemtype="http://schema.org/ImageObject" class="inline-block text-gray-800 dark:text-gray-300 bg-gray-300 dark:bg-gray-800 text-sm text-center italic rounded">
       <a href={image.src} itemprop="contentUrl" data-pswp-width={image.width} data-pswp-height={image.height}>
         <Image src={image} alt={imagetitles[i]} width={600} height={image.height * 600/image.width} format="webp" class="rounded" />
         <span class="pswp-caption-content">
           {imagetitles[i]}
-          {exifs[i] && <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model  + ')'}</span>}
           </span>
           </a>
           <figcaption itemprop="caption description" class="rounded">

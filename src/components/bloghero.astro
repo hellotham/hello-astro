@@ -1,9 +1,9 @@
 ---
+import { Image } from 'astro:assets'
 import { Icon } from 'astro-icon'
 import { authorDetail, categoryDetail, Frontmatter } from '../config'
 import Categories from '../components/categories.astro'
 import Tags from '../components/tags.astro'
-import Img from '../components/img.astro'
 
 export interface Props {
   frontmatter: Frontmatter
@@ -11,8 +11,7 @@ export interface Props {
 
 const { frontmatter } = Astro.props
 
-const image = frontmatter.coverSVG ||
-  frontmatter.coverImage ||
+const image = frontmatter.coverImage ||
   (frontmatter.images && frontmatter.images[0]) ||
   frontmatter.socialImage ||
   (categoryDetail(frontmatter.categories && frontmatter.categories[0]).coverSVG)
@@ -23,11 +22,18 @@ const image = frontmatter.coverSVG ||
     class="absolute left-0 bottom-0 w-full h-full z-10 bg-gradient-to-t from-gray-700 xl:rounded-lg"
   >
   </div>
-  <Img
-    src={image}
-    alt="featured image"
-    class="absolute left-0 w-full h-full top-0 z-0 object-cover"
-  />
+  {frontmatter.coverSVG
+  ? <img
+      src={frontmatter.coverSVG.src}
+      alt="featured image"
+      class="absolute left-0 w-full h-full top-0 z-0 object-cover"
+    />
+  : <Image
+      src={image}
+      alt="featured image"
+      class="absolute left-0 w-full h-full top-0 z-0 object-cover"
+    />
+  }
   <div class="p-4 absolute bottom-0 left-0 z-20">
     <Categories categories={frontmatter.categories} />
     <h2 class="text-4xl font-bold text-white leading-tight">
@@ -39,7 +45,7 @@ const image = frontmatter.coverSVG ||
     <span class="flex mt-3">
       {frontmatter.author && (
         <span class="flex items-center mr-6">
-          <Img
+          <Image
             src={authorDetail(frontmatter.author).image}
             alt={frontmatter.author}
             class="h-10 w-10 rounded-full mr-2 object-cover"

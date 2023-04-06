@@ -8,12 +8,14 @@ import Features from '../components/features.astro'
 import FindOutMore from '../components/findoutmore.astro'
 import LatestArticles from '../components/latestarticles.astro'
 import CTA from '../components/cta.astro'
+import coverSVG from '../assets/svg/undraw/undraw_design_inspiration.svg'
+import socialImage from '../assets/undraw/undraw_design_inspiration.png'
 
 const frontmatter: Frontmatter = {
   title: SiteMetadata.title,
   description: SiteMetadata.description,
-  coverSVG: '../images/svg/undraw/undraw_design_inspiration.svg',
-  socialImage: '../images/undraw/undraw_design_inspiration.png',
+  coverSVG: coverSVG,
+  socialImage: socialImage,
   publishDate: SiteMetadata.buildTime,
 }
 

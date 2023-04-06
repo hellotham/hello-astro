@@ -4,6 +4,8 @@ import type { Frontmatter, TagType } from '../config'
 import { SiteMetadata } from '../config'
 import Base from '../layouts/base.astro'
 import PageHero from '../components/pagehero.astro'
+import coverSVG from '../assets/svg/undraw/undraw_add_notes.svg'
+import socialImage from '../assets/undraw/undraw_add_notes.png'
 import {
   jupiter,
   cutout,
@@ -93,8 +95,8 @@ const patterns = [
 const frontmatter: Frontmatter = {
   title: 'Tags',
   description: 'Articles by tags',
-  coverSVG: '../images/svg/undraw/undraw_add_notes.svg',
-  socialImage: '../images/undraw/undraw_add_notes.png',
+  coverSVG: coverSVG,
+  socialImage: socialImage,
   publishDate: SiteMetadata.buildTime,
 }
 

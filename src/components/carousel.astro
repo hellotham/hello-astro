@@ -13,7 +13,7 @@ export interface Props {
 const { pages } = Astro.props
 
 const imagepaths = pages.map(page => page.image)
-const imageFiles = import.meta.glob<ImageMetadata>('../images/gallery/**/*.{png,webp,jpg,jpeg}', { import: 'default', eager: true })
+const imageFiles = import.meta.glob<ImageMetadata>('../assets/gallery/**/*.{png,webp,jpg,jpeg}', { import: 'default', eager: true })
 const folderFiles = Object.keys(imageFiles).filter(image => imagepaths.includes(image))
 const images = folderFiles.map(image => imageFiles[image])
 ---

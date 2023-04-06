@@ -8,6 +8,8 @@ import Base from '../../../layouts/base.astro'
 import PageHero from '../../../components/pagehero.astro'
 import BlogRoll from '../../../components/blogroll.astro'
 import PaginateControl from '../../../components/paginatecontrol.astro'
+import coverSVG from '../../../assets/svg/undraw/undraw_add_notes.svg'
+import socialImage from '../../../assets/undraw/undraw_add_notes.png'
 
 export interface Props {
   page: Page<CollectionEntry<'blog'>>
@@ -26,8 +28,8 @@ const frontmatter: Frontmatter = {
     ' (total ' +
     page.total +
     ')',
-  coverSVG: '../images/svg/undraw/undraw_add_notes.svg',
-  socialImage: '../images/undraw/undraw_add_notes.png',
+  coverSVG: coverSVG,
+  socialImage: socialImage,
   publishDate: SiteMetadata.buildTime,
 }
 

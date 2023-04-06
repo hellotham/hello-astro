@@ -8,6 +8,8 @@ import Base from '../../layouts/base.astro'
 import PageHero from '../../components/pagehero.astro'
 import BlogRoll from '../../components/blogroll.astro'
 import PaginateControl from '../../components/paginatecontrol.astro'
+import coverSVG from '../../assets/svg/undraw/undraw_my_feed.svg'
+import socialImage from '../../assets/undraw/undraw_my_feed.png'
 
 export interface Props {
   page: Page<CollectionEntry<'blog'>>
@@ -18,8 +20,8 @@ const { page } = Astro.props
 const frontmatter: Frontmatter = {
   title: 'Blog' + (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
   description: 'View our articles.',
-  coverSVG: '../images/svg/undraw/undraw_my_feed.svg',
-  socialImage: '../images/undraw/undraw_my_feed.png',
+  coverSVG: coverSVG,
+  socialImage: socialImage,
   publishDate: SiteMetadata.buildTime,
 }
 

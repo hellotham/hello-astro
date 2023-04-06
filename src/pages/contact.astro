@@ -4,13 +4,15 @@ import Base from '../layouts/base.astro'
 import Map from '../components/map.astro'
 import PageHero from '../components/pagehero.astro'
 import { SiteMetadata } from '../config'
+import coverSVG from '../assets/svg/undraw/undraw_contact_us.svg'
+import socialImage from '../assets/undraw/undraw_contact_us.png'
 
 const frontmatter = {
   title: 'Contact',
   description:
     'Our presence is real and digital. Contact us through the following ways.',
-  coverSVG: '../images/svg/undraw/undraw_contact_us.svg',
-  socialImage: '../images/undraw/undraw_contact_us.png',
+    coverSVG: coverSVG,
+  socialImage: socialImage,
   publishDate: SiteMetadata.buildTime,
 }
 ---
@@ -20,8 +22,8 @@ const frontmatter = {
     <PageHero
       title={frontmatter.title}
       description={frontmatter.description}
-      coverSVG={frontmatter.coverSVG}
-      socialImage={frontmatter.socialImage}
+      coverSVG={coverSVG}
+      socialImage={socialImage}
     />
   </header>
   <main>

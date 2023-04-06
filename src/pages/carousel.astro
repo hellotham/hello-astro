@@ -8,20 +8,22 @@ import Features from '../components/features.astro'
 import FindOutMore from '../components/findoutmore.astro'
 import LatestArticles from '../components/latestarticles.astro'
 import CTA from '../components/cta.astro'
+import coverSVG from '../assets/svg/undraw/undraw_design_inspiration.svg'
+import socialImage from '../assets/undraw/undraw_design_inspiration.png'
 
 const frontmatter: Frontmatter = {
   title: SiteMetadata.title,
   description: SiteMetadata.description,
-  coverSVG: '../images/svg/undraw/undraw_design_inspiration.svg',
-  socialImage: '../images/undraw/undraw_design_inspiration.png',
+  coverSVG: coverSVG,
+  socialImage: socialImage,
   publishDate: SiteMetadata.buildTime,
 }
 
 const carouselPages = [
-  { name: 'Cowarra Dam', image: '../images/gallery/carousel/Cowarra-Dam.jpeg' },
-  { name: 'Mayfield Garden', image: '../images/gallery/carousel/Mayfield-Garden.jpeg' },
-  { name: 'Mt Tomah', image: '../images/gallery/carousel/Mt-Tomah.jpeg' },
-  { name: 'Oberon Dam', image: '../images/gallery/carousel/Oberon-Dam.jpeg' },
+  { name: 'Cowarra Dam', image: '../assets/gallery/carousel/Cowarra-Dam.jpeg' },
+  { name: 'Mayfield Garden', image: '../assets/gallery/carousel/Mayfield-Garden.jpeg' },
+  { name: 'Mt Tomah', image: '../assets/gallery/carousel/Mt-Tomah.jpeg' },
+  { name: 'Oberon Dam', image: '../assets/gallery/carousel/Oberon-Dam.jpeg' },
 ]
 
 const posts = await getCollection('blog')

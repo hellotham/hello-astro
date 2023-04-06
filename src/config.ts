@@ -1,4 +1,3 @@
-import type { MarkdownInstance } from 'astro'
 import type { CollectionEntry } from 'astro:content'
 
 export type Frontmatter = CollectionEntry<'blog'>['data']
@@ -70,11 +69,11 @@ export const SiteMetadata = {
   buildTime: new Date(),
 }
 
-export const Logo = '../images/svg/astro/logomark-light.svg'
-export const LogoImage = '../images/astro/full-logo-light.png'
-export const FeaturedSVG = '../images/svg/undraw/undraw_design_inspiration.svg'
-export const DefaultSVG = '../images/svg/undraw/undraw_my_feed.svg'
-export const DefaultImage = '../images/undraw/undraw_my_feed.png'
+export {default as Logo} from './assets/astro/logomark-light.png'
+export {default as LogoImage} from './assets/astro/full-logo-light.png'
+export {default as FeaturedSVG} from './assets/svg/undraw/undraw_design_inspiration.svg'
+export {default as DefaultSVG} from './assets/svg/undraw/undraw_my_feed.svg'
+export {default as DefaultImage} from './assets/undraw/undraw_my_feed.png'
 
 export const NavigationLinks = [
   { name: 'Home', href: '' },
@@ -84,17 +83,24 @@ export const NavigationLinks = [
   { name: 'Docs', href: 'doc/introduction' },
 ]
 
+import InstructionsSVG from './assets/svg/undraw/undraw_instruction_manual.svg'
+import InstructionsPNG from './assets/svg/undraw/undraw_instruction_manual.svg'
+import InformationSVG from './assets/svg/undraw/undraw_instruction_manual.svg'
+import InformationPNG from './assets/svg/undraw/undraw_instruction_manual.svg'
+import InstantSVG from './assets/svg/undraw/undraw_instant_information.svg'
+import InstantPNG from './assets/svg/undraw/undraw_instant_information.svg'
+
 export const CategoryDetail = [
   {
     category: 'instructions',
-    coverSVG: '../images/svg/undraw/undraw_instruction_manual.svg',
-    socialImage: '../images/undraw/undraw_instruction_manual.png',
+    coverSVG: InstructionsSVG,
+    socialImage: InstructionsPNG,
     description: 'Guidelines on using this starter.'
   },
   {
     category: 'information',
-    coverSVG: '../images/svg/undraw/undraw_instant_information.svg',
-    socialImage: '../images/undraw/undraw_instant_information.png',
+    coverSVG: InformationSVG,
+    socialImage: InformationPNG,
     description: 'Information articles.'
   },
 ]
@@ -107,23 +113,28 @@ export function categoryDetail(category: string | undefined) {
   }
   return {
     category: 'General',
-    coverSVG: '../images/svg/undraw/undraw_instant_information.svg',
-    socialImage: '../images/undraw/undraw_instant_information.png',
+    coverSVG: InstantSVG,
+    socialImage: InstantPNG,
     description: 'Category ' + category,
   }
 }
+
+import AuthorImage from './assets/authors/Chris Tham.jpg'
+
 export const AuthorDetail = [
   {
     name: 'Chris Tham',
     description: 'Hello World',
     contact: 'chris@christham.net',
-    image: '../images/authors/Chris Tham.jpg'
+    image: AuthorImage
   }
 ]
 
+import DefaultAuthorImage from './assets/authors/default.png'
+
 export const DefaultAuthor = {
   name: 'Hello Astro',
-  image: '../images/authors/default.png',
+  image: DefaultAuthorImage,
   contact: 'info@hellotham.com',
   description: 'Astronaut'
 }

@@ -3,8 +3,8 @@ title: Sample Gallery post (Markdown!)
 description: Test post with a photo gallery and lightbox (using PhotoSwipe)
 author: Chris Tham
 publishDate: 2022-08-22T00:00:00.000Z
-coverSVG: ../images/svg/undraw/undraw_portfolio.svg
-socialImage: ../images/undraw/undraw_portfolio.png
+coverSVG: ../../assets/svg/undraw/undraw_portfolio.svg
+socialImage: ../../assets/undraw/undraw_portfolio.png
 gallery: apollo11
 categories:
   - information
