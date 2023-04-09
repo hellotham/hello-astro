@@ -155,4 +155,4 @@ All commands are run from the root of the project, from a terminal:
 - 2.4.0:`@astrojs/images` now support `svg` so no need for special handling
 - 2.4.1: Use rendered frontmatter for blog and doc posts, fixes issue with diagrams not rendering.
 - 2.4.2: Updated packages
-- 3.0.0: Use new Astro optimised asset support
+- 3.0.0: Use new Astro optimised asset support, new Astro logo, optimised post draft filtering, cleaned up gallery

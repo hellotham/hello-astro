@@ -11,53 +11,9 @@ export interface Props {
 
 const { id, images, exifs } = Astro.props
 
-const imagetitles = images.map(image => {
-  let img = image.src.slice(0, image.src.lastIndexOf('.'))
-  img = img.slice(0, img.lastIndexOf('.'))
-  img = img.slice(img.lastIndexOf('/') + 1)
-  return img
-})
+const imagetitles = images.map(image => image.src.split('/').reverse()[0].split('.')[0])
 ---
 <style>
-  .gallery {
-      width: 100%;
-      display: block;
-      margin: 0 auto;
-  }
-
-  /* Extra Small Devices, Phones */
-  @media only screen and (min-width: 480px) {
-      .gallery {
-          column-count: 1;
-          column-gap: 3px;
-      }
-  }
-
-  /* Small Devices, Tablets */
-  @media only screen and (min-width: 768px) {
-      .gallery {
-          column-count: 2;
-          column-gap: 3px;
-      }
-  }
-
-  /* Medium Devices, Desktops */
-  @media only screen and (min-width: 992px) {
-      .gallery { /* Masonry container */
-          column-count: 2;
-          column-gap: 3px;
-      }
-  }
-
-  /* Large Devices, Wide Screens */
-  @media only screen and (min-width: 1200px) {
-      .gallery {
-          column-count: 3;
-          column-gap: 0.2rem;
-          width: 100%;
-      }
-  }
-
   .pswp--custom-icon-colors {
       --pswp-icon-color: #eee;
       --pswp-icon-color-secondary: #663399;
@@ -81,7 +37,7 @@ const imagetitles = images.map(image => {
 </style>
 <lightbox-inner data-id={id}>
   {images.map((image, i) => (
-    <figure itemscope itemtype="http://schema.org/ImageObject" class="inline-block text-gray-800 dark:text-gray-300 bg-gray-300 dark:bg-gray-800 text-sm text-center italic rounded">
+    <figure itemscope itemtype="http://schema.org/ImageObject" class="inline-block text-gray-800 dark:text-gray-300 bg-gray-300 dark:bg-gray-800 text-sm text-center italic rounded shadow-lg shadow-gray-400 dark:shadow-black">
       <a href={image.src} itemprop="contentUrl" data-pswp-width={image.width} data-pswp-height={image.height}>
         <Image src={image} alt={imagetitles[i]} width={600} height={image.height * 600/image.width} format="webp" class="rounded" />
         <span class="pswp-caption-content">
