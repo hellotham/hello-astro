@@ -37,7 +37,7 @@ const imagetitles = images.map(image => image.src.split('/').reverse()[0].split(
 </style>
 <lightbox-inner data-id={id}>
   {images.map((image, i) => (
-    <figure itemscope itemtype="http://schema.org/ImageObject" class="inline-block text-gray-800 dark:text-gray-300 bg-gray-300 dark:bg-gray-800 text-sm text-center italic rounded shadow-lg shadow-gray-400 dark:shadow-black">
+    <figure itemscope itemtype="http://schema.org/ImageObject" class="inline-block text-gray-800 dark:text-gray-300 bg-gray-300 dark:bg-gray-800 text-sm text-center italic rounded shadow-lg shadow-gray-400 dark:shadow-black my-1 lg:my-2">
       <a href={image.src} itemprop="contentUrl" data-pswp-width={image.width} data-pswp-height={image.height}>
         <Image src={image} alt={imagetitles[i]} width={600} height={image.height * 600/image.width} format="webp" class="rounded" />
         <span class="pswp-caption-content">
