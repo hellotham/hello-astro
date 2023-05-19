@@ -1,6 +1,9 @@
 ---
+import { getCollection } from 'astro:content'
 import { Icon } from 'astro-icon'
-import { SiteMetadata, Logo } from '../config'
+import { Logo } from '../config'
+
+const social = await getCollection('social')
 ---
 
 <div class="h-24 lg:h-16"></div>
@@ -62,16 +65,16 @@ import { SiteMetadata, Logo } from '../config'
       class="grow inline-flex lg:ml-auto justify-center lg:justify-end mt-2 lg:mt-0"
     >
       {
-        SiteMetadata.social.map(s =>
-          s.link ? (
+        social.map(s =>
+          s.data.link ? (
             <a
-              href={s.link}
+              href={s.data.link}
               class="ml-3 text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300"
               rel="noopener noreferrer"
               target="_blank"
             >
-              <Icon pack="bi" name={s.icon} class=" h-5 w-5" />
-              <span class="sr-only">{s.name}</span>
+              <Icon pack="bi" name={s.data.icon} class=" h-5 w-5" />
+              <span class="sr-only">{s.data.name}</span>
             </a>
           ) : (
             ''

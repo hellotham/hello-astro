@@ -29,43 +29,6 @@ export const SiteMetadata = {
   location: 'Rivendell, Middle Earth',
   latlng: [-33.86785, 151.20732] as [number, number],
   repository: 'https://github.com/hellotham/hello-astro',
-  social: [
-    {
-      name: 'Email',
-      link: 'mailto:info@hellothamcom',
-      icon: 'envelope',
-    },
-    {
-      name: 'Phone',
-      link: '555-5555',
-      icon: 'telephone',
-    },
-    {
-      name: 'LinkedIn',
-      link: 'https://www.linkedin.com/hellothamcom',
-      icon: 'linkedin',
-    },
-    {
-      name: 'Facebook',
-      link: 'https://www.facebook.com/hellothamcom',
-      icon: 'facebook',
-    },
-    {
-      name: 'Instagram',
-      link: 'https://www.instagram.com/hellothamcom',
-      icon: 'instagram',
-    },
-    {
-      name: 'Twitter',
-      link: 'https://twitter.com/hellothamcom',
-      icon: 'twitter',
-    },
-    {
-      name: 'Github',
-      link: 'https://github.com/hellothamcom',
-      icon: 'github',
-    },
-  ],
   buildTime: new Date(),
 }
 
@@ -82,71 +45,6 @@ export const NavigationLinks = [
   { name: 'Blog', href: 'blog' },
   { name: 'Docs', href: 'doc/introduction' },
 ]
-
-import InstructionsSVG from './assets/svg/undraw/undraw_instruction_manual.svg'
-import InstructionsPNG from './assets/svg/undraw/undraw_instruction_manual.svg'
-import InformationSVG from './assets/svg/undraw/undraw_instruction_manual.svg'
-import InformationPNG from './assets/svg/undraw/undraw_instruction_manual.svg'
-import InstantSVG from './assets/svg/undraw/undraw_instant_information.svg'
-import InstantPNG from './assets/svg/undraw/undraw_instant_information.svg'
-
-export const CategoryDetail = [
-  {
-    category: 'instructions',
-    coverSVG: InstructionsSVG,
-    socialImage: InstructionsPNG,
-    description: 'Guidelines on using this starter.'
-  },
-  {
-    category: 'information',
-    coverSVG: InformationSVG,
-    socialImage: InformationPNG,
-    description: 'Information articles.'
-  },
-]
-
-export function categoryDetail(category: string | undefined) {
-  const details = CategoryDetail.filter(cat => cat.category == category)
-
-  if (details.length == 1) {
-    return details[0]
-  }
-  return {
-    category: 'General',
-    coverSVG: InstantSVG,
-    socialImage: InstantPNG,
-    description: 'Category ' + category,
-  }
-}
-
-import AuthorImage from './assets/authors/Chris Tham.jpg'
-
-export const AuthorDetail = [
-  {
-    name: 'Chris Tham',
-    description: 'Hello World',
-    contact: 'chris@christham.net',
-    image: AuthorImage
-  }
-]
-
-import DefaultAuthorImage from './assets/authors/default.png'
-
-export const DefaultAuthor = {
-  name: 'Hello Astro',
-  image: DefaultAuthorImage,
-  contact: 'info@hellotham.com',
-  description: 'Astronaut'
-}
-
-export function authorDetail(author: string | undefined) {
-  const details = AuthorDetail.filter(person => person.name == author)
-
-  if (details.length == 1) {
-    return details[0]
-  }
-  return DefaultAuthor
-}
 
 export const PAGE_SIZE = 6
 

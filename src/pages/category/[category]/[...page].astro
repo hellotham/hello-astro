@@ -1,9 +1,10 @@
 ---
 import type { PaginateFunction, Page } from 'astro'
 import type { CollectionEntry } from 'astro:content'
+import { getEntry } from 'astro:content'
 import type { Frontmatter } from '../../../config'
 import { getCollection } from 'astro:content'
-import { SiteMetadata, categoryDetail, PAGE_SIZE } from '../../../config'
+import { SiteMetadata, PAGE_SIZE } from '../../../config'
 import Base from '../../../layouts/base.astro'
 import PageHero from '../../../components/pagehero.astro'
 import BlogRoll from '../../../components/blogroll.astro'
@@ -16,29 +17,26 @@ export interface Props {
 const { category } = Astro.params
 const { page } = Astro.props
 
-const detail = categoryDetail(category as string)
+const detail = await getEntry('category', category!)
 
 const frontmatter: Frontmatter = {
   title: 'Category: ' + category + (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
-  description: detail.description,
-  coverSVG: detail.coverSVG,
-  socialImage: detail.socialImage,
+  description: detail!.data.description,
+  coverSVG: detail!.data.coverSVG,
+  socialImage: detail!.data.socialImage,
   publishDate: SiteMetadata.buildTime,
 }
 
 const currentPage = Astro.url.pathname.replace(/(\/\d*)?\/$/, '')
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
-  const allPosts = await getCollection('blog', ({ data }) => {
-    return data.draft !== true;
-  })
+  const categories = await getCollection('category')
+  const allPosts = await getCollection('blog', post => !post.data.draft)
   const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
 
-  const categories = Array.from(new Set(posts.flatMap(post => post.data.categories)))
-
   return categories.map(category => {
-    return paginate(posts.filter(post => category && post.data.categories?.includes(category)), {
-      params: { category },
+    return paginate(posts.filter(post => category && post.data.categories!.map(category => category.slug).includes(category.slug)), {
+      params: { category: category.slug },
       pageSize: PAGE_SIZE
     })
   })

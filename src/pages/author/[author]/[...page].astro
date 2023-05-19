@@ -1,8 +1,9 @@
 ---
 import type { PaginateFunction, Page } from 'astro'
 import type { CollectionEntry } from 'astro:content'
+import { getEntry } from 'astro:content'
 import { Image } from 'astro:assets'
-import { Frontmatter , SiteMetadata, authorDetail, PAGE_SIZE } from '../../../config'
+import { Frontmatter , SiteMetadata, PAGE_SIZE } from '../../../config'
 import { getCollection } from 'astro:content'
 import Base from '../../../layouts/base.astro'
 import PageHero from '../../../components/pagehero.astro'
@@ -18,12 +19,12 @@ export interface Props {
 const { author } = Astro.params
 const { page } = Astro.props
 
-const detail = authorDetail(author as string)
+const detail = await getEntry('author', author!)
 
 const frontmatter: Frontmatter = {
-  title: 'Author: ' + author + (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
+  title: 'Author: ' + detail!.data.title + (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
   description:
-    detail.description + '. ' +
+    detail!.data.description + '. ' +
     'Showing articles ' +
     (page.start + 1) +
     '-' +
@@ -39,16 +40,13 @@ const frontmatter: Frontmatter = {
 const currentPage = Astro.url.pathname.replace(/(\/\d*)?\/$/, '')
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
-  const allPosts = await getCollection('blog', ({ data }) => {
-    return data.draft !== true;
-  })
+  const authors = await getCollection('author')
+  const allPosts = await getCollection('blog', post => !post.data.draft)
   const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
 
-    const authors = Array.from(new Set(posts.flatMap(post => post.data.author)))
-
   return authors.map(author => {
-    return paginate(posts.filter(post => author && post.data.author?.includes(author)), {
-      params: { author },
+    return paginate(posts.filter(post => post.data.author!.slug == author.slug), {
+      params: { author: author.slug },
       pageSize: PAGE_SIZE
     })
   })
@@ -63,7 +61,7 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
       coverSVG={frontmatter.coverSVG}
       socialImage={frontmatter.socialImage}
     >
-    <Image src={detail.image} alt={detail.name} class="mt-4 h-32 w-32 rounded-full object-center object-cover" />
+    <Image src={detail!.data.image} alt={detail!.data.title} class="mt-4 h-32 w-32 rounded-full object-center object-cover" />
     <PaginateControl base={currentPage} page={page} />
   </PageHero>
   </header>

@@ -67,14 +67,14 @@ const imagetitles = images.map(image => image.src.split('/').reverse()[0].split(
         gallerySelector: '#' + id,
         childSelector: 'a',
         pswpModule: () => import('photoswipe'),
-        paddingFn: (viewportSize) => {
+        paddingFn: () => {
           return {
             top: 0, bottom: 30, left: 0, right: 0
           }
         }
       })
       
-      const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+      new PhotoSwipeDynamicCaption(lightbox, {
         captionContent: '.pswp-caption-content',
         type: 'below',
       });

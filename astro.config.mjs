@@ -23,7 +23,6 @@ export default defineConfig({
   base: '/hello-astro',
   integrations: [tailwind(), sitemap(), mdx(), alpinejs(), robotsTxt()],
   experimental: {
-    integrations: true,
     assets: true
   },
   markdown: {
