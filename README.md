@@ -164,3 +164,5 @@ All commands are run from the root of the project, from a terminal:
   - cleaned up lint errors
   - migrated authors and categories to collections and use referential integrity based on Astro 2.5.0
   - converted social links to a data collection (requires Astro >2.5.0)
+  - updated favicon and header metadata
+  - improve search to include documentation

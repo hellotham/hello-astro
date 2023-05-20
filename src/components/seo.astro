@@ -101,11 +101,11 @@ const organization: WithContext<Organization> = {
   location: SiteMetadata.location,
   image: {
     '@type': 'ImageObject',
-    url: logo.src,
+    url: new URL(logo.src, siteurl).toString(),
   },
   logo: {
     '@type': 'ImageObject',
-    url: logo.src,
+    url: new URL(logo.src, siteurl).toString(),
   },
   name: SiteMetadata.org.name,
   sameAs: Object.values(social.map(social => social.data.link)),
