@@ -5,18 +5,21 @@ export interface Props {
 
 const { categories } = Astro.props
 ---
-{categories &&
-  <div class="flex flex-row flex-wrap items-start gap-2 pb-2">
-    {
-      categories.map(category => (
+
+{
+  categories && (
+    <div class="flex flex-row flex-wrap items-start gap-2 pb-2">
+      {categories.map(category => (
         <a
-          href={`${import.meta.env.BASE_URL}category/${encodeURIComponent(category)}/`}
+          href={`${import.meta.env.BASE_URL}category/${encodeURIComponent(
+            category
+          )}/`}
           class="inline-block py-1 px-3 rounded bg-purple-600 hover:bg-pink-600 text-white text-xs font-medium tracking-tight uppercase"
         >
           {category}
           <span class="sr-only">category</span>
         </a>
-      ))
-    }
-  </div>
+      ))}
+    </div>
+  )
 }

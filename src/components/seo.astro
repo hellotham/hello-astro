@@ -20,8 +20,12 @@ const { frontmatter } = Astro.props
 const siteurl = new URL(import.meta.env.BASE_URL, Astro.url)
 const type = Astro.url.toString().includes('blog') ? 'post' : 'page'
 const year = SiteMetadata.buildTime.getFullYear()
-const images = import.meta.glob<ImageMetadata>('../images/**/*', { import: 'default' })
-const image = await images[frontmatter.socialImage || frontmatter.coverImage || DefaultImage]()
+const images = import.meta.glob<ImageMetadata>('../images/**/*', {
+  import: 'default',
+})
+const image = await images[
+  frontmatter.socialImage || frontmatter.coverImage || DefaultImage
+]()
 const logo = await images[LogoImage]()
 const publishDate = new Date(frontmatter.publishDate)
 
@@ -187,19 +191,28 @@ const article: WithContext<Article> = {
   {openGraph}
   {twitter}
 />
-<script is:inline set:html={JSON.stringify(website)} type="application/ld+json"
-></script>
+<script
+  is:inline
+  set:html={JSON.stringify(website)}
+  type="application/ld+json"
+/>
 <script
   is:inline
   set:html={JSON.stringify(organization)}
   type="application/ld+json"
-></script>
+/>
 <script
   is:inline
   set:html={JSON.stringify(breadcrumbList)}
   type="application/ld+json"
-></script>
-<script is:inline set:html={JSON.stringify(person)} type="application/ld+json"
-></script>
-<script is:inline set:html={JSON.stringify(article)} type="application/ld+json"
-></script>
+/>
+<script
+  is:inline
+  set:html={JSON.stringify(person)}
+  type="application/ld+json"
+/>
+<script
+  is:inline
+  set:html={JSON.stringify(article)}
+  type="application/ld+json"
+/>

@@ -3,7 +3,8 @@ import { Icon } from 'astro-icon'
 ---
 
 <script is:inline src="https://unpkg.com/lunr/lunr.min.js"></script>
-<div x-data={`
+<div
+  x-data={`
 {
   searchResults: false,
   searchText: '',
@@ -52,7 +53,8 @@ import { Icon } from 'astro-icon'
     return false
   },
 }
-`}>
+`}
+>
   <div class="flex justify-center">
     <div class="xl:w-64">
       <div class="input-group relative flex items-stretch w-full">

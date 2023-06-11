@@ -7,12 +7,26 @@ export interface Props {
 
 const { folder } = Astro.props
 
-const imageFiles = import.meta.glob<ImageMetadata>('../images/gallery/**/*.{png,webp,jpg,jpeg}', { import: 'default' })
-const folderFiles = Object.keys(imageFiles).filter(image => image.search(folder) >= 0)
+const imageFiles = import.meta.glob<ImageMetadata>(
+  '../images/gallery/**/*.{png,webp,jpg,jpeg}',
+  { import: 'default' }
+)
+const folderFiles = Object.keys(imageFiles).filter(
+  image => image.search(folder) >= 0
+)
 
 const gallery = 'gallery-' + folder
 ---
-<p class="text-sm text-gray-500 italic">Please click on any photo to view in a lightbox. Use arrow keys or swipe to navigate.</p>
-<div id={gallery} class="w-full block mx-auto columns-1 gap-1 sm:columns-2 lg:columns-3 not-prose" itemscope itemtype="http://schema.org/ImageGallery">
+
+<p class="text-sm text-gray-500 italic">
+  Please click on any photo to view in a lightbox. Use arrow keys or swipe to
+  navigate.
+</p>
+<div
+  id={gallery}
+  class="w-full block mx-auto columns-1 gap-1 sm:columns-2 lg:columns-3 not-prose"
+  itemscope
+  itemtype="http://schema.org/ImageGallery"
+>
   <Lightbox id={gallery} images={folderFiles} />
 </div>

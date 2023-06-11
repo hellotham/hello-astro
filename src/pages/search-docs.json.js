@@ -1,6 +1,8 @@
 import { getCollection } from 'astro:content'
 
-const posts = await getCollection('blog', (p) => { return !p.data.draft})
+const posts = await getCollection('blog', p => {
+  return !p.data.draft
+})
 const documents = posts.map(post => ({
   url: import.meta.env.BASE_URL + '/blog/' + post.slug,
   title: post.data.title,
@@ -12,8 +14,8 @@ const documents = posts.map(post => ({
 }))
 
 export async function get() {
-    const body = JSON.stringify(documents)
-    return {
-      body
-    }
+  const body = JSON.stringify(documents)
+  return {
+    body,
   }
+}

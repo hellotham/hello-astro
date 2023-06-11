@@ -8,8 +8,16 @@ const { src, alt, width, height, ...attrs } = Astro.props
 
 // ugly hack to circumvent astro issue with dynamic import
 // https://github.com/withastro/astro/issues/3373
-const images = import.meta.glob<ImageMetadata>('../images/**/*', { import: 'default' })
+const images = import.meta.glob<ImageMetadata>('../images/**/*', {
+  import: 'default',
+})
 const image = await images[src || DefaultImage]()
 ---
 
-<Image src={image} alt={alt!} width={Number(width)} height={Number(height)} class={attrs.class} />
+<Image
+  src={image}
+  alt={alt!}
+  width={Number(width)}
+  height={Number(height)}
+  class={attrs.class}
+/>

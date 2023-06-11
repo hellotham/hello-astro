@@ -12,7 +12,7 @@ tags:
   - markmap
   - diagram
   - mindmap
----  
+---
 
 ## Mindmap
 

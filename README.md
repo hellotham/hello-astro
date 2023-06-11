@@ -52,7 +52,7 @@ This project initially started as a bare bones port of [hello-gatsby-starter](ht
 - Carousel component using Swiper
 - Documentation pages (modelled after astro docs starter but using Tailwind)
 
-## External Packages 
+## External Packages
 
 The start uses the following external packages:
 

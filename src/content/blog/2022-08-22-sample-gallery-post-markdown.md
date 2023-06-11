@@ -11,7 +11,7 @@ categories:
 tags:
   - mdx
   - sample
----  
+---
 
 ## Gallery with Lightbox
 

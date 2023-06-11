@@ -7,9 +7,13 @@ export interface Props {
 
 const { loc, zoom } = Astro.props
 ---
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-crossorigin=""/>
+
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+  integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+  crossorigin=""
+/>
 <map-inner data-lat={loc[0]} data-lng={loc[1]} data-zoom={zoom}></map-inner>
 <div id="map" class="mb-3 h-96"></div>
 <script>
@@ -25,16 +29,20 @@ crossorigin=""/>
     constructor() {
       super()
 
-      const loc: [number, number] = [Number(this.dataset.lat), Number(this.dataset.lng)]
+      const loc: [number, number] = [
+        Number(this.dataset.lat),
+        Number(this.dataset.lng),
+      ]
 
       var map = L.map('map').setView(loc, Number(this.dataset.zoom))
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map)
       L.marker(loc).addTo(map)
     }
   }
 
-  customElements.define('map-inner', MapInner);
+  customElements.define('map-inner', MapInner)
 </script>

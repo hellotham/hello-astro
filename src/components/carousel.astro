@@ -13,26 +13,43 @@ export interface Props {
 const { pages } = Astro.props
 
 const imagepaths = pages.map(page => page.image)
-const imageFiles = import.meta.glob<ImageMetadata>('../images/gallery/**/*.{png,webp,jpg,jpeg}', { import: 'default', eager: true })
-const folderFiles = Object.keys(imageFiles).filter(image => imagepaths.includes(image))
+const imageFiles = import.meta.glob<ImageMetadata>(
+  '../images/gallery/**/*.{png,webp,jpg,jpeg}',
+  { import: 'default', eager: true }
+)
+const folderFiles = Object.keys(imageFiles).filter(image =>
+  imagepaths.includes(image)
+)
 const images = folderFiles.map(image => imageFiles[image])
 ---
+
 <div
   style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-  class:list={[ "swiper mySwiper not-prose max-w-screen-xl mx-auto rounded-lg w-full", `h-[500px]` ]}
+  class:list={[
+    'swiper mySwiper not-prose max-w-screen-xl mx-auto rounded-lg w-full',
+    `h-[500px]`,
+  ]}
 >
-<div class="swiper-wrapper">
-  {pages.map((page, i) => (
-    <div class="swiper-slide relative">
-      <div class="absolute left-0 bottom-0 w-full h-full z-10 bg-gradient-to-t from-gray-800 opacity-25 xl:rounded-lg" ></div>
-      <img src={images[i].src} alt={page.name} class="absolute left-0 w-full h-full top-0 z-0 object-cover m-0" />
-      <div class="p-4 absolute bottom-0 left-0 z-20 mb-4 ml-8 text-white bg-transparent">
-        {page.title && <h4 class="text-lg font-bold">{page.title}</h4>}
-        {page.description && <p class="text-base text-gray-300 italic">{page.description}</p>}
-        <slot />
-      </div>
-    </div>
-    ))}
+  <div class="swiper-wrapper">
+    {
+      pages.map((page, i) => (
+        <div class="swiper-slide relative">
+          <div class="absolute left-0 bottom-0 w-full h-full z-10 bg-gradient-to-t from-gray-800 opacity-25 xl:rounded-lg" />
+          <img
+            src={images[i].src}
+            alt={page.name}
+            class="absolute left-0 w-full h-full top-0 z-0 object-cover m-0"
+          />
+          <div class="p-4 absolute bottom-0 left-0 z-20 mb-4 ml-8 text-white bg-transparent">
+            {page.title && <h4 class="text-lg font-bold">{page.title}</h4>}
+            {page.description && (
+              <p class="text-base text-gray-300 italic">{page.description}</p>
+            )}
+            <slot />
+          </div>
+        </div>
+      ))
+    }
   </div>
   <div class="swiper-button-next"></div>
   <div class="swiper-button-prev"></div>

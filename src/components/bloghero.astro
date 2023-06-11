@@ -11,11 +11,12 @@ export interface Props {
 
 const { frontmatter } = Astro.props
 
-const image = frontmatter.coverSVG ||
+const image =
+  frontmatter.coverSVG ||
   frontmatter.coverImage ||
   (frontmatter.images && frontmatter.images[0]) ||
   frontmatter.socialImage ||
-  (categoryDetail(frontmatter.categories && frontmatter.categories[0]).coverSVG)
+  categoryDetail(frontmatter.categories && frontmatter.categories[0]).coverSVG
 ---
 
 <div class="my-4 md:mb-0 w-full max-w-screen-xl mx-auto relative h-96">
@@ -37,27 +38,41 @@ const image = frontmatter.coverSVG ||
       {frontmatter.description}
     </h2>
     <span class="flex mt-3">
-      {frontmatter.author && (
-        <span class="flex items-center mr-6">
-          <Img
-            src={authorDetail(frontmatter.author).image}
-            alt={frontmatter.author}
-            class="h-10 w-10 rounded-full mr-2 object-cover"
-          />
-          <Icon class="w-6 h-6 mr-1 text-purple-200" pack="heroicons-outline" name="user-circle" />
-          <span class="font-semibold text-purple-200">
-            {frontmatter.author}
+      {
+        frontmatter.author && (
+          <span class="flex items-center mr-6">
+            <Img
+              src={authorDetail(frontmatter.author).image}
+              alt={frontmatter.author}
+              class="h-10 w-10 rounded-full mr-2 object-cover"
+            />
+            <Icon
+              class="w-6 h-6 mr-1 text-purple-200"
+              pack="heroicons-outline"
+              name="user-circle"
+            />
+            <span class="font-semibold text-purple-200">
+              {frontmatter.author}
+            </span>
           </span>
-        </span>
-      )}
+        )
+      }
       <span class="flex items-center mr-6">
-        <Icon class="w-6 h-6 mr-1 text-purple-200" pack="heroicons-outline" name="calendar" />
+        <Icon
+          class="w-6 h-6 mr-1 text-purple-200"
+          pack="heroicons-outline"
+          name="calendar"
+        />
         <span class="font-semibold text-purple-200 ml-1">
           {new Date(frontmatter.publishDate).toString()}
         </span>
       </span>
       <span class="flex items-center">
-        <Icon class="w-6 h-6 mr-1 text-purple-200" pack="heroicons-outline" name="clock" />
+        <Icon
+          class="w-6 h-6 mr-1 text-purple-200"
+          pack="heroicons-outline"
+          name="clock"
+        />
         <span class="font-semibold text-purple-200 ml-1">
           {frontmatter.minutesRead}
         </span>

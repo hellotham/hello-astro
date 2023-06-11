@@ -89,13 +89,13 @@ export const CategoryDetail = [
     category: 'instructions',
     coverSVG: '../images/svg/undraw/undraw_instruction_manual.svg',
     socialImage: '../images/undraw/undraw_instruction_manual.png',
-    description: 'Guidelines on using this starter.'
+    description: 'Guidelines on using this starter.',
   },
   {
     category: 'information',
     coverSVG: '../images/svg/undraw/undraw_instant_information.svg',
     socialImage: '../images/undraw/undraw_instant_information.png',
-    description: 'Information articles.'
+    description: 'Information articles.',
   },
 ]
 
@@ -117,15 +117,15 @@ export const AuthorDetail = [
     name: 'Chris Tham',
     description: 'Hello World',
     contact: 'chris@christham.net',
-    image: '../images/authors/Chris Tham.jpg'
-  }
+    image: '../images/authors/Chris Tham.jpg',
+  },
 ]
 
 export const DefaultAuthor = {
   name: 'Hello Astro',
   image: '../images/authors/default.png',
   contact: 'info@hellotham.com',
-  description: 'Astronaut'
+  description: 'Astronaut',
 }
 
 export function authorDetail(author: string | undefined) {

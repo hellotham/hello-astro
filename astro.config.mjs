@@ -9,8 +9,8 @@ import robotsTxt from 'astro-robots-txt'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import remarkPlantUML from '@akebifiky/remark-simple-plantuml'
-import { remarkReadingTime } from './remark-plugins/remark-reading-time.mjs';
-import { remarkDiagram } from './remark-plugins/remark-diagram.mjs';
+import { remarkReadingTime } from './remark-plugins/remark-reading-time.mjs'
+import { remarkDiagram } from './remark-plugins/remark-diagram.mjs'
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,10 +22,14 @@ export default defineConfig({
   },
   site: 'https://hellotham.github.io',
   base: '/hello-astro',
-  integrations: [tailwind(), sitemap(), image(), mdx(), alpinejs(), robotsTxt()],
-  experimental: {
-    integrations: true,
-  },
+  integrations: [
+    tailwind(),
+    sitemap(),
+    image(),
+    mdx(),
+    alpinejs(),
+    robotsTxt(),
+  ],
   markdown: {
     extendDefaultPlugins: true,
     remarkPlugins: [

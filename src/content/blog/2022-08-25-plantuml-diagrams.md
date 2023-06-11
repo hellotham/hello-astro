@@ -32,7 +32,7 @@ entity      Entity      as Foo4
 database    Database    as Foo5
 collections Collections as Foo6
 queue       Queue       as Foo7
-Foo -> Foo1 : To actor 
+Foo -> Foo1 : To actor
 Foo -> Foo2 : To boundary
 Foo -> Foo3 : To control
 Foo -> Foo4 : To entity

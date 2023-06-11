@@ -18,7 +18,9 @@ const frontmatter: Frontmatter = {
 }
 
 const posts = await getCollection('blog')
-const latestPosts = posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate).filter(p => !p.data.draft)
+const latestPosts = posts
+  .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+  .filter(p => !p.data.draft)
 ---
 
 <Base frontmatter={frontmatter}>

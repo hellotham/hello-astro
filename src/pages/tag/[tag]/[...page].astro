@@ -17,7 +17,12 @@ const { tag } = Astro.params
 const { page } = Astro.props
 
 const frontmatter: Frontmatter = {
-  title: 'Tag: ' + tag + (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
+  title:
+    'Tag: ' +
+    tag +
+    (page.size < page.total
+      ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')'
+      : ''),
   description:
     'Showing articles ' +
     (page.start + 1) +
@@ -33,17 +38,26 @@ const frontmatter: Frontmatter = {
 
 const currentPage = Astro.url.pathname.replace(/(\/\d*)?\/$/, '')
 
-export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction
+}) {
   const allPosts = await getCollection('blog')
-  const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate).filter(p => !p.data.draft)
+  const posts = allPosts
+    .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+    .filter(p => !p.data.draft)
 
   const tags = Array.from(new Set(posts.flatMap(post => post.data.tags)))
 
   return tags.map(tag => {
-    return paginate(posts.filter(post => tag && post.data.tags?.includes(tag)), {
-      params: { tag },
-      pageSize: PAGE_SIZE
-    })
+    return paginate(
+      posts.filter(post => tag && post.data.tags?.includes(tag)),
+      {
+        params: { tag },
+        pageSize: PAGE_SIZE,
+      }
+    )
   })
 }
 ---
@@ -56,8 +70,8 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
       coverSVG={frontmatter.coverSVG}
       socialImage={frontmatter.socialImage}
     >
-    <PaginateControl base={currentPage} page={page} />
-  </PageHero>
+      <PaginateControl base={currentPage} page={page} />
+    </PageHero>
   </header>
   <main class="mt-10 bg-gray-100 dark:bg-gray-900">
     <BlogRoll posts={page.data} />

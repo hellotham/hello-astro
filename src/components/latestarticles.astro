@@ -49,15 +49,13 @@ const otherPosts = posts.slice(1, 5)
         >
           <a href={import.meta.env.BASE_URL + 'blog/' + newestPost.slug}>
             <span class="sr-only">{newestPost.data.title}</span>
-              <Img
-                src={
-                  newestPost.data.coverSVG ||
-                  newestPost.data.coverImage ||
-                  newestPost.data.socialImage
-                }
-                alt={newestPost.data.title + ' featured image'}
-                class="rounded-md w-full h-64 md:h-80 object-cover bg-purple-100 dark:bg-purple-800"
-              />
+            <Img
+              src={newestPost.data.coverSVG ||
+                newestPost.data.coverImage ||
+                newestPost.data.socialImage}
+              alt={newestPost.data.title + ' featured image'}
+              class="rounded-md w-full h-64 md:h-80 object-cover bg-purple-100 dark:bg-purple-800"
+            />
           </a>
           <div class="mt-4">
             {
@@ -91,7 +89,14 @@ const otherPosts = posts.slice(1, 5)
           {
             otherPosts.map(post => (
               <div class="rounded w-full md:grid md:grid-cols-3 mb-10">
-                <a href={new URL(import.meta.env.BASE_URL + 'blog/' + post.slug, Astro.url)}>
+                <a
+                  href={
+                    new URL(
+                      import.meta.env.BASE_URL + 'blog/' + post.slug,
+                      Astro.url
+                    )
+                  }
+                >
                   <Img
                     src={
                       post.data.coverSVG ||
@@ -110,13 +115,13 @@ const otherPosts = posts.slice(1, 5)
                     <div class="md:mt-1 text-gray-800 dark:text-gray-100 font-semibold text-xl">
                       {post.data.title}
                     </div>
-                    </a>
-                    <p class="block text-sm text-gray-600 dark:text-gray-300">
-                      {post.data.publishDate?.toDateString()}
-                    </p>
-                    <p class="block md:hidden text-sm text-gray-600 dark:text-gray-300">
-                      {post.data.description}
-                    </p>
+                  </a>
+                  <p class="block text-sm text-gray-600 dark:text-gray-300">
+                    {post.data.publishDate?.toDateString()}
+                  </p>
+                  <p class="block md:hidden text-sm text-gray-600 dark:text-gray-300">
+                    {post.data.description}
+                  </p>
                 </div>
               </div>
             ))

@@ -6,13 +6,20 @@ import Img from '../components/img.astro'
 
 <div class="h-24 lg:h-16"></div>
 <footer class="text-gray-600 dark:text-gray-400">
-  <div class="fixed z-20 bottom-0 inset-x-0 bg-gray-100 dark:bg-gray-800 px-4 lg:px-8 py-1 lg:py-4 w-full flex items-center lg:flex-row flex-col border-t-2 border-purple-300 dark:border-purple-600 " >
+  <div
+    class="fixed z-20 bottom-0 inset-x-0 bg-gray-100 dark:bg-gray-800 px-4 lg:px-8 py-1 lg:py-4 w-full flex items-center lg:flex-row flex-col border-t-2 border-purple-300 dark:border-purple-600"
+  >
     <span class="flex-none flex flex-row items-center">
-      <a class="flex title-font font-medium items-center lg:justify-start justify-center text-gray-900 dark:text:gray-100" href={import.meta.env.BASE_URL} >
+      <a
+        class="flex title-font font-medium items-center lg:justify-start justify-center text-gray-900 dark:text:gray-100"
+        href={import.meta.env.BASE_URL}
+      >
         <Img src={Logo} alt="Footer Logo" class="dark:bg-gray-100 h-6 w-6" />
         <span class="sr-only">Logo</span>
       </a>
-      <p class="text-sm text-gray-600 dark:text-gray-300 ml-2 pl-2 border-l-2 border-purple-300 dark:border-purple-600 py-1" >
+      <p
+        class="text-sm text-gray-600 dark:text-gray-300 ml-2 pl-2 border-l-2 border-purple-300 dark:border-purple-600 py-1"
+      >
         © {new Date().getFullYear()} MIT licence
         <a
           href="https://hellotham.com"
@@ -25,7 +32,8 @@ import Img from '../components/img.astro'
       </p>
     </span>
     <span class="flex-none flex flex-row items-center">
-      <p class="text-sm text-gray-600 dark:text-gray-300 lg:ml-4 lg:pl-4 lg:border-l-2 lg:border-purple-300 dark:lg:border-purple-600 lg:py-1"
+      <p
+        class="text-sm text-gray-600 dark:text-gray-300 lg:ml-4 lg:pl-4 lg:border-l-2 lg:border-purple-300 dark:lg:border-purple-600 lg:py-1"
       >
         <a
           href={import.meta.env.BASE_URL + 'privacy'}

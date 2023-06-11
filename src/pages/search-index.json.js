@@ -1,7 +1,9 @@
 import { getCollection } from 'astro:content'
 import lunr from 'lunr'
 
-const posts = await getCollection('blog', (p) => { return !p.data.draft})
+const posts = await getCollection('blog', p => {
+  return !p.data.draft
+})
 const documents = posts.map(post => ({
   url: import.meta.env.BASE_URL + '/blog/' + post.slug,
   title: post.data.title,
@@ -26,8 +28,8 @@ const idx = lunr(function () {
 })
 
 export async function get() {
-    const body = JSON.stringify(idx)
-    return {
-      body
-    }
+  const body = JSON.stringify(idx)
+  return {
+    body,
   }
+}

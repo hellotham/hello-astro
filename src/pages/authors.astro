@@ -15,9 +15,13 @@ const frontmatter: Frontmatter = {
 }
 
 const posts = await getCollection('blog')
-const latestPosts = posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate).filter(p => !p.data.draft)
+const latestPosts = posts
+  .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+  .filter(p => !p.data.draft)
 
-const authors = Array.from(new Set(latestPosts.flatMap(post => post.data.author)))
+const authors = Array.from(
+  new Set(latestPosts.flatMap(post => post.data.author))
+)
 ---
 
 <Base frontmatter={frontmatter}>
@@ -31,22 +35,32 @@ const authors = Array.from(new Set(latestPosts.flatMap(post => post.data.author)
   </header>
   <main class="mt-8 bg-white dark:bg-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto pb-72 sm:pb-32 lg:pb-24 lg:max-w-none">    
-        <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-6">
-          {authors.map((author) => (
-            <div class="group relative flex flex-col justify-center text-center">
-              <div class="relative w-full h-full mb-4 rounded-full overflow-hidden group-hover:opacity-75 aspect-w-1 aspect-h-1">
-                <Img src={authorDetail(author).image} alt={authorDetail(author).description} class="w-full h-full object-center object-cover" />
+      <div class="max-w-2xl mx-auto pb-72 sm:pb-32 lg:pb-24 lg:max-w-none">
+        <div
+          class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-6"
+        >
+          {
+            authors.map(author => (
+              <div class="group relative flex flex-col justify-center text-center">
+                <div class="relative w-full h-full mb-4 rounded-full overflow-hidden group-hover:opacity-75 aspect-w-1 aspect-h-1">
+                  <Img
+                    src={authorDetail(author).image}
+                    alt={authorDetail(author).description}
+                    class="w-full h-full object-center object-cover"
+                  />
+                </div>
+                <h3 class="inline-block py-1 px-3 rounded bg-purple-600 hover:bg-pink-600 text-white text-xs font-medium tracking-tight uppercase">
+                  <a href={`${import.meta.env.BASE_URL}author/${author}/`}>
+                    <span class="absolute inset-0" />
+                    {author}
+                  </a>
+                </h3>
+                <p class="text-base text-gray-900 dark:text-gray-400">
+                  {authorDetail(author).description}
+                </p>
               </div>
-              <h3 class="inline-block py-1 px-3 rounded bg-purple-600 hover:bg-pink-600 text-white text-xs font-medium tracking-tight uppercase">
-                <a href={`${import.meta.env.BASE_URL}author/${author}/`}>
-                  <span class="absolute inset-0"></span>
-                  {author}
-                </a>
-              </h3>
-              <p class="text-base text-gray-900 dark:text-gray-400">{authorDetail(author).description}</p>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </div>

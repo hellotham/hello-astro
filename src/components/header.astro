@@ -6,119 +6,119 @@ import Theme from '../components/theme.astro'
 import Img from '../components/img.astro'
 ---
 
-<div class="relative h-16 w-full" >
-<nav x-data="{ isOpen: false }" class="dark:bg-gray-800">
-  <div class="fixed z-50 mx-auto px-2 sm:px-6 lg:px-8 bg-white dark:bg-gray-800 w-full border-b-2 border-purple-300 dark:border-purple-600">
-    <div class="relative flex items-center justify-between h-16">
-      <div class="absolute inset-y-0 left-0 flex items-center lg:hidden">
-        <!-- Mobile menu button-->
-        <button
-          type="button"
-          x-on:click="isOpen = !isOpen"
-          class="inline-flex items-center justify-center p-2 rounded-md text-purple-600 hover:text-pink-600 hover:bg-purple-200 dark:text-purple-300 dark:hover:text-pink-300 dark:hover:bg-purple-800 dark:focus:ring-purple-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-300"
-          aria-controls="mobile-menu"
-          aria-expanded="false"
-        >
-          <span class="sr-only">Open main menu</span>
-          <Icon
-            x-bind:class="{'hidden': isOpen, 'block': !isOpen }"
-            class="block h-6 w-6"
-            aria-hidden="true"
-            pack="heroicons-outline"
-            name="menu"
-          />
-          <Icon
-            x-bind:class="{'block': isOpen, 'hidden': !isOpen }"
-            class="hidden h-6 w-6"
-            aria-hidden="true"
-            pack="heroicons-outline"
-            name="x"
-          />
-        </button>
-      </div>
-      <div
-        class="flex-1 flex items-center justify-center lg:items-stretch lg:justify-start"
-      >
-        <div class="flex-shrink-0 flex items-center">
-          <Img
-            class="block h-8 w-8 dark:bg-gray-100"
-            src={Logo}
-            alt="Logo"
-          />
+<div class="relative h-16 w-full">
+  <nav x-data="{ isOpen: false }" class="dark:bg-gray-800">
+    <div
+      class="fixed z-50 mx-auto px-2 sm:px-6 lg:px-8 bg-white dark:bg-gray-800 w-full border-b-2 border-purple-300 dark:border-purple-600"
+    >
+      <div class="relative flex items-center justify-between h-16">
+        <div class="absolute inset-y-0 left-0 flex items-center lg:hidden">
+          <!-- Mobile menu button-->
+          <button
+            type="button"
+            x-on:click="isOpen = !isOpen"
+            class="inline-flex items-center justify-center p-2 rounded-md text-purple-600 hover:text-pink-600 hover:bg-purple-200 dark:text-purple-300 dark:hover:text-pink-300 dark:hover:bg-purple-800 dark:focus:ring-purple-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-300"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <Icon
+              x-bind:class="{'hidden': isOpen, 'block': !isOpen }"
+              class="block h-6 w-6"
+              aria-hidden="true"
+              pack="heroicons-outline"
+              name="menu"
+            />
+            <Icon
+              x-bind:class="{'block': isOpen, 'hidden': !isOpen }"
+              class="hidden h-6 w-6"
+              aria-hidden="true"
+              pack="heroicons-outline"
+              name="x"
+            />
+          </button>
         </div>
-        <div class="hidden lg:block lg:ml-6">
-          <div class="flex space-x-4">
-            {
-              NavigationLinks.map(item => (
-                <a
-                  href={import.meta.env.BASE_URL + item.href}
-                  class={
-                    (item.href.length > 0 &&
-                    Astro.url.toString().includes(item.href)
-                      ? 'bg-purple-200 text-pink-600 dark:bg-purple-800 dark:text-pink-300'
-                      : 'text-purple-600 hover:bg-purple-200 hover:text-pink-600 dark:text-purple-200 dark:hover:bg-purple-800 dark:hover:text-pink-300') +
-                    ' px-2 py-2 rounded-md text-lg font-medium'
-                  }
-                  aria-current={
-                    item.href.length > 0 &&
-                    Astro.url.toString().includes(item.href)
-                      ? 'page'
-                      : undefined
-                  }
-                >
-                  {item.name}
-                </a>
-              ))
-            }
+        <div
+          class="flex-1 flex items-center justify-center lg:items-stretch lg:justify-start"
+        >
+          <div class="flex-shrink-0 flex items-center">
+            <Img class="block h-8 w-8 dark:bg-gray-100" src={Logo} alt="Logo" />
+          </div>
+          <div class="hidden lg:block lg:ml-6">
+            <div class="flex space-x-4">
+              {
+                NavigationLinks.map(item => (
+                  <a
+                    href={import.meta.env.BASE_URL + item.href}
+                    class={
+                      (item.href.length > 0 &&
+                      Astro.url.toString().includes(item.href)
+                        ? 'bg-purple-200 text-pink-600 dark:bg-purple-800 dark:text-pink-300'
+                        : 'text-purple-600 hover:bg-purple-200 hover:text-pink-600 dark:text-purple-200 dark:hover:bg-purple-800 dark:hover:text-pink-300') +
+                      ' px-2 py-2 rounded-md text-lg font-medium'
+                    }
+                    aria-current={
+                      item.href.length > 0 &&
+                      Astro.url.toString().includes(item.href)
+                        ? 'page'
+                        : undefined
+                    }
+                  >
+                    {item.name}
+                  </a>
+                ))
+              }
+            </div>
           </div>
         </div>
+        <div
+          class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+        >
+          <Search />
+          <Theme />
+
+          <!-- Right nav -->
+        </div>
       </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div
+      x-show="isOpen"
+      x-cloak
+      x-transition:enter="transition ease-out duration-100 transform"
+      x-transition:enter-start="opacity-0 scale-95"
+      x-transition:enter-end="opacity-100 scale-100"
+      x-transition:leave="transition ease-in duration-75 transform"
+      x-transition:leave-start="opacity-100 scale-100"
+      x-transition:leave-end="opacity-0 scale-95"
+      class="absolute top-16 inset-x-0 z-50"
+      id="mobile-menu"
+    >
       <div
-        class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+        class="px-4 py-2 bg-gray-100 dark:bg-gray-800 font-semibold border-purple-300 dark:border-purple-600 border-t-2 border-b-2 flex justify-center"
       >
-        <Search />
-        <Theme />
-
-        <!-- Right nav -->
+        {
+          NavigationLinks.map(item => (
+            <a
+              href={import.meta.env.BASE_URL + item.href}
+              class:list={[
+                item.href.length > 0 && Astro.url.toString().includes(item.href)
+                  ? 'bg-purple-200 text-pink-600 dark:bg-purple-800 dark:text-pink-300'
+                  : 'text-purple-600 hover:bg-purple-200 hover:text-pink-600 dark:text-purple-200 dark:hover:bg-purple-800 dark:hover:text-pink-300',
+                ' px-2',
+              ]}
+              aria-current={
+                item.href.length > 0 && Astro.url.toString().includes(item.href)
+                  ? 'page'
+                  : undefined
+              }
+            >
+              {item.name}
+            </a>
+          ))
+        }
       </div>
     </div>
-  </div>
-
-  <!-- Mobile menu, show/hide based on menu state. -->
-  <div
-    x-show="isOpen"
-    x-cloak
-    x-transition:enter="transition ease-out duration-100 transform"
-    x-transition:enter-start="opacity-0 scale-95"
-    x-transition:enter-end="opacity-100 scale-100"
-    x-transition:leave="transition ease-in duration-75 transform"
-    x-transition:leave-start="opacity-100 scale-100"
-    x-transition:leave-end="opacity-0 scale-95"
-    class="absolute top-16 inset-x-0 z-50"
-    id="mobile-menu"
-  >
-    <div class="px-4 py-2 bg-gray-100 dark:bg-gray-800 font-semibold border-purple-300 dark:border-purple-600 border-t-2 border-b-2 flex justify-center">
-      {
-        NavigationLinks.map(item => (
-          <a
-            href={import.meta.env.BASE_URL + item.href}
-            class:list={[
-              (item.href.length > 0 && Astro.url.toString().includes(item.href)
-                ? 'bg-purple-200 text-pink-600 dark:bg-purple-800 dark:text-pink-300'
-                : 'text-purple-600 hover:bg-purple-200 hover:text-pink-600 dark:text-purple-200 dark:hover:bg-purple-800 dark:hover:text-pink-300'),
-              ' px-2'
-            ]}
-            aria-current={
-              item.href.length > 0 && Astro.url.toString().includes(item.href)
-                ? 'page'
-                : undefined
-            }
-          >
-            {item.name}
-          </a>
-        ))
-      }
-    </div>
-  </div>
-</nav>
+  </nav>
 </div>

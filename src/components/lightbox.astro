@@ -11,93 +11,118 @@ export interface Props {
 
 const { id, images } = Astro.props
 
-const imageFiles = import.meta.glob<ImageMetadata>('../images/**/*.{png,webp,jpg,jpeg}', { import: 'default', eager: true })
+const imageFiles = import.meta.glob<ImageMetadata>(
+  '../images/**/*.{png,webp,jpg,jpeg}',
+  { import: 'default', eager: true }
+)
 const imageSrcs = images.map(image => imageFiles[image])
-const imagetitles = images.map(image => image.slice(0, image.lastIndexOf('.')).slice(image.lastIndexOf('/') + 1))
+const imagetitles = images.map(image =>
+  image.slice(0, image.lastIndexOf('.')).slice(image.lastIndexOf('/') + 1)
+)
 const exifs = [] as Record<string, any>[]
 for (let i in images) {
   const exif = await exifr.parse(images[i].replace('../', './src/'))
   exifs.push(exif)
 }
-
 ---
+
 <style>
   .gallery {
-      width: 100%;
-      display: block;
-      margin: 0 auto;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
   }
 
   /* Extra Small Devices, Phones */
   @media only screen and (min-width: 480px) {
-      .gallery {
-          column-count: 1;
-          column-gap: 3px;
-      }
+    .gallery {
+      column-count: 1;
+      column-gap: 3px;
+    }
   }
 
   /* Small Devices, Tablets */
   @media only screen and (min-width: 768px) {
-      .gallery {
-          column-count: 2;
-          column-gap: 3px;
-      }
+    .gallery {
+      column-count: 2;
+      column-gap: 3px;
+    }
   }
 
   /* Medium Devices, Desktops */
   @media only screen and (min-width: 992px) {
-      .gallery { /* Masonry container */
-          column-count: 2;
-          column-gap: 3px;
-      }
+    .gallery {
+      /* Masonry container */
+      column-count: 2;
+      column-gap: 3px;
+    }
   }
 
   /* Large Devices, Wide Screens */
   @media only screen and (min-width: 1200px) {
-      .gallery {
-          column-count: 3;
-          column-gap: 0.2rem;
-          width: 100%;
-      }
+    .gallery {
+      column-count: 3;
+      column-gap: 0.2rem;
+      width: 100%;
+    }
   }
 
   .pswp--custom-icon-colors {
-      --pswp-icon-color: #eee;
-      --pswp-icon-color-secondary: #663399;
+    --pswp-icon-color: #eee;
+    --pswp-icon-color-secondary: #663399;
   }
 
   .pswp__dynamic-caption--aside {
-      max-width: 300px;
-      padding: 20px 15px 20px 20px;
-      margin-top: 70px;
+    max-width: 300px;
+    padding: 20px 15px 20px 20px;
+    margin-top: 70px;
   }
 
   .pswp__dynamic-caption--below {
-      max-width: 700px;
-      padding: 15px 0 0;
+    max-width: 700px;
+    padding: 15px 0 0;
   }
 
   .pswp__dynamic-caption--mobile {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
   }
 </style>
 <lightbox-inner data-id={id}>
-  {imageSrcs.map((image, i) => (
-    <figure itemscope itemtype="http://schema.org/ImageObject" class="inline-block text-gray-800 dark:text-gray-300 bg-gray-300 dark:bg-gray-800 text-sm text-center italic rounded">
-      <a href={image.src} itemprop="contentUrl" data-pswp-width={image.width} data-pswp-height={image.height}>
-        <Image src={image} alt={imagetitles[i]} width={600} height={image.height * 600/image.width} format="webp" class="rounded" />
-        <span class="pswp-caption-content">
-          {imagetitles[i]}
-          {exifs[i] && <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model  + ')'}</span>}
-          </span>
-          </a>
-          <figcaption itemprop="caption description" class="rounded">
+  {
+    imageSrcs.map((image, i) => (
+      <figure
+        itemscope
+        itemtype="http://schema.org/ImageObject"
+        class="inline-block text-gray-800 dark:text-gray-300 bg-gray-300 dark:bg-gray-800 text-sm text-center italic rounded"
+      >
+        <a
+          href={image.src}
+          itemprop="contentUrl"
+          data-pswp-width={image.width}
+          data-pswp-height={image.height}
+        >
+          <Image
+            src={image}
+            alt={imagetitles[i]}
+            width={600}
+            height={(image.height * 600) / image.width}
+            format="webp"
+            class="rounded"
+          />
+          <span class="pswp-caption-content">
             {imagetitles[i]}
-            </figcaption>
-            </figure>
-            
-            ))}
+            {exifs[i] && (
+              <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model + ')'}</span>
+            )}
+          </span>
+        </a>
+        <figcaption itemprop="caption description" class="rounded">
+          {imagetitles[i]}
+        </figcaption>
+      </figure>
+    ))
+  }
 </lightbox-inner>
 <script>
   import PhotoSwipeLightbox from 'photoswipe/lightbox'
@@ -107,28 +132,31 @@ for (let i in images) {
     constructor() {
       super()
 
-      const id = this.dataset.id;
+      const id = this.dataset.id
 
       const lightbox = new PhotoSwipeLightbox({
         mainClass: 'pswp--custom-icon-colors',
         gallerySelector: '#' + id,
         childSelector: 'a',
         pswpModule: () => import('photoswipe'),
-        paddingFn: (viewportSize) => {
+        paddingFn: viewportSize => {
           return {
-            top: 0, bottom: 30, left: 0, right: 0
+            top: 0,
+            bottom: 30,
+            left: 0,
+            right: 0,
           }
-        }
+        },
       })
-      
+
       const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
         captionContent: '.pswp-caption-content',
         type: 'below',
-      });
-      
+      })
+
       lightbox.init()
     }
   }
 
-  customElements.define('lightbox-inner', LightboxInner);
+  customElements.define('lightbox-inner', LightboxInner)
 </script>

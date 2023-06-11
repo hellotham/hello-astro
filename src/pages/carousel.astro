@@ -19,60 +19,64 @@ const frontmatter: Frontmatter = {
 
 const carouselPages = [
   { name: 'Cowarra Dam', image: '../images/gallery/carousel/Cowarra-Dam.jpeg' },
-  { name: 'Mayfield Garden', image: '../images/gallery/carousel/Mayfield-Garden.jpeg' },
+  {
+    name: 'Mayfield Garden',
+    image: '../images/gallery/carousel/Mayfield-Garden.jpeg',
+  },
   { name: 'Mt Tomah', image: '../images/gallery/carousel/Mt-Tomah.jpeg' },
   { name: 'Oberon Dam', image: '../images/gallery/carousel/Oberon-Dam.jpeg' },
 ]
 
 const posts = await getCollection('blog')
-const latestPosts = posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate).filter(p => !p.data.draft)
+const latestPosts = posts
+  .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+  .filter(p => !p.data.draft)
 ---
 
 <Base frontmatter={frontmatter}>
-  <Carousel pages={carouselPages} >
-      <h1
-        class="text-4xl tracking-tight font-extrabold text-gray-100 sm:text-5xl md:text-6xl text-left"
-      >
-        <span class="block xl:inline">hello</span>{' '}
-        <span class="block text-purple-500 xl:inline"
-          >Astro
-        </span>
-      </h1>
-      <p
-        class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0"
-      >
-        Hello Astro is a full featured corporate/marketing/blog starter
-        theme written in Typescript, TailwindCSS and Astro. It supports
-        Markdown and MDX based pages and blog posts (including math and diagrams), plus full text search on blog pages.
-      </p>
-      <p
-        class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0"
-      >
-        It has full SEO support for Facebook (Open Graph) tags, Twitter
-        Cards and Schema/JSON-LD metadata. It also features fully auto
-        generated RSS feed and sitemap for search engine indexing.
-      </p>
-      <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-        <div class="rounded-md shadow">
-          <a
-            href="/about"
-            class="w-full flex items-center justify-center px-8 py-2 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-pink-600 dark:text-black dark:bg-purple-300 dark:hover:bg-pink-300 md:py-3 md:text-lg md:px-10"
-          >
-            About
-          </a>
-        </div>
-        <div class="mt-3 sm:mt-0 sm:ml-3">
-          <a
-            href="https://github.com/sponsors/hellotham"
-            class="w-full flex items-center justify-center px-8 py-2 border border-transparent text-base font-medium rounded-md text-purple-800 bg-purple-100 hover:bg-pink-200 dark:text-purple-100 dark:bg-purple-900 dark:hover:bg-pink-900 md:py-3 md:text-lg md:px-10"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Sponsor Us
-          </a>
-        </div>
+  <Carousel pages={carouselPages}>
+    <h1
+      class="text-4xl tracking-tight font-extrabold text-gray-100 sm:text-5xl md:text-6xl text-left"
+    >
+      <span class="block xl:inline">hello</span>{' '}
+      <span class="block text-purple-500 xl:inline">Astro</span>
+    </h1>
+    <p
+      class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0"
+    >
+      Hello Astro is a full featured corporate/marketing/blog starter theme
+      written in Typescript, TailwindCSS and Astro. It supports Markdown and MDX
+      based pages and blog posts (including math and diagrams), plus full text
+      search on blog pages.
+    </p>
+    <p
+      class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0"
+    >
+      It has full SEO support for Facebook (Open Graph) tags, Twitter Cards and
+      Schema/JSON-LD metadata. It also features fully auto generated RSS feed
+      and sitemap for search engine indexing.
+    </p>
+    <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+      <div class="rounded-md shadow">
+        <a
+          href="/about"
+          class="w-full flex items-center justify-center px-8 py-2 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-pink-600 dark:text-black dark:bg-purple-300 dark:hover:bg-pink-300 md:py-3 md:text-lg md:px-10"
+        >
+          About
+        </a>
       </div>
-    </Carousel>
+      <div class="mt-3 sm:mt-0 sm:ml-3">
+        <a
+          href="https://github.com/sponsors/hellotham"
+          class="w-full flex items-center justify-center px-8 py-2 border border-transparent text-base font-medium rounded-md text-purple-800 bg-purple-100 hover:bg-pink-200 dark:text-purple-100 dark:bg-purple-900 dark:hover:bg-pink-900 md:py-3 md:text-lg md:px-10"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Sponsor Us
+        </a>
+      </div>
+    </div>
+  </Carousel>
   <Features />
   <FindOutMore />
   <LatestArticles posts={latestPosts} />
