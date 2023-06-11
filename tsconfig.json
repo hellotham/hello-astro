@@ -20,7 +20,9 @@
     // "noUnusedParameters": false,
     "strict": true,
     "paths": {
-      "photoswipe/lightbox": ["./node_modules/photoswipe/dist/types/lightbox/lightbox.d.ts"]
+      "photoswipe/lightbox": [
+        "./node_modules/photoswipe/dist/types/lightbox/lightbox.d.ts"
+      ]
     }
   }
 }

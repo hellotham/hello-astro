@@ -15,7 +15,9 @@ const { frontmatter } = Astro.props
 
 const currentPage = Astro.url.pathname
 const allPosts = await getCollection('blog')
-const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate).filter(p => !p.data.draft)
+const posts = allPosts
+  .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+  .filter(p => !p.data.draft)
 let prev: CollectionEntry<'blog'> | undefined
 let next: CollectionEntry<'blog'> | undefined
 posts.forEach((post, i) => {
@@ -44,5 +46,10 @@ posts.forEach((post, i) => {
       </section>
     </article>
   </main>
-  <NextPrev slot="before-footer" base={import.meta.env.BASE_URL + 'blog/'} prev={prev} next={next} />
+  <NextPrev
+    slot="before-footer"
+    base={import.meta.env.BASE_URL + 'blog/'}
+    prev={prev}
+    next={next}
+  />
 </Base>

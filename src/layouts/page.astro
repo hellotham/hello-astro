@@ -17,16 +17,18 @@ export interface Props {
 
 const { frontmatter } = Astro.props
 
-const images = import.meta.glob<ImageMetadata>('../assets/**/*', { import: 'default' })
-const coverSVG = await images[frontmatter.coverSVG]() || DefaultSVG
-const socialImage = await images[frontmatter.socialImage]() || DefaultImage
+const images = import.meta.glob<ImageMetadata>('../assets/**/*', {
+  import: 'default',
+})
+const coverSVG = (await images[frontmatter.coverSVG]()) || DefaultSVG
+const socialImage = (await images[frontmatter.socialImage]()) || DefaultImage
 
 const fm: Frontmatter = {
   title: frontmatter.title,
   description: frontmatter.description,
   publishDate: new Date(frontmatter.publishDate),
   coverSVG: coverSVG,
-  socialImage: socialImage
+  socialImage: socialImage,
 }
 ---
 

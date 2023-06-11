@@ -20,7 +20,12 @@ const { page } = Astro.props
 const detail = await getEntry('category', category!)
 
 const frontmatter: Frontmatter = {
-  title: 'Category: ' + category + (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
+  title:
+    'Category: ' +
+    category +
+    (page.size < page.total
+      ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')'
+      : ''),
   description: detail!.data.description,
   coverSVG: detail!.data.coverSVG,
   socialImage: detail!.data.socialImage,
@@ -29,16 +34,31 @@ const frontmatter: Frontmatter = {
 
 const currentPage = Astro.url.pathname.replace(/(\/\d*)?\/$/, '')
 
-export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction
+}) {
   const categories = await getCollection('category')
   const allPosts = await getCollection('blog', post => !post.data.draft)
-  const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+  const posts = allPosts.sort(
+    (a, b) => +b.data.publishDate - +a.data.publishDate
+  )
 
   return categories.map(category => {
-    return paginate(posts.filter(post => category && post.data.categories!.map(category => category.slug).includes(category.slug)), {
-      params: { category: category.slug },
-      pageSize: PAGE_SIZE
-    })
+    return paginate(
+      posts.filter(
+        post =>
+          category &&
+          post.data
+            .categories!.map(category => category.slug)
+            .includes(category.slug)
+      ),
+      {
+        params: { category: category.slug },
+        pageSize: PAGE_SIZE,
+      }
+    )
   })
 }
 ---
@@ -51,8 +71,8 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
       coverSVG={frontmatter.coverSVG}
       socialImage={frontmatter.socialImage}
     >
-    <PaginateControl base={currentPage} page={page} />
-  </PageHero>
+      <PaginateControl base={currentPage} page={page} />
+    </PageHero>
   </header>
   <main class="mt-10 bg-gray-100 dark:bg-gray-900">
     <BlogRoll posts={page.data} />

@@ -10,37 +10,45 @@ const { editHref } = Astro.props as Props
 const showMoreSection = COMMUNITY_INVITE_URL
 ---
 
-{showMoreSection && (
-  <h2
-    id="more-title"
-    class="font-display text-sm font-medium text-gray-900 dark:text-white mt-4 space-y-3"
-  >
-    More
-  </h2>
-<ol role="list" class="mt-4 space-y-3 text-sm flex flex-col">
-    {editHref && (
-      <li class="py-1 text-gray-500 dark:text-gray-400 flex items-center">
-        <Icon pack="heroicons-outline" name="pencil" class="w-6 h-6 mr-2" />
-        <a
-          class="hover:text-purple-600 dark:hover:text-purple-300"
-          href={editHref}
-          target="_blank"
-        >
-          <span>Edit this page</span>
-        </a>
-      </li>
-    )}
-    {COMMUNITY_INVITE_URL && (
-      <li class="py-1 text-gray-500 dark:text-gray-400 flex items-center">
-        <Icon pack="heroicons-outline" name="chat-alt-2" class="w-6 h-6 mr-2" />
-        <a
-          class="hover:text-purple-600 dark:hover:text-purple-300"
-          href={COMMUNITY_INVITE_URL}
-          target="_blank"
-        >
-          <span>Join our community</span>
-        </a>
-      </li>
-    )}
-  </ol>
-)}
+{
+  showMoreSection && (
+    <>
+      <h2
+        id="more-title"
+        class="font-display text-sm font-medium text-gray-900 dark:text-white mt-4 space-y-3"
+      >
+        More
+      </h2>
+      <ol role="list" class="mt-4 space-y-3 text-sm flex flex-col">
+        {editHref && (
+          <li class="py-1 text-gray-500 dark:text-gray-400 flex items-center">
+            <Icon pack="heroicons-outline" name="pencil" class="w-6 h-6 mr-2" />
+            <a
+              class="hover:text-purple-600 dark:hover:text-purple-300"
+              href={editHref}
+              target="_blank"
+            >
+              <span>Edit this page</span>
+            </a>
+          </li>
+        )}
+        {COMMUNITY_INVITE_URL && (
+          <li class="py-1 text-gray-500 dark:text-gray-400 flex items-center">
+            <Icon
+              pack="heroicons-outline"
+              name="chat-alt-2"
+              class="w-6 h-6 mr-2"
+            />
+            <a
+              class="hover:text-purple-600 dark:hover:text-purple-300"
+              href={COMMUNITY_INVITE_URL}
+              target="_blank"
+            >
+              <span>Join our community</span>
+            </a>
+          </li>
+        )}
+      </ol>
+    </>
+  )
+}

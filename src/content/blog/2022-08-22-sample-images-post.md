@@ -14,7 +14,7 @@ categories:
 tags:
   - mdx
   - sample
----  
+---
 
 ## Images with Lightbox
 

@@ -16,7 +16,9 @@ let cat = await getEntry('category', 'general')
 if (frontmatter.categories) {
   cat = await getEntry(frontmatter.categories[0])
 }
-const image = frontmatter.coverSVG || frontmatter.coverImage ||
+const image =
+  frontmatter.coverSVG ||
+  frontmatter.coverImage ||
   (frontmatter.images && frontmatter.images[0]) ||
   frontmatter.socialImage ||
   cat.data.coverSVG
@@ -45,26 +47,36 @@ if (frontmatter.author) {
       {frontmatter.description}
     </h2>
     <span class="flex mt-3">
-      {frontmatter.author && (
-        <span class="flex items-center mr-6">
-          <Img
-            src={author.data.image}
-            alt={author.data.title}
-            cls="h-10 w-10 rounded-full mr-2 object-cover"
-          />
-          <span class="font-semibold text-purple-200">
-            {author.data.title}
+      {
+        frontmatter.author && (
+          <span class="flex items-center mr-6">
+            <Img
+              src={author.data.image}
+              alt={author.data.title}
+              cls="h-10 w-10 rounded-full mr-2 object-cover"
+            />
+            <span class="font-semibold text-purple-200">
+              {author.data.title}
+            </span>
           </span>
-        </span>
-      )}
+        )
+      }
       <span class="flex items-center mr-6">
-        <Icon class="w-6 h-6 mr-1 text-purple-200" pack="heroicons-outline" name="calendar" />
+        <Icon
+          class="w-6 h-6 mr-1 text-purple-200"
+          pack="heroicons-outline"
+          name="calendar"
+        />
         <span class="font-semibold text-purple-200 ml-1">
           {new Date(frontmatter.publishDate).toString()}
         </span>
       </span>
       <span class="flex items-center">
-        <Icon class="w-6 h-6 mr-1 text-purple-200" pack="heroicons-outline" name="clock" />
+        <Icon
+          class="w-6 h-6 mr-1 text-purple-200"
+          pack="heroicons-outline"
+          name="clock"
+        />
         <span class="font-semibold text-purple-200 ml-1">
           {frontmatter.minutesRead}
         </span>

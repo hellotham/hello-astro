@@ -9,7 +9,11 @@ interface Props {
 
 const { src, alt, cls } = Astro.props
 ---
-{src.format == 'svg'
-  ? <img src={src.src} {alt} class={cls} />
-  : <Image src={src} {alt} class={cls} />
+
+{
+  src.format == 'svg' ? (
+    <img src={src.src} {alt} class={cls} />
+  ) : (
+    <Image src={src} {alt} class={cls} />
+  )
 }

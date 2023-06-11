@@ -4,7 +4,7 @@ import { SiteMetadata } from '../config'
 
 export async function get() {
   const posts = await getCollection('blog', ({ data }) => {
-    return data.draft !== true;
+    return data.draft !== true
   })
   return rss({
     // `<title>` field in output xml

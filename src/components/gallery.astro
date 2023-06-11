@@ -8,8 +8,13 @@ export interface Props {
 
 const { folder } = Astro.props
 
-const imageFiles = import.meta.glob<ImageMetadata>('../assets/gallery/**/*.{png,webp,jpg,jpeg}', { import: 'default', eager: true })
-const folderFiles = Object.keys(imageFiles).filter(image => image.search(folder) >= 0)
+const imageFiles = import.meta.glob<ImageMetadata>(
+  '../assets/gallery/**/*.{png,webp,jpg,jpeg}',
+  { import: 'default', eager: true }
+)
+const folderFiles = Object.keys(imageFiles).filter(
+  image => image.search(folder) >= 0
+)
 const imageSrcs = folderFiles.map(image => imageFiles[image])
 const gallery = 'gallery-' + folder
 
@@ -19,7 +24,16 @@ for (let i in folderFiles) {
   exifs.push(exif)
 }
 ---
-<p class="text-sm text-gray-500 italic sm:px-2 lg:px-4">Please click on any photo to view in a lightbox. Use arrow keys or swipe to navigate.</p>
-<div id={gallery} class="w-full block mx-auto columns-1 gap-2 lg:gap-4 sm:columns-2 lg:columns-3 not-prose" itemscope itemtype="http://schema.org/ImageGallery">
+
+<p class="text-sm text-gray-500 italic sm:px-2 lg:px-4">
+  Please click on any photo to view in a lightbox. Use arrow keys or swipe to
+  navigate.
+</p>
+<div
+  id={gallery}
+  class="w-full block mx-auto columns-1 gap-2 lg:gap-4 sm:columns-2 lg:columns-3 not-prose"
+  itemscope
+  itemtype="http://schema.org/ImageGallery"
+>
   <Lightbox id={gallery} images={imageSrcs} exifs={exifs} />
 </div>

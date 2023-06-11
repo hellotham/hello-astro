@@ -1,5 +1,6 @@
 ---
 import { SEO, TwitterCardType } from 'astro-seo'
+import { getImage } from 'astro:assets'
 import { getCollection } from 'astro:content'
 import type { Frontmatter } from '../config'
 import type {
@@ -22,7 +23,7 @@ const social = await getCollection('social')
 const siteurl = new URL(import.meta.env.BASE_URL, Astro.url)
 const type = Astro.url.toString().includes('blog') ? 'post' : 'page'
 const year = SiteMetadata.buildTime.getFullYear()
-const image = frontmatter.socialImage || frontmatter.coverImage || DefaultImage
+const image = await getImage({src: frontmatter.socialImage || frontmatter.coverImage || DefaultImage, width: 1200, format: 'jpg'})
 const logo = LogoImage
 const publishDate = new Date(frontmatter.publishDate)
 
@@ -39,7 +40,7 @@ const openGraph = {
   image: {
     alt: frontmatter.title,
     height: image.height,
-    width: image.width
+    width: image.width,
   },
   article: {
     author: frontmatter.author,
@@ -48,7 +49,9 @@ const openGraph = {
   },
 }
 const twitter = {
-  card: frontmatter.socialImage ? 'summary_large_image' : 'summary' as TwitterCardType,
+  card: frontmatter.socialImage
+    ? 'summary_large_image'
+    : ('summary' as TwitterCardType),
   site: SiteMetadata.org.twitter,
   creator: SiteMetadata.author.twitter,
 }
@@ -190,19 +193,28 @@ const article: WithContext<Article> = {
   {openGraph}
   {twitter}
 />
-<script is:inline set:html={JSON.stringify(website)} type="application/ld+json"
-></script>
+<script
+  is:inline
+  set:html={JSON.stringify(website)}
+  type="application/ld+json"
+/>
 <script
   is:inline
   set:html={JSON.stringify(organization)}
   type="application/ld+json"
-></script>
+/>
 <script
   is:inline
   set:html={JSON.stringify(breadcrumbList)}
   type="application/ld+json"
-></script>
-<script is:inline set:html={JSON.stringify(person)} type="application/ld+json"
-></script>
-<script is:inline set:html={JSON.stringify(article)} type="application/ld+json"
-></script>
+/>
+<script
+  is:inline
+  set:html={JSON.stringify(person)}
+  type="application/ld+json"
+/>
+<script
+  is:inline
+  set:html={JSON.stringify(article)}
+  type="application/ld+json"
+/>
