@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config'
 import tailwind from '@astrojs/tailwind'
 import sitemap from '@astrojs/sitemap'
-import image from '@astrojs/image'
 import mdx from '@astrojs/mdx'
 import alpinejs from '@astrojs/alpinejs'
 import robotsTxt from 'astro-robots-txt'
@@ -22,14 +21,10 @@ export default defineConfig({
   },
   site: 'https://hellotham.github.io',
   base: '/hello-astro',
-  integrations: [
-    tailwind(),
-    sitemap(),
-    image(),
-    mdx(),
-    alpinejs(),
-    robotsTxt(),
-  ],
+  integrations: [tailwind(), sitemap(), mdx(), alpinejs(), robotsTxt()],
+  experimental: {
+    assets: true,
+  },
   markdown: {
     extendDefaultPlugins: true,
     remarkPlugins: [

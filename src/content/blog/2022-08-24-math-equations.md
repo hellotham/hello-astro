@@ -1,10 +1,10 @@
 ---
 title: Math Equations
 description: Display math equations in blog posts!
-author: Chris Tham
+author: chris-tham
 publishDate: 2022-08-24T00:00:00.000Z
-coverSVG: ../images/svg/undraw/undraw_mathematics.svg
-socialImage: ../images/undraw/undraw_mathematics.png
+coverSVG: ../../assets/svg/undraw/undraw_mathematics.svg
+socialImage: ../../assets/undraw/undraw_mathematics.png
 categories:
   - information
 tags:

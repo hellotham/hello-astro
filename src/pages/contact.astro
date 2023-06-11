@@ -4,15 +4,20 @@ import Base from '../layouts/base.astro'
 import Map from '../components/map.astro'
 import PageHero from '../components/pagehero.astro'
 import { SiteMetadata } from '../config'
+import coverSVG from '../assets/svg/undraw/undraw_contact_us.svg'
+import socialImage from '../assets/undraw/undraw_contact_us.png'
+import { getCollection } from 'astro:content'
 
 const frontmatter = {
   title: 'Contact',
   description:
     'Our presence is real and digital. Contact us through the following ways.',
-  coverSVG: '../images/svg/undraw/undraw_contact_us.svg',
-  socialImage: '../images/undraw/undraw_contact_us.png',
+  coverSVG: coverSVG,
+  socialImage: socialImage,
   publishDate: SiteMetadata.buildTime,
 }
+
+const social = await getCollection('social')
 ---
 
 <Base frontmatter={frontmatter}>
@@ -20,8 +25,8 @@ const frontmatter = {
     <PageHero
       title={frontmatter.title}
       description={frontmatter.description}
-      coverSVG={frontmatter.coverSVG}
-      socialImage={frontmatter.socialImage}
+      coverSVG={coverSVG}
+      socialImage={socialImage}
     />
   </header>
   <main>
@@ -38,27 +43,27 @@ const frontmatter = {
           <div class="grow-0 shrink-0 basis-auto w-full lg:w-6/12 xl:w-8/12">
             <div class="flex flex-wrap pt-8 lg:pt-0">
               {
-                SiteMetadata.social.map(
+                social.map(
                   method =>
-                    method.link && (
+                    method.data.link && (
                       <div class="mb-12 grow-0 shrink-0 basis-auto w-full md:w-6/12 lg:w-full xl:w-6/12 px-3 md:px-6 xl:px-12">
                         <div class="flex items-start">
                           <div class="shrink-0">
                             <Icon
                               pack="bi"
-                              name={method.icon}
+                              name={method.data.icon}
                               class="p-4 bg-purple-600 text-white rounded-md shadow-md w-14 h-14 flex items-center justify-center"
                             />
                           </div>
                           <div class="grow ml-6">
-                            <p class="font-bold mb-1">{method.name}</p>
+                            <p class="font-bold mb-1">{method.data.name}</p>
                             <p>
                               {' '}
                               <a
-                                href={method.link}
+                                href={method.data.link}
                                 class="text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300"
                               >
-                                {method.link}
+                                {method.data.link}
                               </a>
                             </p>
                           </div>

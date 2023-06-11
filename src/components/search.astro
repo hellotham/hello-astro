@@ -68,13 +68,13 @@ import { Icon } from 'astro-icon'
           value=""
           placeholder="Search"
           aria-label="Search"
-          aria-describedby="button-addon2"
+          aria-describedby="lunrbutton"
         />
         <button
           class="btn inline-block px-2 py-2 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out items-center"
           type="button"
           name="search"
-          id="button-addon2"
+          id="lunrbutton"
           x-on:click="lunr_search(searchText); searchResults = true"
           aria-label="Search Button"
         >
@@ -182,3 +182,18 @@ import { Icon } from 'astro-icon'
     </div>
   </div>
 </div>
+<script is:inline>
+  // Get the input field
+  var input = document.getElementById('lunrsearch')
+
+  // Execute a function when the user presses a key on the keyboard
+  input.addEventListener('keypress', function (event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === 'Enter') {
+      // Cancel the default action, if needed
+      event.preventDefault()
+      // Trigger the button element with a click
+      document.getElementById('lunrbutton').click()
+    }
+  })
+</script>

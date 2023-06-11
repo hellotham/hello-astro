@@ -3,8 +3,8 @@ layout: ../layouts/page.astro
 title: About
 description: Description of Hello Astro Starter
 publishDate: '2022-08-08T00:00:00.000Z'
-coverSVG: ../images/svg/undraw/undraw_about_me.svg
-socialImage: ../images/undraw/undraw_about_me.png
+coverSVG: ../assets/svg/undraw/undraw_about_me.svg
+socialImage: ../assets/undraw/undraw_about_me.png
 ---
 
 This is multi-purpose Astro starter template based on the following:
@@ -50,11 +50,11 @@ This starter is open source (MIT licence) - fork it and customise for your needs
 - SVG design (unDraw, Hero Patterns, Iconify)
 - Support for code syntax highlighting
 - Full SEO support including Open Graph, Twitter Cards and Schema.org via JSON-LD
-- Full support for Light and dark UI modes, as well as following system preferences, in accordance to TailwindCSS recommendation
+- Full support for light and dark UI modes, as well as following system preferences, in accordance to TailwindCSS recommendation
 - Customised 404 error page
 - Display math equations using KaTeX via remark-math/rehype-katex (enclosed in `$`...`$` or `$$`...`$$`)
 - Display Mermaid, Markmap, PlantUML diagrams (authored as a code block with language `mermaid`, `markmap` and `plantuml`)
-- Display map at geo coordinates and zoom level using `Map` component (need to also include `extra: ['map']` is frontmatter to load CSS/JS assets for page)
+- Display map at geo coordinates and zoom level using `Map` component (need to also include `extra: ['map']` in frontmatter to load CSS/JS assets for page)
 - Calculates and show reading time for blog posts
 - CSS/JS assets of external libraries loaded only when needed on a per page and per package basis - no unnecessary bloat
 - Photo gallery and lightbox using PhotoSwipe (including display of EXIF tags)

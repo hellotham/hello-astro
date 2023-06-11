@@ -3,8 +3,8 @@ layout: ../layouts/page.astro
 title: Privacy
 description: Our policy regarding information collection and use
 publishDate: 2022-08-08T00:00:00.000Z
-coverSVG: ../images/svg/undraw/undraw_privacy_protection.svg
-socialImage: ../images/undraw/undraw_privacy_protection.png
+coverSVG: ../assets/svg/undraw/undraw_privacy_protection.svg
+socialImage: ../assets/undraw/undraw_privacy_protection.png
 ---
 
 We are committed to maintaining the trust of visitors to this website. We promise to handle and store your data fairly and legally at all times.

@@ -1,5 +1,7 @@
 ---
-import { SEO } from 'astro-seo'
+import { SEO, TwitterCardType } from 'astro-seo'
+import { getImage } from 'astro:assets'
+import { getCollection } from 'astro:content'
 import type { Frontmatter } from '../config'
 import type {
   Article,
@@ -17,23 +19,19 @@ export interface Props {
 
 const { frontmatter } = Astro.props
 
+const social = await getCollection('social')
 const siteurl = new URL(import.meta.env.BASE_URL, Astro.url)
 const type = Astro.url.toString().includes('blog') ? 'post' : 'page'
 const year = SiteMetadata.buildTime.getFullYear()
-const images = import.meta.glob<ImageMetadata>('../images/**/*', {
-  import: 'default',
-})
-const image = await images[
-  frontmatter.socialImage || frontmatter.coverImage || DefaultImage
-]()
-const logo = await images[LogoImage]()
+const image = await getImage({src: frontmatter.socialImage || frontmatter.coverImage || DefaultImage, width: 1200, format: 'jpg'})
+const logo = LogoImage
 const publishDate = new Date(frontmatter.publishDate)
 
 const openGraph = {
   basic: {
     title: frontmatter.title,
     type: 'website',
-    image: image.src,
+    image: new URL(image.src, Astro.url).toString(),
   },
   optional: {
     description: frontmatter.description,
@@ -41,6 +39,8 @@ const openGraph = {
   },
   image: {
     alt: frontmatter.title,
+    height: image.height,
+    width: image.width,
   },
   article: {
     author: frontmatter.author,
@@ -49,7 +49,9 @@ const openGraph = {
   },
 }
 const twitter = {
-  card: frontmatter.socialImage ? 'summary_large_image' : 'summary',
+  card: frontmatter.socialImage
+    ? 'summary_large_image'
+    : ('summary' as TwitterCardType),
   site: SiteMetadata.org.twitter,
   creator: SiteMetadata.author.twitter,
 }
@@ -75,7 +77,7 @@ const website: WithContext<WebSite> = {
   description: SiteMetadata.description,
   image: {
     '@type': 'ImageObject',
-    url: image.src,
+    url: new URL(image.src, Astro.url).toString(),
   },
   inLanguage: 'en',
   name: SiteMetadata.title,
@@ -97,19 +99,19 @@ const organization: WithContext<Organization> = {
   description: SiteMetadata.org.summary,
   email: SiteMetadata.org.email,
   founder: {
-    '@id': SiteMetadata.org.url,
+    '@id': SiteMetadata.author.email,
   },
   location: SiteMetadata.location,
   image: {
     '@type': 'ImageObject',
-    url: logo.src,
+    url: new URL(logo.src, siteurl).toString(),
   },
   logo: {
     '@type': 'ImageObject',
-    url: logo.src,
+    url: new URL(logo.src, siteurl).toString(),
   },
   name: SiteMetadata.org.name,
-  sameAs: Object.values(SiteMetadata.social.map(social => social.link)),
+  sameAs: Object.values(social.map(social => social.data.link)),
   url: SiteMetadata.org.url,
 }
 
@@ -173,7 +175,7 @@ const article: WithContext<Article> = {
   keywords: frontmatter.tags && frontmatter.tags.join(', '),
   image: {
     '@type': 'ImageObject',
-    url: image.src,
+    url: new URL(image.src, Astro.url).toString(),
   },
   inLanguage: 'en',
   mainEntityOfPage: SiteMetadata.org.url,

@@ -1,7 +1,9 @@
 ---
+import { getCollection } from 'astro:content'
 import { Icon } from 'astro-icon'
-import { SiteMetadata, Logo } from '../config'
-import Img from '../components/img.astro'
+import { Logo } from '../config'
+
+const social = await getCollection('social')
 ---
 
 <div class="h-24 lg:h-16"></div>
@@ -14,7 +16,11 @@ import Img from '../components/img.astro'
         class="flex title-font font-medium items-center lg:justify-start justify-center text-gray-900 dark:text:gray-100"
         href={import.meta.env.BASE_URL}
       >
-        <Img src={Logo} alt="Footer Logo" class="dark:bg-gray-100 h-6 w-6" />
+        <img
+          src={Logo.src}
+          alt="Footer Logo"
+          class="dark:bg-gray-100 h-6 w-6"
+        />
         <span class="sr-only">Logo</span>
       </a>
       <p
@@ -71,16 +77,16 @@ import Img from '../components/img.astro'
       class="grow inline-flex lg:ml-auto justify-center lg:justify-end mt-2 lg:mt-0"
     >
       {
-        SiteMetadata.social.map(s =>
-          s.link ? (
+        social.map(s =>
+          s.data.link ? (
             <a
-              href={s.link}
+              href={s.data.link}
               class="ml-3 text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300"
               rel="noopener noreferrer"
               target="_blank"
             >
-              <Icon pack="bi" name={s.icon} class=" h-5 w-5" />
-              <span class="sr-only">{s.name}</span>
+              <Icon pack="bi" name={s.data.icon} class=" h-5 w-5" />
+              <span class="sr-only">{s.data.name}</span>
             </a>
           ) : (
             ''

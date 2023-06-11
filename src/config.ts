@@ -1,4 +1,3 @@
-import type { MarkdownInstance } from 'astro'
 import type { CollectionEntry } from 'astro:content'
 
 export type Frontmatter = CollectionEntry<'blog'>['data']
@@ -30,51 +29,14 @@ export const SiteMetadata = {
   location: 'Rivendell, Middle Earth',
   latlng: [-33.86785, 151.20732] as [number, number],
   repository: 'https://github.com/hellotham/hello-astro',
-  social: [
-    {
-      name: 'Email',
-      link: 'mailto:info@hellothamcom',
-      icon: 'envelope',
-    },
-    {
-      name: 'Phone',
-      link: '555-5555',
-      icon: 'telephone',
-    },
-    {
-      name: 'LinkedIn',
-      link: 'https://www.linkedin.com/hellothamcom',
-      icon: 'linkedin',
-    },
-    {
-      name: 'Facebook',
-      link: 'https://www.facebook.com/hellothamcom',
-      icon: 'facebook',
-    },
-    {
-      name: 'Instagram',
-      link: 'https://www.instagram.com/hellothamcom',
-      icon: 'instagram',
-    },
-    {
-      name: 'Twitter',
-      link: 'https://twitter.com/hellothamcom',
-      icon: 'twitter',
-    },
-    {
-      name: 'Github',
-      link: 'https://github.com/hellothamcom',
-      icon: 'github',
-    },
-  ],
   buildTime: new Date(),
 }
 
-export const Logo = '../images/svg/astro/logomark-light.svg'
-export const LogoImage = '../images/astro/full-logo-light.png'
-export const FeaturedSVG = '../images/svg/undraw/undraw_design_inspiration.svg'
-export const DefaultSVG = '../images/svg/undraw/undraw_my_feed.svg'
-export const DefaultImage = '../images/undraw/undraw_my_feed.png'
+export { default as Logo } from './assets/svg/astro/astro-icon-dark.svg'
+export { default as LogoImage } from './assets/astro/astro-logo-dark.png'
+export { default as FeaturedSVG } from './assets/svg/undraw/undraw_design_inspiration.svg'
+export { default as DefaultSVG } from './assets/svg/undraw/undraw_my_feed.svg'
+export { default as DefaultImage } from './assets/undraw/undraw_my_feed.png'
 
 export const NavigationLinks = [
   { name: 'Home', href: '' },
@@ -83,59 +45,6 @@ export const NavigationLinks = [
   { name: 'Blog', href: 'blog' },
   { name: 'Docs', href: 'doc/introduction' },
 ]
-
-export const CategoryDetail = [
-  {
-    category: 'instructions',
-    coverSVG: '../images/svg/undraw/undraw_instruction_manual.svg',
-    socialImage: '../images/undraw/undraw_instruction_manual.png',
-    description: 'Guidelines on using this starter.',
-  },
-  {
-    category: 'information',
-    coverSVG: '../images/svg/undraw/undraw_instant_information.svg',
-    socialImage: '../images/undraw/undraw_instant_information.png',
-    description: 'Information articles.',
-  },
-]
-
-export function categoryDetail(category: string | undefined) {
-  const details = CategoryDetail.filter(cat => cat.category == category)
-
-  if (details.length == 1) {
-    return details[0]
-  }
-  return {
-    category: 'General',
-    coverSVG: '../images/svg/undraw/undraw_instant_information.svg',
-    socialImage: '../images/undraw/undraw_instant_information.png',
-    description: 'Category ' + category,
-  }
-}
-export const AuthorDetail = [
-  {
-    name: 'Chris Tham',
-    description: 'Hello World',
-    contact: 'chris@christham.net',
-    image: '../images/authors/Chris Tham.jpg',
-  },
-]
-
-export const DefaultAuthor = {
-  name: 'Hello Astro',
-  image: '../images/authors/default.png',
-  contact: 'info@hellotham.com',
-  description: 'Astronaut',
-}
-
-export function authorDetail(author: string | undefined) {
-  const details = AuthorDetail.filter(person => person.name == author)
-
-  if (details.length == 1) {
-    return details[0]
-  }
-  return DefaultAuthor
-}
 
 export const PAGE_SIZE = 6
 

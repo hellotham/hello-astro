@@ -2,22 +2,45 @@
 import type { Frontmatter } from '../config'
 import Base from '../layouts/base.astro'
 import PageHero from '../components/pagehero.astro'
+import { DefaultImage, DefaultSVG } from '../config'
+
 export interface Props {
-  frontmatter: Frontmatter
+  frontmatter: {
+    layout: string
+    title: string
+    description: string
+    publishDate: string
+    coverSVG: string
+    socialImage: string
+  }
 }
 
 const { frontmatter } = Astro.props
+
+const images = import.meta.glob<ImageMetadata>('../assets/**/*', {
+  import: 'default',
+})
+const coverSVG = (await images[frontmatter.coverSVG]()) || DefaultSVG
+const socialImage = (await images[frontmatter.socialImage]()) || DefaultImage
+
+const fm: Frontmatter = {
+  title: frontmatter.title,
+  description: frontmatter.description,
+  publishDate: new Date(frontmatter.publishDate),
+  coverSVG: coverSVG,
+  socialImage: socialImage,
+}
 ---
 
-<Base frontmatter={frontmatter}>
+<Base frontmatter={fm}>
   <main class="dark:bg-gray-900">
     <article class="post">
       <header>
         <PageHero
           title={frontmatter.title}
           description={frontmatter.description}
-          coverSVG={frontmatter.coverSVG}
-          socialImage={frontmatter.socialImage}
+          coverSVG={coverSVG}
+          socialImage={socialImage}
         />
       </header>
       <section

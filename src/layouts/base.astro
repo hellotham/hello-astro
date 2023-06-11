@@ -17,11 +17,12 @@ const { frontmatter } = Astro.props
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href={new URL(import.meta.env.BASE_URL + 'favicon.ico', Astro.url)}
-    />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
     <meta name="generator" content={Astro.generator} />
     <SEO frontmatter={frontmatter} />
     <script is:inline>

@@ -87,18 +87,19 @@ Inside this starter, you'll see the following folders and files:
 ├── public/
 │   └── favicon.ico
 ├── src/
+│   ├── assets/
+│   │   ├── image.png
+│   │   └── gallery/
+│   │       └── gallery-name/
+│   │           └── image.jpg
 │   ├── components/
 │   │   └── header.astro
 │   ├── content/
 │   │   ├── blog/
 │   │   |   └── 2022-08-01-post.md
-│   │   └── doc/
-│   │       └── documentation-page.md
-│   ├── images/
-│   │   ├── image.png
-│   │   └── gallery/
-│   │       └── gallery-name/
-│   │           └── image.jpg
+│   │   ├── doc/
+│   │   |   └── documentation-page.md
+|   │   └── config.ts
 │   ├── layouts/
 │   │   ├── base.astro
 │   │   ├── blog.astro
@@ -114,7 +115,7 @@ Astro looks for `.astro`, `.md` or `.mdx` files in the `src/pages/` directory. E
 
 `src/components/` is where we put any Astro components and similarly `src/layouts/` for layouts.
 
-Images can be placed in `src/images/`.
+Images can be placed in `src/assets/`.
 
 Blog and documentation content are created as collections of Markdown or MDX files in `src/content`.
 
@@ -154,3 +155,14 @@ All commands are run from the root of the project, from a terminal:
 - 2.4.0:`@astrojs/images` now support `svg` so no need for special handling
 - 2.4.1: Use rendered frontmatter for blog and doc posts, fixes issue with diagrams not rendering.
 - 2.4.2: Updated packages
+- 3.0.0: Major update:
+  - Use new Astro optimised asset support
+  - new Astro logo
+  - optimised post draft filtering
+  - cleaned up gallery
+  - fixed up SEO errors
+  - cleaned up lint errors
+  - migrated authors and categories to collections and use referential integrity based on Astro 2.5.0
+  - converted social links to a data collection (requires Astro >2.5.0)
+  - updated favicon and header metadata
+  - improve search to include documentation

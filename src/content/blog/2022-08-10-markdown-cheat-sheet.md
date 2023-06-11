@@ -1,10 +1,10 @@
 ---
 title: Markdown Cheat Sheet
 description: A quick reference to the Markdown syntax.
-author: Matt Cone
+author: matt-cone
 publishDate: 2022-08-10T00:00:00.000Z
-coverSVG: ../images/svg/undraw/undraw_design_components.svg
-socialImage: ../images/undraw/undraw_design_components.png
+coverSVG: ../../assets/svg/undraw/undraw_design_components.svg
+socialImage: ../../assets/undraw/undraw_design_components.png
 categories:
   - information
 tags:
@@ -68,7 +68,7 @@ _italicized text_
 
 ### Image
 
-![alt text](https://www.markdownguide.org/assets/images/tux.png)
+![alt text](https://astro.build/assets/press/astro-logo-dark.png)
 
 ## Extended Syntax
 

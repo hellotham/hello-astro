@@ -1,72 +1,22 @@
 ---
 import 'photoswipe/style.css'
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
-import { Image } from '@astrojs/image/components'
-import exifr from 'exifr'
+import { Image } from 'astro:assets'
 
 export interface Props {
   id: string
-  images: string[]
+  images: ImageMetadata[]
+  exifs?: Record<string, any>[]
 }
 
-const { id, images } = Astro.props
+const { id, images, exifs } = Astro.props
 
-const imageFiles = import.meta.glob<ImageMetadata>(
-  '../images/**/*.{png,webp,jpg,jpeg}',
-  { import: 'default', eager: true }
+const imagetitles = images.map(
+  image => image.src.split('/').reverse()[0].split('.')[0]
 )
-const imageSrcs = images.map(image => imageFiles[image])
-const imagetitles = images.map(image =>
-  image.slice(0, image.lastIndexOf('.')).slice(image.lastIndexOf('/') + 1)
-)
-const exifs = [] as Record<string, any>[]
-for (let i in images) {
-  const exif = await exifr.parse(images[i].replace('../', './src/'))
-  exifs.push(exif)
-}
 ---
 
 <style>
-  .gallery {
-    width: 100%;
-    display: block;
-    margin: 0 auto;
-  }
-
-  /* Extra Small Devices, Phones */
-  @media only screen and (min-width: 480px) {
-    .gallery {
-      column-count: 1;
-      column-gap: 3px;
-    }
-  }
-
-  /* Small Devices, Tablets */
-  @media only screen and (min-width: 768px) {
-    .gallery {
-      column-count: 2;
-      column-gap: 3px;
-    }
-  }
-
-  /* Medium Devices, Desktops */
-  @media only screen and (min-width: 992px) {
-    .gallery {
-      /* Masonry container */
-      column-count: 2;
-      column-gap: 3px;
-    }
-  }
-
-  /* Large Devices, Wide Screens */
-  @media only screen and (min-width: 1200px) {
-    .gallery {
-      column-count: 3;
-      column-gap: 0.2rem;
-      width: 100%;
-    }
-  }
-
   .pswp--custom-icon-colors {
     --pswp-icon-color: #eee;
     --pswp-icon-color-secondary: #663399;
@@ -90,11 +40,11 @@ for (let i in images) {
 </style>
 <lightbox-inner data-id={id}>
   {
-    imageSrcs.map((image, i) => (
+    images.map((image, i) => (
       <figure
         itemscope
         itemtype="http://schema.org/ImageObject"
-        class="inline-block text-gray-800 dark:text-gray-300 bg-gray-300 dark:bg-gray-800 text-sm text-center italic rounded"
+        class="inline-block text-gray-800 dark:text-gray-300 bg-gray-300 dark:bg-gray-800 text-sm text-center italic rounded shadow-lg shadow-gray-400 dark:shadow-black my-1 lg:my-2"
       >
         <a
           href={image.src}
@@ -110,15 +60,13 @@ for (let i in images) {
             format="webp"
             class="rounded"
           />
-          <span class="pswp-caption-content">
-            {imagetitles[i]}
-            {exifs[i] && (
-              <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model + ')'}</span>
-            )}
-          </span>
+          <span class="pswp-caption-content">{imagetitles[i]}</span>
         </a>
         <figcaption itemprop="caption description" class="rounded">
           {imagetitles[i]}
+          {exifs && exifs[i] && (
+            <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model + ')'}</span>
+          )}
         </figcaption>
       </figure>
     ))
@@ -139,7 +87,7 @@ for (let i in images) {
         gallerySelector: '#' + id,
         childSelector: 'a',
         pswpModule: () => import('photoswipe'),
-        paddingFn: viewportSize => {
+        paddingFn: () => {
           return {
             top: 0,
             bottom: 30,
@@ -149,7 +97,7 @@ for (let i in images) {
         },
       })
 
-      const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+      new PhotoSwipeDynamicCaption(lightbox, {
         captionContent: '.pswp-caption-content',
         type: 'below',
       })
