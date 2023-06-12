@@ -4,11 +4,8 @@ import { SiteMetadata } from '../config'
 
 <div class="bg-gray-50 dark:bg-black">
   <div
-    class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between"
-  >
-    <h2
-      class="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl"
-    >
+    class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:flex lg:items-center lg:justify-between lg:px-8 lg:py-16">
+    <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
       <span class="block dark:text-white">Ready to give it a try?</span>
       <span class="block text-purple-600 dark:text-purple-300"
         >Use the starter on Github today.
@@ -18,18 +15,16 @@ import { SiteMetadata } from '../config'
       <div class="inline-flex rounded-md shadow">
         <a
           href={SiteMetadata.repository + '/generate'}
-          class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-pink-600"
-        >
+          class="inline-flex items-center justify-center rounded-md border border-transparent bg-purple-600 px-5 py-3 text-base font-medium text-white hover:bg-pink-600">
           Use Template
         </a>
       </div>
-      <div class="ml-4 lg:ml-3 inline-flex rounded-md shadow">
+      <div class="ml-4 inline-flex rounded-md shadow lg:ml-3">
         <a
           href={SiteMetadata.repository}
           rel="noopener noreferrer"
           target="_blank"
-          class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-purple-600 bg-white hover:bg-purple-100"
-        >
+          class="inline-flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-purple-600 hover:bg-purple-100">
           Github Repo
         </a>
       </div>

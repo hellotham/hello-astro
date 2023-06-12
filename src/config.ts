@@ -16,7 +16,7 @@ export const SiteMetadata = {
     twitter: '@chris1tham',
     url: 'https://christham.net',
     email: 'chris@christham.net',
-    summary: 'Outrageous actualiser.',
+    summary: 'Outrageous actualiser.'
   },
   org: {
     name: 'Hello Tham',
@@ -24,12 +24,12 @@ export const SiteMetadata = {
     url: 'https://hellotham.com',
     email: 'info@hellotham.com',
     summary:
-      'Hello Tham is a boutique management consulting firm. We specialise in Business and IT strategies, operating models, strategic roadmaps, enterprise architecture, analytics and business process design.',
+      'Hello Tham is a boutique management consulting firm. We specialise in Business and IT strategies, operating models, strategic roadmaps, enterprise architecture, analytics and business process design.'
   },
   location: 'Rivendell, Middle Earth',
   latlng: [-33.86785, 151.20732] as [number, number],
   repository: 'https://github.com/hellotham/hello-astro',
-  buildTime: new Date(),
+  buildTime: new Date()
 }
 
 export { default as Logo } from './assets/svg/astro/astro-icon-dark.svg'
@@ -43,7 +43,7 @@ export const NavigationLinks = [
   { name: 'About', href: 'about' },
   { name: 'Contact', href: 'contact' },
   { name: 'Blog', href: 'blog' },
-  { name: 'Docs', href: 'doc/introduction' },
+  { name: 'Docs', href: 'doc/introduction' }
 ]
 
 export const PAGE_SIZE = 6
@@ -58,7 +58,7 @@ export const SIDEBAR: Sidebar = {
   'Section Header': [
     { text: 'Introduction', link: 'doc/introduction' },
     { text: 'Page 2', link: 'doc/page-2' },
-    { text: 'Page 3', link: 'doc/page-3' },
+    { text: 'Page 3', link: 'doc/page-3' }
   ],
-  'Another Section': [{ text: 'Page 4', link: 'doc/page-4' }],
+  'Another Section': [{ text: 'Page 4', link: 'doc/page-4' }]
 }

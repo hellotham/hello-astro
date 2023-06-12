@@ -14,14 +14,11 @@ const { base, prev, next } = Astro.props
   {
     prev && (
       <div class="mr-auto text-left">
-        <dt class="font-display text-sm font-medium text-gray-800 dark:text-gray-200">
-          Prev
-        </dt>
+        <dt class="font-display text-sm font-medium text-gray-800 dark:text-gray-200">Prev</dt>
         <dd class="mt-1">
           <a
-            class="text-base font-semibold text-purple-600 hover:text-pink-600 hover:bg-purple-200 dark:text-purple-300"
-            href={base + prev.slug}
-          >
+            class="text-base font-semibold text-purple-600 hover:bg-purple-200 hover:text-pink-600 dark:text-purple-300"
+            href={base + prev.slug}>
             <span aria-hidden="true">←</span>
             {prev.data.title}
           </a>
@@ -32,14 +29,11 @@ const { base, prev, next } = Astro.props
   {
     next && (
       <div class="ml-auto text-right">
-        <dt class="font-display text-sm font-medium text-gray-800 dark:text-gray-200">
-          Next
-        </dt>
+        <dt class="font-display text-sm font-medium text-gray-800 dark:text-gray-200">Next</dt>
         <dd class="mt-1">
           <a
-            class="text-base font-semibold text-purple-600 hover:text-pink-600 hover:bg-purple-200 dark:text-purple-300"
-            href={base + next.slug}
-          >
+            class="text-base font-semibold text-purple-600 hover:bg-purple-200 hover:text-pink-600 dark:text-purple-300"
+            href={base + next.slug}>
             {next.data.title}
             <span aria-hidden="true">→</span>
           </a>

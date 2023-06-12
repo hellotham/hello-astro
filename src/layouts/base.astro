@@ -17,12 +17,12 @@ const { frontmatter } = Astro.props
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
+    <link rel="icon" href={`${Astro.site}favicon.ico`} sizes="any" />
+    <link rel="icon" href={`${Astro.site}favicon.svg`} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={`${Astro.site}apple-touchicon.png`} />
+    <link rel="manifest" href={`${Astro.site}manifest.webmanifest`} />
+    <link rel="sitemap" href={`${Astro.site}sitemap-indexxml`} />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href={`${Astro.site}rss.xml`} />
     <meta name="generator" content={Astro.generator} />
     <SEO frontmatter={frontmatter} />
     <script is:inline>
@@ -38,25 +38,21 @@ const { frontmatter } = Astro.props
     </script>
     <style is:inline>
       [x-cloak] { display: none !important; }
-      </style>
-{frontmatter.extra?.includes('math') &&
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.1/dist/katex.min.css" integrity="sha384-pe7s+HmY6KvqRkrRRUr4alQJ0SkmzCft3RpK1ttGMa7qk8Abp/MEa/4wgceRHloO" crossorigin="anonymous">
-    }
-    {frontmatter.extra?.includes('markmap') &&
-      <style>
-        .markmap > svg {
-          width: 100%;
-          height: 400px;
-        }
-        </style>
+      .markmap > svg {
+        width: 100%;
+        height: 400px;
       }
+      </style>
+    {frontmatter.extra?.includes('math') &&
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+    }
     <slot name="in-head" />
     </head>
     <body class="dark:bg-gray-900">
       {frontmatter.extra?.includes('mermaid') &&
         <script type="module">
           import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs'
-          mermaid.initialize({startOnLoad:true});
+          mermaid.initialize({startOnLoad: true});
         </script>
       }
       <Header />

@@ -8,9 +8,9 @@ export async function getStaticPaths() {
   const docEntries = await getCollection('doc', ({ data }) => {
     return data.draft !== true
   })
-  return docEntries.map(entry => ({
+  return docEntries.map((entry) => ({
     params: { slug: entry.slug },
-    props: { entry },
+    props: { entry }
   }))
 }
 
@@ -23,9 +23,6 @@ const { entry } = Astro.props
 const { Content, headings, remarkPluginFrontmatter } = await entry.render()
 ---
 
-<Layout
-  frontmatter={remarkPluginFrontmatter as CollectionEntry<'doc'>['data']}
-  headings={headings}
->
+<Layout frontmatter={remarkPluginFrontmatter as CollectionEntry<'doc'>['data']} headings={headings}>
   <Content />
 </Layout>

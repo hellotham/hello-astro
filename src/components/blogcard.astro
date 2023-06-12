@@ -22,12 +22,15 @@ const image =
   (post.data.images && post.data.images[0]) ||
   post.data.socialImage ||
   cat.data.coverSVG
+let author = await getEntry('author', 'default')
+if (post.data.author) {
+  author = await getEntry(post.data.author)
+}
 ---
 
 <section class="p-4 md:w-1/2 lg:w-1/3">
   <div
-    class="h-full border-1 border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden p-2"
-  >
+    class="border-1 h-full overflow-hidden rounded-lg border-gray-200 bg-white p-2 shadow-xl dark:border-gray-700 dark:bg-gray-800">
     <a href={import.meta.env.BASE_URL + 'blog/' + post.slug}>
       <Img
         src={image}
@@ -40,45 +43,35 @@ const image =
       <Categories categories={post.data.categories} />
       <a href={import.meta.env.BASE_URL + 'blog/' + post.slug}>
         <h1
-          class="title-font text-xl font-bold text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300 mt-2"
-        >
+          class="title-font mt-2 text-xl font-bold text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300">
           {post.data.title}
         </h1>
       </a>
-      <div class="flex items-center flex-wrap">
+      <div class="flex flex-wrap items-center">
         <span
-          class="text-gray-500 dark:text-gray-400 mr-3 inline-flex items-center leading-none text-xs pr-3 py-1 border-r-2 border-purple-200 dark:border-purple-600"
-        >
-          <Icon class="w-4 h-4 mr-1" pack="heroicons-outline" name="calendar" />
+          class="mr-3 inline-flex items-center border-r-2 border-purple-200 py-1 pr-3 text-xs leading-none text-gray-500 dark:border-purple-600 dark:text-gray-400">
+          <Icon class="mr-1 h-4 w-4" pack="heroicons-outline" name="calendar" />
           {post.data.publishDate.toDateString()}
         </span>
         {
           post.data.minutesRead && (
-            <span class="text-gray-500 dark:text-gray-400 mr-3 inline-flex items-center leading-none text-xs pr-3 py-1 border-r-2 border-purple-200 dark:border-purple-600">
-              <Icon
-                class="w-4 h-4 mr-1"
-                pack="heroicons-outline"
-                name="clock"
-              />
+            <span class="mr-3 inline-flex items-center border-r-2 border-purple-200 py-1 pr-3 text-xs leading-none text-gray-500 dark:border-purple-600 dark:text-gray-400">
+              <Icon class="mr-1 h-4 w-4" pack="heroicons-outline" name="clock" />
               {post.data.minutesRead}
             </span>
           )
         }
         {
           post.data.author && (
-            <span class="text-rosely1 dark:text-rosely7 inline-flex items-center leading-none text-xs">
-              <Icon
-                class="w-4 h-4 mr-1"
-                pack="heroicons-outline"
-                name="user-circle"
-              />
-              {post.data.author}
+            <span class="text-rosely1 dark:text-rosely7 inline-flex items-center text-xs leading-none">
+              <Icon class="mr-1 h-4 w-4" pack="heroicons-outline" name="user-circle" />
+              {author.data.title}
             </span>
           )
         }
       </div>
 
-      <p class="mt-3 italic text-sm text-gray-600 dark:text-gray-300">
+      <p class="mt-3 text-sm italic text-gray-600 dark:text-gray-300">
         {post.data.description}
       </p>
       <Tags tags={post.data.tags} />

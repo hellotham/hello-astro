@@ -29,16 +29,13 @@ const { loc, zoom } = Astro.props
     constructor() {
       super()
 
-      const loc: [number, number] = [
-        Number(this.dataset.lat),
-        Number(this.dataset.lng),
-      ]
+      const loc: [number, number] = [Number(this.dataset.lat), Number(this.dataset.lng)]
 
       var map = L.map('map').setView(loc, Number(this.dataset.zoom))
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map)
       L.marker(loc).addTo(map)
     }

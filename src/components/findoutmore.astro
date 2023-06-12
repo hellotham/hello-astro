@@ -9,7 +9,7 @@ const callouts = [
     description: 'Build faster websites with less client-side Javascript',
     imageSrc: AstroSVG.src,
     imageAlt: 'Astro logo',
-    href: 'https://astro.build',
+    href: 'https://astro.build'
   },
   {
     name: 'TailwindCSS',
@@ -17,35 +17,31 @@ const callouts = [
       'A utility-first CSS framework that can be composed to build any design, directly in your markup',
     imageSrc: TailwindSVG.src,
     imageAlt: 'TailwindCSS drawing',
-    href: 'https://tailwindcss.com',
+    href: 'https://tailwindcss.com'
   },
   {
     name: 'HTML/CSS/Javascript',
     description: 'The core building blocks of the web',
     imageSrc: HTMLSVG.src,
     imageAlt: 'Core Web',
-    href: 'https://w3.org',
-  },
+    href: 'https://w3.org'
+  }
 ]
 ---
 
 <div class="bg-purple-100 dark:bg-purple-900">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="max-w-2xl mx-auto py-16 sm:py-24 lg:py-32 lg:max-w-none">
-      <h2 class="text-4xl font-extrabold text-purple-800 dark:text-purple-100">
-        Find Out More
-      </h2>
-      <div
-        class="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6"
-      >
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
+      <h2 class="text-4xl font-extrabold text-purple-800 dark:text-purple-100">Find Out More</h2>
+      <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
         {
-          callouts.map(callout => (
+          callouts.map((callout) => (
             <div class="group relative">
-              <div class="relative w-full h-80 bg-white dark:bg-purple-600 rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+              <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 dark:bg-purple-600 sm:h-64">
                 <img
                   src={callout.imageSrc}
                   alt={callout.imageAlt}
-                  class="w-full h-full object-center object-contain"
+                  class="h-full w-full object-contain object-center"
                 />
               </div>
               <h3 class="mt-6 text-2xl text-purple-500 dark:text-purple-300">
@@ -54,9 +50,7 @@ const callouts = [
                   {callout.name}
                 </a>
               </h3>
-              <p class="text-base text-gray-900 dark:text-gray-100">
-                {callout.description}
-              </p>
+              <p class="text-base text-gray-900 dark:text-gray-100">{callout.description}</p>
             </div>
           ))
         }

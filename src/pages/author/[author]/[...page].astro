@@ -25,9 +25,7 @@ const frontmatter: Frontmatter = {
   title:
     'Author: ' +
     detail!.data.title +
-    (page.size < page.total
-      ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')'
-      : ''),
+    (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
   description:
     detail!.data.description +
     '. ' +
@@ -40,28 +38,22 @@ const frontmatter: Frontmatter = {
     ')',
   coverSVG: coverSVG,
   socialImage: socialImage,
-  publishDate: SiteMetadata.buildTime,
+  publishDate: SiteMetadata.buildTime
 }
 
 const currentPage = Astro.url.pathname.replace(/(\/\d*)?\/$/, '')
 
-export async function getStaticPaths({
-  paginate,
-}: {
-  paginate: PaginateFunction
-}) {
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const authors = await getCollection('author')
-  const allPosts = await getCollection('blog', post => !post.data.draft)
-  const posts = allPosts.sort(
-    (a, b) => +b.data.publishDate - +a.data.publishDate
-  )
+  const allPosts = await getCollection('blog', (post) => !post.data.draft)
+  const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
 
-  return authors.map(author => {
+  return authors.map((author) => {
     return paginate(
-      posts.filter(post => post.data.author!.slug == author.slug),
+      posts.filter((post) => post.data.author!.slug == author.slug),
       {
         params: { author: author.slug },
-        pageSize: PAGE_SIZE,
+        pageSize: PAGE_SIZE
       }
     )
   })
@@ -74,12 +66,11 @@ export async function getStaticPaths({
       title={frontmatter.title}
       description={frontmatter.description}
       coverSVG={frontmatter.coverSVG}
-      socialImage={frontmatter.socialImage}
-    >
+      socialImage={frontmatter.socialImage}>
       <Image
         src={detail!.data.image}
         alt={detail!.data.title}
-        class="mt-4 h-32 w-32 rounded-full object-center object-cover"
+        class="mt-4 h-32 w-32 rounded-full object-cover object-center"
       />
       <PaginateControl base={currentPage} page={page} />
     </PageHero>

@@ -22,44 +22,30 @@ const frontmatter: Frontmatter = {
   title:
     'Tag: ' +
     tag +
-    (page.size < page.total
-      ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')'
-      : ''),
+    (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
   description:
-    'Showing articles ' +
-    (page.start + 1) +
-    '-' +
-    (page.end + 1) +
-    ' (total ' +
-    page.total +
-    ')',
+    'Showing articles ' + (page.start + 1) + '-' + (page.end + 1) + ' (total ' + page.total + ')',
   coverSVG: coverSVG,
   socialImage: socialImage,
-  publishDate: SiteMetadata.buildTime,
+  publishDate: SiteMetadata.buildTime
 }
 
 const currentPage = Astro.url.pathname.replace(/(\/\d*)?\/$/, '')
 
-export async function getStaticPaths({
-  paginate,
-}: {
-  paginate: PaginateFunction
-}) {
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const allPosts = await getCollection('blog', ({ data }) => {
     return data.draft !== true
   })
-  const posts = allPosts.sort(
-    (a, b) => +b.data.publishDate - +a.data.publishDate
-  )
+  const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
 
-  const tags = Array.from(new Set(posts.flatMap(post => post.data.tags)))
+  const tags = Array.from(new Set(posts.flatMap((post) => post.data.tags)))
 
-  return tags.map(tag => {
+  return tags.map((tag) => {
     return paginate(
-      posts.filter(post => tag && post.data.tags?.includes(tag)),
+      posts.filter((post) => tag && post.data.tags?.includes(tag)),
       {
         params: { tag },
-        pageSize: PAGE_SIZE,
+        pageSize: PAGE_SIZE
       }
     )
   })
@@ -72,8 +58,7 @@ export async function getStaticPaths({
       title={frontmatter.title}
       description={frontmatter.description}
       coverSVG={frontmatter.coverSVG}
-      socialImage={frontmatter.socialImage}
-    >
+      socialImage={frontmatter.socialImage}>
       <PaginateControl base={currentPage} page={page} />
     </PageHero>
   </header>

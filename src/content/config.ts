@@ -17,11 +17,9 @@ const blogCollection = defineCollection({
       gallery: z.string().optional(),
       categories: z.array(reference('category')).optional(),
       tags: z.array(z.string()).optional(),
-      extra: z
-        .array(z.enum(['math', 'markmap', 'mermaid', 'gallery']))
-        .optional(),
-      minutesRead: z.string().optional(),
-    }),
+      extra: z.array(z.enum(['math', 'markmap', 'mermaid', 'gallery'])).optional(),
+      minutesRead: z.string().optional()
+    })
 })
 
 const docCollection = defineCollection({
@@ -33,8 +31,8 @@ const docCollection = defineCollection({
       title: z.string(),
       description: z.string(),
       images: z.array(image()).optional(),
-      gallery: z.string().optional(),
-    }),
+      gallery: z.string().optional()
+    })
 })
 
 const categoryCollection = defineCollection({
@@ -43,8 +41,8 @@ const categoryCollection = defineCollection({
       title: z.string(),
       description: z.string(),
       coverSVG: image(),
-      socialImage: image(),
-    }),
+      socialImage: image()
+    })
 })
 
 const authorCollection = defineCollection({
@@ -53,18 +51,17 @@ const authorCollection = defineCollection({
       title: z.string(),
       description: z.string(),
       image: image(),
-      contact: z.string(),
-    }),
+      contact: z.string()
+    })
 })
 
 const socialCollection = defineCollection({
   type: 'data',
-  schema: ({ image }) =>
-    z.object({
+  schema: z.object({
       name: z.string(),
       link: z.string(),
-      icon: z.string(),
-    }),
+      icon: z.string()
+    })
 })
 
 // 3. Export multiple collections to register them
@@ -73,5 +70,5 @@ export const collections = {
   doc: docCollection,
   category: categoryCollection,
   author: authorCollection,
-  social: socialCollection,
+  social: socialCollection
 }

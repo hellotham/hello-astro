@@ -46,7 +46,7 @@ import {
   parkayFloor,
   pixelDots,
   signal,
-  wallpaper,
+  wallpaper
 } from 'hero-patterns'
 
 const patterns = [
@@ -89,7 +89,7 @@ const patterns = [
   parkayFloor('#9c92ac', 0.5),
   pixelDots('#9c92ac', 0.5),
   signal('#9c92ac', 0.5),
-  wallpaper('#9c92ac', 0.5),
+  wallpaper('#9c92ac', 0.5)
 ]
 
 const frontmatter: Frontmatter = {
@@ -97,20 +97,18 @@ const frontmatter: Frontmatter = {
   description: 'Articles by tags',
   coverSVG: coverSVG,
   socialImage: socialImage,
-  publishDate: SiteMetadata.buildTime,
+  publishDate: SiteMetadata.buildTime
 }
 
 const posts = await getCollection('blog', ({ data }) => {
   return data.draft !== true
 })
-const latestPosts = posts.sort(
-  (a, b) => +b.data.publishDate - +a.data.publishDate
-)
+const latestPosts = posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
 
 const tagmap: Map<string, TagType> = new Map()
 
-latestPosts.forEach(post => {
-  post.data.tags?.forEach(tag => {
+latestPosts.forEach((post) => {
+  post.data.tags?.forEach((tag) => {
     let utag = tagmap.get(tag)
     if (utag) {
       utag.count += 1
@@ -136,33 +134,26 @@ const tags = Array.from(tagmap.values())
   </header>
   <main class="mt-10 dark:bg-gray-900">
     <div
-      class="mx-4 mt-6 mb-24 grid grid-cols-2 gap-y-4 sm:grid-cols-3 md:grid-cols-4 gap-x-4 lg:grid-cols-5 xl:grid-cols-6 xl:gap-y-6 xl:gap-x-6"
-    >
+      class="mx-4 mb-24 mt-6 grid grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 xl:gap-x-6 xl:gap-y-6">
       {
         tags
           .sort((a, b) => b.count - a.count)
           .map((tag, i) => (
-            <a
-              href={`${import.meta.env.BASE_URL}tag/${tag.tag}/`}
-              class="group"
-            >
+            <a href={`${import.meta.env.BASE_URL}tag/${tag.tag}/`} class="group">
               <section
-                class="relative w-full h-24 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl  transition duration-300 ease-in-out"
+                class="group relative h-24 w-full overflow-hidden rounded-lg bg-cover bg-center shadow-lg transition  duration-300 ease-in-out hover:shadow-2xl"
                 style={{
                   backgroundColor: '#dfdbe5',
                   // backgroundImage: `url(${OGImage})`,
-                  backgroundImage: patterns[i % patterns.length],
-                }}
-              >
-                <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out" />
-                <div class="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
-                  <h3 class="text-center text-white text-2xl font-bold">
+                  backgroundImage: patterns[i % patterns.length]
+                }}>
+                <div class="absolute inset-0 bg-black bg-opacity-50 transition duration-300 ease-in-out group-hover:opacity-75" />
+                <div class="relative flex h-full w-full items-center justify-center px-4 sm:px-6 lg:px-4">
+                  <h3 class="text-center text-2xl font-bold text-white">
                     <span class="absolute inset-0" />
                     {tag.tag}
                   </h3>
-                  <p class="text-center text-gray-200 text-sm font-medium">
-                    &nbsp;({tag.count})
-                  </p>
+                  <p class="text-center text-sm font-medium text-gray-200">&nbsp;({tag.count})</p>
                 </div>
               </section>
             </a>

@@ -15,39 +15,30 @@ const otherPosts = posts.slice(1, 5)
 ---
 
 <div class="bg-white dark:bg-gray-900">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="max-w-2xl mx-auto py-8 sm:py-12 lg:py-16 lg:max-w-none">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl py-8 sm:py-12 lg:max-w-none lg:py-16">
       <div class="flex flex-row items-center">
-        <h2
-          class="text-2xl md:text-4xl font-extrabold text-purple-800 dark:text-purple-200"
-        >
+        <h2 class="text-2xl font-extrabold text-purple-800 dark:text-purple-200 md:text-4xl">
           Our Latest Articles
         </h2>
         <a
           href={import.meta.env.BASE_URL + 'blog'}
-          class="inline-block px-2 py-2 md:px-6 md:py-3 mt-2 ml-4 rounded-md bg-purple-600 hover:bg-pink-600 text-white dark:bg-purple-300 dark:hover:bg-pink-300 dark:text-black font-bold text-base md:text-lg"
-        >
+          class="ml-4 mt-2 inline-block rounded-md bg-purple-600 px-2 py-2 text-base font-bold text-white hover:bg-pink-600 dark:bg-purple-300 dark:text-black dark:hover:bg-pink-300 md:px-6 md:py-3 md:text-lg">
           All Articles
         </a>
         <a
           href={import.meta.env.BASE_URL + 'categories'}
-          class="inline-block px-2 py-2 md:px-6 md:py-3 mt-2 ml-4 rounded-md text-purple-800 bg-purple-100 hover:bg-pink-200 dark:text-purple-100 dark:bg-purple-900 dark:hover:bg-pink-900 font-bold text-base md:text-lg"
-        >
+          class="ml-4 mt-2 inline-block rounded-md bg-purple-100 px-2 py-2 text-base font-bold text-purple-800 hover:bg-pink-200 dark:bg-purple-900 dark:text-purple-100 dark:hover:bg-pink-900 md:px-6 md:py-3 md:text-lg">
           Categories
         </a>
         <a
           href={import.meta.env.BASE_URL + 'tags'}
-          class="inline-block px-2 py-2 md:px-6 md:py-3 mt-2 ml-4 rounded-md text-purple-800 bg-purple-100 hover:bg-pink-200 dark:text-purple-100 dark:bg-purple-900 dark:hover:bg-pink-900 font-bold text-base md:text-lg"
-        >
+          class="ml-4 mt-2 inline-block rounded-md bg-purple-100 px-2 py-2 text-base font-bold text-purple-800 hover:bg-pink-200 dark:bg-purple-900 dark:text-purple-100 dark:hover:bg-pink-900 md:px-6 md:py-3 md:text-lg">
           Tags
         </a>
       </div>
-      <div
-        class="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-x-6"
-      >
-        <div
-          class="mb-4 lg:mb-0 p-4 lg:p-0 relative rounded block xl:col-span-2"
-        >
+      <div class="mt-6 space-y-12 lg:grid lg:grid-cols-2 lg:gap-x-6 lg:space-y-0 xl:grid-cols-3">
+        <div class="relative mb-4 block rounded p-4 lg:mb-0 lg:p-0 xl:col-span-2">
           <a href={import.meta.env.BASE_URL + 'blog/' + newestPost.slug}>
             <span class="sr-only">{newestPost.data.title}</span>
             {
@@ -55,92 +46,69 @@ const otherPosts = posts.slice(1, 5)
                 <img
                   src={newestPost.data.coverSVG.src}
                   alt={newestPost.data.title + ' featured image'}
-                  class="rounded-md w-full h-64 md:h-80 object-cover bg-purple-100 dark:bg-purple-800"
+                  class="h-64 w-full rounded-md bg-purple-100 object-cover dark:bg-purple-800 md:h-80"
                 />
               ) : (
                 <Image
-                  src={
-                    newestPost.data.coverImage ||
-                    newestPost.data.socialImage ||
-                    DefaultImage
-                  }
+                  src={newestPost.data.coverImage || newestPost.data.socialImage || DefaultImage}
                   alt={newestPost.data.title + ' featured image'}
-                  class="rounded-md w-full h-64 md:h-80 object-cover bg-purple-100 dark:bg-purple-800"
+                  class="h-64 w-full rounded-md bg-purple-100 object-cover dark:bg-purple-800 md:h-80"
                 />
               )
             }
           </a>
           <div class="mt-4">
-            {
-              newestPost.data.categories && (
-                <Categories categories={newestPost.data.categories} />
-              )
-            }
+            {newestPost.data.categories && <Categories categories={newestPost.data.categories} />}
           </div>
           <a href={import.meta.env.BASE_URL + 'blog/' + newestPost.slug}>
             <h1
-              class="text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300 text-4xl font-bold mt-2 leading-tight"
-            >
+              class="mt-2 text-4xl font-bold leading-tight text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300">
               {newestPost.data.title}
             </h1>
           </a>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">
+          <p class="mb-4 text-gray-600 dark:text-gray-400">
             {newestPost.data.publishDate?.toDateString()}
           </p>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">
+          <p class="mb-4 text-gray-600 dark:text-gray-400">
             {newestPost.data.description}
           </p>
           <a
             href={import.meta.env.BASE_URL + 'blog/' + newestPost.slug}
-            class="inline-block px-6 py-3 mt-2 rounded-md bg-purple-600 hover:bg-pink-600 text-white dark:bg-purple-300 dark:hover:bg-pink-300 dark:text-black"
-          >
+            class="mt-2 inline-block rounded-md bg-purple-600 px-6 py-3 text-white hover:bg-pink-600 dark:bg-purple-300 dark:text-black dark:hover:bg-pink-300">
             Read more
             <span class="sr-only">{newestPost.data.title}</span>
           </a>
         </div>
         <div class="w-full">
           {
-            otherPosts.map(post => (
-              <div class="rounded w-full md:grid md:grid-cols-3 mb-10">
-                <a
-                  href={
-                    new URL(
-                      import.meta.env.BASE_URL + 'blog/' + post.slug,
-                      Astro.url
-                    )
-                  }
-                >
+            otherPosts.map((post) => (
+              <div class="mb-10 w-full rounded md:grid md:grid-cols-3">
+                <a href={new URL(import.meta.env.BASE_URL + 'blog/' + post.slug, Astro.url)}>
                   {post.data.coverSVG ? (
                     <img
                       src={post.data.coverSVG.src}
                       alt={post.data.title + ' featured image'}
-                      class="block lg:block rounded-md w-full h-64 md:h-32 p-4 md:p-0 object-cover bg-purple-100 dark:bg-purple-800"
+                      class="block h-64 w-full rounded-md bg-purple-100 object-cover p-4 dark:bg-purple-800 md:h-32 md:p-0 lg:block"
                     />
                   ) : (
                     <Image
-                      src={
-                        post.data.coverImage ||
-                        post.data.socialImage ||
-                        DefaultImage
-                      }
+                      src={post.data.coverImage || post.data.socialImage || DefaultImage}
                       alt={post.data.title + ' featured image'}
-                      class="block lg:block rounded-md w-full h-64 md:h-32 p-4 md:p-0 object-cover bg-purple-100 dark:bg-purple-800"
+                      class="block h-64 w-full rounded-md bg-purple-100 object-cover p-4 dark:bg-purple-800 md:h-32 md:p-0 lg:block"
                     />
                   )}
                 </a>
-                <div class="bg-white dark:bg-gray-800 rounded px-4 md:col-span-2">
-                  {post.data.categories && (
-                    <Categories categories={post.data.categories} />
-                  )}
+                <div class="rounded bg-white px-4 dark:bg-gray-800 md:col-span-2">
+                  {post.data.categories && <Categories categories={post.data.categories} />}
                   <a href={import.meta.env.BASE_URL + 'blog/' + post.slug}>
-                    <div class="md:mt-1 text-gray-800 dark:text-gray-100 font-semibold text-xl">
+                    <div class="text-xl font-semibold text-gray-800 dark:text-gray-100 md:mt-1">
                       {post.data.title}
                     </div>
                   </a>
                   <p class="block text-sm text-gray-600 dark:text-gray-300">
                     {post.data.publishDate?.toDateString()}
                   </p>
-                  <p class="block md:hidden text-sm text-gray-600 dark:text-gray-300">
+                  <p class="block text-sm text-gray-600 dark:text-gray-300 md:hidden">
                     {post.data.description}
                   </p>
                 </div>

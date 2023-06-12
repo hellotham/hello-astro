@@ -9,9 +9,9 @@ export async function getStaticPaths() {
   const blogEntries = await getCollection('blog', ({ data }) => {
     return data.draft !== true
   })
-  return blogEntries.map(entry => ({
+  return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
-    props: { entry },
+    props: { entry }
   }))
 }
 
@@ -21,11 +21,15 @@ type Props = {
 
 // 2. When its time to render, you can get the entry directly from the prop
 const { entry } = Astro.props
+
+// @ts-ignore
 const { Content, remarkPluginFrontmatter } = await entry.render()
-const rfm = remarkPluginFrontmatter as Frontmatter
 let fm = entry.data
-fm.minutesRead = rfm.minutesRead
-fm.extra = rfm.extra
+const rfm = remarkPluginFrontmatter as Frontmatter
+if (rfm) {
+  fm.minutesRead = rfm.minutesRead
+  fm.extra = rfm.extra
+}
 ---
 
 <Layout frontmatter={fm}>

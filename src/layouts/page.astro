@@ -18,7 +18,7 @@ export interface Props {
 const { frontmatter } = Astro.props
 
 const images = import.meta.glob<ImageMetadata>('../assets/**/*', {
-  import: 'default',
+  import: 'default'
 })
 const coverSVG = (await images[frontmatter.coverSVG]()) || DefaultSVG
 const socialImage = (await images[frontmatter.socialImage]()) || DefaultImage
@@ -28,7 +28,7 @@ const fm: Frontmatter = {
   description: frontmatter.description,
   publishDate: new Date(frontmatter.publishDate),
   coverSVG: coverSVG,
-  socialImage: socialImage,
+  socialImage: socialImage
 }
 ---
 
@@ -44,8 +44,7 @@ const fm: Frontmatter = {
         />
       </header>
       <section
-        class="px-4 lg:px-0 my-8 max-w-screen-lg mx-auto prose prose-purple lg:prose-xl dark:prose-invert"
-      >
+        class="prose prose-purple mx-auto my-8 max-w-screen-lg px-4 dark:prose-invert lg:prose-xl lg:px-0">
         <slot />
       </section>
     </article>

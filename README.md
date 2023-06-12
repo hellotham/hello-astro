@@ -127,14 +127,14 @@ All commands are run from the root of the project, from a terminal:
 
 | Command             | Action                                             |
 | :------------------ | :------------------------------------------------- |
-| `yarn`              | Installs dependencies                              |
-| `yarn dev`          | Starts local dev server at `localhost:3000`        |
-| `yarn build`        | Build your production site to `./dist/`            |
-| `yarn preview`      | Preview your build locally, before deploying       |
-| `yarn format`       | Pretty print the source code                       |
-| `yarn lint`         | Check the source code for errors                   |
-| `yarn astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `yarn astro --help` | Get help using the Astro CLI                       |
+| `pnpm install`              | Installs dependencies                              |
+| `pnpm dev`          | Starts local dev server at `localhost:3000`        |
+| `pnpm build`        | Build your production site to `./dist/`            |
+| `pnpm preview`      | Preview your build locally, before deploying       |
+| `pnpm lint`         | Pretty print the source code                       |
+| `pnpm check`        | Check the source code for errors                   |                 |
+| `pnpm astro ...`    | Run CLI commands like `astro add`, `astro preview` |
+| `pnpm astro --help` | Get help using the Astro CLI                       |
 
 ## Release History
 
@@ -166,3 +166,12 @@ All commands are run from the root of the project, from a terminal:
   - converted social links to a data collection (requires Astro >2.5.0)
   - updated favicon and header metadata
   - improve search to include documentation
+- 3.1.0: Enhancement update:
+  - Migrated package manager from yarn to pnpm
+  - Reference base for head links
+  - Added eslint and prettier with plugins
+  - Fixed image attributes error in seo component
+  - Updated tsconfig to match astro strict
+  - Update Katex CSS link
+  - Fixed author not appearing in blog card
+  - Added Markdoc support

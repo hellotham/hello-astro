@@ -5,61 +5,54 @@ const features = [
   {
     name: 'Easy to Create Content',
     description:
-      'Create pages, documentation pages and blog posts using MDX and Markdown. Includes support for photo galleries, maps, math equations (KaTeX) and diagrams (mermaid, plantuml and markmap).',
-    icon: 'sparkles',
+      'Create pages, documentation pages and blog posts using MDX, Markdoc and Markdown. Includes support for photo galleries, maps, math equations (KaTeX) and diagrams (mermaid, plantuml and markmap).',
+    icon: 'sparkles'
   },
   {
     name: 'Customisable Design',
     description:
       'Built using the TailwindCSS ecosystem (including HeroIcons and Hero Patterns). Very easy to customise and change design. Template illustrations by unDraw.',
-    icon: 'puzzle',
+    icon: 'puzzle'
   },
   {
     name: 'SEO Ready',
     description:
       'Full support for Facebook (Open Graph), Twitter Cards, Schema/JSON-LD metadata. Automatically generated robots.txt, RSS feed and sitemap.',
-    icon: 'presentation-chart-bar',
+    icon: 'presentation-chart-bar'
   },
   {
     name: 'Blazing Performance',
     description:
       'Achieve great web vitals scores. Static site using Jamstack architecture. Built using Astro and Typescript for ultimate performance and type safety.',
-    icon: 'clock',
-  },
+    icon: 'clock'
+  }
 ]
 ---
 
-<div class="py-12 bg-gray-100 dark:bg-gray-800">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-gray-100 py-12 dark:bg-gray-800">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="lg:text-center">
       <h2
-        class="text-base text-purple-800 dark:text-purple-300 font-semibold tracking-wide uppercase"
-      >
+        class="text-base font-semibold uppercase tracking-wide text-purple-800 dark:text-purple-300">
         Features
       </h2>
       <p
-        class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl"
-      >
+        class="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
         Comprehensive Astro Starter
       </p>
-      <p
-        class="mt-4 max-w-2xl text-xl text-gray-600 dark:text-gray-300 lg:mx-auto"
-      >
-        This is a good starting point for a multi-purpose website, including
-        support for documentation and blog pages, photo galleries, diagrams,
-        math equations and more.
+      <p class="mt-4 max-w-2xl text-xl text-gray-600 dark:text-gray-300 lg:mx-auto">
+        This is a good starting point for a multi-purpose website, including support for
+        documentation and blog pages, photo galleries, diagrams, math equations and more.
       </p>
     </div>
 
     <div class="mt-10">
-      <dl
-        class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10"
-      >
+      <dl class="space-y-10 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10 md:space-y-0">
         {
-          features.map(feature => (
+          features.map((feature) => (
             <div class="relative">
               <dt>
-                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-purple-500 dark:bg-purple-400 text-white dark:text-black">
+                <div class="absolute flex h-12 w-12 items-center justify-center rounded-md bg-purple-500 text-white dark:bg-purple-400 dark:text-black">
                   <Icon
                     class="h-6 w-6"
                     aria-hidden="true"
@@ -67,11 +60,11 @@ const features = [
                     name={feature.icon}
                   />
                 </div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900 dark:text-gray-200">
+                <p class="ml-16 text-lg font-medium leading-6 text-gray-900 dark:text-gray-200">
                   {feature.name}
                 </p>
               </dt>
-              <dd class="mt-2 ml-16 text-base text-gray-600 dark:text-gray-400">
+              <dd class="ml-16 mt-2 text-base text-gray-600 dark:text-gray-400">
                 {feature.description}
               </dd>
             </div>

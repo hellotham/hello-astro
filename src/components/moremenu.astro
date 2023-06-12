@@ -15,35 +15,28 @@ const showMoreSection = COMMUNITY_INVITE_URL
     <>
       <h2
         id="more-title"
-        class="font-display text-sm font-medium text-gray-900 dark:text-white mt-4 space-y-3"
-      >
+        class="font-display mt-4 space-y-3 text-sm font-medium text-gray-900 dark:text-white">
         More
       </h2>
-      <ol role="list" class="mt-4 space-y-3 text-sm flex flex-col">
+      <ol role="list" class="mt-4 flex flex-col space-y-3 text-sm">
         {editHref && (
-          <li class="py-1 text-gray-500 dark:text-gray-400 flex items-center">
-            <Icon pack="heroicons-outline" name="pencil" class="w-6 h-6 mr-2" />
+          <li class="flex items-center py-1 text-gray-500 dark:text-gray-400">
+            <Icon pack="heroicons-outline" name="pencil" class="mr-2 h-6 w-6" />
             <a
               class="hover:text-purple-600 dark:hover:text-purple-300"
               href={editHref}
-              target="_blank"
-            >
+              target="_blank">
               <span>Edit this page</span>
             </a>
           </li>
         )}
         {COMMUNITY_INVITE_URL && (
-          <li class="py-1 text-gray-500 dark:text-gray-400 flex items-center">
-            <Icon
-              pack="heroicons-outline"
-              name="chat-alt-2"
-              class="w-6 h-6 mr-2"
-            />
+          <li class="flex items-center py-1 text-gray-500 dark:text-gray-400">
+            <Icon pack="heroicons-outline" name="chat-alt-2" class="mr-2 h-6 w-6" />
             <a
               class="hover:text-purple-600 dark:hover:text-purple-300"
               href={COMMUNITY_INVITE_URL}
-              target="_blank"
-            >
+              target="_blank">
               <span>Join our community</span>
             </a>
           </li>

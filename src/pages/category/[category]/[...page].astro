@@ -23,40 +23,29 @@ const frontmatter: Frontmatter = {
   title:
     'Category: ' +
     category +
-    (page.size < page.total
-      ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')'
-      : ''),
+    (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
   description: detail!.data.description,
   coverSVG: detail!.data.coverSVG,
   socialImage: detail!.data.socialImage,
-  publishDate: SiteMetadata.buildTime,
+  publishDate: SiteMetadata.buildTime
 }
 
 const currentPage = Astro.url.pathname.replace(/(\/\d*)?\/$/, '')
 
-export async function getStaticPaths({
-  paginate,
-}: {
-  paginate: PaginateFunction
-}) {
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const categories = await getCollection('category')
-  const allPosts = await getCollection('blog', post => !post.data.draft)
-  const posts = allPosts.sort(
-    (a, b) => +b.data.publishDate - +a.data.publishDate
-  )
+  const allPosts = await getCollection('blog', (post) => !post.data.draft)
+  const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
 
-  return categories.map(category => {
+  return categories.map((category) => {
     return paginate(
       posts.filter(
-        post =>
-          category &&
-          post.data
-            .categories!.map(category => category.slug)
-            .includes(category.slug)
+        (post) =>
+          category && post.data.categories!.map((category) => category.slug).includes(category.slug)
       ),
       {
         params: { category: category.slug },
-        pageSize: PAGE_SIZE,
+        pageSize: PAGE_SIZE
       }
     )
   })
@@ -69,8 +58,7 @@ export async function getStaticPaths({
       title={frontmatter.title}
       description={frontmatter.description}
       coverSVG={frontmatter.coverSVG}
-      socialImage={frontmatter.socialImage}
-    >
+      socialImage={frontmatter.socialImage}>
       <PaginateControl base={currentPage} page={page} />
     </PageHero>
   </header>

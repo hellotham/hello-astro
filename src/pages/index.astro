@@ -16,15 +16,13 @@ const frontmatter: Frontmatter = {
   description: SiteMetadata.description,
   coverSVG: coverSVG,
   socialImage: socialImage,
-  publishDate: SiteMetadata.buildTime,
+  publishDate: SiteMetadata.buildTime
 }
 
 const posts = await getCollection('blog', ({ data }) => {
   return data.draft !== true
 })
-const latestPosts = posts.sort(
-  (a, b) => +b.data.publishDate - +a.data.publishDate
-)
+const latestPosts = posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
 ---
 
 <Base frontmatter={frontmatter}>
@@ -33,5 +31,5 @@ const latestPosts = posts.sort(
   <FindOutMore />
   <LatestArticles posts={latestPosts} />
   <CTA />
-  <div class="p-24 md:p-12 bg-white dark:bg-black"></div>
+  <div class="bg-white p-24 dark:bg-black md:p-12"></div>
 </Base>

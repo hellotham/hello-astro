@@ -11,9 +11,7 @@ export interface Props {
 
 const { id, images, exifs } = Astro.props
 
-const imagetitles = images.map(
-  image => image.src.split('/').reverse()[0].split('.')[0]
-)
+const imagetitles = images.map((image) => image.src.split('/').reverse()[0].split('.')[0])
 ---
 
 <style>
@@ -44,14 +42,12 @@ const imagetitles = images.map(
       <figure
         itemscope
         itemtype="http://schema.org/ImageObject"
-        class="inline-block text-gray-800 dark:text-gray-300 bg-gray-300 dark:bg-gray-800 text-sm text-center italic rounded shadow-lg shadow-gray-400 dark:shadow-black my-1 lg:my-2"
-      >
+        class="my-1 inline-block rounded bg-gray-300 text-center text-sm italic text-gray-800 shadow-lg shadow-gray-400 dark:bg-gray-800 dark:text-gray-300 dark:shadow-black lg:my-2">
         <a
           href={image.src}
           itemprop="contentUrl"
           data-pswp-width={image.width}
-          data-pswp-height={image.height}
-        >
+          data-pswp-height={image.height}>
           <Image
             src={image}
             alt={imagetitles[i]}
@@ -64,9 +60,7 @@ const imagetitles = images.map(
         </a>
         <figcaption itemprop="caption description" class="rounded">
           {imagetitles[i]}
-          {exifs && exifs[i] && (
-            <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model + ')'}</span>
-          )}
+          {exifs && exifs[i] && <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model + ')'}</span>}
         </figcaption>
       </figure>
     ))
@@ -92,14 +86,14 @@ const imagetitles = images.map(
             top: 0,
             bottom: 30,
             left: 0,
-            right: 0,
+            right: 0
           }
-        },
+        }
       })
 
       new PhotoSwipeDynamicCaption(lightbox, {
         captionContent: '.pswp-caption-content',
-        type: 'below',
+        type: 'below'
       })
 
       lightbox.init()

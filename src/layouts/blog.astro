@@ -17,7 +17,7 @@ const currentPage = Astro.url.pathname
 const allPosts = await getCollection('blog')
 const posts = allPosts
   .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
-  .filter(p => !p.data.draft)
+  .filter((p) => !p.data.draft)
 let prev: CollectionEntry<'blog'> | undefined
 let next: CollectionEntry<'blog'> | undefined
 posts.forEach((post, i) => {
@@ -39,8 +39,7 @@ posts.forEach((post, i) => {
         <BlogHero frontmatter={frontmatter} />
       </header>
       <section
-        class="px-4 lg:px-0 my-8 max-w-screen-lg mx-auto prose prose-purple lg:prose-xl dark:prose-invert"
-      >
+        class="prose prose-purple mx-auto my-8 max-w-screen-lg px-4 dark:prose-invert lg:prose-xl lg:px-0">
         {frontmatter.images && <Images images={frontmatter.images} />}
         <slot />
       </section>

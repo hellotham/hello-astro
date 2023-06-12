@@ -9,7 +9,7 @@ import type {
   Organization,
   Person,
   WebSite,
-  WithContext,
+  WithContext
 } from 'schema-dts'
 import { SiteMetadata, DefaultImage, LogoImage } from '../config'
 
@@ -23,7 +23,11 @@ const social = await getCollection('social')
 const siteurl = new URL(import.meta.env.BASE_URL, Astro.url)
 const type = Astro.url.toString().includes('blog') ? 'post' : 'page'
 const year = SiteMetadata.buildTime.getFullYear()
-const image = await getImage({src: frontmatter.socialImage || frontmatter.coverImage || DefaultImage, width: 1200, format: 'jpg'})
+const image = await getImage({
+  src: frontmatter.socialImage || frontmatter.coverImage || DefaultImage,
+  width: 1200,
+  format: 'jpg'
+})
 const logo = LogoImage
 const publishDate = new Date(frontmatter.publishDate)
 
@@ -31,60 +35,58 @@ const openGraph = {
   basic: {
     title: frontmatter.title,
     type: 'website',
-    image: new URL(image.src, Astro.url).toString(),
+    image: new URL(image.src, Astro.url).toString()
   },
   optional: {
     description: frontmatter.description,
-    siteName: SiteMetadata.title,
+    siteName: SiteMetadata.title
   },
   image: {
     alt: frontmatter.title,
-    height: image.height,
-    width: image.width,
+    height: image.attributes.height,
+    width: image.attributes.width
   },
   article: {
     author: frontmatter.author,
     publishedTime: SiteMetadata.buildTime.toISOString(),
-    tags: frontmatter.tags,
-  },
+    tags: frontmatter.tags
+  }
 }
 const twitter = {
-  card: frontmatter.socialImage
-    ? 'summary_large_image'
-    : ('summary' as TwitterCardType),
+  card: frontmatter.socialImage ? 'summary_large_image' : ('summary' as TwitterCardType),
   site: SiteMetadata.org.twitter,
-  creator: SiteMetadata.author.twitter,
+  creator: SiteMetadata.author.twitter
 }
 
 const website: WithContext<WebSite> = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   about: {
-    '@id': new URL('about', siteurl).toString(),
+    '@id': new URL('about', siteurl).toString()
   },
   audience: 'public',
   abstract: SiteMetadata.description,
   author: {
-    '@id': SiteMetadata.author.url,
+    '@id': SiteMetadata.author.url
   },
   copyrightHolder: {
-    '@id': SiteMetadata.org.url,
+    '@id': SiteMetadata.org.url
   },
   copyrightYear: year,
   creator: {
-    '@id': SiteMetadata.author.url,
+    '@id': SiteMetadata.author.url
   },
   description: SiteMetadata.description,
   image: {
     '@type': 'ImageObject',
-    url: new URL(image.src, Astro.url).toString(),
+    url: new URL(image.src, Astro.url).toString()
   },
   inLanguage: 'en',
   name: SiteMetadata.title,
   publisher: {
-    '@id': SiteMetadata.org.url,
+    '@id': SiteMetadata.org.url
   },
-  url: siteurl.toString(),
+  url: siteurl.toString()
 }
 
 const organization: WithContext<Organization> = {
@@ -94,25 +96,25 @@ const organization: WithContext<Organization> = {
   address: SiteMetadata.location,
   contactPoint: {
     '@type': 'ContactPoint',
-    email: SiteMetadata.org.email,
+    email: SiteMetadata.org.email
   },
   description: SiteMetadata.org.summary,
   email: SiteMetadata.org.email,
   founder: {
-    '@id': SiteMetadata.author.email,
+    '@id': SiteMetadata.author.email
   },
   location: SiteMetadata.location,
   image: {
     '@type': 'ImageObject',
-    url: new URL(logo.src, siteurl).toString(),
+    url: new URL(logo.src, siteurl).toString()
   },
   logo: {
     '@type': 'ImageObject',
-    url: new URL(logo.src, siteurl).toString(),
+    url: new URL(logo.src, siteurl).toString()
   },
   name: SiteMetadata.org.name,
-  sameAs: Object.values(social.map(social => social.data.link)),
-  url: SiteMetadata.org.url,
+  sameAs: Object.values(social.map((social) => social.data.link)),
+  url: SiteMetadata.org.url
 }
 
 const breadcrumbList: WithContext<BreadcrumbList> = {
@@ -124,21 +126,21 @@ const breadcrumbList: WithContext<BreadcrumbList> = {
       '@type': 'ListItem',
       item: {
         '@id': siteurl.toString(),
-        name: SiteMetadata.title,
+        name: SiteMetadata.title
       },
-      position: 1,
+      position: 1
     },
     {
       '@type': 'ListItem',
       item: {
         '@id': Astro.url.toString(),
-        name: frontmatter.title,
+        name: frontmatter.title
       },
-      position: 2,
-    },
+      position: 2
+    }
   ],
   numberOfItems: 2,
-  name: 'Breadcrumbs',
+  name: 'Breadcrumbs'
 }
 
 const person: WithContext<Person> = {
@@ -148,8 +150,8 @@ const person: WithContext<Person> = {
   name: SiteMetadata.author.name,
   url: SiteMetadata.author.url,
   worksFor: {
-    '@id': SiteMetadata.org.url,
-  },
+    '@id': SiteMetadata.org.url
+  }
 }
 
 const article: WithContext<Article> = {
@@ -157,15 +159,15 @@ const article: WithContext<Article> = {
   '@type': 'Article',
   articleSection: type,
   author: {
-    '@id': SiteMetadata.author.url,
+    '@id': SiteMetadata.author.url
   },
   copyrightHolder: {
-    '@id': SiteMetadata.org.url,
+    '@id': SiteMetadata.org.url
   },
   copyrightYear: year,
   creativeWorkStatus: 'Published',
   creator: {
-    '@id': SiteMetadata.author.url,
+    '@id': SiteMetadata.author.url
   },
   dateCreated: publishDate.toISOString(),
   dateModified: SiteMetadata.buildTime.toISOString(),
@@ -175,15 +177,15 @@ const article: WithContext<Article> = {
   keywords: frontmatter.tags && frontmatter.tags.join(', '),
   image: {
     '@type': 'ImageObject',
-    url: new URL(image.src, Astro.url).toString(),
+    url: new URL(image.src, Astro.url).toString()
   },
   inLanguage: 'en',
   mainEntityOfPage: SiteMetadata.org.url,
   name: frontmatter.title,
   publisher: {
-    '@id': SiteMetadata.org.url,
+    '@id': SiteMetadata.org.url
   },
-  url: siteurl.toString(),
+  url: siteurl.toString()
 }
 ---
 
@@ -193,28 +195,8 @@ const article: WithContext<Article> = {
   {openGraph}
   {twitter}
 />
-<script
-  is:inline
-  set:html={JSON.stringify(website)}
-  type="application/ld+json"
-/>
-<script
-  is:inline
-  set:html={JSON.stringify(organization)}
-  type="application/ld+json"
-/>
-<script
-  is:inline
-  set:html={JSON.stringify(breadcrumbList)}
-  type="application/ld+json"
-/>
-<script
-  is:inline
-  set:html={JSON.stringify(person)}
-  type="application/ld+json"
-/>
-<script
-  is:inline
-  set:html={JSON.stringify(article)}
-  type="application/ld+json"
-/>
+<script is:inline set:html={JSON.stringify(website)} type="application/ld+json" />
+<script is:inline set:html={JSON.stringify(organization)} type="application/ld+json" />
+<script is:inline set:html={JSON.stringify(breadcrumbList)} type="application/ld+json" />
+<script is:inline set:html={JSON.stringify(person)} type="application/ld+json" />
+<script is:inline set:html={JSON.stringify(article)} type="application/ld+json" />

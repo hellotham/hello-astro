@@ -1,6 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
+    "strict": true,
     // Enable top-level await, and other modern ESM features.
     "target": "ESNext",
     "module": "ESNext",
@@ -8,21 +9,22 @@
     "moduleResolution": "node",
     // Enable JSON imports.
     "resolveJsonModule": true,
-    // Enable stricter transpilation for better output.
-    "isolatedModules": true,
     // Astro directly run TypeScript code, no transpilation needed.
     "noEmit": true,
     // Report an error when importing a file using a casing different from the casing on disk.
     "forceConsistentCasingInFileNames": true,
     // Properly support importing CJS modules in ESM
     "esModuleInterop": true,
-    // "noUnusedLocals": false,
-    // "noUnusedParameters": false,
-    "strict": true,
+    // Skip typechecking libraries and .d.ts files
+    "skipLibCheck": true,
+    // Add alias for assets folder for easy reference to assets
+    // "baseUrl": ".",
     "paths": {
       "photoswipe/lightbox": [
         "./node_modules/photoswipe/dist/types/lightbox/lightbox.d.ts"
       ]
-    }
+    },
+    // Allow JavaScript files to be imported
+    "allowJs": true
   }
 }

@@ -10,11 +10,10 @@ import { getCollection } from 'astro:content'
 
 const frontmatter = {
   title: 'Contact',
-  description:
-    'Our presence is real and digital. Contact us through the following ways.',
+  description: 'Our presence is real and digital. Contact us through the following ways.',
   coverSVG: coverSVG,
   socialImage: socialImage,
-  publishDate: SiteMetadata.buildTime,
+  publishDate: SiteMetadata.buildTime
 }
 
 const social = await getCollection('social')
@@ -30,39 +29,36 @@ const social = await getCollection('social')
     />
   </header>
   <main>
-    <section class="mb-20 text-gray-800 dark:text-gray-100 mx-auto max-w-7xl">
+    <section class="mx-auto mb-20 max-w-7xl text-gray-800 dark:text-gray-100">
       <div class="block bg-white dark:bg-gray-900 lg:my-8">
         <div class="flex flex-wrap items-center">
-          <div
-            class="grow-0 shrink-0 basis-auto block w-full lg:flex lg:w-6/12 xl:w-4/12"
-          >
+          <div class="block w-full shrink-0 grow-0 basis-auto lg:flex lg:w-6/12 xl:w-4/12">
             <div class="w-full">
               <Map loc={SiteMetadata.latlng} zoom={11} />
             </div>
           </div>
-          <div class="grow-0 shrink-0 basis-auto w-full lg:w-6/12 xl:w-8/12">
+          <div class="w-full shrink-0 grow-0 basis-auto lg:w-6/12 xl:w-8/12">
             <div class="flex flex-wrap pt-8 lg:pt-0">
               {
                 social.map(
-                  method =>
+                  (method) =>
                     method.data.link && (
-                      <div class="mb-12 grow-0 shrink-0 basis-auto w-full md:w-6/12 lg:w-full xl:w-6/12 px-3 md:px-6 xl:px-12">
+                      <div class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:w-6/12 xl:px-12">
                         <div class="flex items-start">
                           <div class="shrink-0">
                             <Icon
                               pack="bi"
                               name={method.data.icon}
-                              class="p-4 bg-purple-600 text-white rounded-md shadow-md w-14 h-14 flex items-center justify-center"
+                              class="flex h-14 w-14 items-center justify-center rounded-md bg-purple-600 p-4 text-white shadow-md"
                             />
                           </div>
-                          <div class="grow ml-6">
-                            <p class="font-bold mb-1">{method.data.name}</p>
+                          <div class="ml-6 grow">
+                            <p class="mb-1 font-bold">{method.data.name}</p>
                             <p>
                               {' '}
                               <a
                                 href={method.data.link}
-                                class="text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300"
-                              >
+                                class="text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300">
                                 {method.data.link}
                               </a>
                             </p>

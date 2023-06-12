@@ -1,0 +1,19 @@
+{
+  "eslint.validate": [
+    "css",
+    "javascript",
+    "javascriptreact",
+    "astro",
+    "typescript",
+    "typescriptreact",
+    "markdown",
+    "mdx"
+  ],
+  "prettier.documentSelectors": ["**/*.astro"],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    "*.mdoc": "markdown"
+  }
+}
