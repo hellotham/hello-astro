@@ -2,7 +2,7 @@
 layout: ../layouts/page.astro
 title: About
 description: Description of Hello Astro Starter
-publishDate: '2022-08-08T00:00:00.000Z'
+publishDate: '2023-06-13T00:00:00.000Z'
 coverSVG: ../assets/svg/undraw/undraw_about_me.svg
 socialImage: ../assets/undraw/undraw_about_me.png
 ---
@@ -15,7 +15,9 @@ This is multi-purpose Astro starter template based on the following:
 - [Iconify](https://iconify.design/)
 - [Hero Patterns](https://heropatterns.com/)
 - [unDraw](https://undraw.co/) for illustrations
-- [MDX](https://mdxjs.com/) and [Markdown](https://www.markdownguide.org/)
+- [Markdown](https://www.markdownguide.org/)
+- [MDX](https://mdxjs.com/)
+- [Markdoc](https://markdoc.dev)
 - [Schema.org](https://schema.org/) and [JSON for Linking Data](https://json-ld.org/), type-checked using [schema-dts](https://github.com/google/schema-dts)
 - [Open Graph](https://ogp.me/) used by [Facebook](https://developers.facebook.com/docs/sharing/webmasters/#markup)
 - [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards)
@@ -28,8 +30,9 @@ This is multi-purpose Astro starter template based on the following:
 - [PhotoSwipe](https://photoswipe.com)
 - [exifr](https://mutiny.cz/exifr/)
 - [Swiper](https://swiperjs.com/)
+- [Remark Emoji](https://github.com/rhysd/remark-emoji)
 
-It follows the [JAMstack architecture](https://jamstack.org) by automatically building a static version from the Git repository. The demo is deployed on Github Pages.
+It follows the [JAMstack architecture](https://jamstack.org) by automatically building a static version from the Git repository. The demo is deployed on [Github Pages](https://pages.github.com).
 
 Hello Astro can used for any/all of the following:
 
@@ -42,6 +45,7 @@ This starter is open source (MIT licence) - fork it and customise for your needs
 
 ## Features
 
+- Author content in a mix of Markdown, MDX and Markdoc
 - Full-featured blog with frontmatter (title, description, author, date, image, tags)
 - High performance low overhead with minimal Javascript (AlpineJS)
 - Full text client based search of blog pages via lunrjs (search index only loaded on first invocation of search on a page)

@@ -58,10 +58,10 @@ const authorCollection = defineCollection({
 const socialCollection = defineCollection({
   type: 'data',
   schema: z.object({
-      name: z.string(),
-      link: z.string(),
-      icon: z.string()
-    })
+    name: z.string(),
+    link: z.string(),
+    icon: z.string()
+  })
 })
 
 // 3. Export multiple collections to register them

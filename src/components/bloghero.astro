@@ -64,13 +64,13 @@ if (frontmatter.author) {
           {new Date(frontmatter.publishDate).toString()}
         </span>
       </span>
-      {frontmatter.minutesRead &&
-        <span class="flex items-center">
-          <Icon class="mr-1 h-6 w-6 text-purple-200" pack="heroicons-outline" name="clock" />
-          <span class="ml-1 font-semibold text-purple-200">
-            {frontmatter.minutesRead}
+      {
+        frontmatter.minutesRead && (
+          <span class="flex items-center">
+            <Icon class="mr-1 h-6 w-6 text-purple-200" pack="heroicons-outline" name="clock" />
+            <span class="ml-1 font-semibold text-purple-200">{frontmatter.minutesRead}</span>
           </span>
-        </span>
+        )
       }
     </span>
     <Tags tags={frontmatter.tags} />

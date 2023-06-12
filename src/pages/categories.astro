@@ -39,6 +39,7 @@ const categories = await getCollection('category')
                     src={category.data.coverSVG.src}
                     alt={category.data.description}
                     class="h-full w-full object-cover object-center"
+                    loading="lazy"
                   />
                 </div>
                 <h3 class="inline-block rounded bg-purple-600 px-3 py-1 text-xs font-medium uppercase tracking-tight text-white hover:bg-pink-600">

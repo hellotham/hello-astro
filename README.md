@@ -18,7 +18,7 @@ Hello Astro can used for any/all of the following:
 Uses the following integrations:
 
 - @astrojs/mdx
-- @astrojs/image
+- @astrojs/markdoc
 - @astrojs/sitemap
 - @astrojs/rss
 - @astrojs/tailwind
@@ -75,6 +75,7 @@ The start uses the following external packages:
 - [PhotoSwipe](https://photoswipe.com)
 - [exifr](https://mutiny.cz/exifr/)
 - [Swiper](https://swiperjs.com/)
+- [Remark Emoji](https://github.com/rhysd/remark-emoji)
 
 It follows the [JAMstack architecture](https://jamstack.org) by automatically building a static version from the Git repository. The demo is deployed on Github Pages.
 
@@ -175,3 +176,5 @@ All commands are run from the root of the project, from a terminal:
   - Update Katex CSS link
   - Fixed author not appearing in blog card
   - Added Markdoc support
+- 3.1.1: Minor update:
+  - Lazy load images

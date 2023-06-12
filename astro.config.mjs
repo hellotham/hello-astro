@@ -5,6 +5,7 @@ import mdx from '@astrojs/mdx';
 import alpinejs from '@astrojs/alpinejs';
 import robotsTxt from 'astro-robots-txt';
 import remarkMath from 'remark-math';
+import remarkEmoji from 'remark-emoji';
 import rehypeKatex from 'rehype-katex';
 import remarkPlantUML from '@akebifiky/remark-simple-plantuml';
 import { remarkReadingTime } from './remark-plugins/remark-reading-time.mjs';
@@ -28,7 +29,7 @@ export default defineConfig({
   },
   markdown: {
     extendDefaultPlugins: true,
-    remarkPlugins: [remarkReadingTime, remarkMath, remarkPlantUML, remarkDiagram],
+    remarkPlugins: [remarkReadingTime, remarkMath, remarkPlantUML, remarkDiagram, remarkEmoji],
     rehypePlugins: [rehypeKatex],
     shikiConfig: {
       theme: 'github-light',

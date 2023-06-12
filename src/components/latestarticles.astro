@@ -47,12 +47,14 @@ const otherPosts = posts.slice(1, 5)
                   src={newestPost.data.coverSVG.src}
                   alt={newestPost.data.title + ' featured image'}
                   class="h-64 w-full rounded-md bg-purple-100 object-cover dark:bg-purple-800 md:h-80"
+                  loading="lazy"
                 />
               ) : (
                 <Image
                   src={newestPost.data.coverImage || newestPost.data.socialImage || DefaultImage}
                   alt={newestPost.data.title + ' featured image'}
                   class="h-64 w-full rounded-md bg-purple-100 object-cover dark:bg-purple-800 md:h-80"
+                  loading="lazy"
                 />
               )
             }
@@ -89,12 +91,14 @@ const otherPosts = posts.slice(1, 5)
                       src={post.data.coverSVG.src}
                       alt={post.data.title + ' featured image'}
                       class="block h-64 w-full rounded-md bg-purple-100 object-cover p-4 dark:bg-purple-800 md:h-32 md:p-0 lg:block"
+                      loading="lazy"
                     />
                   ) : (
                     <Image
                       src={post.data.coverImage || post.data.socialImage || DefaultImage}
                       alt={post.data.title + ' featured image'}
                       class="block h-64 w-full rounded-md bg-purple-100 object-cover p-4 dark:bg-purple-800 md:h-32 md:p-0 lg:block"
+                      loading="lazy"
                     />
                   )}
                 </a>
