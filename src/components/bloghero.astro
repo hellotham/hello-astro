@@ -38,7 +38,7 @@ if (frontmatter.author) {
     cls="absolute left-0 w-full h-full top-0 z-0 object-cover"
   />
   <div class="absolute bottom-0 left-0 z-20 p-4">
-    <Categories categories={frontmatter.categories} />
+    {frontmatter.categories && <Categories categories={frontmatter.categories} />}
     <h2 class="text-4xl font-bold leading-tight text-white">
       {frontmatter.title}
     </h2>

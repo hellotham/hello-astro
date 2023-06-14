@@ -178,3 +178,11 @@ All commands are run from the root of the project, from a terminal:
   - Added Markdoc support
 - 3.1.1: Minor update:
   - Lazy load images
+  - Support Github emoji via remark-emoji
+- 3.1.2: Minor fixes:
+  - Check for null categories
+  - Slightly improved contact page
+  - Improved next/prev processing
+  - Updated packages
+  - Reduce size of search button to accommodate min width
+  - Changed image option for pages from object-contain to object-cover

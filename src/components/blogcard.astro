@@ -40,7 +40,7 @@ if (post.data.author) {
       <p class="sr-only">{post.data.title}</p>
     </a>
     <div class="p-6">
-      <Categories categories={post.data.categories} />
+      {post.data.categories && <Categories categories={post.data.categories} />}
       <a href={import.meta.env.BASE_URL + 'blog/' + post.slug}>
         <h1
           class="title-font mt-2 text-xl font-bold text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300">

@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import type { Frontmatter } from '../config'
-import { getCollection } from 'astro:content'
 import Base from '../layouts/base.astro'
 import BlogHero from '../components/bloghero.astro'
 import NextPrev from '../components/nextprev.astro'
@@ -9,27 +8,11 @@ import Images from '../components/images.astro'
 
 export interface Props {
   frontmatter: Frontmatter
+  prev?: CollectionEntry<'blog'>
+  next?: CollectionEntry<'blog'>
 }
 
-const { frontmatter } = Astro.props
-
-const currentPage = Astro.url.pathname
-const allPosts = await getCollection('blog')
-const posts = allPosts
-  .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
-  .filter((p) => !p.data.draft)
-let prev: CollectionEntry<'blog'> | undefined
-let next: CollectionEntry<'blog'> | undefined
-posts.forEach((post, i) => {
-  if (currentPage.search(post.slug) >= 0) {
-    if (i > 0) {
-      prev = posts[i - 1]
-    }
-    if (i < posts.length - 1) {
-      next = posts[i + 1]
-    }
-  }
-})
+const { frontmatter, prev, next } = Astro.props
 ---
 
 <Base frontmatter={frontmatter}>

@@ -13,7 +13,7 @@ export interface Props {
 const { title, description, coverSVG, coverImage, socialImage } = Astro.props
 ---
 
-<div class="relative mx-auto my-4 h-96 w-full max-w-screen-xl md:mb-0">
+<div class="relative mx-auto h-96 w-full max-w-screen-xl md:my-4">
   <div
     class="absolute bottom-0 left-0 z-10 h-full w-full bg-gradient-to-t from-gray-700 xl:rounded-lg">
   </div>
@@ -22,13 +22,13 @@ const { title, description, coverSVG, coverImage, socialImage } = Astro.props
       <img
         src={coverSVG.src}
         alt={title}
-        class="absolute left-0 top-0 z-0 h-full w-full object-contain"
+        class="absolute left-0 top-0 z-0 h-full w-full object-cover"
       />
     ) : (
       <Image
         src={coverImage || socialImage || DefaultImage}
         alt={title}
-        class="absolute left-0 top-0 z-0 h-full w-full object-contain"
+        class="absolute left-0 top-0 z-0 h-full w-full object-cover"
       />
     )
   }
