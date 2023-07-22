@@ -186,3 +186,4 @@ All commands are run from the root of the project, from a terminal:
   - Updated packages
   - Reduce size of search button to accommodate min width
   - Changed image option for pages from object-contain to object-cover
+  - Fixed site.webmanifest
