@@ -193,3 +193,4 @@ All commands are run from the root of the project, from a terminal:
   - disabled Markdoc sample file due to this issue: https://github.com/withastro/astro/issues/7520
 - 3.1.4: Minor enhancement:
   - Unified Image processing for svg and bitmaps
+  - Enabled ViewTransitions
