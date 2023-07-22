@@ -190,3 +190,4 @@ All commands are run from the root of the project, from a terminal:
 - 3.1.3: Minor fixes:
   - Upgrade to `@astrojs/markdoc` 0.4.x and latest astro
   - Fixed Props declaration in [slug].astro
+  - disabled Markdoc sample file due to this issue: https://github.com/withastro/astro/issues/7520
