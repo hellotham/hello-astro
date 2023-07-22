@@ -187,3 +187,6 @@ All commands are run from the root of the project, from a terminal:
   - Reduce size of search button to accommodate min width
   - Changed image option for pages from object-contain to object-cover
   - Fixed site.webmanifest
+- 3.1.3: Minor fixes:
+  - Upgrade to `@astrojs/markdoc` 0.4.x and latest astro
+  - Fixed Props declaration in [slug].astro

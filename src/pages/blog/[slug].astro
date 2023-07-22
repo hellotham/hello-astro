@@ -20,7 +20,7 @@ export async function getStaticPaths() {
   }))
 }
 
-type Props = {
+export interface Props {
   post: CollectionEntry<'blog'>
   prev: CollectionEntry<'blog'>
   next: CollectionEntry<'blog'>
