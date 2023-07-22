@@ -1,6 +1,6 @@
 ---
 import { getEntry } from 'astro:content'
-import Img from './img.astro'
+import { Image } from 'astro:assets'
 import { Icon } from 'astro-icon'
 import { Frontmatter } from '../config'
 import Categories from '../components/categories.astro'
@@ -32,10 +32,10 @@ if (frontmatter.author) {
   <div
     class="absolute bottom-0 left-0 z-10 h-full w-full bg-gradient-to-t from-gray-700 xl:rounded-lg">
   </div>
-  <Img
+  <Image
     src={image}
     alt="featured image"
-    cls="absolute left-0 w-full h-full top-0 z-0 object-cover"
+    class="absolute left-0 w-full h-full top-0 z-0 object-cover"
   />
   <div class="absolute bottom-0 left-0 z-20 p-4">
     {frontmatter.categories && <Categories categories={frontmatter.categories} />}
@@ -49,10 +49,10 @@ if (frontmatter.author) {
       {
         frontmatter.author && (
           <span class="mr-6 flex items-center">
-            <Img
+            <Image
               src={author.data.image}
               alt={author.data.title}
-              cls="h-10 w-10 rounded-full mr-2 object-cover"
+              class="h-10 w-10 rounded-full mr-2 object-cover"
             />
             <span class="font-semibold text-purple-200">{author.data.title}</span>
           </span>
