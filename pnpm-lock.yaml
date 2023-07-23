@@ -144,6 +144,9 @@ devDependencies:
   unist-util-visit:
     specifier: ^5.0.0
     version: 5.0.0
+  vite:
+    specifier: ^4.4.6
+    version: 4.4.6
 
 packages:
 
