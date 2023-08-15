@@ -194,3 +194,6 @@ All commands are run from the root of the project, from a terminal:
 - 3.1.4: Minor enhancement:
   - Unified Image processing for svg and bitmaps
   - Enabled ViewTransitions
+- 3.1.5: Minor enhancements:
+  - Upgrade to latest version of packages
+  - Fixed minor astro check error
