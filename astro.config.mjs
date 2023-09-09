@@ -22,11 +22,9 @@ export default defineConfig({
     }
   },
   site: 'https://hellotham.github.io',
-  base: '/hello-astro',
+  base: '/hello-astro/',
   integrations: [tailwind(), sitemap(), mdx(), alpinejs(), robotsTxt(), markdoc()],
   experimental: {
-    viewTransitions: true,
-    assets: true
   },
   markdown: {
     extendDefaultPlugins: true,
@@ -37,6 +35,7 @@ export default defineConfig({
       langs: [],
       // Enable word wrap to prevent horizontal scrolling
       wrap: true
-    }
-  }
+    },
+  },
+  scopedStyleStrategy: "where",
 });
