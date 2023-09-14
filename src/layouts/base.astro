@@ -28,15 +28,19 @@ const { frontmatter } = Astro.props
     <SEO frontmatter={frontmatter} />
     <ViewTransitions />
     <script is:inline>
-      if (
-        localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
+      const setDarkMode = () => {
+        if (
+          localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
       }
+      setDarkMode() //initial navigation
+      document.addEventListener('astro:after-swap', setDarkMode) // Runs on view transitions navigation
     </script>
     <style is:inline>
       [x-cloak] { display: none !important; }

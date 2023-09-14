@@ -15,5 +15,25 @@
   },
   "files.associations": {
     "*.mdoc": "markdown"
-  }
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#c14c58",
+    "activityBar.background": "#c14c58",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#64c659",
+    "activityBarBadge.foreground": "#15202b",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#c14c58",
+    "statusBar.background": "#a23843",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#c14c58",
+    "statusBarItem.remoteBackground": "#a23843",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#a23843",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#a2384399",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#a23843"
 }
