@@ -199,3 +199,4 @@ All commands are run from the root of the project, from a terminal:
   - Fixed minor astro check error
 - 3.2.0: Major enhancement:
   - Updated to Astro 3.x
+  - Implement permissive Content Security Policy

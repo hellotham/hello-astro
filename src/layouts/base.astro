@@ -17,6 +17,8 @@ const { frontmatter } = Astro.props
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-eval' 'unsafe-inline'; object-src 'none'">
+    <meta http-equiv="Referrer-Policy" content="no-referrer, strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href={`${Astro.site}favicon.ico`} sizes="any" />
     <link rel="icon" href={`${Astro.site}favicon.svg`} type="image/svg+xml" />
