@@ -24,8 +24,6 @@ export default defineConfig({
   site: 'https://hellotham.github.io',
   base: '/hello-astro/',
   integrations: [tailwind(), sitemap(), mdx(), alpinejs(), robotsTxt(), markdoc()],
-  experimental: {
-  },
   markdown: {
     extendDefaultPlugins: true,
     remarkPlugins: [remarkReadingTime, remarkMath, remarkPlantUML, remarkDiagram, remarkEmoji],

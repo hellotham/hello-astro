@@ -37,7 +37,7 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
   const allPosts = await getCollection('blog', (post) => !post.data.draft)
   const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
 
-  return categories.map((category) => {
+  return categories.flatMap((category) => {
     return paginate(
       posts.filter(
         (post) =>

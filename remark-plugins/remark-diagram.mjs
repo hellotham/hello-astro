@@ -8,6 +8,7 @@ export function remarkDiagram() {
     visit(tree, 'inlineMath', node => {
       if (!data.astro.frontmatter.extra.includes('math')) {
         data.astro.frontmatter.extra.push('math')
+        node
       }
     })
     visit(tree, 'code', node => {

@@ -2,7 +2,7 @@ import rss from '@astrojs/rss'
 import { getCollection } from 'astro:content'
 import { SiteMetadata } from '../config'
 
-export async function get() {
+export async function GET() {
   const posts = await getCollection('blog', ({ data }) => {
     return data.draft !== true
   })

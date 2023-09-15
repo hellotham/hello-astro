@@ -29,7 +29,7 @@ const documents = posts
     }))
   )
 
-export async function get() {
+export async function GET() {
   const body = JSON.stringify(documents)
   return {
     body

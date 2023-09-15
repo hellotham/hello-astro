@@ -48,7 +48,7 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
   const allPosts = await getCollection('blog', (post) => !post.data.draft)
   const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
 
-  return authors.map((author) => {
+  return authors.flatMap((author) => {
     return paginate(
       posts.filter((post) => post.data.author!.slug == author.slug),
       {

@@ -40,7 +40,7 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
 
   const tags = Array.from(new Set(posts.flatMap((post) => post.data.tags)))
 
-  return tags.map((tag) => {
+  return tags.flatMap((tag) => {
     return paginate(
       posts.filter((post) => tag && post.data.tags?.includes(tag)),
       {

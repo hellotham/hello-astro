@@ -197,3 +197,5 @@ All commands are run from the root of the project, from a terminal:
 - 3.1.5: Minor enhancements:
   - Upgrade to latest version of packages
   - Fixed minor astro check error
+- 3.2.0: Major enhancement:
+  - Updated to Astro 3.x
