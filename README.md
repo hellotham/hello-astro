@@ -200,3 +200,5 @@ All commands are run from the root of the project, from a terminal:
 - 3.2.0: Major enhancement:
   - Updated to Astro 3.x
   - Implement permissive Content Security Policy
+- 3.2.1: Minor enhancement:
+  - Updated packages, resolved astro check errors

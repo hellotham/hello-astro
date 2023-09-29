@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content'
 import type { Frontmatter } from '../config'
 import { SiteMetadata } from '../config'
 import Base from '../layouts/base.astro'
-import Carousel from '../components/carousel.astro'
+import MyCarousel from '../components/carousel.astro'
 import Features from '../components/features.astro'
 import FindOutMore from '../components/findoutmore.astro'
 import LatestArticles from '../components/latestarticles.astro'
@@ -36,7 +36,7 @@ const latestPosts = posts.sort((a, b) => +b.data.publishDate - +a.data.publishDa
 ---
 
 <Base frontmatter={frontmatter}>
-  <Carousel pages={carouselPages}>
+  <MyCarousel pages={carouselPages}>
     <h1
       class="text-left text-4xl font-extrabold tracking-tight text-gray-100 sm:text-5xl md:text-6xl">
       <span class="block xl:inline">hello</span>{' '}
