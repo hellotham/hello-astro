@@ -1,5 +1,7 @@
 ---
 import { FeaturedSVG } from '../config'
+import { Logo } from '../config'
+
 ---
 
 <div class="relative overflow-hidden bg-white dark:bg-gray-900">
@@ -15,48 +17,25 @@ import { FeaturedSVG } from '../config'
         <polygon points="50,0 100,0 50,100 0,100"></polygon>
       </svg>
       <main
-        class="mx-auto max-w-7xl px-4 pt-10 sm:px-6 sm:pt-12 md:pt-16 lg:px-8 lg:pt-20 xl:pt-28">
+        class="mx-auto max-w-7xl px-4 pt-10 sm:px-6 sm:pt-12 md:pt-10 lg:px-8 lg:pt-20">
         <div class="text-center sm:text-left">
-          <h1
-            class="text-left text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl md:text-6xl">
-            <span class="block xl:inline">hello</span>{' '}
-            <span class="block text-purple-700 dark:text-purple-300 xl:inline">Astro</span>
-          </h1>
+          <img class="block m-auto" src={Logo.src} alt="Logo"  />
           <p
             class="mt-3 text-base text-gray-600 dark:text-gray-300 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
-            Hello Astro is a multi-purpose starter theme written in Typescript, TailwindCSS,
-            AlpineJS and Astro. It supports Markdown, Markdoc and MDX based pages, documentation
-            pages and blog posts (including math and diagrams), plus full text search.
+            Estamos ansiosos para receber seu filho(a) na escola Turminha do Batutinha e proporcionar a ele(a) uma educação de
+                    excelência, repleta de descobertas e aprendizados significativos.
           </p>
-          <p
-            class="mt-3 text-base text-gray-600 dark:text-gray-300 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
-            Hello Astro can be used for creating corporate/marketing sites, blogs, documentation
-            sites, portfolio sites (supporting photo galleries) or any combination of the above!
-          </p>
-          <p
-            class="mt-3 text-base text-gray-600 dark:text-gray-300 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
-            It has full SEO support for Facebook (Open Graph) tags, Twitter Cards and Schema/JSON-LD
-            metadata. It also features fully auto generated RSS feed and sitemap for search engine
-            indexing.
-          </p>
-          <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+          
+          <!-- div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
             <div class="rounded-md shadow">
               <a
                 href="/about"
-                class="flex w-full items-center justify-center rounded-md border border-transparent bg-purple-600 px-8 py-3 text-base font-medium text-white hover:bg-pink-600 dark:bg-purple-300 dark:text-black dark:hover:bg-pink-300 md:px-10 md:py-4 md:text-lg">
+                class="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-white hover:bg-secundary dark:bg-purple-300 dark:text-black dark:hover:bg-pink-300 md:px-10 md:py-4 md:text-lg">
                 About
               </a>
             </div>
-            <div class="mt-3 sm:ml-3 sm:mt-0">
-              <a
-                href="https://github.com/sponsors/hellotham"
-                class="flex w-full items-center justify-center rounded-md border border-transparent bg-purple-100 px-8 py-3 text-base font-medium text-purple-800 hover:bg-pink-200 dark:bg-purple-900 dark:text-purple-100 dark:hover:bg-pink-900 md:px-10 md:py-4 md:text-lg"
-                rel="noopener noreferrer"
-                target="_blank">
-                Sponsor Us
-              </a>
-            </div>
-          </div>
+             
+          </div-->
         </div>
       </main>
     </div>

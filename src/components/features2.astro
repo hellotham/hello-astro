@@ -1,0 +1,76 @@
+---
+import { Icon } from 'astro-icon'
+import IMG from '../assets/turminha_do_batutinha.jpg'
+
+const features = [
+  {
+    name: 'Ambiente acolhedor',
+    description:
+      'Nossa escola é um lugar onde seu filho(a) se sentirá acolhido, seguro e feliz. Criamos um ambiente estimulante, com espaços cuidadosamente planejado para proporcionar aprendizagem lúdica e diversão. Aqui, sua criança terá todo o suporte necessário para explorar seu potencial e desenvolver habilidades essenciais.',
+    icon: '1'
+  },
+  {
+    name: 'Equipe dedicada e qualificada',
+    description:
+      'Contamos com uma equipe de profissionais apaixonados pela educação. Nossos educadores são altamente capacitados e comprometidos em oferecer uma educação de qualidade, com foco no desenvolvimento integral das crianças.',
+    icon: '2'
+  },
+  {
+    name: 'Metodologia pedagógica diferenciada',
+    description:
+      'Nossa escola adota uma abordagem pedagógica baseada na aprendizagem ativa e na participação das crianças como protagonistas da sua aprendizagem.',
+    icon: '3'
+  } 
+]
+---
+
+<div class="bg-white py-12 dark:bg-gray-800 mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    <div  class="space-y-10 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10 md:space-y-0">
+
+
+        <div class=" ">
+            <h2
+            class=" text-3xl font-extrabold leading-8 tracking-tight text-primary dark:text-gray-100 sm:text-4xl">
+            Porque matricular a sua criança na escola <span class=" text-secundary">Turminha do Batutinha</span>?
+        </h2>
+            <img
+                class="md:mt-10 xl:rounded-lg"
+                src={IMG.src}
+                alt="featured"
+                />
+                <p class="mt-4 max-w-2xl text-base text-gray-600 dark:text-gray-300 lg:mx-auto">
+                    
+                </p>
+        </div>
+
+        <div class="lg md:mt-10 md:pt-10">
+
+
+            <dl class="md:mt-10 md:pt-10 space-y-10 md:grid md:grid-cols-1 md:gap-x-8 md:gap-y-10 md:space-y-0">
+                {
+                features.map((feature) => (
+                    <div class="relative">
+                        <dt>
+                            <div class="absolute flex text-3xl font-extrabold  pb-1 h-12 w-12 items-center justify-center rounded-full bg-secundary text-white dark:bg-purple-400 dark:text-black">
+                            {feature.icon} 
+                            </div>
+                            <p class="ml-16 text-2xl pt-2 font-extrabold leading-6 text-primary dark:text-gray-200">
+                            {feature.name}
+                            </p>
+                        </dt>
+                        <dd class="ml-16 mt-2 text-base text-gray-600 dark:text-gray-400">
+                            {feature.description}
+                        </dd>
+                    </div>
+                ))
+                }
+            </dl>
+
+            
+        </div>
+    </div>
+
+  </div>
+</div>
