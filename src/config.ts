@@ -9,14 +9,14 @@ export interface TagType {
 }
 
 export const SiteMetadata = {
-  title: 'Hello Astro',
-  description: 'An Astro starter for corporate/marketing/blog websites.',
+  title: 'Turminha do Batutinha',
+  description: 'Turminha do Batutinha',
   author: {
-    name: 'Chris Tham',
-    twitter: '@chris1tham',
-    url: 'https://christham.net',
-    email: 'chris@christham.net',
-    summary: 'Outrageous actualiser.'
+    name: '',
+    twitter: '',
+    url: '',
+    email: '',
+    summary: ''
   },
   org: {
     name: 'Hello Tham',

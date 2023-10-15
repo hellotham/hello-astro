@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/page.astro
 title: About
-description: Description of Hello Astro Starter
+description: Description of Turminha do Batutinha
 publishDate: '2023-06-13T00:00:00.000Z'
 coverSVG: ../assets/svg/undraw/undraw_about_me.svg
 socialImage: ../assets/undraw/undraw_about_me.png

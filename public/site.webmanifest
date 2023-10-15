@@ -1,6 +1,6 @@
 {
-  "name": "Hello Astro",
-  "short_name": "hello-astro",
+  "name": "Turminha do Batutinha",
+  "short_name": "turminha-do-batutinha",
   "icons": [
     { "src": "/favicon-192.png", "type": "image/png", "sizes": "192x192" },
     { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
