@@ -22,6 +22,7 @@ export default defineConfig({
     }
   },
   site: 'https://devreggie.github.io', 
+  base: '/turminha-do-batutinha',
   integrations: [tailwind(), sitemap(), mdx(), alpinejs(), robotsTxt(), markdoc()],
   markdown: {
     extendDefaultPlugins: true,
