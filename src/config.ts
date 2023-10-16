@@ -9,14 +9,14 @@ export interface TagType {
 }
 
 export const SiteMetadata = {
-  title: 'Hello Astro',
-  description: 'An Astro starter for corporate/marketing/blog websites.',
+  title: 'Turminha do Batutinha',
+  description: 'Turminha do Batutinha',
   author: {
-    name: 'Chris Tham',
-    twitter: '@chris1tham',
-    url: 'https://christham.net',
-    email: 'chris@christham.net',
-    summary: 'Outrageous actualiser.'
+    name: '',
+    twitter: '',
+    url: '',
+    email: '',
+    summary: ''
   },
   org: {
     name: 'Hello Tham',
@@ -26,15 +26,14 @@ export const SiteMetadata = {
     summary:
       'Hello Tham is a boutique management consulting firm. We specialise in Business and IT strategies, operating models, strategic roadmaps, enterprise architecture, analytics and business process design.'
   },
-  location: 'Rivendell, Middle Earth',
-  latlng: [-33.86785, 151.20732] as [number, number],
-  repository: 'https://github.com/hellotham/hello-astro',
+   latlng1: [-23.548745958835916, -46.80877521165673] as [number, number],
+   latlng2: [-23.548745958835916, -46.80877521165673] as [number, number],
   buildTime: new Date()
 }
 
-export { default as Logo } from './assets/svg/astro/astro-icon-dark.svg'
+export { default as Logo } from './assets/escola_turminha_do_batutinha.png'
 export { default as LogoImage } from './assets/astro/astro-logo-dark.png'
-export { default as FeaturedSVG } from './assets/svg/undraw/undraw_design_inspiration.svg'
+export { default as FeaturedSVG } from './assets/cover_image.jpeg'
 export { default as DefaultSVG } from './assets/svg/undraw/undraw_my_feed.svg'
 export { default as DefaultImage } from './assets/undraw/undraw_my_feed.png'
 

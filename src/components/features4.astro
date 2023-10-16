@@ -1,0 +1,82 @@
+---
+import { getCollection } from 'astro:content'
+ import { SiteMetadata } from '../config'
+import { Icon } from 'astro-icon'
+ 
+import Map from '../components/map.astro'
+import Map2 from '../components/map2.astro'
+
+const social = await getCollection('social')
+ 
+ 
+---
+
+ 
+   
+    
+<div class="bg-gray-100  dark:bg-purple-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24 lg:py-32">
+        
+        <h2 class="text-4xl font-extrabold text-primary dark:text-purple-100">Onde Estamos</h2>
+
+       
+
+        <div class="mx-auto max-w-2xl lg:max-w-none mb-12">
+            <div class="mt-6 flex flex-wrap items-start">
+                <div class="block w-full shrink-0 grow-0 basis-auto lg:flex  xl:w-4/12">
+                    <div class="w-full">
+                        <Map loc={SiteMetadata.latlng1} zoom={15} />
+                    </div>
+                </div>
+                <div class="w-full shrink-0 grow-0 basis-auto   xl:w-4/12">
+                    <h3 class="ml-5 text-2xl pt-2 font-extrabold leading-6 text-primary dark:text-gray-200">UNIDADE I  <span class="text-secundary block  pt-2">Padroeira</span></h3> 
+                    <p class="ml-5 mt-2 mb-10 text-xl  text-gray-600 dark:text-gray-400">Av. José Barbosa de Siqueira, 1018 <br> Jd Padroeira <br> Osasco/SP</p>
+
+                    <h3 class="me-5 text-2xl pt-10 text-right font-extrabold leading-6 text-primary dark:text-gray-200">UNIDADE II   <span class="text-secundary block pt-2 ">Vila Yara</span></h3> 
+
+                    <p class="me-5 mt-2 text-xl text-right f text-gray-600 dark:text-gray-400">Av. José Barbosa de Siqueira, 1018 <br> Jd Padroeira <br> Osasco/SP</p>
+                </div>
+                <div class="block w-full shrink-0 grow-0 basis-auto lg:flex   xl:w-4/12">
+                    <div class="w-full">
+                        <Map2 loc={SiteMetadata.latlng2} zoom={15} />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!--div class="flex flex-wrap pt-5">
+            {
+                social.map(
+                    (method) =>
+                    method.data.link && (
+                        <div class="mb-12 w-full shrink-0 grow-0 basis-auto  md:w-6/12  ">
+                        <div class="flex items-start">
+                            <div class="shrink-0">
+                            <Icon
+                                pack="bi"
+                                name={method.data.icon}
+                                class="flex h-14 w-14 items-center justify-center rounded-md bg-purple-600 p-4 text-white shadow-md"
+                            />
+                            </div>
+                            <div class="ml-6 grow">
+                            <p class="mb-1 font-bold">{method.data.name}</p>
+                            <p>
+                                {' '}
+                                <a
+                                href={method.data.link}
+                                class="text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300">
+                                {method.data.link}
+                                </a>
+                            </p>
+                            </div>
+                        </div>
+                        </div>
+                    )
+                )
+            }
+        </div-->
+       
+</div>
+</div>
+ 
