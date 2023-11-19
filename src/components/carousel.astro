@@ -22,30 +22,31 @@ const images = folderFiles.map((image) => imageFiles[image])
 ---
 
 <div
-  style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-  class:list={['swiper mySwiper not-prose max-w-screen-xl mx-auto rounded-lg w-full', `h-[500px]`]}>
-  <div class="swiper-wrapper">
+  style='--swiper-navigation-color: #fff; --swiper-pagination-color: #fff'
+  class:list={['swiper mySwiper not-prose mx-auto w-full max-w-screen-xl rounded-lg', `h-[500px]`]}
+>
+  <div class='swiper-wrapper'>
     {
       pages.map((page, i) => (
-        <div class="swiper-slide relative">
-          <div class="absolute bottom-0 left-0 z-10 h-full w-full bg-gradient-to-t from-gray-800 opacity-25 xl:rounded-lg" />
+        <div class='swiper-slide relative'>
+          <div class='absolute bottom-0 left-0 z-10 h-full w-full bg-gradient-to-t from-gray-800 opacity-25 xl:rounded-lg' />
           <img
             src={images[i].src}
             alt={page.name}
-            class="absolute left-0 top-0 z-0 m-0 h-full w-full object-cover"
+            class='absolute left-0 top-0 z-0 m-0 h-full w-full object-cover'
           />
-          <div class="absolute bottom-0 left-0 z-20 mb-4 ml-8 bg-transparent p-4 text-white">
-            {page.title && <h4 class="text-lg font-bold">{page.title}</h4>}
-            {page.description && <p class="text-base italic text-gray-300">{page.description}</p>}
+          <div class='absolute bottom-0 left-0 z-20 mb-4 ml-8 bg-transparent p-4 text-white'>
+            {page.title && <h4 class='text-lg font-bold'>{page.title}</h4>}
+            {page.description && <p class='text-base italic text-gray-300'>{page.description}</p>}
             <slot />
           </div>
         </div>
       ))
     }
   </div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-pagination"></div>
+  <div class='swiper-button-next'></div>
+  <div class='swiper-button-prev'></div>
+  <div class='swiper-pagination'></div>
 </div>
 
 <!-- Swiper JS -->

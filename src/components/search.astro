@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon'
 ---
 
-<script is:inline src="https://unpkg.com/lunr/lunr.min.js"></script>
+<script is:inline src='https://unpkg.com/lunr/lunr.min.js'></script>
 <div
   x-data={`
 {
@@ -53,41 +53,44 @@ import { Icon } from 'astro-icon'
     return false
   },
 }
-`}>
-  <div class="flex justify-center">
-    <div class="w-48">
-      <div class="input-group relative flex w-full items-stretch">
+`}
+>
+  <div class='flex justify-center'>
+    <div class='w-48'>
+      <div class='input-group relative flex w-full items-stretch'>
         <input
-          type="search"
-          x-model="searchText"
-          class="form-control relative m-0 block w-full min-w-0 max-w-xs flex-auto rounded border border-solid border-purple-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-500 transition ease-in-out focus:border-purple-500 focus:text-gray-700 focus:outline-none dark:border-purple-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-purple-600 dark:focus:text-gray-100"
-          id="lunrsearch"
-          name="q"
-          maxlength="255"
-          value=""
-          placeholder="Search"
-          aria-label="Search"
-          aria-describedby="lunrbutton"
+          type='search'
+          x-model='searchText'
+          class='form-control relative m-0 block w-full min-w-0 max-w-xs flex-auto rounded border border-solid border-purple-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-500 transition ease-in-out focus:border-purple-500 focus:text-gray-700 focus:outline-none dark:border-purple-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-purple-600 dark:focus:text-gray-100'
+          id='lunrsearch'
+          name='q'
+          maxlength='255'
+          value=''
+          placeholder='Search'
+          aria-label='Search'
+          aria-describedby='lunrbutton'
         />
         <button
-          class="btn inline-block items-center rounded bg-purple-600 px-2 py-2 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg"
-          type="button"
-          name="search"
-          id="lunrbutton"
-          x-on:click="lunr_search(searchText); searchResults = true"
-          aria-label="Search Button">
+          class='btn inline-block items-center rounded bg-purple-600 px-2 py-2 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg'
+          type='button'
+          name='search'
+          id='lunrbutton'
+          x-on:click='lunr_search(searchText); searchResults = true'
+          aria-label='Search Button'
+        >
           <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            data-icon="search"
-            class="h-4 w-4"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512">
+            aria-hidden='true'
+            focusable='false'
+            data-prefix='fas'
+            data-icon='search'
+            class='h-4 w-4'
+            role='img'
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 512 512'
+          >
             <path
-              fill="currentColor"
-              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+              fill='currentColor'
+              d='M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z'
             ></path>
           </svg>
         </button>
@@ -95,67 +98,75 @@ import { Icon } from 'astro-icon'
     </div>
   </div>
   <div
-    x-show="searchResults"
+    x-show='searchResults'
     x-cloak
-    class="relative z-50"
-    aria-labelledby="slide-over-title"
-    role="dialog"
-    aria-modal="true">
+    class='relative z-50'
+    aria-labelledby='slide-over-title'
+    role='dialog'
+    aria-modal='true'
+  >
     <div
-      x-show="searchResults"
-      x-transition:enter="ease-in-out duration-500"
-      x-transition:enter-start="opacity-0"
-      x-transition:enter-end="opacity-100"
-      x-transition:leave="ease-in-out duration-500"
-      x-transition:leave-start="opacity-100"
-      x-transition:leave-end="opacity-0"
-      class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
+      x-show='searchResults'
+      x-transition:enter='ease-in-out duration-500'
+      x-transition:enter-start='opacity-0'
+      x-transition:enter-end='opacity-100'
+      x-transition:leave='ease-in-out duration-500'
+      x-transition:leave-start='opacity-100'
+      x-transition:leave-end='opacity-0'
+      class='fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity'
+    >
     </div>
 
-    <div class="fixed inset-0 overflow-hidden">
-      <div class="absolute inset-0 overflow-hidden">
-        <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+    <div class='fixed inset-0 overflow-hidden'>
+      <div class='absolute inset-0 overflow-hidden'>
+        <div class='pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10'>
           <div
-            x-show="searchResults"
-            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
-            x-transition:enter-start="translate-x-full"
-            x-transition:enter-end="translate-x-0"
-            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
-            x-transition:leave-start="translate-x-0"
-            x-transition:leave-end="translate-x-full"
-            class="pointer-events-auto relative w-screen max-w-md">
+            x-show='searchResults'
+            x-transition:enter='transform transition ease-in-out duration-500 sm:duration-700'
+            x-transition:enter-start='translate-x-full'
+            x-transition:enter-end='translate-x-0'
+            x-transition:leave='transform transition ease-in-out duration-500 sm:duration-700'
+            x-transition:leave-start='translate-x-0'
+            x-transition:leave-end='translate-x-full'
+            class='pointer-events-auto relative w-screen max-w-md'
+          >
             <div
-              x-show="searchResults"
-              x-transition:enter="ease-in-out duration-500"
-              x-transition:enter-start="opacity-0"
-              x-transition:enter-end="opacity-100"
-              x-transition:leave="ease-in-out duration-500"
-              x-transition:leave-start="opacity-100"
-              x-transition:leave-end="opacity-0"
-              class="absolute left-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4">
+              x-show='searchResults'
+              x-transition:enter='ease-in-out duration-500'
+              x-transition:enter-start='opacity-0'
+              x-transition:enter-end='opacity-100'
+              x-transition:leave='ease-in-out duration-500'
+              x-transition:leave-start='opacity-100'
+              x-transition:leave-end='opacity-0'
+              class='absolute left-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4'
+            >
               <button
-                type="button"
-                class="rounded-md text-purple-300 hover:text-pink-300 focus:outline-none focus:ring-2 focus:ring-white"
-                x-on:click="searchResults = false">
-                <span class="sr-only">Close panel</span>
-                <Icon class="h-6 w-6" pack="heroicons-outline" name="x" />
+                type='button'
+                class='rounded-md text-purple-300 hover:text-pink-300 focus:outline-none focus:ring-2 focus:ring-white'
+                x-on:click='searchResults = false'
+              >
+                <span class='sr-only'>Close panel</span>
+                <Icon class='h-6 w-6' pack='heroicons-outline' name='x' />
               </button>
             </div>
 
             <div
-              class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl dark:bg-gray-800">
-              <div class="px-4 sm:px-6">
+              class='flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl dark:bg-gray-800'
+            >
+              <div class='px-4 sm:px-6'>
                 <h2
-                  class="text-lg font-medium text-gray-900 dark:text-gray-100"
-                  id="lunrsearchtitle"
-                  class="modal-title">
+                  class='text-lg font-medium text-gray-900 dark:text-gray-100'
+                  id='lunrsearchtitle'
+                  class='modal-title'
+                >
                   Search results
                 </h2>
               </div>
-              <div id="lunrsearchmodal" class="relative mt-6 flex-1 px-4 sm:px-6">
+              <div id='lunrsearchmodal' class='relative mt-6 flex-1 px-4 sm:px-6'>
                 <div
-                  id="lunrsearchresults"
-                  class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                  id='lunrsearchresults'
+                  class='overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5'
+                >
                   <ul></ul>
                 </div>
               </div>

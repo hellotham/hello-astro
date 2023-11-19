@@ -13,28 +13,30 @@ export interface Props {
 const { frontmatter } = Astro.props
 ---
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-eval' 'unsafe-inline'; object-src 'none'">
-    <meta http-equiv="Referrer-Policy" content="no-referrer, strict-origin-when-cross-origin">
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href={`${Astro.site}favicon.ico`} sizes="any" />
-    <link rel="icon" href={`${Astro.site}favicon.svg`} type="image/svg+xml" />
-    <link rel="apple-touch-icon" href={`${Astro.site}apple-touchicon.png`} />
-    <link rel="manifest" href={`${Astro.site}site.webmanifest`} />
-    <link rel="sitemap" href={`${Astro.site}sitemap-indexxml`} />
-    <link rel="alternate" type="application/rss+xml" title="RSS" href={`${Astro.site}rss.xml`} />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset='UTF-8' />
+    <meta
+      http-equiv='Content-Security-Policy'
+      content="default-src * 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+    />
+    <meta http-equiv='Referrer-Policy' content='no-referrer, strict-origin-when-cross-origin' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' href={`${Astro.site}favicon.ico`} sizes='any' />
+    <link rel='icon' href={`${Astro.site}favicon.svg`} type='image/svg+xml' />
+    <link rel='apple-touch-icon' href={`${Astro.site}apple-touchicon.png`} />
+    <link rel='manifest' href={`${Astro.site}site.webmanifest`} />
+    <link rel='sitemap' href={`${Astro.site}sitemap-indexxml`} />
+    <link rel='alternate' type='application/rss+xml' title='RSS' href={`${Astro.site}rss.xml`} />
+    <meta name='generator' content={Astro.generator} />
     <SEO frontmatter={frontmatter} />
     <ViewTransitions />
     <script is:inline>
       const setDarkMode = () => {
         if (
           localStorage.theme === 'dark' ||
-          (!('theme' in localStorage) &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches)
+          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
         ) {
           document.documentElement.classList.add('dark')
         } else {
@@ -45,31 +47,43 @@ const { frontmatter } = Astro.props
       document.addEventListener('astro:after-swap', setDarkMode) // Runs on view transitions navigation
     </script>
     <style is:inline>
-      [x-cloak] { display: none !important; }
+      [x-cloak] {
+        display: none !important;
+      }
       .markmap > svg {
         width: 100%;
         height: 400px;
       }
-      </style>
-    {frontmatter.extra?.includes('math') &&
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+    </style>
+    {
+      frontmatter.extra?.includes('math') && (
+        <link
+          rel='stylesheet'
+          href='https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css'
+          integrity='sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI'
+          crossorigin='anonymous'
+        />
+      )
     }
-    <slot name="in-head" />
-    </head>
-    <body class="dark:bg-gray-900">
-      {frontmatter.extra?.includes('mermaid') &&
-        <script type="module">
-          import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
-          mermaid.initialize({startOnLoad: true});
-        </script>
-      }
-      <Header />
-      <slot />
-      {frontmatter.gallery && <Gallery folder={frontmatter.gallery} />}
-      <slot name="before-footer" />
-      <Footer />
-      {frontmatter.extra?.includes('markmap') &&
-        <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
-      }
+    <slot name='in-head' />
+    {frontmatter.extra?.includes('mermaid') &&
+      <script type="module">
+        // import mermaid from 'mermaid';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({startOnLoad: true});
+      </script>
+    }
+  </head>
+  <body class='dark:bg-gray-900'>
+    <Header />
+    <slot />
+    {frontmatter.gallery && <Gallery folder={frontmatter.gallery} />}
+    <slot name='before-footer' />
+    <Footer />
+    {
+      frontmatter.extra?.includes('markmap') && (
+        <script src='https://cdn.jsdelivr.net/npm/markmap-autoloader' />
+      )
+    }
   </body>
 </html>

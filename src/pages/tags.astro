@@ -132,28 +132,30 @@ const tags = Array.from(tagmap.values())
       socialImage={frontmatter.socialImage}
     />
   </header>
-  <main class="mt-10 dark:bg-gray-900">
+  <main class='mt-10 dark:bg-gray-900'>
     <div
-      class="mx-4 mb-24 mt-6 grid grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 xl:gap-x-6 xl:gap-y-6">
+      class='mx-4 mb-24 mt-6 grid grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 xl:gap-x-6 xl:gap-y-6'
+    >
       {
         tags
           .sort((a, b) => b.count - a.count)
           .map((tag, i) => (
-            <a href={`${import.meta.env.BASE_URL}tag/${tag.tag}/`} class="group">
+            <a href={`${import.meta.env.BASE_URL}tag/${tag.tag}/`} class='group'>
               <section
-                class="group relative h-24 w-full overflow-hidden rounded-lg bg-cover bg-center shadow-lg transition  duration-300 ease-in-out hover:shadow-2xl"
+                class='group relative h-24 w-full overflow-hidden rounded-lg bg-cover bg-center shadow-lg transition  duration-300 ease-in-out hover:shadow-2xl'
                 style={{
                   backgroundColor: '#dfdbe5',
                   // backgroundImage: `url(${OGImage})`,
                   backgroundImage: patterns[i % patterns.length]
-                }}>
-                <div class="absolute inset-0 bg-black bg-opacity-50 transition duration-300 ease-in-out group-hover:opacity-75" />
-                <div class="relative flex h-full w-full items-center justify-center px-4 sm:px-6 lg:px-4">
-                  <h3 class="text-center text-2xl font-bold text-white">
-                    <span class="absolute inset-0" />
+                }}
+              >
+                <div class='absolute inset-0 bg-black bg-opacity-50 transition duration-300 ease-in-out group-hover:opacity-75' />
+                <div class='relative flex h-full w-full items-center justify-center px-4 sm:px-6 lg:px-4'>
+                  <h3 class='text-center text-2xl font-bold text-white'>
+                    <span class='absolute inset-0' />
                     {tag.tag}
                   </h3>
-                  <p class="text-center text-sm font-medium text-gray-200">&nbsp;({tag.count})</p>
+                  <p class='text-center text-sm font-medium text-gray-200'>&nbsp;({tag.count})</p>
                 </div>
               </section>
             </a>

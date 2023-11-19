@@ -30,8 +30,10 @@ const documents = posts
   )
 
 export async function GET() {
-  const body = JSON.stringify(documents)
-  return {
-    body
-  }
+  return new Response(JSON.stringify(documents), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
 }

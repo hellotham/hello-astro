@@ -44,11 +44,12 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
       title={frontmatter.title}
       description={frontmatter.description}
       coverSVG={frontmatter.coverSVG}
-      socialImage={frontmatter.socialImage}>
+      socialImage={frontmatter.socialImage}
+    >
       <PaginateControl base={currentPage} page={page} />
     </PageHero>
   </header>
-  <main class="mt-10 bg-gray-100 dark:bg-gray-900">
+  <main class='mt-10 bg-gray-100 dark:bg-gray-900'>
     <BlogRoll posts={page.data} />
   </main>
 </Base>

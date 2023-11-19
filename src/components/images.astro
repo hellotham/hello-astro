@@ -8,9 +8,9 @@ export interface Props {
 const { images } = Astro.props
 ---
 
-<p class="text-sm italic text-gray-500">
+<p class='text-sm italic text-gray-500'>
   Please click on any photo to view in a lightbox. Use arrow keys or swipe to navigate.
 </p>
-<div id="images" class="not-prose block w-full" itemscope itemtype="http://schema.org/ImageGallery">
-  <Lightbox id="images" images={images} />
+<div id='images' class='not-prose block w-full' itemscope itemtype='http://schema.org/ImageGallery'>
+  <Lightbox id='images' images={images} />
 </div>

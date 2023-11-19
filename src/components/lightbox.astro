@@ -41,24 +41,26 @@ const imagetitles = images.map((image) => image.src.split('/').reverse()[0].spli
     images.map((image, i) => (
       <figure
         itemscope
-        itemtype="http://schema.org/ImageObject"
-        class="my-1 inline-block rounded bg-gray-300 text-center text-sm italic text-gray-800 shadow-lg shadow-gray-400 dark:bg-gray-800 dark:text-gray-300 dark:shadow-black lg:my-2">
+        itemtype='http://schema.org/ImageObject'
+        class='my-1 inline-block rounded bg-gray-300 text-center text-sm italic text-gray-800 shadow-lg shadow-gray-400 dark:bg-gray-800 dark:text-gray-300 dark:shadow-black lg:my-2'
+      >
         <a
           href={image.src}
-          itemprop="contentUrl"
+          itemprop='contentUrl'
           data-pswp-width={image.width}
-          data-pswp-height={image.height}>
+          data-pswp-height={image.height}
+        >
           <Image
             src={image}
             alt={imagetitles[i]}
             width={600}
             height={(image.height * 600) / image.width}
-            format="webp"
-            class="rounded"
+            format='webp'
+            class='rounded'
           />
-          <span class="pswp-caption-content">{imagetitles[i]}</span>
+          <span class='pswp-caption-content'>{imagetitles[i]}</span>
         </a>
-        <figcaption itemprop="caption description" class="rounded">
+        <figcaption itemprop='caption description' class='rounded'>
           {imagetitles[i]}
           {exifs && exifs[i] && <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model + ')'}</span>}
         </figcaption>

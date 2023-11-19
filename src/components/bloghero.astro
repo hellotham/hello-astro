@@ -28,47 +28,48 @@ if (frontmatter.author) {
 }
 ---
 
-<div class="relative mx-auto my-4 h-96 w-full max-w-screen-xl md:mb-0">
+<div class='relative mx-auto my-4 h-96 w-full max-w-screen-xl md:mb-0'>
   <div
-    class="absolute bottom-0 left-0 z-10 h-full w-full bg-gradient-to-t from-gray-700 xl:rounded-lg">
+    class='absolute bottom-0 left-0 z-10 h-full w-full bg-gradient-to-t from-gray-700 xl:rounded-lg'
+  >
   </div>
   <Image
     src={image}
-    alt="featured image"
-    class="absolute left-0 w-full h-full top-0 z-0 object-cover"
+    alt='featured image'
+    class='absolute left-0 top-0 z-0 h-full w-full object-cover'
   />
-  <div class="absolute bottom-0 left-0 z-20 p-4">
+  <div class='absolute bottom-0 left-0 z-20 p-4'>
     {frontmatter.categories && <Categories categories={frontmatter.categories} />}
-    <h2 class="text-4xl font-bold leading-tight text-white">
+    <h2 class='text-4xl font-bold leading-tight text-white'>
       {frontmatter.title}
     </h2>
-    <h2 class="text-xl font-medium italic text-purple-200">
+    <h2 class='text-xl font-medium italic text-purple-200'>
       {frontmatter.description}
     </h2>
-    <span class="mt-3 flex">
+    <span class='mt-3 flex'>
       {
         frontmatter.author && (
-          <span class="mr-6 flex items-center">
+          <span class='mr-6 flex items-center'>
             <Image
               src={author.data.image}
               alt={author.data.title}
-              class="h-10 w-10 rounded-full mr-2 object-cover"
+              class='mr-2 h-10 w-10 rounded-full object-cover'
             />
-            <span class="font-semibold text-purple-200">{author.data.title}</span>
+            <span class='font-semibold text-purple-200'>{author.data.title}</span>
           </span>
         )
       }
-      <span class="mr-6 flex items-center">
-        <Icon class="mr-1 h-6 w-6 text-purple-200" pack="heroicons-outline" name="calendar" />
-        <span class="ml-1 font-semibold text-purple-200">
+      <span class='mr-6 flex items-center'>
+        <Icon class='mr-1 h-6 w-6 text-purple-200' pack='heroicons-outline' name='calendar' />
+        <span class='ml-1 font-semibold text-purple-200'>
           {new Date(frontmatter.publishDate).toString()}
         </span>
       </span>
       {
         frontmatter.minutesRead && (
-          <span class="flex items-center">
-            <Icon class="mr-1 h-6 w-6 text-purple-200" pack="heroicons-outline" name="clock" />
-            <span class="ml-1 font-semibold text-purple-200">{frontmatter.minutesRead}</span>
+          <span class='flex items-center'>
+            <Icon class='mr-1 h-6 w-6 text-purple-200' pack='heroicons-outline' name='clock' />
+            <span class='ml-1 font-semibold text-purple-200'>{frontmatter.minutesRead}</span>
           </span>
         )
       }

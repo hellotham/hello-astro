@@ -66,16 +66,17 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
       title={frontmatter.title}
       description={frontmatter.description}
       coverSVG={frontmatter.coverSVG}
-      socialImage={frontmatter.socialImage}>
+      socialImage={frontmatter.socialImage}
+    >
       <Image
         src={detail!.data.image}
         alt={detail!.data.title}
-        class="mt-4 h-32 w-32 rounded-full object-cover object-center"
+        class='mt-4 h-32 w-32 rounded-full object-cover object-center'
       />
       <PaginateControl base={currentPage} page={page} />
     </PageHero>
   </header>
-  <main class="mt-10 bg-gray-100 dark:bg-gray-900">
+  <main class='mt-10 bg-gray-100 dark:bg-gray-900'>
     <BlogRoll posts={page.data} />
   </main>
 </Base>

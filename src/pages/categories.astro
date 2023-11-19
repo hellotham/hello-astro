@@ -27,28 +27,28 @@ const categories = await getCollection('category')
       socialImage={frontmatter.socialImage}
     />
   </header>
-  <main class="mt-8 bg-gray-100 dark:bg-gray-900">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl pb-72 sm:pb-32 lg:max-w-none lg:pb-24">
-        <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+  <main class='mt-8 bg-gray-100 dark:bg-gray-900'>
+    <div class='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+      <div class='mx-auto max-w-2xl pb-72 sm:pb-32 lg:max-w-none lg:pb-24'>
+        <div class='mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0'>
           {
             categories.map((category) => (
-              <div class="group relative">
-                <div class="relative mb-4 h-80 w-full overflow-hidden rounded-lg bg-purple-100 sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 dark:bg-purple-600 sm:h-64">
+              <div class='group relative'>
+                <div class='relative mb-4 h-80 w-full overflow-hidden rounded-lg bg-purple-100 sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 dark:bg-purple-600 sm:h-64'>
                   <img
                     src={category.data.coverSVG.src}
                     alt={category.data.description}
-                    class="h-full w-full object-cover object-center"
-                    loading="lazy"
+                    class='h-full w-full object-cover object-center'
+                    loading='lazy'
                   />
                 </div>
-                <h3 class="inline-block rounded bg-purple-600 px-3 py-1 text-xs font-medium uppercase tracking-tight text-white hover:bg-pink-600">
+                <h3 class='inline-block rounded bg-purple-600 px-3 py-1 text-xs font-medium uppercase tracking-tight text-white hover:bg-pink-600'>
                   <a href={`${import.meta.env.BASE_URL}category/${category.slug}/`}>
-                    <span class="absolute inset-0" />
+                    <span class='absolute inset-0' />
                     {category.data.title}
                   </a>
                 </h3>
-                <p class="text-base text-gray-900 dark:text-gray-400">
+                <p class='text-base text-gray-900 dark:text-gray-400'>
                   {category.data.description}
                 </p>
               </div>

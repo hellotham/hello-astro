@@ -202,3 +202,6 @@ All commands are run from the root of the project, from a terminal:
   - Implement permissive Content Security Policy
 - 3.2.1: Minor enhancement:
   - Updated packages, resolved astro check errors
+- 3.2.2: Minor enhancements:
+  - Updated packages
+  - Fixed json.ts return type for search

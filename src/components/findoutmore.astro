@@ -29,29 +29,29 @@ const callouts = [
 ]
 ---
 
-<div class="bg-purple-100 dark:bg-purple-900">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
-      <h2 class="text-4xl font-extrabold text-purple-800 dark:text-purple-100">Find Out More</h2>
-      <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+<div class='bg-purple-100 dark:bg-purple-900'>
+  <div class='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+    <div class='mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32'>
+      <h2 class='text-4xl font-extrabold text-purple-800 dark:text-purple-100'>Find Out More</h2>
+      <div class='mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0'>
         {
           callouts.map((callout) => (
-            <div class="group relative">
-              <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 dark:bg-purple-600 sm:h-64">
+            <div class='group relative'>
+              <div class='relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 dark:bg-purple-600 sm:h-64'>
                 <img
                   src={callout.imageSrc}
                   alt={callout.imageAlt}
-                  class="h-full w-full object-contain object-center"
-                  loading="lazy"
+                  class='h-full w-full object-contain object-center'
+                  loading='lazy'
                 />
               </div>
-              <h3 class="mt-6 text-2xl text-purple-500 dark:text-purple-300">
+              <h3 class='mt-6 text-2xl text-purple-500 dark:text-purple-300'>
                 <a href={callout.href}>
-                  <span class="absolute inset-0" />
+                  <span class='absolute inset-0' />
                   {callout.name}
                 </a>
               </h3>
-              <p class="text-base text-gray-900 dark:text-gray-100">{callout.description}</p>
+              <p class='text-base text-gray-900 dark:text-gray-100'>{callout.description}</p>
             </div>
           ))
         }

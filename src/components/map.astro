@@ -9,13 +9,13 @@ const { loc, zoom } = Astro.props
 ---
 
 <link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-  integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-  crossorigin=""
+  rel='stylesheet'
+  href='https://unpkg.com/leaflet@1.9.3/dist/leaflet.css'
+  integrity='sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI='
+  crossorigin=''
 />
 <map-inner data-lat={loc[0]} data-lng={loc[1]} data-zoom={zoom}></map-inner>
-<div id="map" class="mb-3 h-96"></div>
+<div id='map' class='mb-3 h-96'></div>
 <script>
   import L from 'leaflet'
   // delete L.Icon.Default.prototype._getIconUrl;
