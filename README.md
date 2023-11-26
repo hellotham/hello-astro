@@ -207,3 +207,4 @@ All commands are run from the root of the project, from a terminal:
   - Fixed json.ts return type for search
 - 3.2.3: Maintenance:
   - Fixed mermaid v9 no longer working by upgradig to latest version of mermaid
+  - Upgrade packages
