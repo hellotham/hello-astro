@@ -69,7 +69,7 @@ const { frontmatter } = Astro.props
     {frontmatter.extra?.includes('mermaid') &&
       <script type="module">
         // import mermaid from 'mermaid';
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
         mermaid.initialize({startOnLoad: true});
       </script>
     }
