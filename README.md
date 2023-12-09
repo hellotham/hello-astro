@@ -208,3 +208,5 @@ All commands are run from the root of the project, from a terminal:
 - 3.2.3: Maintenance:
   - Fixed mermaid v9 no longer working by upgradig to latest version of mermaid
   - Upgrade packages
+- 3.2.4: Minor enhancements:
+  - Upgrade to Astro 4.x
