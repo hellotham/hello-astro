@@ -31,7 +31,7 @@ const { frontmatter } = Astro.props
     <link rel='alternate' type='application/rss+xml' title='RSS' href={`${Astro.site}rss.xml`} />
     <meta name='generator' content={Astro.generator} />
     <SEO frontmatter={frontmatter} />
-    <ViewTransitions />
+    <!-- <ViewTransitions /> -->
     <script is:inline>
       const setDarkMode = () => {
         if (
@@ -79,8 +79,8 @@ const { frontmatter } = Astro.props
       )
     }
     {frontmatter.extra?.includes('mermaid') &&
-      <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+      <script is:inline type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
       </script>
     }
   </body>

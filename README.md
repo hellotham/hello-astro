@@ -213,3 +213,5 @@ All commands are run from the root of the project, from a terminal:
 - 3.2.5: Minor enhancements:
   - Upgrade packages
   - Remove mermaid.initialize()
+- 3.2.6: Maintenance:
+  - Disable ViewTransition as it does not work with mermaid
