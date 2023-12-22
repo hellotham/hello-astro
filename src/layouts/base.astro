@@ -66,13 +66,6 @@ const { frontmatter } = Astro.props
       )
     }
     <slot name='in-head' />
-    {frontmatter.extra?.includes('mermaid') &&
-      <script type="module">
-        // import mermaid from 'mermaid';
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({ startOnLoad: true });
-      </script>
-    }
   </head>
   <body class='dark:bg-gray-900'>
     <Header />
@@ -84,6 +77,11 @@ const { frontmatter } = Astro.props
       frontmatter.extra?.includes('markmap') && (
         <script src='https://cdn.jsdelivr.net/npm/markmap-autoloader' />
       )
+    }
+    {frontmatter.extra?.includes('mermaid') &&
+      <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+      </script>
     }
   </body>
 </html>

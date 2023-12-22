@@ -210,3 +210,6 @@ All commands are run from the root of the project, from a terminal:
   - Upgrade packages
 - 3.2.4: Minor enhancements:
   - Upgrade to Astro 4.x
+- 3.2.5: Minor enhancements:
+  - Upgrade packages
+  - Remove mermaid.initialize()
