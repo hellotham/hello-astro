@@ -27,10 +27,12 @@ export const SiteMetadata = {
       'Hello Tham is a boutique management consulting firm. We specialise in Business and IT strategies, operating models, strategic roadmaps, enterprise architecture, analytics and business process design.'
   },
   location: 'Francisco Vitoria 9, Entreplanta Izquierda',
-  latlng: [-33.86785, 151.20732] as [number, number],
+  latlng: [41.64701,-0.88174] as [number, number],
+  zoom: '18',
   repository: 'https://github.com/hellotham/hello-astro',
   buildTime: new Date()
 }
+//41.644618~-0.898529&lvl=14.6
 
 export { default as Logo } from './assets/svg/astro/astro-icon-dark.svg'
 export { default as LogoImage } from './assets/astro/astro-logo-dark.png'
