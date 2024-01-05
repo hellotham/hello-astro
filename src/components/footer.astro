@@ -9,7 +9,7 @@ const social = await getCollection('social')
 <div class='h-24 lg:h-16'></div>
 <footer class='text-gray-600 dark:text-gray-400'>
   <div
-    class='fixed inset-x-0 bottom-0 z-20 flex w-full flex-col items-center border-t-2 border-purple-300 bg-gray-100 px-4 py-1 dark:border-purple-600 dark:bg-gray-800 lg:flex-row lg:px-8 lg:py-4'
+    class='fixed inset-x-0 bottom-0 z-20 flex w-full flex-col items-center border-t-2 border-indigo-300 bg-gray-100 px-4 py-1 dark:border-indigo-600 dark:bg-gray-800 lg:flex-row lg:px-8 lg:py-4'
   >
     <span class='flex flex-none flex-row items-center'>
       <a
@@ -20,46 +20,37 @@ const social = await getCollection('social')
         <span class='sr-only'>Logo</span>
       </a>
       <p
-        class='ml-2 border-l-2 border-purple-300 py-1 pl-2 text-sm text-gray-600 dark:border-purple-600 dark:text-gray-300'
+        class='ml-2 border-l-2 border-indigo-300 py-1 pl-2 text-sm text-gray-600 dark:border-indigo-600 dark:text-gray-300'
       >
-        © {new Date().getFullYear()} MIT licence
+        © {new Date().getFullYear()} 
         <a
-          href='https://hellotham.com'
-          class='ml-1 text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300'
+          href='/'
+          class='ml-1 text-indigo-600 hover:text-cyan-600 dark:text-indigo-300 dark:hover:text-cyan-300'
           rel='noopener noreferrer'
           target='_blank'
         >
-          Hello Tham Pty Ltd
+        GAF Ruiz Lizondo SL
         </a>
       </p>
     </span>
     <span class='flex flex-none flex-row items-center'>
       <p
-        class='text-sm text-gray-600 dark:text-gray-300 lg:ml-4 lg:border-l-2 lg:border-purple-300 lg:py-1 lg:pl-4 dark:lg:border-purple-600'
+        class='text-sm text-gray-600 dark:text-gray-300 lg:ml-4 lg:border-l-2 lg:border-indigo-300 lg:py-1 lg:pl-4 dark:lg:border-indigo-600'
       >
         <a
           href={import.meta.env.BASE_URL + 'privacy'}
-          class='ml-1 text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300'
+          class='ml-1 text-indigo-600 hover:text-cyan-600 dark:text-indigo-300 dark:hover:text-cyan-300'
         >
-          Privacy Policy
+          Política de privacidad
         </a>
       </p>
-      <p class='ml-4 border-l-2 border-purple-300 py-1 pl-4 text-sm text-gray-600'>
-        <a
-          href={import.meta.env.BASE_URL + 'rss.xml'}
-          class='ml-1 text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300'
-          rel='noopener noreferrer'
-          target='_blank'
-        >
-          RSS
-        </a>
-      </p>
+      
       <p
-        class='ml-4 border-l-2 border-purple-300 py-1 pl-4 text-sm text-gray-600 dark:text-gray-300'
+        class='ml-4 border-l-2 border-indigo-300 py-1 pl-4 text-sm text-gray-600 dark:text-gray-300'
       >
         <a
           href={import.meta.env.BASE_URL + 'sitemap-index.xml'}
-          class='ml-1 text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300'
+          class='ml-1 text-indigo-600 hover:text-cyan-600 dark:text-indigo-300 dark:hover:text-cyan-300'
           rel='noopener noreferrer'
           target='_blank'
         >
@@ -73,7 +64,7 @@ const social = await getCollection('social')
           s.data.link ? (
             <a
               href={s.data.link}
-              class='ml-3 text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300'
+              class='ml-3 text-indigo-600 hover:text-cyan-600 dark:text-indigo-300 dark:hover:text-cyan-300'
               rel='noopener noreferrer'
               target='_blank'
             >

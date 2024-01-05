@@ -24,7 +24,7 @@ import { Icon } from 'astro-icon'
       '<ul class="relative grid gap-6 bg-white dark:bg-gray-700 dark:text-gray-100 px-5 py-6 sm:gap-8 sm:p-8"></ul>'
     if (term) {
       document.getElementById('lunrsearchtitle').innerHTML =
-        "Search results for '" + term + "'"
+        "Resultado de la búsqueda para '" + term + "'"
       //put results on the screen.
       const results = this.idx.search(term)
       if (results.length > 0) {
@@ -36,7 +36,7 @@ import { Icon } from 'astro-icon'
           document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML =
             document.querySelectorAll('#lunrsearchresults ul')[0]
               .innerHTML +
-            '<li class="-m-3 p-3 flex items-start rounded-lg hover:bg-purple-200 dark:hover:bg-purple-900"><a href="' +
+            '<li class="-m-3 p-3 flex items-start rounded-lg hover:bg-indigo-200 dark:hover:bg-indigo-900"><a href="' +
             url +
             '"><p class="text-base font-medium text-gray-900 dark:text-gray-100">' +
             doc.title +
@@ -46,7 +46,7 @@ import { Icon } from 'astro-icon'
         }
       } else {
         document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML =
-          'No results found...'
+          'No se encuentran resultados...'
       }
     }
 
@@ -61,17 +61,17 @@ import { Icon } from 'astro-icon'
         <input
           type='search'
           x-model='searchText'
-          class='form-control relative m-0 block w-full min-w-0 max-w-xs flex-auto rounded border border-solid border-purple-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-500 transition ease-in-out focus:border-purple-500 focus:text-gray-700 focus:outline-none dark:border-purple-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-purple-600 dark:focus:text-gray-100'
+          class='form-control relative m-0 block w-full min-w-0 max-w-xs flex-auto rounded border border-solid border-indigo-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-500 transition ease-in-out focus:border-indigo-500 focus:text-gray-700 focus:outline-none dark:border-indigo-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:text-gray-100'
           id='lunrsearch'
           name='q'
           maxlength='255'
           value=''
-          placeholder='Search'
+          placeholder='Buscar'
           aria-label='Search'
           aria-describedby='lunrbutton'
         />
         <button
-          class='btn inline-block items-center rounded bg-purple-600 px-2 py-2 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg'
+          class='btn inline-block items-center rounded bg-indigo-600 px-2 py-2 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-indigo-700 hover:shadow-lg focus:bg-indigo-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-indigo-800 active:shadow-lg'
           type='button'
           name='search'
           id='lunrbutton'
@@ -142,7 +142,7 @@ import { Icon } from 'astro-icon'
             >
               <button
                 type='button'
-                class='rounded-md text-purple-300 hover:text-pink-300 focus:outline-none focus:ring-2 focus:ring-white'
+                class='rounded-md text-indigo-300 hover:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-white'
                 x-on:click='searchResults = false'
               >
                 <span class='sr-only'>Close panel</span>
@@ -159,7 +159,7 @@ import { Icon } from 'astro-icon'
                   id='lunrsearchtitle'
                   class='modal-title'
                 >
-                  Search results
+                  Resultado de la búsqueda
                 </h2>
               </div>
               <div id='lunrsearchmodal' class='relative mt-6 flex-1 px-4 sm:px-6'>

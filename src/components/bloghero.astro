@@ -43,7 +43,7 @@ if (frontmatter.author) {
     <h2 class='text-4xl font-bold leading-tight text-white'>
       {frontmatter.title}
     </h2>
-    <h2 class='text-xl font-medium italic text-purple-200'>
+    <h2 class='text-xl font-medium italic text-indigo-200'>
       {frontmatter.description}
     </h2>
     <span class='mt-3 flex'>
@@ -55,21 +55,21 @@ if (frontmatter.author) {
               alt={author.data.title}
               class='mr-2 h-10 w-10 rounded-full object-cover'
             />
-            <span class='font-semibold text-purple-200'>{author.data.title}</span>
+            <span class='font-semibold text-indigo-200'>{author.data.title}</span>
           </span>
         )
       }
       <span class='mr-6 flex items-center'>
-        <Icon class='mr-1 h-6 w-6 text-purple-200' pack='heroicons-outline' name='calendar' />
-        <span class='ml-1 font-semibold text-purple-200'>
+        <Icon class='mr-1 h-6 w-6 text-indigo-200' pack='heroicons-outline' name='calendar' />
+        <span class='ml-1 font-semibold text-indigo-200'>
           {new Date(frontmatter.publishDate).toString()}
         </span>
       </span>
       {
         frontmatter.minutesRead && (
           <span class='flex items-center'>
-            <Icon class='mr-1 h-6 w-6 text-purple-200' pack='heroicons-outline' name='clock' />
-            <span class='ml-1 font-semibold text-purple-200'>{frontmatter.minutesRead}</span>
+            <Icon class='mr-1 h-6 w-6 text-indigo-200' pack='heroicons-outline' name='clock' />
+            <span class='ml-1 font-semibold text-indigo-200'>{frontmatter.minutesRead}</span>
           </span>
         )
       }

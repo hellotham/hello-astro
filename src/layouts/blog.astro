@@ -22,7 +22,7 @@ const { frontmatter, prev, next } = Astro.props
         <BlogHero frontmatter={frontmatter} />
       </header>
       <section
-        class='prose prose-purple mx-auto my-8 max-w-screen-lg px-4 dark:prose-invert lg:prose-xl lg:px-0'
+        class='prose prose-indigo mx-auto my-8 max-w-screen-lg px-4 dark:prose-invert lg:prose-xl lg:px-0'
       >
         {frontmatter.images && <Images images={frontmatter.images} />}
         <slot />
