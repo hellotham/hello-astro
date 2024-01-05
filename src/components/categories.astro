@@ -11,7 +11,7 @@ const cats = await getEntries(categories)
       {cats.map((category) => (
         <a
           href={`${import.meta.env.BASE_URL}category/${encodeURIComponent(category.slug)}/`}
-          class='inline-block rounded bg-purple-600 px-3 py-1 text-xs font-medium uppercase tracking-tight text-white hover:bg-pink-600'
+          class='inline-block rounded bg-indigo-600 px-3 py-1 text-xs font-medium uppercase tracking-tight text-white hover:bg-cyan-600'
         >
           {category.data.title}
           <span class='sr-only'>category</span>

@@ -15,19 +15,19 @@ const { base, page } = Astro.props
 <div class='mt-4 flex items-center'>
   <a
     href={import.meta.env.BASE_URL + 'categories'}
-    class='inline-block rounded-md bg-purple-600 px-2 py-1 text-base text-white hover:bg-pink-600 md:text-lg'
+    class='inline-block rounded-md bg-indigo-600 px-2 py-1 text-base text-white hover:bg-cyan-600 md:text-lg'
   >
     Categories
   </a>
   <a
     href={import.meta.env.BASE_URL + 'tags'}
-    class='ml-4 inline-block rounded-md bg-purple-600 px-2 py-1 text-base text-white hover:bg-pink-600 md:text-lg'
+    class='ml-4 inline-block rounded-md bg-indigo-600 px-2 py-1 text-base text-white hover:bg-cyan-600 md:text-lg'
   >
     Tags
   </a>
   <a
     href={import.meta.env.BASE_URL + 'authors'}
-    class='ml-4 inline-block rounded-md bg-purple-600 px-2 py-1 text-base text-white hover:bg-pink-600 md:text-lg'
+    class='ml-4 inline-block rounded-md bg-indigo-600 px-2 py-1 text-base text-white hover:bg-cyan-600 md:text-lg'
   >
     Authors
   </a>
@@ -43,7 +43,7 @@ const { base, page } = Astro.props
             class:list={[
               'relative inline-flex items-center rounded-l-md border px-2 py-2 text-sm font-medium',
               page.url.prev
-                ? 'border-purple-300 bg-white text-gray-500 hover:bg-purple-100 dark:border-purple-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-purple-900'
+                ? 'border-indigo-300 bg-white text-gray-500 hover:bg-indigo-100 dark:border-indigo-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-indigo-900'
                 : 'border-gray-300 bg-gray-300 text-gray-400 dark:border-gray-700 dark:bg-gray-700 dark:text-gray-500'
             ]}
           >
@@ -56,8 +56,8 @@ const { base, page } = Astro.props
               aria-current='page'
               class:list={[
                 i == page.currentPage
-                  ? 'z-10 border-purple-500 bg-pink-100 text-purple-600 dark:border-pink-500 dark:bg-pink-900 dark:text-purple-200'
-                  : 'border-purple-300 bg-white text-gray-500 hover:bg-purple-100 dark:border-purple-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-purple-900',
+                  ? 'z-10 border-indigo-500 bg-cyan-100 text-indigo-600 dark:border-cyan-500 dark:bg-cyan-900 dark:text-indigo-200'
+                  : 'border-indigo-300 bg-white text-gray-500 hover:bg-indigo-100 dark:border-indigo-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-indigo-900',
                 'relative inline-flex items-center border px-4 py-2 text-sm font-medium'
               ]}
             >
@@ -69,7 +69,7 @@ const { base, page } = Astro.props
             class:list={[
               'relative inline-flex items-center rounded-r-md border px-2 py-2 text-sm font-medium',
               page.url.next
-                ? 'border-purple-300 bg-white text-gray-500 hover:bg-purple-100 dark:border-purple-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-purple-900'
+                ? 'border-indigo-300 bg-white text-gray-500 hover:bg-indigo-100 dark:border-indigo-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-indigo-900'
                 : 'border-gray-300 bg-gray-300 text-gray-400 dark:border-gray-700 dark:bg-gray-700 dark:text-gray-500'
             ]}
           >

@@ -14,7 +14,7 @@ const { loc, zoom } = Astro.props
   integrity='sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI='
   crossorigin=''
 />
-<map-inner data-lat={loc[0]} data-lng={loc[1]} data-zoom={zoom}></map-inner>
+<map-inner data-lat={loc[0]} data-lng={loc[1]} data-zoom=15></map-inner>
 <div id='map' class='mb-3 h-96'></div>
 <script>
   import L from 'leaflet'
@@ -35,7 +35,7 @@ const { loc, zoom } = Astro.props
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map)
       L.marker(loc).addTo(map)
     }

@@ -34,7 +34,7 @@ const categories = await getCollection('category')
           {
             categories.map((category) => (
               <div class='group relative'>
-                <div class='relative mb-4 h-80 w-full overflow-hidden rounded-lg bg-purple-100 sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 dark:bg-purple-600 sm:h-64'>
+                <div class='relative mb-4 h-80 w-full overflow-hidden rounded-lg bg-indigo-100 sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 dark:bg-indigo-600 sm:h-64'>
                   <img
                     src={category.data.coverSVG.src}
                     alt={category.data.description}
@@ -42,7 +42,7 @@ const categories = await getCollection('category')
                     loading='lazy'
                   />
                 </div>
-                <h3 class='inline-block rounded bg-purple-600 px-3 py-1 text-xs font-medium uppercase tracking-tight text-white hover:bg-pink-600'>
+                <h3 class='inline-block rounded bg-indigo-600 px-3 py-1 text-xs font-medium uppercase tracking-tight text-white hover:bg-cyan-600'>
                   <a href={`${import.meta.env.BASE_URL}category/${category.slug}/`}>
                     <span class='absolute inset-0' />
                     {category.data.title}

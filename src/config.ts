@@ -9,7 +9,7 @@ export interface TagType {
 }
 
 export const SiteMetadata = {
-  title: 'Hello Astro',
+  title: 'GAF Ruiz Lizondo',
   description: 'An Astro starter for corporate/marketing/blog websites.',
   author: {
     name: 'Chris Tham',
@@ -26,11 +26,13 @@ export const SiteMetadata = {
     summary:
       'Hello Tham is a boutique management consulting firm. We specialise in Business and IT strategies, operating models, strategic roadmaps, enterprise architecture, analytics and business process design.'
   },
-  location: 'Rivendell, Middle Earth',
-  latlng: [-33.86785, 151.20732] as [number, number],
+  location: 'Francisco Vitoria 9, Entreplanta Izquierda',
+  latlng: [41.64701,-0.88174] as [number, number],
+  zoom: '18',
   repository: 'https://github.com/hellotham/hello-astro',
   buildTime: new Date()
 }
+//41.644618~-0.898529&lvl=14.6
 
 export { default as Logo } from './assets/svg/astro/astro-icon-dark.svg'
 export { default as LogoImage } from './assets/astro/astro-logo-dark.png'
