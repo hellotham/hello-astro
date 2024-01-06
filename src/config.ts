@@ -12,24 +12,23 @@ export const SiteMetadata = {
   title: 'GAF Ruiz Lizondo',
   description: 'An Astro starter for corporate/marketing/blog websites.',
   author: {
-    name: 'Chris Tham',
-    twitter: '@chris1tham',
-    url: 'https://christham.net',
-    email: 'chris@christham.net',
-    summary: 'Outrageous actualiser.'
+    name: 'Roberto Ruiz',
+    twitter: '@idar',
+    url: 'https://idar.pro',
+    email: 'berts@idar.pro',
+    summary: 'GAF Ruiz Lizondo.'
   },
   org: {
-    name: 'Hello Tham',
-    twitter: '@hellothamcom',
-    url: 'https://hellotham.com',
-    email: 'info@hellotham.com',
+    name: 'GAF Ruiz Lizondo SL',
+    url: 'https://ruizlizondo.com',
+    email: 'oficina@ruizlizondo.com',
     summary:
       'Hello Tham is a boutique management consulting firm. We specialise in Business and IT strategies, operating models, strategic roadmaps, enterprise architecture, analytics and business process design.'
   },
   location: 'Francisco Vitoria 9, Entreplanta Izquierda',
   latlng: [41.64701,-0.88174] as [number, number],
   zoom: '18',
-  repository: 'https://github.com/hellotham/hello-astro',
+  repository: 'https://github.com/berts/Astro_hello',
   buildTime: new Date()
 }
 //41.644618~-0.898529&lvl=14.6
