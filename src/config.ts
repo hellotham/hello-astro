@@ -33,6 +33,7 @@ export const SiteMetadata = {
 }
 
 export { default as Logo } from './assets/svg/astro/astro-icon-dark.svg'
+export { default as LogoDark } from './assets/svg/astro/astro-icon-light.svg'
 export { default as LogoImage } from './assets/astro/astro-logo-dark.png'
 export { default as FeaturedSVG } from './assets/svg/undraw/undraw_design_inspiration.svg'
 export { default as DefaultSVG } from './assets/svg/undraw/undraw_my_feed.svg'

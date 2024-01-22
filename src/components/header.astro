@@ -3,7 +3,7 @@ import { Icon } from 'astro-icon'
 import { NavigationLinks } from '../config'
 import Search from '../components/search.astro'
 import Theme from '../components/theme.astro'
-import { Logo } from '../config'
+import { Logo, LogoDark } from '../config'
 ---
 
 <div class='relative h-16 w-full'>
@@ -40,7 +40,8 @@ import { Logo } from '../config'
         </div>
         <div class='flex flex-1 items-center justify-center lg:items-stretch lg:justify-start'>
           <div class='flex flex-shrink-0 items-center'>
-            <img class='block h-8 w-8 dark:bg-gray-100' src={Logo.src} alt='Logo' />
+            <img src={Logo.src} alt='Logo' class='block h-6 w-6 dark:hidden' loading='lazy' />
+        <img src={LogoDark.src} alt='Logo' class='hidden h-6 w-6 dark:block' loading='lazy' />
           </div>
           <div class='hidden lg:mx-4 lg:block'>
             <div class='flex space-x-2'>
