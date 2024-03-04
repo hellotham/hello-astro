@@ -215,3 +215,5 @@ All commands are run from the root of the project, from a terminal:
   - Remove mermaid.initialize()
 - 3.2.6: Maintenance:
   - Disable ViewTransition as it does not work with mermaid
+- 3.3.0: Maintenance:
+  - Upgraded to latest packages and astro-icon 1.x

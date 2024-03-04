@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon'
+import { Icon } from 'astro-icon/components'
 
 const features = [
   {
@@ -58,8 +58,7 @@ const features = [
                   <Icon
                     class='h-6 w-6'
                     aria-hidden='true'
-                    pack='heroicons-outline'
-                    name={feature.icon}
+                    name={'heroicons-outline:' + feature.icon}
                   />
                 </div>
                 <p class='ml-16 text-lg font-medium leading-6 text-gray-900 dark:text-gray-200'>

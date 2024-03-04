@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon'
+import { Icon } from 'astro-icon/components'
 ---
 
 <script is:inline src='https://unpkg.com/lunr/lunr.min.js'></script>
@@ -146,7 +146,7 @@ import { Icon } from 'astro-icon'
                 x-on:click='searchResults = false'
               >
                 <span class='sr-only'>Close panel</span>
-                <Icon class='h-6 w-6' pack='heroicons-outline' name='x' />
+                <Icon class='h-6 w-6' name='heroicons-outline:x' />
               </button>
             </div>
 

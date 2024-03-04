@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon'
+import { Icon } from 'astro-icon/components'
 import { NavigationLinks } from '../config'
 import Search from '../components/search.astro'
 import Theme from '../components/theme.astro'
@@ -26,15 +26,13 @@ import { Logo } from '../config'
               x-bind:class="{'hidden': isOpen, 'block': !isOpen }"
               class='block h-6 w-6'
               aria-hidden='true'
-              pack='heroicons-outline'
-              name='menu'
+              name='heroicons-outline:menu'
             />
             <Icon
               x-bind:class="{'block': isOpen, 'hidden': !isOpen }"
               class='hidden h-6 w-6'
               aria-hidden='true'
-              pack='heroicons-outline'
-              name='x'
+              name='heroicons-outline:x'
             />
           </button>
         </div>

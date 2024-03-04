@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content'
 import { getEntry } from 'astro:content'
 import { Image } from 'astro:assets'
-import { Icon } from 'astro-icon'
+import { Icon } from 'astro-icon/components'
 import Categories from '../components/categories.astro'
 import Tags from '../components/tags.astro'
 
@@ -53,13 +53,13 @@ if (post.data.author) {
         <span
           class='mr-3 inline-flex items-center border-r-2 border-purple-200 py-1 pr-3 text-xs leading-none text-gray-500 dark:border-purple-600 dark:text-gray-400'
         >
-          <Icon class='mr-1 h-4 w-4' pack='heroicons-outline' name='calendar' />
+          <Icon class='mr-1 h-4 w-4' name='heroicons-outline:calendar' />
           {post.data.publishDate.toDateString()}
         </span>
         {
           post.data.minutesRead && (
             <span class='mr-3 inline-flex items-center border-r-2 border-purple-200 py-1 pr-3 text-xs leading-none text-gray-500 dark:border-purple-600 dark:text-gray-400'>
-              <Icon class='mr-1 h-4 w-4' pack='heroicons-outline' name='clock' />
+              <Icon class='mr-1 h-4 w-4' name='heroicons-outline:clock' />
               {post.data.minutesRead}
             </span>
           )
@@ -67,7 +67,7 @@ if (post.data.author) {
         {
           post.data.author && (
             <span class='text-rosely1 dark:text-rosely7 inline-flex items-center text-xs leading-none'>
-              <Icon class='mr-1 h-4 w-4' pack='heroicons-outline' name='user-circle' />
+              <Icon class='mr-1 h-4 w-4' name='heroicons-outline:user-circle' />
               {author.data.title}
             </span>
           )
