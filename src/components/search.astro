@@ -12,11 +12,11 @@ import { Icon } from 'astro-icon/components'
   doc: null,
   async lunr_search(term) {
     if (!this.doc) {
-      const res = await fetch(import.meta.env.BASE_URL + 'search-docs.json')
+      const res = await fetch('${import.meta.env.BASE_URL + 'search-docs.json'}')
       this.doc = await res.json()
     }
     if (!this.idx) {
-      const res = await fetch(import.meta.env.BASE_URL + 'search-index.json')
+      const res = await fetch('${import.meta.env.BASE_URL + 'search-index.json'}')
       const data = await res.json()
       this.idx = lunr.Index.load(data)
     }
@@ -25,12 +25,9 @@ import { Icon } from 'astro-icon/components'
     if (term) {
       document.getElementById('lunrsearchtitle').innerHTML =
         "Search results for '" + term + "'"
-      //put results on the screen.
       const results = this.idx.search(term)
       if (results.length > 0) {
-        //if results
         for (var i = 0; i < results.length; i++) {
-          // more statements
           const url = results[i]['ref']
           const doc = this.doc.filter(doc => doc.url == url)[0]
           document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML =

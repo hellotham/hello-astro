@@ -3,7 +3,7 @@ module.exports = {
   extends: [
     'plugin:css/recommended',
     'plugin:mdx/recommended',
-    'plugin:markdown/recommended',
+    'plugin:markdown/recommended-legacy',
     'plugin:astro/recommended'
   ],
   "plugins": [

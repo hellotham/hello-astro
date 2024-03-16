@@ -219,3 +219,8 @@ All commands are run from the root of the project, from a terminal:
   - Upgraded to latest packages and astro-icon 1.x
 - 3.3.1: Maintenance:
   - Upgraded to latest packages and fixed astro check errors
+- 3.3.2: Maintenance:
+  - Upgraded to latest packages
+  - Fixed search not working due to stricter alpine checking
+  - Migrated to standard astro tsconfig.json
+  - Fixed astro check errors
