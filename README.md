@@ -225,4 +225,9 @@ All commands are run from the root of the project, from a terminal:
   - Migrated to standard astro tsconfig.json
   - Fixed astro check errors
 - 3.4.0: Minor changes:
+  - Updated packages
   - Replaced heroicons to v2
+  - Improved RSS and search indexes to include author name and email
+  - Make BlogHero accept post as props rather than frontmatter
+  - Moved Markdown pages to content collection
+  - Eliminated Frontmatter type

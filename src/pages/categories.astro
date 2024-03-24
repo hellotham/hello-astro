@@ -1,18 +1,16 @@
 ---
 import { getCollection } from 'astro:content'
-import type { Frontmatter } from '../config'
-import { SiteMetadata } from '../config'
+import type { CollectionEntry } from 'astro:content'
 import Base from '../layouts/base.astro'
 import PageHero from '../components/pagehero.astro'
 import coverSVG from '../assets/svg/undraw/undraw_windows.svg'
 import socialImage from '../assets/undraw/undraw_windows.png'
 
-const frontmatter: Frontmatter = {
+const frontmatter: CollectionEntry<'page'>['data'] = {
   title: 'Categories',
   description: 'Categories for articles',
   coverSVG: coverSVG,
-  socialImage: socialImage,
-  publishDate: SiteMetadata.buildTime
+  socialImage: socialImage
 }
 
 const categories = await getCollection('category')

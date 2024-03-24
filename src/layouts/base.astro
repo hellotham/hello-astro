@@ -1,13 +1,13 @@
 ---
 // import { ViewTransitions } from 'astro:transitions'
-import type { Frontmatter } from '../config'
+import type { CollectionEntry } from 'astro:content'
 import SEO from '../components/seo.astro'
 import Header from '../components/header.astro'
 import Footer from '../components/footer.astro'
 import Gallery from '../components/gallery.astro'
 
 export interface Props {
-  frontmatter: Frontmatter
+  frontmatter: CollectionEntry<'blog'>['data'] | CollectionEntry<'page'>['data']
 }
 
 const { frontmatter } = Astro.props

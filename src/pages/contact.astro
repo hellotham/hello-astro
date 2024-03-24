@@ -3,17 +3,17 @@ import { Icon } from 'astro-icon/components'
 import Base from '../layouts/base.astro'
 import Map from '../components/map.astro'
 import PageHero from '../components/pagehero.astro'
+import type { CollectionEntry } from 'astro:content'
 import { SiteMetadata } from '../config'
 import coverSVG from '../assets/svg/undraw/undraw_contact_us.svg'
 import socialImage from '../assets/undraw/undraw_contact_us.png'
 import { getCollection } from 'astro:content'
 
-const frontmatter = {
+const frontmatter: CollectionEntry<'page'>['data'] = {
   title: 'Contact',
   description: 'Our presence is real and digital. Contact us through the following ways.',
   coverSVG: coverSVG,
-  socialImage: socialImage,
-  publishDate: SiteMetadata.buildTime
+  socialImage: socialImage
 }
 
 const social = await getCollection('social')

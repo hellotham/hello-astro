@@ -1,30 +1,30 @@
 ---
+import type { CollectionEntry } from 'astro:content'
 import { getEntry } from 'astro:content'
 import { Image } from 'astro:assets'
 import { Icon } from 'astro-icon/components'
-import type { Frontmatter } from '../config'
 import Categories from '../components/categories.astro'
 import Tags from '../components/tags.astro'
 
 export interface Props {
-  frontmatter: Frontmatter
+  post: CollectionEntry<'blog'>
 }
 
-const { frontmatter } = Astro.props
+const { post } = Astro.props
 
 let cat = await getEntry('category', 'general')
-if (frontmatter.categories) {
-  cat = await getEntry(frontmatter.categories[0])
+if (post.data.categories) {
+  cat = await getEntry(post.data.categories[0])
 }
 const image =
-  frontmatter.coverSVG ||
-  frontmatter.coverImage ||
-  (frontmatter.images && frontmatter.images[0]) ||
-  frontmatter.socialImage ||
+  post.data.coverSVG ||
+  post.data.coverImage ||
+  (post.data.images && post.data.images[0]) ||
+  post.data.socialImage ||
   cat.data.coverSVG
 let author = await getEntry('author', 'default')
-if (frontmatter.author) {
-  author = await getEntry(frontmatter.author)
+if (post.data.author) {
+  author = await getEntry(post.data.author)
 }
 ---
 
@@ -39,16 +39,16 @@ if (frontmatter.author) {
     class='absolute left-0 top-0 z-0 h-full w-full object-cover'
   />
   <div class='absolute bottom-0 left-0 z-20 p-4'>
-    {frontmatter.categories && <Categories categories={frontmatter.categories} />}
+    {post.data.categories && <Categories categories={post.data.categories} />}
     <h2 class='text-4xl font-bold leading-tight text-white'>
-      {frontmatter.title}
+      {post.data.title}
     </h2>
     <h2 class='text-xl font-medium italic text-purple-200'>
-      {frontmatter.description}
+      {post.data.description}
     </h2>
     <span class='mt-3 flex'>
       {
-        frontmatter.author && (
+        post.data.author && (
           <span class='mr-6 flex items-center'>
             <Image
               src={author.data.image}
@@ -62,18 +62,18 @@ if (frontmatter.author) {
       <span class='mr-6 flex items-center'>
         <Icon class='mr-1 h-6 w-6 text-purple-200' name='heroicons:calendar-days' />
         <span class='ml-1 font-semibold text-purple-200'>
-          {new Date(frontmatter.publishDate).toString()}
+          {new Date(post.data.publishDate).toString()}
         </span>
       </span>
       {
-        frontmatter.minutesRead && (
+        post.data.minutesRead && (
           <span class='flex items-center'>
             <Icon class='mr-1 h-6 w-6 text-purple-200' name='heroicons:clock' />
-            <span class='ml-1 font-semibold text-purple-200'>{frontmatter.minutesRead}</span>
+            <span class='ml-1 font-semibold text-purple-200'>{post.data.minutesRead}</span>
           </span>
         )
       }
     </span>
-    <Tags tags={frontmatter.tags} />
+    <Tags tags={post.data.tags} />
   </div>
 </div>

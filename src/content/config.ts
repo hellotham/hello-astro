@@ -2,7 +2,7 @@
 import { z, defineCollection, reference } from 'astro:content'
 
 // 2. Define your collections
-const blogCollection = defineCollection({
+const blog = defineCollection({
   schema: ({ image }) =>
     z.object({
       draft: z.boolean().optional(),
@@ -22,7 +22,23 @@ const blogCollection = defineCollection({
     })
 })
 
-const docCollection = defineCollection({
+const page = defineCollection({
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      author: reference('author').optional(),
+      publishDate: z.date().optional(),
+      coverSVG: image().optional(),
+      coverImage: image().optional(),
+      socialImage: image().optional(),
+      images: z.array(image()).optional(),
+      gallery: z.string().optional(),
+      tags: z.array(z.string()).optional(),
+      extra: z.array(z.enum(['math', 'markmap', 'mermaid', 'gallery'])).optional()
+    })
+})
+const doc = defineCollection({
   schema: ({ image }) =>
     z.object({
       draft: z.boolean().optional(),
@@ -35,7 +51,7 @@ const docCollection = defineCollection({
     })
 })
 
-const categoryCollection = defineCollection({
+const category = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -45,7 +61,7 @@ const categoryCollection = defineCollection({
     })
 })
 
-const authorCollection = defineCollection({
+const author = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -55,7 +71,7 @@ const authorCollection = defineCollection({
     })
 })
 
-const socialCollection = defineCollection({
+const social = defineCollection({
   type: 'data',
   schema: z.object({
     name: z.string(),
@@ -66,9 +82,10 @@ const socialCollection = defineCollection({
 
 // 3. Export multiple collections to register them
 export const collections = {
-  blog: blogCollection,
-  doc: docCollection,
-  category: categoryCollection,
-  author: authorCollection,
-  social: socialCollection
+  blog,
+  page,
+  doc,
+  category,
+  author,
+  social
 }

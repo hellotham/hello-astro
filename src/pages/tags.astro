@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
-import type { Frontmatter, TagType } from '../config'
-import { SiteMetadata } from '../config'
+import type { TagType } from '../config'
+import type { CollectionEntry } from 'astro:content'
 import Base from '../layouts/base.astro'
 import PageHero from '../components/pagehero.astro'
 import coverSVG from '../assets/svg/undraw/undraw_add_notes.svg'
@@ -92,12 +92,11 @@ const patterns = [
   wallpaper('#9c92ac', 0.5)
 ]
 
-const frontmatter: Frontmatter = {
+const frontmatter: CollectionEntry<'page'>['data'] = {
   title: 'Tags',
   description: 'Articles by tags',
   coverSVG: coverSVG,
-  socialImage: socialImage,
-  publishDate: SiteMetadata.buildTime
+  socialImage: socialImage
 }
 
 const posts = await getCollection('blog', ({ data }) => {

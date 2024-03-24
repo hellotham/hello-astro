@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content'
-import type { Frontmatter } from '../config'
+import type { CollectionEntry } from 'astro:content'
 import { SiteMetadata } from '../config'
 import Base from '../layouts/base.astro'
 import Hero from '../components/hero.astro'
@@ -11,12 +11,11 @@ import CTA from '../components/cta.astro'
 import coverSVG from '../assets/svg/undraw/undraw_design_inspiration.svg'
 import socialImage from '../assets/undraw/undraw_design_inspiration.png'
 
-const frontmatter: Frontmatter = {
+const frontmatter: CollectionEntry<'page'>['data'] = {
   title: SiteMetadata.title,
   description: SiteMetadata.description,
   coverSVG: coverSVG,
-  socialImage: socialImage,
-  publishDate: SiteMetadata.buildTime
+  socialImage: socialImage
 }
 
 const posts = await getCollection('blog', ({ data }) => {

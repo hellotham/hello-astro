@@ -1,9 +1,9 @@
 ---
+import type { CollectionEntry } from 'astro:content'
 import type { TwitterCardType } from 'astro-seo'
 import { SEO } from 'astro-seo'
 import { getImage } from 'astro:assets'
 import { getCollection } from 'astro:content'
-import type { Frontmatter } from '../config'
 import type {
   Article,
   BreadcrumbList,
@@ -15,7 +15,7 @@ import type {
 import { SiteMetadata, DefaultImage, LogoImage } from '../config'
 
 export interface Props {
-  frontmatter: Frontmatter
+  frontmatter: CollectionEntry<'blog'>['data'] | CollectionEntry<'page'>['data']
 }
 
 const { frontmatter } = Astro.props
@@ -30,8 +30,8 @@ const image = await getImage({
   format: 'jpg'
 })
 const logo = LogoImage
-const publishDate = new Date(frontmatter.publishDate)
-
+const publishDate = frontmatter.publishDate || SiteMetadata.buildTime
+const author = frontmatter.author ? frontmatter.author.slug : 'default'
 const openGraph = {
   basic: {
     title: frontmatter.title,
@@ -48,7 +48,7 @@ const openGraph = {
     width: image.attributes.width
   },
   article: {
-    author: frontmatter.author,
+    author: author,
     publishedTime: SiteMetadata.buildTime.toISOString(),
     tags: frontmatter.tags
   }

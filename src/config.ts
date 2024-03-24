@@ -1,7 +1,5 @@
 import type { CollectionEntry } from 'astro:content'
 
-export type Frontmatter = CollectionEntry<'blog'>['data']
-
 export interface TagType {
   tag: string
   count: number

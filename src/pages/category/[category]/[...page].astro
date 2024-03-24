@@ -2,9 +2,8 @@
 import type { PaginateFunction, Page } from 'astro'
 import type { CollectionEntry } from 'astro:content'
 import { getEntry } from 'astro:content'
-import type { Frontmatter } from '../../../config'
 import { getCollection } from 'astro:content'
-import { SiteMetadata, PAGE_SIZE } from '../../../config'
+import { PAGE_SIZE } from '../../../config'
 import Base from '../../../layouts/base.astro'
 import PageHero from '../../../components/pagehero.astro'
 import BlogRoll from '../../../components/blogroll.astro'
@@ -19,15 +18,14 @@ const { page } = Astro.props
 
 const detail = await getEntry('category', category!)
 
-const frontmatter: Frontmatter = {
+const frontmatter: CollectionEntry<'page'>['data'] = {
   title:
     'Category: ' +
     category +
     (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
   description: detail!.data.description,
   coverSVG: detail!.data.coverSVG,
-  socialImage: detail!.data.socialImage,
-  publishDate: SiteMetadata.buildTime
+  socialImage: detail!.data.socialImage
 }
 
 const currentPage = Astro.url.pathname.replace(/(\/\d*)?\/$/, '')

@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import type { Frontmatter } from '../config'
 import type { Sidebar } from '../config'
 import { getCollection } from 'astro:content'
 import Base from './base.astro'
@@ -48,11 +47,10 @@ docs.forEach((doc, i) => {
     }
   }
 })
-const basefm: Frontmatter = {
-  draft: frontmatter.draft,
+const basefm: CollectionEntry<'page'>['data'] = {
+  // draft: frontmatter.draft,
   title: frontmatter.title,
-  description: frontmatter.description,
-  publishDate: new Date()
+  description: frontmatter.description
 }
 ---
 
