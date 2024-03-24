@@ -12,7 +12,7 @@ const features = [
     name: 'Customisable Design',
     description:
       'Built using the TailwindCSS ecosystem (including HeroIcons and Hero Patterns). Very easy to customise and change design. Template illustrations by unDraw.',
-    icon: 'puzzle'
+    icon: 'puzzle-piece'
   },
   {
     name: 'SEO Ready',
@@ -55,11 +55,7 @@ const features = [
             <div class='relative'>
               <dt>
                 <div class='absolute flex h-12 w-12 items-center justify-center rounded-md bg-purple-500 text-white dark:bg-purple-400 dark:text-black'>
-                  <Icon
-                    class='h-6 w-6'
-                    aria-hidden='true'
-                    name={'heroicons-outline:' + feature.icon}
-                  />
+                  <Icon class='h-6 w-6' aria-hidden='true' name={'heroicons:' + feature.icon} />
                 </div>
                 <p class='ml-16 text-lg font-medium leading-6 text-gray-900 dark:text-gray-200'>
                   {feature.name}

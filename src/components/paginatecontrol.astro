@@ -48,7 +48,7 @@ const { base, page } = Astro.props
             ]}
           >
             <span class='sr-only'>Previous</span>
-            <Icon class='h-5 w-5' name='heroicons-solid:chevron-left' />
+            <Icon class='h-5 w-5' name='heroicons:chevron-left-20-solid' />
           </a>
           {Array.from({ length: page.lastPage }, (_, index) => index + 1).map((i) => (
             <a
@@ -74,7 +74,7 @@ const { base, page } = Astro.props
             ]}
           >
             <span class='sr-only'>Next</span>
-            <Icon class='h-5 w-5' name='heroicons-solid:chevron-right' />
+            <Icon class='h-5 w-5' name='heroicons:chevron-right-20-solid' />
           </a>
         </nav>
       </div>

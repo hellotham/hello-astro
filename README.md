@@ -224,3 +224,5 @@ All commands are run from the root of the project, from a terminal:
   - Fixed search not working due to stricter alpine checking
   - Migrated to standard astro tsconfig.json
   - Fixed astro check errors
+- 3.4.0: Minor changes:
+  - Replaced heroicons to v2

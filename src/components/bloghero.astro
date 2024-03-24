@@ -60,7 +60,7 @@ if (frontmatter.author) {
         )
       }
       <span class='mr-6 flex items-center'>
-        <Icon class='mr-1 h-6 w-6 text-purple-200' name='heroicons-outline:calendar' />
+        <Icon class='mr-1 h-6 w-6 text-purple-200' name='heroicons:calendar-days' />
         <span class='ml-1 font-semibold text-purple-200'>
           {new Date(frontmatter.publishDate).toString()}
         </span>
@@ -68,7 +68,7 @@ if (frontmatter.author) {
       {
         frontmatter.minutesRead && (
           <span class='flex items-center'>
-            <Icon class='mr-1 h-6 w-6 text-purple-200' name='heroicons-outline:clock' />
+            <Icon class='mr-1 h-6 w-6 text-purple-200' name='heroicons:clock' />
             <span class='ml-1 font-semibold text-purple-200'>{frontmatter.minutesRead}</span>
           </span>
         )
