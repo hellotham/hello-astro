@@ -1,10 +1,3 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "paths": {
-      "photoswipe/lightbox": [
-        "./node_modules/photoswipe/dist/types/lightbox/lightbox.d.ts"
-      ]
-    }
-  }
+  "extends": "astro/tsconfigs/strict"
 }
