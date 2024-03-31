@@ -24,7 +24,7 @@ const { post, prev, next } = Astro.props
         class='prose prose-purple mx-auto my-8 max-w-screen-lg px-4 dark:prose-invert lg:prose-xl lg:px-0'
       >
         {post.data.images && <Images images={post.data.images} />}
-        <slot />
+        <slot itemprop='articleBody' />
       </section>
     </article>
   </main>

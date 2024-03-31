@@ -1,5 +1,7 @@
-import { getCollection, getEntry } from 'astro:content'
+import { getCollection, getEntry, getEntries } from 'astro:content'
 import { SiteMetadata } from '../config'
+
+const defaultauthor = await getEntry('author', 'default')
 
 const docs = await getCollection('doc', (p) => {
   return !p.data.draft
@@ -9,14 +11,16 @@ const posts = await getCollection('blog', (p) => {
 })
 let documents = await Promise.all(
   posts.map(async (post) => {
-    const author = await getEntry(post.data.author)
+    const author = post.data.author ? await getEntry(post.data.author) : defaultauthor
+    const categories = post.data.categories && (await getEntries(post.data.categories))
+
     return {
       url: import.meta.env.BASE_URL + 'blog/' + post.slug,
       title: post.data.title,
       description: post.data.description,
       author: `${author.data.title} (${author.data.contact})`,
       publishDate: post.data.publishDate,
-      categories: post.data.categories,
+      categories: categories && categories.map((category) => category.data.title),
       tags: post.data.tags
     }
   })

@@ -231,6 +231,11 @@ All commands are run from the root of the project, from a terminal:
   - Make BlogHero accept post as props rather than frontmatter
   - Moved Markdown pages to content collection
   - Eliminated Frontmatter type
-- 3.4.1: Maintenance:
+- 4.0.0: Major changes:
   - Updated packages
   - Removed @types/photoswipe and photoswipe tsconfig
+  - Moved to RSS schema
+  - getPosts() function
+  - schema tags
+  - automatically generated sidebar links
+  - improved RSS and search metadata

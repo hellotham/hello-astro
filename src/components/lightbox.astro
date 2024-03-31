@@ -58,11 +58,13 @@ const imagetitles = images.map((image) => image.src.split('/').reverse()[0].spli
             format='webp'
             class='rounded'
           />
-          <span class='pswp-caption-content'>{imagetitles[i]}</span>
+          <span class='pswp-caption-content'>
+            {imagetitles[i]}
+            {exifs && exifs[i] && <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model + ')'}</span>}
+          </span>
         </a>
         <figcaption itemprop='caption description' class='rounded'>
           {imagetitles[i]}
-          {exifs && exifs[i] && <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model + ')'}</span>}
         </figcaption>
       </figure>
     ))

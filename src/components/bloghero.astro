@@ -34,6 +34,7 @@ if (post.data.author) {
   >
   </div>
   <Image
+    itemprop='image'
     src={image}
     alt='featured image'
     class='absolute left-0 top-0 z-0 h-full w-full object-cover'
@@ -47,24 +48,22 @@ if (post.data.author) {
       {post.data.description}
     </h2>
     <span class='mt-3 flex'>
+      <span class='mr-6 flex items-center'>
+        <Image
+          src={author.data.image}
+          alt={author.data.title}
+          class='mr-2 h-10 w-10 rounded-full object-cover'
+        />
+        <span class='font-semibold text-purple-200'>{author.data.title}</span>
+      </span>
       {
-        post.data.author && (
+        post.data.pubDate && (
           <span class='mr-6 flex items-center'>
-            <Image
-              src={author.data.image}
-              alt={author.data.title}
-              class='mr-2 h-10 w-10 rounded-full object-cover'
-            />
-            <span class='font-semibold text-purple-200'>{author.data.title}</span>
+            <Icon class='mr-1 h-6 w-6 text-purple-200' name='heroicons:calendar-days' />
+            <span class='ml-1 font-semibold text-purple-200'>{post.data.pubDate.toString()}</span>
           </span>
         )
       }
-      <span class='mr-6 flex items-center'>
-        <Icon class='mr-1 h-6 w-6 text-purple-200' name='heroicons:calendar-days' />
-        <span class='ml-1 font-semibold text-purple-200'>
-          {new Date(post.data.publishDate).toString()}
-        </span>
-      </span>
       {
         post.data.minutesRead && (
           <span class='flex items-center'>

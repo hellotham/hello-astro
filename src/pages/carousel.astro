@@ -1,7 +1,6 @@
 ---
-import { getCollection } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
-import { SiteMetadata } from '../config'
+import { SiteMetadata, getPosts } from '../config'
 import Base from '../layouts/base.astro'
 import MyCarousel from '../components/carousel.astro'
 import Features from '../components/features.astro'
@@ -28,10 +27,7 @@ const carouselPages = [
   { name: 'Oberon Dam', image: '../assets/gallery/carousel/Oberon-Dam.jpeg' }
 ]
 
-const posts = await getCollection('blog', ({ data }) => {
-  return data.draft !== true
-})
-const latestPosts = posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+const posts = await getPosts()
 ---
 
 <Base frontmatter={frontmatter}>
@@ -79,7 +75,7 @@ const latestPosts = posts.sort((a, b) => +b.data.publishDate - +a.data.publishDa
   </MyCarousel>
   <Features />
   <FindOutMore />
-  <LatestArticles posts={latestPosts} />
+  <LatestArticles {posts} />
   <CTA />
   <div class='bg-white p-24 dark:bg-black md:p-12'></div>
 </Base>

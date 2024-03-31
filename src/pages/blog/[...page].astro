@@ -1,8 +1,7 @@
 ---
 import type { Page, PaginateFunction } from 'astro'
 import type { CollectionEntry } from 'astro:content'
-import { getCollection } from 'astro:content'
-import { PAGE_SIZE } from '../../config'
+import { PAGE_SIZE, getPosts } from '../../config'
 import Base from '../../layouts/base.astro'
 import PageHero from '../../components/pagehero.astro'
 import BlogRoll from '../../components/blogroll.astro'
@@ -27,10 +26,7 @@ const frontmatter: CollectionEntry<'page'>['data'] = {
 
 const currentPage = Astro.url.pathname.replace(/(\/\d*)?\/$/, '')
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
-  const allPosts = await getCollection('blog', ({ data }) => {
-    return data.draft !== true
-  })
-  const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+  const posts = await getPosts()
 
   return paginate(posts, { pageSize: PAGE_SIZE })
 }

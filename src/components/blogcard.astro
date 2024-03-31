@@ -38,24 +38,30 @@ if (post.data.author) {
         alt={post.data.title + ' featured image'}
         class='relative h-64 w-full overflow-hidden rounded-lg bg-purple-100 object-cover object-center group-hover:opacity-75 dark:bg-purple-800'
       />
-      <p class='sr-only'>{post.data.title}</p>
+      <p itemprop='name' class='sr-only'>{post.data.title}</p>
     </a>
     <div class='p-6'>
       {post.data.categories && <Categories categories={post.data.categories} />}
-      <a href={import.meta.env.BASE_URL + 'blog/' + post.slug}>
+      <a itemprop='url' href={import.meta.env.BASE_URL + 'blog/' + post.slug}>
         <h1
+          itemprop='name'
           class='title-font mt-2 text-xl font-bold text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300'
         >
           {post.data.title}
         </h1>
       </a>
       <div class='flex flex-wrap items-center'>
-        <span
-          class='mr-3 inline-flex items-center border-r-2 border-purple-200 py-1 pr-3 text-xs leading-none text-gray-500 dark:border-purple-600 dark:text-gray-400'
-        >
-          <Icon class='mr-1 h-4 w-4' name='heroicons:calendar-days' />
-          {post.data.publishDate.toDateString()}
-        </span>
+        {
+          post.data.pubDate && (
+            <span
+              itemprop='datePublished'
+              class='mr-3 inline-flex items-center border-r-2 border-purple-200 py-1 pr-3 text-xs leading-none text-gray-500 dark:border-purple-600 dark:text-gray-400'
+            >
+              <Icon class='mr-1 h-4 w-4' name='heroicons:calendar-days' />
+              {post.data.pubDate.toDateString()}
+            </span>
+          )
+        }
         {
           post.data.minutesRead && (
             <span class='mr-3 inline-flex items-center border-r-2 border-purple-200 py-1 pr-3 text-xs leading-none text-gray-500 dark:border-purple-600 dark:text-gray-400'>
@@ -64,17 +70,19 @@ if (post.data.author) {
             </span>
           )
         }
-        {
-          post.data.author && (
-            <span class='text-rosely1 dark:text-rosely7 inline-flex items-center text-xs leading-none'>
-              <Icon class='mr-1 h-4 w-4' name='heroicons:user-circle' />
-              {author.data.title}
-            </span>
-          )
-        }
+        <span
+          itemprop='author'
+          class='inline-flex items-center text-xs leading-none text-gray-500 dark:text-gray-400'
+        >
+          <Icon class='mr-1 h-4 w-4' name='heroicons:user-circle' />
+          {author.data.title}
+        </span>
       </div>
 
-      <p class='mt-3 text-sm italic text-gray-600 dark:text-gray-300'>
+      <p
+        itemprop='abstract description'
+        class='mt-3 text-sm italic text-gray-600 dark:text-gray-300'
+      >
         {post.data.description}
       </p>
       <Tags tags={post.data.tags} />

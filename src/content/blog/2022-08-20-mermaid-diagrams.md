@@ -2,7 +2,7 @@
 title: Mermaid Diagrams
 description: Generate mermaid diagrams in blog posts.
 author: chris-tham
-publishDate: 2022-08-20T00:00:00.000Z
+pubDate: 2022-08-20T00:00:00.000Z
 coverSVG: ../../assets/svg/undraw/undraw_timeline.svg
 socialImage: ../../assets/undraw/undraw_timeline.png
 categories:

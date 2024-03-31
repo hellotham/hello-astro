@@ -3,7 +3,7 @@ import type { PaginateFunction, Page } from 'astro'
 import type { CollectionEntry } from 'astro:content'
 import { getEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
-import { PAGE_SIZE } from '../../../config'
+import { PAGE_SIZE, getPosts } from '../../../config'
 import Base from '../../../layouts/base.astro'
 import PageHero from '../../../components/pagehero.astro'
 import BlogRoll from '../../../components/blogroll.astro'
@@ -32,8 +32,7 @@ const currentPage = Astro.url.pathname.replace(/(\/\d*)?\/$/, '')
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const categories = await getCollection('category')
-  const allPosts = await getCollection('blog', (post) => !post.data.draft)
-  const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+  const posts = await getPosts()
 
   return categories.flatMap((category) => {
     return paginate(
@@ -50,7 +49,7 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
 }
 ---
 
-<Base frontmatter={frontmatter}>
+<Base frontmatter={frontmatter} schema='CollectionPage'>
   <header>
     <PageHero
       title={frontmatter.title}
@@ -61,7 +60,7 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
       <PaginateControl base={currentPage} page={page} />
     </PageHero>
   </header>
-  <main class='mt-10 bg-gray-100 dark:bg-gray-900'>
+  <main itemprop='mainContentOfPage' class='mt-10 bg-gray-100 dark:bg-gray-900'>
     <BlogRoll posts={page.data} />
   </main>
 </Base>

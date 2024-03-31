@@ -19,7 +19,10 @@ const title = frontmatter.title
   class='min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pl-8 lg:pr-0 xl:px-16'
 >
   <section class='mb-9 space-y-1'>
-    <p class='font-display text-sm font-medium text-purple-600 dark:text-purple-300'>
+    <p
+      itemprop='articleSection'
+      class='font-display text-sm font-medium text-purple-600 dark:text-purple-300'
+    >
       {frontmatter.section}
     </p>
     <h1 class='font-display text-3xl tracking-tight text-slate-900 dark:text-white'>
@@ -28,7 +31,7 @@ const title = frontmatter.title
     <nav class='block sm:hidden'>
       <TableOfContents headings={headings} />
     </nav>
-    <slot />
+    <slot itemprop='articleBody' />
   </section>
   <nav class='block sm:hidden'>
     <MoreMenu editHref={githubEditUrl} />

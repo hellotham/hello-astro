@@ -72,9 +72,13 @@ const otherPosts = posts.slice(1, 5)
               {newestPost.data.title}
             </h1>
           </a>
-          <p class='mb-4 text-gray-600 dark:text-gray-400'>
-            {newestPost.data.publishDate?.toDateString()}
-          </p>
+          {
+            newestPost.data.pubDate && (
+              <p class='mb-4 text-gray-600 dark:text-gray-400'>
+                {newestPost.data.pubDate.toDateString()}
+              </p>
+            )
+          }
           <p class='mb-4 text-gray-600 dark:text-gray-400'>
             {newestPost.data.description}
           </p>
@@ -114,9 +118,11 @@ const otherPosts = posts.slice(1, 5)
                       {post.data.title}
                     </div>
                   </a>
-                  <p class='block text-sm text-gray-600 dark:text-gray-300'>
-                    {post.data.publishDate?.toDateString()}
-                  </p>
+                  {post.data.pubDate && (
+                    <p class='block text-sm text-gray-600 dark:text-gray-300'>
+                      {post.data.pubDate.toDateString()}
+                    </p>
+                  )}
                   <p class='block text-sm text-gray-600 dark:text-gray-300 md:hidden'>
                     {post.data.description}
                   </p>

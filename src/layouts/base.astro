@@ -5,30 +5,32 @@ import SEO from '../components/seo.astro'
 import Header from '../components/header.astro'
 import Footer from '../components/footer.astro'
 import Gallery from '../components/gallery.astro'
+import { SiteMetadata } from '../config'
 
 export interface Props {
   frontmatter: CollectionEntry<'blog'>['data'] | CollectionEntry<'page'>['data']
+  schema?: string
 }
 
-const { frontmatter } = Astro.props
+const { frontmatter, schema = 'WebPage' } = Astro.props
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang='en' itemscope itemtype={`https://schema.org/${schema}`}>
   <head>
     <meta charset='UTF-8' />
-    <meta
+    <!-- <meta
       http-equiv='Content-Security-Policy'
       content="default-src * 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
     />
-    <meta http-equiv='Referrer-Policy' content='no-referrer, strict-origin-when-cross-origin' />
+    <meta http-equiv='Referrer-Policy' content='no-referrer, strict-origin-when-cross-origin' /> -->
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' href={`${Astro.site}favicon.ico`} sizes='any' />
     <link rel='icon' href={`${Astro.site}favicon.svg`} type='image/svg+xml' />
     <link rel='apple-touch-icon' href={`${Astro.site}apple-touchicon.png`} />
     <link rel='manifest' href={`${Astro.site}site.webmanifest`} />
     <link rel='sitemap' href={`${Astro.site}sitemap-indexxml`} />
-    <link rel='alternate' type='application/rss+xml' title='RSS' href={`${Astro.site}rss.xml`} />
+    <link rel='alternate' type='application/rss+xml' title={SiteMetadata.title} href={`${Astro.site}rss.xml`} />
     <meta name='generator' content={Astro.generator} />
     <SEO frontmatter={frontmatter} />
     <!-- <ViewTransitions /> -->
@@ -75,13 +77,14 @@ const { frontmatter } = Astro.props
     <Footer />
     {
       frontmatter.extra?.includes('markmap') && (
-        <script src='https://cdn.jsdelivr.net/npm/markmap-autoloader' />
+        <script is:inline data-astro-rerun src='https://cdn.jsdelivr.net/npm/markmap-autoloader' />
       )
     }
     {
       frontmatter.extra?.includes('mermaid') && (
-        <script is:inline type='module'>
+        <script is:inline data-astro-rerun type='module'>
           import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+          mermaid.initialize({ startOnLoad: true });
         </script>
       )
     }

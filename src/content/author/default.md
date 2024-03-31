@@ -1,6 +1,6 @@
 ---
 title: 'Hello Astro'
-image: ../../assets/astro/astro-icon-dark.png
+image: ./default.png
 contact: 'info@hellotham.com'
 description: 'Astronaut'
 ---

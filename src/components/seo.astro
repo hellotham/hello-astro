@@ -30,20 +30,20 @@ const image = await getImage({
   format: 'jpg'
 })
 const logo = LogoImage
-const publishDate = frontmatter.publishDate || SiteMetadata.buildTime
+const pubDate = frontmatter.pubDate || SiteMetadata.buildTime
 const author = frontmatter.author ? frontmatter.author.slug : 'default'
 const openGraph = {
   basic: {
-    title: frontmatter.title,
+    title: frontmatter.title!,
     type: 'website',
-    image: new URL(image.src, Astro.url).toString()
+    image: new URL(image.src, siteurl).toString()
   },
   optional: {
     description: frontmatter.description,
     siteName: SiteMetadata.title
   },
   image: {
-    alt: frontmatter.title,
+    alt: frontmatter.title!,
     height: image.attributes.height,
     width: image.attributes.width
   },
@@ -54,7 +54,7 @@ const openGraph = {
   }
 }
 const twitter = {
-  card: frontmatter.socialImage ? 'summary_large_image' : ('summary' as TwitterCardType),
+  card: (frontmatter.socialImage ? 'summary_large_image' : 'summary') as TwitterCardType,
   site: SiteMetadata.org.twitter,
   creator: SiteMetadata.author.twitter
 }
@@ -80,7 +80,7 @@ const website: WithContext<WebSite> = {
   description: SiteMetadata.description,
   image: {
     '@type': 'ImageObject',
-    url: new URL(image.src, Astro.url).toString()
+    url: new URL(image.src, siteurl).toString()
   },
   inLanguage: 'en',
   name: SiteMetadata.title,
@@ -102,7 +102,7 @@ const organization: WithContext<Organization> = {
   description: SiteMetadata.org.summary,
   email: SiteMetadata.org.email,
   founder: {
-    '@id': SiteMetadata.author.email
+    '@id': SiteMetadata.author.url
   },
   location: SiteMetadata.location,
   image: {
@@ -170,15 +170,15 @@ const article: WithContext<Article> = {
   creator: {
     '@id': SiteMetadata.author.url
   },
-  dateCreated: publishDate.toISOString(),
+  dateCreated: pubDate.toISOString(),
   dateModified: SiteMetadata.buildTime.toISOString(),
-  datePublished: publishDate.toISOString(),
+  datePublished: pubDate.toISOString(),
   description: frontmatter.description,
   headline: frontmatter.title,
   keywords: frontmatter.tags && frontmatter.tags.join(', '),
   image: {
     '@type': 'ImageObject',
-    url: new URL(image.src, Astro.url).toString()
+    url: new URL(image.src, siteurl).toString()
   },
   inLanguage: 'en',
   mainEntityOfPage: SiteMetadata.org.url,

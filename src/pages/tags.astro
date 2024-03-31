@@ -1,6 +1,5 @@
 ---
-import { getCollection } from 'astro:content'
-import type { TagType } from '../config'
+import { getPosts, type TagType } from '../config'
 import type { CollectionEntry } from 'astro:content'
 import Base from '../layouts/base.astro'
 import PageHero from '../components/pagehero.astro'
@@ -99,14 +98,11 @@ const frontmatter: CollectionEntry<'page'>['data'] = {
   socialImage: socialImage
 }
 
-const posts = await getCollection('blog', ({ data }) => {
-  return data.draft !== true
-})
-const latestPosts = posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+const posts = await getPosts()
 
 const tagmap: Map<string, TagType> = new Map()
 
-latestPosts.forEach((post) => {
+posts.forEach((post) => {
   post.data.tags?.forEach((tag) => {
     let utag = tagmap.get(tag)
     if (utag) {
@@ -122,7 +118,7 @@ latestPosts.forEach((post) => {
 const tags = Array.from(tagmap.values())
 ---
 
-<Base frontmatter={frontmatter}>
+<Base frontmatter={frontmatter} schema='CollectionPage'>
   <header>
     <PageHero
       title={frontmatter.title}
@@ -131,8 +127,11 @@ const tags = Array.from(tagmap.values())
       socialImage={frontmatter.socialImage}
     />
   </header>
-  <main class='mt-10 dark:bg-gray-900'>
+  <main itemprop='mainContentOfPage' class='mt-10 dark:bg-gray-900'>
     <div
+      itemprop='mainEntity'
+      itemscope
+      itemtype='https://schema.org/CollectionPage'
       class='mx-4 mb-24 mt-6 grid grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 xl:gap-x-6 xl:gap-y-6'
     >
       {

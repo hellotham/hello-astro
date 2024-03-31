@@ -2,6 +2,8 @@ import { getCollection, getEntry } from 'astro:content'
 import lunr from 'lunr'
 import { SiteMetadata } from '../config'
 
+const defaultauthor = await getEntry('author', 'default')
+
 const docs = await getCollection('doc', (p) => {
   return !p.data.draft
 })
@@ -10,14 +12,14 @@ const posts = await getCollection('blog', (p) => {
 })
 let documents = await Promise.all(
   posts.map(async (post) => {
-    const author = await getEntry(post.data.author)
+    const author = post.data.author ? await getEntry(post.data.author) : defaultauthor
     return {
       url: import.meta.env.BASE_URL + 'blog/' + post.slug,
       title: post.data.title,
       description: post.data.description,
       author: `${author.data.title} (${author.data.contact})`,
-      categories: post.data.categories && post.data.categories.join(' '),
-      tags: post.data.tags && post.data.tags.join(' '),
+      categories: post.data.categories,
+      tags: post.data.tags,
       content: post.body
     }
   })
@@ -28,7 +30,7 @@ documents = documents.concat(
     title: doc.data.title,
     description: doc.data.description,
     author: `${SiteMetadata.author.name} (${SiteMetadata.author.email})`,
-    categories: 'documentation',
+    categories: ['documentation'],
     tags: ['documentation'],
     content: doc.body
   }))

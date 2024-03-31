@@ -1,14 +1,12 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { getCollection } from 'astro:content'
 import Layout from '../../layouts/blog.astro'
+import { getPosts } from '../../config'
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-  let posts = await getCollection('blog', ({ data }) => {
-    return data.draft !== true
-  })
-  posts = posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+  const posts = await getPosts()
+
   return posts.map((post, i) => ({
     params: { slug: post.slug },
     props: {

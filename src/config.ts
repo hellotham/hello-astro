@@ -1,4 +1,4 @@
-import type { CollectionEntry } from 'astro:content'
+import { getCollection, type CollectionEntry } from 'astro:content'
 
 export interface TagType {
   tag: string
@@ -52,11 +52,11 @@ export const COMMUNITY_INVITE_URL = `https://astro.build/chat`
 
 export type Sidebar = Record<string, { text: string; link: string }[]>
 
-export const SIDEBAR: Sidebar = {
-  'Section Header': [
-    { text: 'Introduction', link: 'doc/introduction' },
-    { text: 'Page 2', link: 'doc/page-2' },
-    { text: 'Page 3', link: 'doc/page-3' }
-  ],
-  'Another Section': [{ text: 'Page 4', link: 'doc/page-4' }]
+export async function getPosts() {
+  const posts = await getCollection('blog', ({ data }) => {
+    return data.draft !== true
+  })
+  return posts.sort((a, b) =>
+    a.data.pubDate && b.data.pubDate ? +b.data.pubDate - +a.data.pubDate : 0
+  )
 }

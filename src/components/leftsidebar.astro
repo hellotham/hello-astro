@@ -1,11 +1,12 @@
 ---
-import { SIDEBAR } from '../config'
+import type { Sidebar } from '../config'
 
 type Props = {
   currentPage: string
+  sidebar: Sidebar
 }
 
-const { currentPage } = Astro.props as Props
+const { currentPage, sidebar } = Astro.props
 const currentPageMatch = currentPage.slice(1)
 ---
 
@@ -15,7 +16,7 @@ const currentPageMatch = currentPage.slice(1)
   <nav aria-labelledby='grid-left' class='w-64 pr-8 text-base lg:text-sm xl:w-72 xl:pr-16'>
     <ul role='list' class='space-y-9'>
       {
-        Object.entries(SIDEBAR).map(([header, children]) => (
+        Object.entries(sidebar).map(([header, children]) => (
           <li>
             <div class='nav-group'>
               <h2 class='font-display font-medium text-purple-800 dark:text-white'>{header}</h2>
