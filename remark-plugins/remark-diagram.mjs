@@ -12,7 +12,7 @@ export function remarkDiagram() {
       }
     })
     visit(tree, 'code', node => {
-      if (node.lang == 'markmap' || node.lang == 'mermaid') {
+      if (node.lang == 'markmap') {
         node.type = 'html'
         node.value = '<div class ="' + node.lang + '">' + node.value + '</div>'
         if (!data.astro.frontmatter.extra.includes(node.lang)) {

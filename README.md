@@ -241,3 +241,5 @@ All commands are run from the root of the project, from a terminal:
   - improved RSS and search metadata
 - 5.0.0: Major changes:
   - Upgrade to Astro 5.X
+  - Changed Leaflet CSS to always use latest
+  - Migrate from bespoke mermaid implementation to rehype-mermaid

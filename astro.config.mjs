@@ -7,6 +7,7 @@ import robotsTxt from 'astro-robots-txt';
 import remarkMath from 'remark-math';
 import remarkEmoji from 'remark-emoji';
 import rehypeKatex from 'rehype-katex';
+import rehypeMermaid from 'rehype-mermaid';
 import remarkPlantUML from '@akebifiky/remark-simple-plantuml';
 import { remarkReadingTime } from './remark-plugins/remark-reading-time.mjs';
 import { remarkDiagram } from './remark-plugins/remark-diagram.mjs';
@@ -14,28 +15,25 @@ import icon from "astro-icon";
 
 import markdoc from "@astrojs/markdoc";
 
+import expressiveCode from 'astro-expressive-code';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     ssr: {
       external: ['svgo'],
-      noExternal: ['swiper', 'leaflet']
-    }
+      noExternal: ['swiper']
+    },
+    optimizeDeps: { include: ['leaflet'] }
   },
   site: 'https://hellotham.github.io',
   base: '/hello-astro/',
-  integrations: [icon(), sitemap(), mdx(), alpinejs(), robotsTxt(), markdoc()],
+  integrations: [icon(), sitemap(), alpinejs(), robotsTxt(), markdoc(), expressiveCode(), mdx()],
   markdown: {
     extendDefaultPlugins: true,
     remarkPlugins: [remarkReadingTime, remarkMath, remarkPlantUML, remarkDiagram, remarkEmoji],
-    rehypePlugins: [rehypeKatex],
-    shikiConfig: {
-      theme: 'github-light',
-      langs: [],
-      // Enable word wrap to prevent horizontal scrolling
-      wrap: true
-    },
+    rehypePlugins: [rehypeMermaid, rehypeKatex]
   },
-  scopedStyleStrategy: "where",
-});
+  scopedStyleStrategy: 'where'
+})

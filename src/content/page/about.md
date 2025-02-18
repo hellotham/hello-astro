@@ -30,6 +30,9 @@ This is multi-purpose Astro starter template based on the following:
 - [exifr](https://mutiny.cz/exifr/)
 - [Swiper](https://swiperjs.com/)
 - [Remark Emoji](https://github.com/rhysd/remark-emoji)
+- [Remark PlantUML](https://github.com/akebifiky/remark-simple-plantuml)
+- [Rehype Mermaid](https://github.com/remcohaszing/rehype-mermaid)
+- [Expressive Code](https://expressive-code.com)
 
 It follows the [JAMstack architecture](https://jamstack.org) by automatically building a static version from the Git repository. The demo is deployed on [Github Pages](https://pages.github.com).
 

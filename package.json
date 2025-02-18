@@ -55,6 +55,8 @@
     "@iconify-json/bi": "^1.2.2",
     "@iconify-json/heroicons": "^1.2.2",
     "@tailwindcss/vite": "^4.0.6",
+    "astro-expressive-code": "^0.40.2",
+    "astro-geo-map": "^2.0.0",
     "astro-icon": "^1.1.5",
     "astro-seo": "^0.8.4",
     "hero-patterns": "^2.1.0",
@@ -64,6 +66,8 @@
     "mermaid": "^11.4.1",
     "photoswipe": "^5.4.4",
     "photoswipe-dynamic-caption-plugin": "^1.2.7",
+    "playwright": "^1.50.1",
+    "rehype-mermaid": "^3.0.0",
     "swiper": "^11.2.4",
     "tailwindcss": "^4.0.6"
   },

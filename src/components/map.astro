@@ -6,12 +6,12 @@ export interface Props {
 }
 
 const { text, loc, zoom } = Astro.props
----
 
+// import 'leaflet/dist/leaflet.css'
+---
 <link
   rel='stylesheet'
-  href='https://unpkg.com/leaflet@1.9.3/dist/leaflet.css'
-  integrity='sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI='
+  href='https://unpkg.com/leaflet/dist/leaflet.css'
   crossorigin=''
 />
 <map-inner data-text={text} data-lat={loc[0]} data-lng={loc[1]} data-zoom={zoom}></map-inner>
