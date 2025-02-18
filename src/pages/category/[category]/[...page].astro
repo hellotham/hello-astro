@@ -38,10 +38,10 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
     return paginate(
       posts.filter(
         (post) =>
-          category && post.data.categories!.map((category) => category.slug).includes(category.slug)
+          category && post.data.categories!.map((category) => category.id).includes(category.id)
       ),
       {
-        params: { category: category.slug },
+        params: { category: category.id },
         pageSize: PAGE_SIZE
       }
     )

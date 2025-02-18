@@ -41,7 +41,7 @@ const categories = await getCollection('category')
                   />
                 </div>
                 <h3 class='inline-block rounded bg-purple-600 px-3 py-1 text-xs font-medium uppercase tracking-tight text-white hover:bg-pink-600'>
-                  <a href={`${import.meta.env.BASE_URL}category/${category.slug}/`}>
+                  <a href={`${import.meta.env.BASE_URL}category/${category.id}/`}>
                     <span class='absolute inset-0' />
                     {category.data.title}
                   </a>

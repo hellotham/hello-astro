@@ -50,7 +50,7 @@ export async function GET(context) {
         })
 
         return {
-          link: import.meta.env.BASE_URL + '/blog/' + post.slug,
+          link: import.meta.env.BASE_URL + '/blog/' + post.id,
           title: post.data.title,
           author: `${author.data.title} (${author.data.contact})`,
           description: post.data.description,

@@ -33,14 +33,14 @@ sections.forEach(
       .filter((doc) => doc.data.section == section)
       .map((doc) => ({
         text: doc.data.title,
-        link: 'doc/' + doc.slug
+        link: 'doc/' + doc.id
       })))
 )
 
 let prev: CollectionEntry<'doc'> | undefined
 let next: CollectionEntry<'doc'> | undefined
 docs.forEach((doc, i) => {
-  if (currentPage.search(doc.slug) >= 0) {
+  if (currentPage.search(doc.id) >= 0) {
     if (i > 0) {
       prev = docs[i - 1]
     }

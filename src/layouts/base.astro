@@ -13,17 +13,14 @@ export interface Props {
 }
 
 const { frontmatter, schema = 'WebPage' } = Astro.props
+
+import "../styles/global.css"
 ---
 
 <!doctype html>
 <html lang='en' itemscope itemtype={`https://schema.org/${schema}`}>
   <head>
     <meta charset='UTF-8' />
-    <!-- <meta
-      http-equiv='Content-Security-Policy'
-      content="default-src * 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
-    />
-    <meta http-equiv='Referrer-Policy' content='no-referrer, strict-origin-when-cross-origin' /> -->
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' href={`${Astro.site}favicon.ico`} sizes='any' />
     <link rel='icon' href={`${Astro.site}favicon.svg`} type='image/svg+xml' />
@@ -33,7 +30,6 @@ const { frontmatter, schema = 'WebPage' } = Astro.props
     <link rel='alternate' type='application/rss+xml' title={SiteMetadata.title} href={`${Astro.site}rss.xml`} />
     <meta name='generator' content={Astro.generator} />
     <SEO frontmatter={frontmatter} />
-    <!-- <ViewTransitions /> -->
     <script is:inline>
       const setDarkMode = () => {
         if (

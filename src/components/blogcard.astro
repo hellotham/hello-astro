@@ -21,7 +21,7 @@ const image =
   post.data.coverImage ||
   (post.data.images && post.data.images[0]) ||
   post.data.socialImage ||
-  cat.data.coverSVG
+  cat!.data.coverSVG
 let author = await getEntry('author', 'default')
 if (post.data.author) {
   author = await getEntry(post.data.author)
@@ -32,7 +32,7 @@ if (post.data.author) {
   <div
     class='border-1 h-full overflow-hidden rounded-lg border-gray-200 bg-white p-2 shadow-xl dark:border-gray-700 dark:bg-gray-800'
   >
-    <a href={import.meta.env.BASE_URL + 'blog/' + post.slug}>
+    <a href={import.meta.env.BASE_URL + 'blog/' + post.id}>
       <Image
         src={image}
         alt={post.data.title + ' featured image'}
@@ -42,7 +42,7 @@ if (post.data.author) {
     </a>
     <div class='p-6'>
       {post.data.categories && <Categories categories={post.data.categories} />}
-      <a itemprop='url' href={import.meta.env.BASE_URL + 'blog/' + post.slug}>
+      <a itemprop='url' href={import.meta.env.BASE_URL + 'blog/' + post.id}>
         <h1
           itemprop='name'
           class='title-font mt-2 text-xl font-bold text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300'
@@ -75,7 +75,7 @@ if (post.data.author) {
           class='inline-flex items-center text-xs leading-none text-gray-500 dark:text-gray-400'
         >
           <Icon class='mr-1 h-4 w-4' name='heroicons:user-circle' />
-          {author.data.title}
+          {author!.data.title}
         </span>
       </div>
 

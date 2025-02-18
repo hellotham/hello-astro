@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 import Layout from '../../layouts/doc.astro'
 
 // 1. Generate a new path for every collection entry
@@ -9,7 +9,7 @@ export async function getStaticPaths() {
     return data.draft !== true
   })
   return docEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { id: entry.id },
     props: { entry }
   }))
 }
@@ -20,7 +20,7 @@ export interface Props {
 
 // 2. When its time to render, you can get the entry directly from the prop
 const { entry } = Astro.props
-const { Content, headings, remarkPluginFrontmatter } = await entry.render()
+const { Content, headings, remarkPluginFrontmatter } = await render(entry)
 ---
 
 <Layout frontmatter={remarkPluginFrontmatter as CollectionEntry<'doc'>['data']} headings={headings}>

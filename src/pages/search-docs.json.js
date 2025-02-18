@@ -15,7 +15,7 @@ let documents = await Promise.all(
     const categories = post.data.categories && (await getEntries(post.data.categories))
 
     return {
-      url: import.meta.env.BASE_URL + 'blog/' + post.slug,
+      url: import.meta.env.BASE_URL + 'blog/' + post.id,
       title: post.data.title,
       description: post.data.description,
       author: `${author.data.title} (${author.data.contact})`,
@@ -27,7 +27,7 @@ let documents = await Promise.all(
 )
 documents = documents.concat(
   docs.map((doc) => ({
-    url: import.meta.env.BASE_URL + 'doc/' + doc.slug,
+    url: import.meta.env.BASE_URL + 'doc/' + doc.id,
     title: doc.data.title,
     description: doc.data.description,
     author: `${SiteMetadata.author.name} (${SiteMetadata.author.email})`,

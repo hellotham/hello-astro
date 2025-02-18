@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
+import tailwindcss from '@tailwindcss/vite'
 import alpinejs from '@astrojs/alpinejs';
 import robotsTxt from 'astro-robots-txt';
 import remarkMath from 'remark-math';
@@ -17,6 +17,7 @@ import markdoc from "@astrojs/markdoc";
 // https://astro.build/config
 export default defineConfig({
   vite: {
+    plugins: [tailwindcss()],
     ssr: {
       external: ['svgo'],
       noExternal: ['swiper', 'leaflet']
@@ -24,7 +25,7 @@ export default defineConfig({
   },
   site: 'https://hellotham.github.io',
   base: '/hello-astro/',
-  integrations: [icon(), tailwind(), sitemap(), mdx(), alpinejs(), robotsTxt(), markdoc()],
+  integrations: [icon(), sitemap(), mdx(), alpinejs(), robotsTxt(), markdoc()],
   markdown: {
     extendDefaultPlugins: true,
     remarkPlugins: [remarkReadingTime, remarkMath, remarkPlantUML, remarkDiagram, remarkEmoji],

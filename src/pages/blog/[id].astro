@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import { render } from 'astro:content'
 import Layout from '../../layouts/blog.astro'
 import { getPosts } from '../../config'
 
@@ -8,7 +9,7 @@ export async function getStaticPaths() {
   const posts = await getPosts()
 
   return posts.map((post, i) => ({
-    params: { slug: post.slug },
+    params: { id: post.id },
     props: {
       post,
       prev: i > 0 ? posts[i - 1] : undefined,
@@ -27,7 +28,7 @@ export interface Props {
 const { post, prev, next } = Astro.props
 
 // @ts-ignore
-const { Content, remarkPluginFrontmatter } = await post.render()
+const { Content, remarkPluginFrontmatter } = await render(post)
 let fm = post.data
 const rfm = remarkPluginFrontmatter as CollectionEntry<'blog'>['data']
 if (rfm) {

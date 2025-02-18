@@ -18,7 +18,7 @@ const { base, prev, next } = Astro.props
         <dd class='mt-1'>
           <a
             class='text-base font-semibold text-purple-600 hover:bg-purple-200 hover:text-pink-600 dark:text-purple-300'
-            href={base + prev.slug}
+            href={base + prev.id}
           >
             <span aria-hidden='true'>←</span>
             {prev.data.title}
@@ -34,7 +34,7 @@ const { base, prev, next } = Astro.props
         <dd class='mt-1'>
           <a
             class='text-base font-semibold text-purple-600 hover:bg-purple-200 hover:text-pink-600 dark:text-purple-300'
-            href={base + next.slug}
+            href={base + next.id}
           >
             {next.data.title}
             <span aria-hidden='true'>→</span>
