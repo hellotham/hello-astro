@@ -13,7 +13,7 @@ const { posts } = Astro.props
   itemprop='mainEntity'
   itemscope
   itemtype='https://schema.org/Article'
-  class='flex flex-wrap space-y-12 dark:bg-gray-900 lg:space-y-0'
+  class='flex flex-wrap space-y-12 lg:space-y-0 dark:bg-gray-900'
 >
   {posts.map((post) => <BlogCard post={post} />)}
 </div>

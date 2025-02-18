@@ -14,7 +14,7 @@ export interface Props {
 
 const { frontmatter, schema = 'WebPage' } = Astro.props
 
-import "../styles/global.css"
+import '../styles/global.css'
 ---
 
 <!doctype html>
@@ -27,7 +27,12 @@ import "../styles/global.css"
     <link rel='apple-touch-icon' href={`${Astro.site}apple-touchicon.png`} />
     <link rel='manifest' href={`${Astro.site}site.webmanifest`} />
     <link rel='sitemap' href={`${Astro.site}sitemap-indexxml`} />
-    <link rel='alternate' type='application/rss+xml' title={SiteMetadata.title} href={`${Astro.site}rss.xml`} />
+    <link
+      rel='alternate'
+      type='application/rss+xml'
+      title={SiteMetadata.title}
+      href={`${Astro.site}rss.xml`}
+    />
     <meta name='generator' content={Astro.generator} />
     <SEO frontmatter={frontmatter} />
     <script is:inline>

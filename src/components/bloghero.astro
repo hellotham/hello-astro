@@ -37,14 +37,14 @@ if (post.data.author) {
     itemprop='image'
     src={image}
     alt='featured image'
-    class='absolute left-0 top-0 z-0 h-full w-full object-cover'
+    class='absolute top-0 left-0 z-0 h-full w-full object-cover'
   />
   <div class='absolute bottom-0 left-0 z-20 p-4'>
     {post.data.categories && <Categories categories={post.data.categories} />}
-    <h2 class='text-4xl font-bold leading-tight text-white'>
+    <h2 class='text-4xl leading-tight font-bold text-white'>
       {post.data.title}
     </h2>
-    <h2 class='text-xl font-medium italic text-purple-200'>
+    <h2 class='text-xl font-medium text-purple-200 italic'>
       {post.data.description}
     </h2>
     <span class='mt-3 flex'>

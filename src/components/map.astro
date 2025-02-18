@@ -9,11 +9,8 @@ const { text, loc, zoom } = Astro.props
 
 // import 'leaflet/dist/leaflet.css'
 ---
-<link
-  rel='stylesheet'
-  href='https://unpkg.com/leaflet/dist/leaflet.css'
-  crossorigin=''
-/>
+
+<link rel='stylesheet' href='https://unpkg.com/leaflet/dist/leaflet.css' crossorigin='' />
 <map-inner data-text={text} data-lat={loc[0]} data-lng={loc[1]} data-zoom={zoom}></map-inner>
 <div id='map' class='mb-3 h-96'></div>
 <script>

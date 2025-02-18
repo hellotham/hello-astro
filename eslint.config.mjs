@@ -1,6 +1,6 @@
 import eslintPluginAstro from 'eslint-plugin-astro'
 import markdown from '@eslint/markdown'
-import unocss from '@unocss/eslint-config/flat'
+// import unocss from '@unocss/eslint-config/flat'
 
 export default [
   ...eslintPluginAstro.configs['flat/recommended'],
@@ -14,6 +14,5 @@ export default [
     rules: {
       'markdown/no-html': 'error'
     }
-  },
-  unocss
+  }
 ]

@@ -33,11 +33,11 @@ const images = folderFiles.map((image) => imageFiles[image])
           <img
             src={images[i].src}
             alt={page.name}
-            class='absolute left-0 top-0 z-0 m-0 h-full w-full object-cover'
+            class='absolute top-0 left-0 z-0 m-0 h-full w-full object-cover'
           />
           <div class='absolute bottom-0 left-0 z-20 mb-4 ml-8 bg-transparent p-4 text-white'>
             {page.title && <h4 class='text-lg font-bold'>{page.title}</h4>}
-            {page.description && <p class='text-base italic text-gray-300'>{page.description}</p>}
+            {page.description && <p class='text-base text-gray-300 italic'>{page.description}</p>}
             <slot />
           </div>
         </div>

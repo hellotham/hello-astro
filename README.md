@@ -1,5 +1,11 @@
 # hello-astro
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Language: Typescript](https://img.shields.io/badge/language-TypeScript-blue.svg?style=flat-square)](https://www.typescriptlang.org)
+[![Framework: Astro](https://img.shields.io/badge/framework-Astro-BC52EE?logo=astro&logoColor=fff?style=flat-square)](https://astro.build)
+[![CSS: TailwindCSS](https://img.shields.io/badge/css-TailwindCSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white?style=flat-square)](https://tailwindcss.com)
+[![Github Pages Astro CI](https://github.com/hellotham/hello-astro/actions/workflows/deploy.yml/badge.svg)](https://github.com/hellotham/hello-astro/actions/workflows/deploy.yml)
+
 Hello Astro is a full featured [Astro](https://astro.build) multi-purpose starter theme written in Typescript and TailwindCSS. It supports Markdown and MDX based pages and blog posts.
 
 ![Light](https://github.com/hellotham/hello-astro/raw/main/screenshot-light.png)

@@ -9,7 +9,7 @@ const social = await getCollection('social')
 <div class='h-24 lg:h-16'></div>
 <footer class='text-gray-600 dark:text-gray-400'>
   <div
-    class='fixed inset-x-0 bottom-0 z-20 flex w-full flex-col items-center border-t-2 border-purple-300 bg-gray-100 px-4 py-1 dark:border-purple-600 dark:bg-gray-800 lg:flex-row lg:px-8 lg:py-4'
+    class='fixed inset-x-0 bottom-0 z-20 flex w-full flex-col items-center border-t-2 border-purple-300 bg-gray-100 px-4 py-1 lg:flex-row lg:px-8 lg:py-4 dark:border-purple-600 dark:bg-gray-800'
   >
     <span class='flex flex-none flex-row items-center'>
       <a
@@ -35,7 +35,7 @@ const social = await getCollection('social')
     </span>
     <span class='flex flex-none flex-row items-center'>
       <p
-        class='text-sm text-gray-600 dark:text-gray-300 lg:ml-4 lg:border-l-2 lg:border-purple-300 lg:py-1 lg:pl-4 dark:lg:border-purple-600'
+        class='text-sm text-gray-600 lg:ml-4 lg:border-l-2 lg:border-purple-300 lg:py-1 lg:pl-4 dark:text-gray-300 dark:lg:border-purple-600'
       >
         <a
           href={import.meta.env.BASE_URL + 'privacy'}
@@ -67,7 +67,7 @@ const social = await getCollection('social')
         </a>
       </p>
     </span>
-    <span class='mt-2 inline-flex grow justify-center lg:ml-auto lg:mt-0 lg:justify-end'>
+    <span class='mt-2 inline-flex grow justify-center lg:mt-0 lg:ml-auto lg:justify-end'>
       {
         social.map((s) =>
           s.data.link ? (
@@ -77,7 +77,7 @@ const social = await getCollection('social')
               rel='noopener noreferrer'
               target='_blank'
             >
-              <Icon name={'bi:' + s.data.icon} class=' h-5 w-5' />
+              <Icon name={'bi:' + s.data.icon} class='h-5 w-5' />
               <span class='sr-only'>{s.data.name}</span>
             </a>
           ) : (
