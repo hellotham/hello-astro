@@ -76,6 +76,7 @@ The start uses the following external packages:
 - [exifr](https://mutiny.cz/exifr/)
 - [Swiper](https://swiperjs.com/)
 - [Remark Emoji](https://github.com/rhysd/remark-emoji)
+- [Expressive Code](https://expressive-code.com)
 
 It follows the [JAMstack architecture](https://jamstack.org) by automatically building a static version from the Git repository. The demo is deployed on Github Pages.
 
@@ -243,3 +244,4 @@ All commands are run from the root of the project, from a terminal:
   - Upgrade to Astro 5.X
   - Changed Leaflet CSS to always use latest
   - Migrate from bespoke mermaid implementation to rehype-mermaid
+  - Use Expressive Code
