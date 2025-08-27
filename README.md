@@ -251,3 +251,8 @@ All commands are run from the root of the project, from a terminal:
   - Changed Leaflet CSS to always use latest
   - Migrate from bespoke mermaid implementation to rehype-mermaid
   - Use Expressive Code
+- 5.0.1: Minor changes:
+  - Updated packages
+  - Updated prettier and eslint config
+  - Fixed dark mode with Tailwind CSS 4
+  - Used img-svg in rehype-mermaid

@@ -1,3 +1,14 @@
-pnpm-lock.yaml
+# Ignore artifacts:
 dist
-node_modules
+.astro
+
+# Standard
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+
+# lockfiles
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
