@@ -14,31 +14,31 @@ const showMoreSection = COMMUNITY_INVITE_URL
   showMoreSection && (
     <>
       <h2
-        id='more-title'
-        class='font-display mt-4 space-y-3 text-sm font-medium text-gray-900 dark:text-white'
+        id="more-title"
+        class="font-display mt-4 space-y-3 text-sm font-medium text-gray-900 dark:text-white"
       >
         More
       </h2>
-      <ol role='list' class='mt-4 flex flex-col space-y-3 text-sm'>
+      <ol role="list" class="mt-4 flex flex-col space-y-3 text-sm">
         {editHref && (
-          <li class='flex items-center py-1 text-gray-500 dark:text-gray-400'>
-            <Icon name='heroicons:pencil' class='mr-2 h-6 w-6' />
+          <li class="flex items-center py-1 text-gray-500 dark:text-gray-400">
+            <Icon name="heroicons:pencil" class="mr-2 h-6 w-6" />
             <a
-              class='hover:text-purple-600 dark:hover:text-purple-300'
+              class="hover:text-purple-600 dark:hover:text-purple-300"
               href={editHref}
-              target='_blank'
+              target="_blank"
             >
               <span>Edit this page</span>
             </a>
           </li>
         )}
         {COMMUNITY_INVITE_URL && (
-          <li class='flex items-center py-1 text-gray-500 dark:text-gray-400'>
-            <Icon name='heroicons:chat-bubble-bottom-center-text' class='mr-2 h-6 w-6' />
+          <li class="flex items-center py-1 text-gray-500 dark:text-gray-400">
+            <Icon name="heroicons:chat-bubble-bottom-center-text" class="mr-2 h-6 w-6" />
             <a
-              class='hover:text-purple-600 dark:hover:text-purple-300'
+              class="hover:text-purple-600 dark:hover:text-purple-300"
               href={COMMUNITY_INVITE_URL}
-              target='_blank'
+              target="_blank"
             >
               <span>Join our community</span>
             </a>

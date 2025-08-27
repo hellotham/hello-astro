@@ -13,21 +13,21 @@ export interface Props {
 const { title, description, coverSVG, coverImage, socialImage } = Astro.props
 ---
 
-<div class='relative mx-auto h-96 w-full max-w-(--breakpoint-xl) md:my-4'>
+<div class="relative mx-auto h-96 w-full max-w-(--breakpoint-xl) md:my-4">
   <div
-    class='absolute bottom-0 left-0 z-10 h-full w-full bg-linear-to-t from-gray-700 xl:rounded-lg'
+    class="absolute bottom-0 left-0 z-10 h-full w-full bg-linear-to-t from-gray-700 xl:rounded-lg"
   >
   </div>
   <Image
-    itemprop='image'
+    itemprop="image"
     src={coverSVG || coverImage || socialImage || DefaultImage}
     alt={title}
-    class='absolute top-0 left-0 z-0 h-full w-full object-cover'
+    class="absolute top-0 left-0 z-0 h-full w-full object-cover"
   />
-  <div class='absolute bottom-0 left-0 z-20 p-4'>
-    <slot name='before' />
-    <h2 itemprop='name' class='text-4xl leading-tight font-bold text-white'>{title}</h2>
-    <h2 itemprop='abstract description' class='text-xl font-medium text-purple-300 italic'>
+  <div class="absolute bottom-0 left-0 z-20 p-4">
+    <slot name="before" />
+    <h2 itemprop="name" class="text-4xl leading-tight font-bold text-white">{title}</h2>
+    <h2 itemprop="abstract description" class="text-xl font-medium text-purple-300 italic">
       {description}
     </h2>
     <slot />

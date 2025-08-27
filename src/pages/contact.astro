@@ -19,7 +19,7 @@ const frontmatter: CollectionEntry<'page'>['data'] = {
 const social = await getCollection('social')
 ---
 
-<Base frontmatter={frontmatter} schema='ContactPage'>
+<Base frontmatter={frontmatter} schema="ContactPage">
   <header>
     <PageHero
       title={frontmatter.title}
@@ -28,36 +28,36 @@ const social = await getCollection('social')
       socialImage={socialImage}
     />
   </header>
-  <main itemprop='mainContentOfPage'>
-    <section class='mx-auto mb-20 max-w-7xl text-gray-800 dark:text-gray-100'>
-      <div class='block bg-white lg:my-8 dark:bg-gray-900'>
-        <div class='flex flex-wrap items-start'>
-          <div class='block w-full shrink-0 grow-0 basis-auto lg:flex lg:w-6/12 xl:w-4/12'>
-            <div class='w-full'>
+  <main itemprop="mainContentOfPage">
+    <section class="mx-auto mb-20 max-w-7xl text-gray-800 dark:text-gray-100">
+      <div class="block bg-white lg:my-8 dark:bg-gray-900">
+        <div class="flex flex-wrap items-start">
+          <div class="block w-full shrink-0 grow-0 basis-auto lg:flex lg:w-6/12 xl:w-4/12">
+            <div class="w-full">
               <Map loc={SiteMetadata.latlng} zoom={11} />
             </div>
           </div>
-          <div class='w-full shrink-0 grow-0 basis-auto lg:w-6/12 xl:w-8/12'>
-            <div class='flex flex-wrap pt-8 lg:pt-0'>
+          <div class="w-full shrink-0 grow-0 basis-auto lg:w-6/12 xl:w-8/12">
+            <div class="flex flex-wrap pt-8 lg:pt-0">
               {
                 social.map(
                   (method) =>
                     method.data.link && (
-                      <div class='mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:w-6/12 xl:px-12'>
-                        <div class='flex items-start'>
-                          <div class='shrink-0'>
+                      <div class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:w-6/12 xl:px-12">
+                        <div class="flex items-start">
+                          <div class="shrink-0">
                             <Icon
                               name={'bi:' + method.data.icon}
-                              class='flex h-14 w-14 items-center justify-center rounded-md bg-purple-600 p-4 text-white shadow-md'
+                              class="flex h-14 w-14 items-center justify-center rounded-md bg-purple-600 p-4 text-white shadow-md"
                             />
                           </div>
-                          <div class='ml-6 grow'>
-                            <p class='mb-1 font-bold'>{method.data.name}</p>
+                          <div class="ml-6 grow">
+                            <p class="mb-1 font-bold">{method.data.name}</p>
                             <p>
                               {' '}
                               <a
                                 href={method.data.link}
-                                class='text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300'
+                                class="text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300"
                               >
                                 {method.data.link}
                               </a>

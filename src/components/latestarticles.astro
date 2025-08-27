@@ -14,116 +14,116 @@ const newestPost = posts[0]
 const otherPosts = posts.slice(1, 5)
 ---
 
-<div class='bg-white dark:bg-gray-900'>
-  <div class='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-    <div class='mx-auto max-w-2xl py-8 sm:py-12 lg:max-w-none lg:py-16'>
-      <div class='flex flex-row items-center'>
-        <h2 class='text-2xl font-extrabold text-purple-800 md:text-4xl dark:text-purple-200'>
+<div class="bg-white dark:bg-gray-900">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl py-8 sm:py-12 lg:max-w-none lg:py-16">
+      <div class="flex flex-row items-center">
+        <h2 class="text-2xl font-extrabold text-purple-800 md:text-4xl dark:text-purple-200">
           Our Latest Articles
         </h2>
         <a
           href={import.meta.env.BASE_URL + 'blog'}
-          class='mt-2 ml-4 inline-block rounded-md bg-purple-600 px-2 py-2 text-base font-bold text-white hover:bg-pink-600 md:px-6 md:py-3 md:text-lg dark:bg-purple-300 dark:text-black dark:hover:bg-pink-300'
+          class="mt-2 ml-4 inline-block rounded-md bg-purple-600 px-2 py-2 text-base font-bold text-white hover:bg-pink-600 md:px-6 md:py-3 md:text-lg dark:bg-purple-300 dark:text-black dark:hover:bg-pink-300"
         >
           All Articles
         </a>
         <a
           href={import.meta.env.BASE_URL + 'categories'}
-          class='mt-2 ml-4 inline-block rounded-md bg-purple-100 px-2 py-2 text-base font-bold text-purple-800 hover:bg-pink-200 md:px-6 md:py-3 md:text-lg dark:bg-purple-900 dark:text-purple-100 dark:hover:bg-pink-900'
+          class="mt-2 ml-4 inline-block rounded-md bg-purple-100 px-2 py-2 text-base font-bold text-purple-800 hover:bg-pink-200 md:px-6 md:py-3 md:text-lg dark:bg-purple-900 dark:text-purple-100 dark:hover:bg-pink-900"
         >
           Categories
         </a>
         <a
           href={import.meta.env.BASE_URL + 'tags'}
-          class='mt-2 ml-4 inline-block rounded-md bg-purple-100 px-2 py-2 text-base font-bold text-purple-800 hover:bg-pink-200 md:px-6 md:py-3 md:text-lg dark:bg-purple-900 dark:text-purple-100 dark:hover:bg-pink-900'
+          class="mt-2 ml-4 inline-block rounded-md bg-purple-100 px-2 py-2 text-base font-bold text-purple-800 hover:bg-pink-200 md:px-6 md:py-3 md:text-lg dark:bg-purple-900 dark:text-purple-100 dark:hover:bg-pink-900"
         >
           Tags
         </a>
       </div>
-      <div class='mt-6 space-y-12 lg:grid lg:grid-cols-2 lg:gap-x-6 lg:space-y-0 xl:grid-cols-3'>
-        <div class='relative mb-4 block rounded p-4 lg:mb-0 lg:p-0 xl:col-span-2'>
+      <div class="mt-6 space-y-12 lg:grid lg:grid-cols-2 lg:space-y-0 lg:gap-x-6 xl:grid-cols-3">
+        <div class="relative mb-4 block rounded p-4 lg:mb-0 lg:p-0 xl:col-span-2">
           <a href={import.meta.env.BASE_URL + 'blog/' + newestPost.id}>
-            <span class='sr-only'>{newestPost.data.title}</span>
+            <span class="sr-only">{newestPost.data.title}</span>
             {
               newestPost.data.coverSVG ? (
                 <img
                   src={newestPost.data.coverSVG.src}
                   alt={newestPost.data.title + ' featured image'}
-                  class='h-64 w-full rounded-md bg-purple-100 object-cover md:h-80 dark:bg-purple-800'
-                  loading='lazy'
+                  class="h-64 w-full rounded-md bg-purple-100 object-cover md:h-80 dark:bg-purple-800"
+                  loading="lazy"
                 />
               ) : (
                 <Image
                   src={newestPost.data.coverImage || newestPost.data.socialImage || DefaultImage}
                   alt={newestPost.data.title + ' featured image'}
-                  class='h-64 w-full rounded-md bg-purple-100 object-cover md:h-80 dark:bg-purple-800'
-                  loading='lazy'
+                  class="h-64 w-full rounded-md bg-purple-100 object-cover md:h-80 dark:bg-purple-800"
+                  loading="lazy"
                 />
               )
             }
           </a>
-          <div class='mt-4'>
+          <div class="mt-4">
             {newestPost.data.categories && <Categories categories={newestPost.data.categories} />}
           </div>
           <a href={import.meta.env.BASE_URL + 'blog/' + newestPost.id}>
             <h1
-              class='mt-2 text-4xl leading-tight font-bold text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300'
+              class="mt-2 text-4xl leading-tight font-bold text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300"
             >
               {newestPost.data.title}
             </h1>
           </a>
           {
             newestPost.data.pubDate && (
-              <p class='mb-4 text-gray-600 dark:text-gray-400'>
+              <p class="mb-4 text-gray-600 dark:text-gray-400">
                 {newestPost.data.pubDate.toDateString()}
               </p>
             )
           }
-          <p class='mb-4 text-gray-600 dark:text-gray-400'>
+          <p class="mb-4 text-gray-600 dark:text-gray-400">
             {newestPost.data.description}
           </p>
           <a
             href={import.meta.env.BASE_URL + 'blog/' + newestPost.id}
-            class='mt-2 inline-block rounded-md bg-purple-600 px-6 py-3 text-white hover:bg-pink-600 dark:bg-purple-300 dark:text-black dark:hover:bg-pink-300'
+            class="mt-2 inline-block rounded-md bg-purple-600 px-6 py-3 text-white hover:bg-pink-600 dark:bg-purple-300 dark:text-black dark:hover:bg-pink-300"
           >
             Read more
-            <span class='sr-only'>{newestPost.data.title}</span>
+            <span class="sr-only">{newestPost.data.title}</span>
           </a>
         </div>
-        <div class='w-full'>
+        <div class="w-full">
           {
             otherPosts.map((post) => (
-              <div class='mb-10 w-full rounded md:grid md:grid-cols-3'>
+              <div class="mb-10 w-full rounded md:grid md:grid-cols-3">
                 <a href={new URL(import.meta.env.BASE_URL + 'blog/' + post.id, Astro.url)}>
                   {post.data.coverSVG ? (
                     <img
                       src={post.data.coverSVG.src}
                       alt={post.data.title + ' featured image'}
-                      class='block h-64 w-full rounded-md bg-purple-100 object-cover p-4 md:h-32 md:p-0 lg:block dark:bg-purple-800'
-                      loading='lazy'
+                      class="block h-64 w-full rounded-md bg-purple-100 object-cover p-4 md:h-32 md:p-0 lg:block dark:bg-purple-800"
+                      loading="lazy"
                     />
                   ) : (
                     <Image
                       src={post.data.coverImage || post.data.socialImage || DefaultImage}
                       alt={post.data.title + ' featured image'}
-                      class='block h-64 w-full rounded-md bg-purple-100 object-cover p-4 md:h-32 md:p-0 lg:block dark:bg-purple-800'
-                      loading='lazy'
+                      class="block h-64 w-full rounded-md bg-purple-100 object-cover p-4 md:h-32 md:p-0 lg:block dark:bg-purple-800"
+                      loading="lazy"
                     />
                   )}
                 </a>
-                <div class='rounded bg-white px-4 md:col-span-2 dark:bg-gray-800'>
+                <div class="rounded bg-white px-4 md:col-span-2 dark:bg-gray-800">
                   {post.data.categories && <Categories categories={post.data.categories} />}
                   <a href={import.meta.env.BASE_URL + 'blog/' + post.id}>
-                    <div class='text-xl font-semibold text-gray-800 md:mt-1 dark:text-gray-100'>
+                    <div class="text-xl font-semibold text-gray-800 md:mt-1 dark:text-gray-100">
                       {post.data.title}
                     </div>
                   </a>
                   {post.data.pubDate && (
-                    <p class='block text-sm text-gray-600 dark:text-gray-300'>
+                    <p class="block text-sm text-gray-600 dark:text-gray-300">
                       {post.data.pubDate.toDateString()}
                     </p>
                   )}
-                  <p class='block text-sm text-gray-600 md:hidden dark:text-gray-300'>
+                  <p class="block text-sm text-gray-600 md:hidden dark:text-gray-300">
                     {post.data.description}
                   </p>
                 </div>

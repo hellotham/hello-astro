@@ -15,21 +15,21 @@ const { post, prev, next } = Astro.props
 ---
 
 <Base frontmatter={post.data}>
-  <main class='dark:bg-black'>
-    <article class='post'>
+  <main class="dark:bg-black">
+    <article class="post">
       <header>
         <BlogHero {post} />
       </header>
       <section
-        class='prose prose-purple dark:prose-invert lg:prose-xl mx-auto my-8 max-w-(--breakpoint-lg) px-4 lg:px-0'
+        class="prose prose-purple dark:prose-invert lg:prose-xl mx-auto my-8 max-w-(--breakpoint-lg) px-4 lg:px-0"
       >
         {post.data.images && <Images images={post.data.images} />}
-        <slot itemprop='articleBody' />
+        <slot itemprop="articleBody" />
       </section>
     </article>
   </main>
   <NextPrev
-    slot='before-footer'
+    slot="before-footer"
     base={import.meta.env.BASE_URL + 'blog/'}
     prev={prev}
     next={next}

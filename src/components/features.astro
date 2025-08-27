@@ -29,39 +29,39 @@ const features = [
 ]
 ---
 
-<div class='bg-gray-100 py-12 dark:bg-gray-800'>
-  <div class='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-    <div class='lg:text-center'>
+<div class="bg-gray-100 py-12 dark:bg-gray-800">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="lg:text-center">
       <h2
-        class='text-base font-semibold tracking-wide text-purple-800 uppercase dark:text-purple-300'
+        class="text-base font-semibold tracking-wide text-purple-800 uppercase dark:text-purple-300"
       >
         Features
       </h2>
       <p
-        class='mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100'
+        class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100"
       >
         Comprehensive Astro Starter
       </p>
-      <p class='mt-4 max-w-2xl text-xl text-gray-600 lg:mx-auto dark:text-gray-300'>
+      <p class="mt-4 max-w-2xl text-xl text-gray-600 lg:mx-auto dark:text-gray-300">
         This is a good starting point for a multi-purpose website, including support for
         documentation and blog pages, photo galleries, diagrams, math equations and more.
       </p>
     </div>
 
-    <div class='mt-10'>
-      <dl class='space-y-10 md:grid md:grid-cols-2 md:gap-x-8 md:space-y-0 md:gap-y-10'>
+    <div class="mt-10">
+      <dl class="space-y-10 md:grid md:grid-cols-2 md:space-y-0 md:gap-x-8 md:gap-y-10">
         {
           features.map((feature) => (
-            <div class='relative'>
+            <div class="relative">
               <dt>
-                <div class='absolute flex h-12 w-12 items-center justify-center rounded-md bg-purple-500 text-white dark:bg-purple-400 dark:text-black'>
-                  <Icon class='h-6 w-6' aria-hidden='true' name={'heroicons:' + feature.icon} />
+                <div class="absolute flex h-12 w-12 items-center justify-center rounded-md bg-purple-500 text-white dark:bg-purple-400 dark:text-black">
+                  <Icon class="h-6 w-6" aria-hidden="true" name={'heroicons:' + feature.icon} />
                 </div>
-                <p class='ml-16 text-lg leading-6 font-medium text-gray-900 dark:text-gray-200'>
+                <p class="ml-16 text-lg leading-6 font-medium text-gray-900 dark:text-gray-200">
                   {feature.name}
                 </p>
               </dt>
-              <dd class='mt-2 ml-16 text-base text-gray-600 dark:text-gray-400'>
+              <dd class="mt-2 ml-16 text-base text-gray-600 dark:text-gray-400">
                 {feature.description}
               </dd>
             </div>

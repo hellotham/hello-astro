@@ -28,60 +28,60 @@ if (post.data.author) {
 }
 ---
 
-<section class='p-4 md:w-1/2 lg:w-1/3'>
+<section class="p-4 md:w-1/2 lg:w-1/3">
   <div
-    class='h-full overflow-hidden rounded-lg border border-gray-200 bg-white p-2 shadow-xl dark:border-gray-700 dark:bg-gray-800'
+    class="h-full overflow-hidden rounded-lg border border-gray-200 bg-white p-2 shadow-xl dark:border-gray-700 dark:bg-gray-800"
   >
     <a href={import.meta.env.BASE_URL + 'blog/' + post.id}>
       <Image
         src={image}
         alt={post.data.title + ' featured image'}
-        class='relative h-64 w-full overflow-hidden rounded-lg bg-purple-100 object-cover object-center group-hover:opacity-75 dark:bg-purple-800'
+        class="relative h-64 w-full overflow-hidden rounded-lg bg-purple-100 object-cover object-center group-hover:opacity-75 dark:bg-purple-800"
       />
-      <p itemprop='name' class='sr-only'>{post.data.title}</p>
+      <p itemprop="name" class="sr-only">{post.data.title}</p>
     </a>
-    <div class='p-6'>
+    <div class="p-6">
       {post.data.categories && <Categories categories={post.data.categories} />}
-      <a itemprop='url' href={import.meta.env.BASE_URL + 'blog/' + post.id}>
+      <a itemprop="url" href={import.meta.env.BASE_URL + 'blog/' + post.id}>
         <h1
-          itemprop='name'
-          class='title-font mt-2 text-xl font-bold text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300'
+          itemprop="name"
+          class="title-font mt-2 text-xl font-bold text-purple-600 hover:text-pink-600 dark:text-purple-300 dark:hover:text-pink-300"
         >
           {post.data.title}
         </h1>
       </a>
-      <div class='flex flex-wrap items-center'>
+      <div class="flex flex-wrap items-center">
         {
           post.data.pubDate && (
             <span
-              itemprop='datePublished'
-              class='mr-3 inline-flex items-center border-r-2 border-purple-200 py-1 pr-3 text-xs leading-none text-gray-500 dark:border-purple-600 dark:text-gray-400'
+              itemprop="datePublished"
+              class="mr-3 inline-flex items-center border-r-2 border-purple-200 py-1 pr-3 text-xs leading-none text-gray-500 dark:border-purple-600 dark:text-gray-400"
             >
-              <Icon class='mr-1 h-4 w-4' name='heroicons:calendar-days' />
+              <Icon class="mr-1 h-4 w-4" name="heroicons:calendar-days" />
               {post.data.pubDate.toDateString()}
             </span>
           )
         }
         {
           post.data.minutesRead && (
-            <span class='mr-3 inline-flex items-center border-r-2 border-purple-200 py-1 pr-3 text-xs leading-none text-gray-500 dark:border-purple-600 dark:text-gray-400'>
-              <Icon class='mr-1 h-4 w-4' name='heroicons:clock' />
+            <span class="mr-3 inline-flex items-center border-r-2 border-purple-200 py-1 pr-3 text-xs leading-none text-gray-500 dark:border-purple-600 dark:text-gray-400">
+              <Icon class="mr-1 h-4 w-4" name="heroicons:clock" />
               {post.data.minutesRead}
             </span>
           )
         }
         <span
-          itemprop='author'
-          class='inline-flex items-center text-xs leading-none text-gray-500 dark:text-gray-400'
+          itemprop="author"
+          class="inline-flex items-center text-xs leading-none text-gray-500 dark:text-gray-400"
         >
-          <Icon class='mr-1 h-4 w-4' name='heroicons:user-circle' />
+          <Icon class="mr-1 h-4 w-4" name="heroicons:user-circle" />
           {author!.data.title}
         </span>
       </div>
 
       <p
-        itemprop='abstract description'
-        class='mt-3 text-sm text-gray-600 italic dark:text-gray-300'
+        itemprop="abstract description"
+        class="mt-3 text-sm text-gray-600 italic dark:text-gray-300"
       >
         {post.data.description}
       </p>

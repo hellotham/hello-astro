@@ -49,7 +49,7 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
 }
 ---
 
-<Base frontmatter={frontmatter} schema='CollectionPage'>
+<Base frontmatter={frontmatter} schema="CollectionPage">
   <header>
     <PageHero
       title={frontmatter.title}
@@ -60,7 +60,7 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
       <PaginateControl base={currentPage} page={page} />
     </PageHero>
   </header>
-  <main itemprop='mainContentOfPage' class='mt-10 bg-gray-100 dark:bg-gray-900'>
+  <main itemprop="mainContentOfPage" class="mt-10 bg-gray-100 dark:bg-gray-900">
     <BlogRoll posts={page.data} />
   </main>
 </Base>

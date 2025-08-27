@@ -28,47 +28,47 @@ if (post.data.author) {
 }
 ---
 
-<div class='relative mx-auto my-4 h-96 w-full max-w-(--breakpoint-xl) md:mb-0'>
+<div class="relative mx-auto my-4 h-96 w-full max-w-(--breakpoint-xl) md:mb-0">
   <div
-    class='absolute bottom-0 left-0 z-10 h-full w-full bg-linear-to-t from-gray-700 xl:rounded-lg'
+    class="absolute bottom-0 left-0 z-10 h-full w-full bg-linear-to-t from-gray-700 xl:rounded-lg"
   >
   </div>
   <Image
-    itemprop='image'
+    itemprop="image"
     src={image}
-    alt='featured image'
-    class='absolute top-0 left-0 z-0 h-full w-full object-cover'
+    alt="featured image"
+    class="absolute top-0 left-0 z-0 h-full w-full object-cover"
   />
-  <div class='absolute bottom-0 left-0 z-20 p-4'>
+  <div class="absolute bottom-0 left-0 z-20 p-4">
     {post.data.categories && <Categories categories={post.data.categories} />}
-    <h2 class='text-4xl leading-tight font-bold text-white'>
+    <h2 class="text-4xl leading-tight font-bold text-white">
       {post.data.title}
     </h2>
-    <h2 class='text-xl font-medium text-purple-200 italic'>
+    <h2 class="text-xl font-medium text-purple-200 italic">
       {post.data.description}
     </h2>
-    <span class='mt-3 flex'>
-      <span class='mr-6 flex items-center'>
+    <span class="mt-3 flex">
+      <span class="mr-6 flex items-center">
         <Image
           src={author!.data.image}
           alt={author!.data.title}
-          class='mr-2 h-10 w-10 rounded-full object-cover'
+          class="mr-2 h-10 w-10 rounded-full object-cover"
         />
-        <span class='font-semibold text-purple-200'>{author!.data.title}</span>
+        <span class="font-semibold text-purple-200">{author!.data.title}</span>
       </span>
       {
         post.data.pubDate && (
-          <span class='mr-6 flex items-center'>
-            <Icon class='mr-1 h-6 w-6 text-purple-200' name='heroicons:calendar-days' />
-            <span class='ml-1 font-semibold text-purple-200'>{post.data.pubDate.toString()}</span>
+          <span class="mr-6 flex items-center">
+            <Icon class="mr-1 h-6 w-6 text-purple-200" name="heroicons:calendar-days" />
+            <span class="ml-1 font-semibold text-purple-200">{post.data.pubDate.toString()}</span>
           </span>
         )
       }
       {
         post.data.minutesRead && (
-          <span class='flex items-center'>
-            <Icon class='mr-1 h-6 w-6 text-purple-200' name='heroicons:clock' />
-            <span class='ml-1 font-semibold text-purple-200'>{post.data.minutesRead}</span>
+          <span class="flex items-center">
+            <Icon class="mr-1 h-6 w-6 text-purple-200" name="heroicons:clock" />
+            <span class="ml-1 font-semibold text-purple-200">{post.data.minutesRead}</span>
           </span>
         )
       }

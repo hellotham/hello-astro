@@ -18,22 +18,22 @@ import '../styles/global.css'
 ---
 
 <!doctype html>
-<html lang='en' itemscope itemtype={`https://schema.org/${schema}`}>
+<html lang="en" itemscope itemtype={`https://schema.org/${schema}`}>
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' href={`${Astro.site}favicon.ico`} sizes='any' />
-    <link rel='icon' href={`${Astro.site}favicon.svg`} type='image/svg+xml' />
-    <link rel='apple-touch-icon' href={`${Astro.site}apple-touchicon.png`} />
-    <link rel='manifest' href={`${Astro.site}site.webmanifest`} />
-    <link rel='sitemap' href={`${Astro.site}sitemap-indexxml`} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href={`${Astro.site}favicon.ico`} sizes="any" />
+    <link rel="icon" href={`${Astro.site}favicon.svg`} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={`${Astro.site}apple-touchicon.png`} />
+    <link rel="manifest" href={`${Astro.site}site.webmanifest`} />
+    <link rel="sitemap" href={`${Astro.site}sitemap-indexxml`} />
     <link
-      rel='alternate'
-      type='application/rss+xml'
+      rel="alternate"
+      type="application/rss+xml"
       title={SiteMetadata.title}
       href={`${Astro.site}rss.xml`}
     />
-    <meta name='generator' content={Astro.generator} />
+    <meta name="generator" content={Astro.generator} />
     <SEO frontmatter={frontmatter} />
     <script is:inline>
       const setDarkMode = () => {
@@ -61,24 +61,24 @@ import '../styles/global.css'
     {
       frontmatter.extra?.includes('math') && (
         <link
-          rel='stylesheet'
-          href='https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css'
-          integrity='sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI'
-          crossorigin='anonymous'
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+          integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+          crossorigin="anonymous"
         />
       )
     }
-    <slot name='in-head' />
+    <slot name="in-head" />
   </head>
-  <body class='dark:bg-gray-900'>
+  <body class="dark:bg-gray-900">
     <Header />
     <slot />
     {frontmatter.gallery && <Gallery folder={frontmatter.gallery} />}
-    <slot name='before-footer' />
+    <slot name="before-footer" />
     <Footer />
     {
       frontmatter.extra?.includes('markmap') && (
-        <script is:inline data-astro-rerun src='https://cdn.jsdelivr.net/npm/markmap-autoloader' />
+        <script is:inline data-astro-rerun src="https://cdn.jsdelivr.net/npm/markmap-autoloader" />
       )
     }
   </body>
