@@ -20,14 +20,12 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
       - name: Install, build, and upload your site
-        uses: withastro/action@v2
+        uses: withastro/action@v4
         # with:
-        #   package-manager: pnpm
-        #   node-version: 18
-          # path: . # The root location of your Astro project inside the repository. (optional)
+        #   package-manager: pnpm@latest
+        #   node-version: 22
+        # path: . # The root location of your Astro project inside the repository. (optional)
 
   deploy:
     needs: build

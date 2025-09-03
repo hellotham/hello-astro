@@ -256,3 +256,7 @@ All commands are run from the root of the project, from a terminal:
   - Updated prettier and eslint config
   - Fixed dark mode with Tailwind CSS 4
   - Used img-svg in rehype-mermaid
+- 5.1.0: Major changes:
+  - Migrated to astro-mermaid, astro-plantuml
+  - Fixed Tailwind 4 plugin support
+  - Updated Katex CSS to 0.16.22
