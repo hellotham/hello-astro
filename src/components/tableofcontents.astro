@@ -14,7 +14,7 @@ const { headings } = Astro.props as Props
 >
   On this page
 </h2>
-<ol role="list" class="mt-4 py-1 text-sm">
+<ol class="mt-4 py-1 text-sm">
   {
     headings
       .filter(({ depth }) => depth > 1 && depth < 4)

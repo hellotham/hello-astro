@@ -14,16 +14,13 @@ const currentPageMatch = currentPage.slice(1)
   class="hidden bg-purple-50 lg:sticky lg:top-16 lg:-ml-6 lg:block lg:h-[calc(100vh-4rem)] lg:flex-none lg:overflow-y-auto lg:py-16 lg:pl-6 dark:bg-gray-800"
 >
   <nav aria-labelledby="grid-left" class="w-64 pr-8 text-base lg:text-sm xl:w-72 xl:pr-16">
-    <ul role="list" class="space-y-9">
+    <ul class="space-y-9">
       {
         Object.entries(sidebar).map(([header, children]) => (
           <li>
             <div class="nav-group">
               <h2 class="font-display font-medium text-purple-800 dark:text-white">{header}</h2>
-              <ul
-                role="list"
-                class="mt-2 space-y-1 border-l-2 border-purple-200 lg:mt-4 lg:space-y-2 lg:border-purple-300 dark:border-purple-700"
-              >
+              <ul class="mt-2 space-y-1 border-l-2 border-purple-200 lg:mt-4 lg:space-y-2 lg:border-purple-300 dark:border-purple-700">
                 {children.map((child) => {
                   const url = import.meta.env.BASE_URL + child.link
                   return (

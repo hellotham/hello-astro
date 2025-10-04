@@ -268,3 +268,4 @@ All commands are run from the root of the project, from a terminal:
   - Updated Katex CSS to 0.16.23
   - Replaced bespoke leaflet integration with [Astro Leaflet](https://github.com/pascal-brand38/astro-leaflet)
   - Replaced bespoke Swiper integration with [Astro Swiper](https://github.com/pascal-brand38/astro-swiper)
+  - Updated eslint config and fixed lint errors

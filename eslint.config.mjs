@@ -4,8 +4,8 @@ import js from '@eslint/js'
 import tseslint from 'typescript-eslint'
 import astro from 'eslint-plugin-astro'
 import prettier from 'eslint-plugin-prettier'
+// import markdown from '@eslint/markdown'
 import * as mdx from 'eslint-plugin-mdx'
-// import markdown from "@eslint/markdown";
 
 // parsers
 const tsParser = tseslint.parser
@@ -58,20 +58,24 @@ export default defineConfig([
     }
   },
   // {
-  //   files: ["**/*.md"],
+  //   files: ['**/*.md'],
   //   plugins: {
-  //     markdown,
+  //     markdown
   //   },
-  //   extends: ["markdown/recommended"],
-  //   language: "markdown/gfm",
-  // languageOptions: {
-  // 	frontmatter: "yaml",
-  // },
+  //   language: 'markdown/gfm',
+  //   processor: 'markdown/markdown',
   //   rules: {
-  //     // "markdown/no-html": "error",
-  //   },
+  //     // Minimal rules for markdown to avoid conflicts
+  //     'no-html': 'off'
+  //   }
   // },
-  { ...mdx.flat },
+  {
+    ...mdx.flat,
+    rules: {
+      '@typescript-eslint/no-unused-expression': 'off',
+      '@typescript-eslint/no-unused-vars': 'off'
+    }
+  },
   // Ignore patterns
   {
     ignores: ['dist/**', '**/*.d.ts', '.github/']
