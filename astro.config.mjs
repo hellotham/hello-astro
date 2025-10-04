@@ -17,12 +17,7 @@ import markdoc from '@astrojs/markdoc'
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()],
-    ssr: {
-      external: ['svgo'],
-      noExternal: ['swiper']
-    },
-    optimizeDeps: { include: ['leaflet'] }
+    plugins: [tailwindcss()]
   },
   site: 'https://hellotham.github.io',
   base: '/hello-astro/',
@@ -39,7 +34,15 @@ export default defineConfig({
   markdown: {
     extendDefaultPlugins: true,
     remarkPlugins: [remarkReadingTime, remarkMath, remarkDiagram, remarkEmoji],
-    rehypePlugins: [rehypeKatex]
+    rehypePlugins: [rehypeKatex],
+    shikiConfig: {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark'
+      },
+      // Enable word wrap to prevent horizontal scrolling
+      wrap: true
+    }
   },
   scopedStyleStrategy: 'where'
 })
