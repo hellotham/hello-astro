@@ -5,7 +5,7 @@ import tseslint from 'typescript-eslint'
 import astro from 'eslint-plugin-astro'
 import prettier from 'eslint-plugin-prettier'
 import markdown from '@eslint/markdown'
-import * as mdx from 'eslint-plugin-mdx'
+// import * as mdx from 'eslint-plugin-mdx'
 
 // parsers
 const tsParser = tseslint.parser
@@ -69,13 +69,13 @@ export default defineConfig([
       'no-html': 'off'
     }
   },
-  {
-    ...mdx.flat,
-    rules: {
-      '@typescript-eslint/no-unused-expression': 'off',
-      '@typescript-eslint/no-unused-vars': 'off'
-    }
-  },
+  // {
+  //   ...mdx.flat,
+  //   rules: {
+  //     '@typescript-eslint/no-unused-expression': 'off',
+  //     '@typescript-eslint/no-unused-vars': 'off'
+  //   }
+  // },
   // Ignore patterns
   {
     ignores: ['dist/**', '**/*.d.ts', '.github/']
