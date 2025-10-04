@@ -2,14 +2,16 @@
 import 'photoswipe/style.css'
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
 import { Image } from 'astro:assets'
+import { Masonry } from 'astro-masonry'
 
 export interface Props {
   id: string
   images: ImageMetadata[]
   exifs?: Record<string, any>[]
+  grid?: boolean
 }
 
-const { id, images, exifs } = Astro.props
+const { id, images, exifs, grid = true } = Astro.props
 
 const imagetitles = images.map((image) => image.src.split('/').reverse()[0].split('.')[0])
 ---
@@ -37,40 +39,76 @@ const imagetitles = images.map((image) => image.src.split('/').reverse()[0].spli
   }
 </style>
 <lightbox-inner data-id={id}>
-  {
-    images.map((image, i) => (
-      <figure
-        itemscope
-        itemtype="http://schema.org/ImageObject"
-        class="my-1 inline-block rounded bg-gray-300 text-center text-sm text-gray-800 italic shadow-lg shadow-gray-400 lg:my-2 dark:bg-gray-800 dark:text-gray-300 dark:shadow-black"
-      >
-        <a
-          href={image.src}
-          itemprop="contentUrl"
-          data-pswp-width={image.width}
-          data-pswp-height={image.height}
+  <div id={id} itemscope itemtype="http://schema.org/ImageGallery">
+    {
+      grid ? (
+        <Masonry
+          breakpointCols={{
+            default: 4,
+            1280: 3,
+            1024: 2,
+            768: 1,
+            640: 1
+          }}
+          class="not-prose flex gap-4 px-4"
+          columnClass=""
         >
-          <Image
-            src={image}
-            alt={imagetitles[i]}
-            width={600}
-            height={(image.height * 600) / image.width}
-            format="webp"
-            class="rounded"
-          />
-          <span class="pswp-caption-content">
-            {imagetitles[i]}
-            {exifs && exifs[i] && <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model + ')'}</span>}
-          </span>
-        </a>
-        <figcaption itemprop="caption description" class="rounded">
-          {imagetitles[i]}
-        </figcaption>
-      </figure>
-    ))
-  }
+          {images.map((image, i) => (
+            <figure
+              itemscope
+              itemtype="http://schema.org/ImageObject"
+              class="my-2 inline-block rounded bg-gray-300 text-center text-sm text-gray-800 italic shadow-lg shadow-gray-400 dark:bg-gray-800 dark:text-gray-300 dark:shadow-black"
+            >
+              <a
+                href={image.src}
+                itemprop="contentUrl"
+                data-pswp-width={image.width}
+                data-pswp-height={image.height}
+              >
+                <Image
+                  src={image}
+                  alt={imagetitles[i]}
+                  width={600}
+                  height={(image.height * 600) / image.width}
+                  format="webp"
+                  class="rounded"
+                />
+                <span class="pswp-caption-content">
+                  {imagetitles[i]}
+                  {exifs && exifs[i] && (
+                    <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model + ')'}</span>
+                  )}
+                </span>
+              </a>
+              <figcaption itemprop="caption description" class="rounded">
+                {imagetitles[i]}
+              </figcaption>
+            </figure>
+          ))}
+        </Masonry>
+      ) : (
+        images.map((image, i) => (
+          <a
+            href={image.src}
+            itemprop="contentUrl"
+            data-pswp-width={image.width}
+            data-pswp-height={image.height}
+          >
+            <Image src={image} alt={imagetitles[i]} format="webp" class="rounded" />
+            <span class="pswp-caption-content">
+              {imagetitles[i]}
+              {exifs && exifs[i] && (
+                <span>{' (' + exifs[i].Make + ' ' + exifs[i].Model + ')'}</span>
+              )}
+            </span>
+          </a>
+        ))
+      )
+    }
+  </div>
 </lightbox-inner>
 <script>
+  import PhotoSwipe from 'photoswipe'
   import PhotoSwipeLightbox from 'photoswipe/lightbox'
   import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin'
 
@@ -82,9 +120,9 @@ const imagetitles = images.map((image) => image.src.split('/').reverse()[0].spli
 
       const lightbox = new PhotoSwipeLightbox({
         mainClass: 'pswp--custom-icon-colors',
-        gallerySelector: '#' + id,
-        childSelector: 'a',
-        pswpModule: () => import('photoswipe'),
+        gallery: '#' + id,
+        children: 'a',
+        pswpModule: PhotoSwipe,
         paddingFn: () => {
           return {
             top: 0,
@@ -103,6 +141,5 @@ const imagetitles = images.map((image) => image.src.split('/').reverse()[0].spli
       lightbox.init()
     }
   }
-
   customElements.define('lightbox-inner', LightboxInner)
 </script>

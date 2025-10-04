@@ -5,7 +5,7 @@ import { glob, file } from 'astro/loaders'
 
 // 2. Define your collections
 const blog = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
   schema: ({ image }) =>
     rssSchema.extend({
       draft: z.boolean().optional(),

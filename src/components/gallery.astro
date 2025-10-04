@@ -21,16 +21,10 @@ for (let i in folderFiles) {
   const exif = await exifr.parse(folderFiles[i].replace('../', './src/'))
   exifs.push(exif)
 }
+// console.log(imageSrcs)
 ---
 
 <p class="text-sm text-gray-500 italic sm:px-2 lg:px-4">
   Please click on any photo to view in a lightbox. Use arrow keys or swipe to navigate.
 </p>
-<div
-  id={gallery}
-  class="not-prose mx-auto block w-full columns-1 gap-2 sm:columns-2 lg:columns-3 lg:gap-4"
-  itemscope
-  itemtype="http://schema.org/ImageGallery"
->
-  <Lightbox id={gallery} images={imageSrcs} exifs={exifs} />
-</div>
+<Lightbox id={gallery} images={imageSrcs} exifs={exifs} />

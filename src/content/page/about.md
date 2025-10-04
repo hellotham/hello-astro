@@ -23,16 +23,14 @@ This is multi-purpose Astro starter template based on the following:
 - [AlpineJS](https://alpinejs.dev)
 - Local full text search using [Lunr](https://lunrjs.com)
 - Math equations using [KaTeX](https://katex.org) via [remark-math and rehype-katex](https://github.com/remarkjs/remark-math)
-- Diagrams using [Mermaid](https://mermaid-js.github.io/mermaid/#/), [Markmap](https://markmap.js.org) and [PlantUML](https://plantuml.com)
+- Diagrams using [Mermaid](https://mermaid-js.github.io/mermaid/#/) via [astro-mermaid](https://github.com/joesaby/astro-mermaid), [Markmap](https://markmap.js.org) and [PlantUML](https://plantuml.com) via [astro-plantuml](https://github.com/joesaby/astro-plantuml)
 - Open Street Map using [Leaflet](https://leafletjs.com/)
 - [reading-time](https://github.com/ngryman/reading-time)
 - [PhotoSwipe](https://photoswipe.com)
 - [exifr](https://mutiny.cz/exifr/)
 - [Swiper](https://swiperjs.com/)
 - [Remark Emoji](https://github.com/rhysd/remark-emoji)
-- [Remark PlantUML](https://github.com/akebifiky/remark-simple-plantuml)
-- [Rehype Mermaid](https://github.com/remcohaszing/rehype-mermaid)
-- [Expressive Code](https://expressive-code.com)
+- Masonry layout using [Astro Masonry](https://github.com/OlivierEstevez/astro-masonry)
 
 It follows the [JAMstack architecture](https://jamstack.org) by automatically building a static version from the Git repository. The demo is deployed on [Github Pages](https://pages.github.com).
 

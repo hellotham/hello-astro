@@ -32,6 +32,8 @@ Uses the following integrations:
 - astro-icon
 - astro-seo
 - astro-robots-txt
+- [astro-plantuml](https://github.com/joesaby/astro-plantuml)
+- [astro-mermaid](https://github.com/joesaby/astro-mermaid)
 
 In addition, SVG and PNG illustrations sourced from [Undraw](https://undraw.co)
 
@@ -54,7 +56,7 @@ This project initially started as a bare bones port of [hello-gatsby-starter](ht
 - Display map at geo coordinates and zoom level using `Map` component (need to also include `extra: ['map']` is frontmatter to load CSS/JS assets for page)
 - Calculates and show reading time for blog posts
 - CSS/JS assets of external libraries loaded only when needed on a per page and per package basis - no unnecessary bloat
-- Photo gallery and lightbox using PhotoSwipe (including display of EXIF tags)
+- Masonry Photo gallery and lightbox using PhotoSwipe (including display of EXIF tags)
 - Carousel component using Swiper
 - Documentation pages (modelled after astro docs starter but using Tailwind)
 
@@ -82,7 +84,7 @@ The start uses the following external packages:
 - [exifr](https://mutiny.cz/exifr/)
 - [Swiper](https://swiperjs.com/)
 - [Remark Emoji](https://github.com/rhysd/remark-emoji)
-- [Expressive Code](https://expressive-code.com)
+- Masonry layout using [Astro Masonry](https://github.com/OlivierEstevez/astro-masonry)
 
 It follows the [JAMstack architecture](https://jamstack.org) by automatically building a static version from the Git repository. The demo is deployed on Github Pages.
 
@@ -260,3 +262,7 @@ All commands are run from the root of the project, from a terminal:
   - Migrated to astro-mermaid, astro-plantuml
   - Fixed Tailwind 4 plugin support
   - Updated Katex CSS to 0.16.22
+- 5.2.0: Major changes:
+  - Improved photoswipe implementation
+  - replaced TailwindCSS masonry with astro-masonry
+  - Updated Katex CSS to 0.16.23

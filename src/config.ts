@@ -44,7 +44,7 @@ export const NavigationLinks = [
   { name: 'Docs', href: 'doc/introduction' }
 ]
 
-export const PAGE_SIZE = 6
+export const PAGE_SIZE = 8
 
 export const GITHUB_EDIT_URL = `https://github.com/hellotham/hello-astro`
 
