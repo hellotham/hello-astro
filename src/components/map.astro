@@ -1,4 +1,6 @@
 ---
+import { Leaflet } from 'astro-leaflet'
+
 export interface Props {
   text?: string
   loc: [number, number]
@@ -6,34 +8,13 @@ export interface Props {
 }
 
 const { text, loc, zoom } = Astro.props
-
-// import 'leaflet/dist/leaflet.css'
 ---
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" crossorigin="" />
-<map-inner data-text={text} data-lat={loc[0]} data-lng={loc[1]} data-zoom={zoom}></map-inner>
-<div id="map" class="mb-3 h-96"></div>
-<script>
-  import L from 'leaflet'
-
-  class MapInner extends HTMLElement {
-    constructor() {
-      super()
-
-      const loc: [number, number] = [Number(this.dataset.lat), Number(this.dataset.lng)]
-
-      const map = L.map('map', { scrollWheelZoom: false }).setView(loc, Number(this.dataset.zoom))
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map)
-      const marker = L.marker(loc).addTo(map)
-      if (this.dataset.text) {
-        marker.bindPopup(this.dataset.text || 'Location').openPopup()
-      }
-    }
-  }
-
-  customElements.define('map-inner', MapInner)
-</script>
+<Leaflet
+  options={{
+    tileByName: 'OSM',
+    center: loc,
+    zoom: zoom,
+    markers: [{ latlng: loc, options: { title: text } }]
+  }}
+/>

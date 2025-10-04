@@ -24,11 +24,11 @@ This is multi-purpose Astro starter template based on the following:
 - Local full text search using [Lunr](https://lunrjs.com)
 - Math equations using [KaTeX](https://katex.org) via [remark-math and rehype-katex](https://github.com/remarkjs/remark-math)
 - Diagrams using [Mermaid](https://mermaid-js.github.io/mermaid/#/) via [astro-mermaid](https://github.com/joesaby/astro-mermaid), [Markmap](https://markmap.js.org) and [PlantUML](https://plantuml.com) via [astro-plantuml](https://github.com/joesaby/astro-plantuml)
-- Open Street Map using [Leaflet](https://leafletjs.com/)
+- Open Street Map using [Leaflet](https://leafletjs.com/) via [Astro Leaflet](https://github.com/pascal-brand38/astro-leaflet)
 - [reading-time](https://github.com/ngryman/reading-time)
 - [PhotoSwipe](https://photoswipe.com)
 - [exifr](https://mutiny.cz/exifr/)
-- [Swiper](https://swiperjs.com/)
+- [Swiper](https://swiperjs.com/) via [Astro Swiper](https://github.com/pascal-brand38/astro-swiper)
 - [Remark Emoji](https://github.com/rhysd/remark-emoji)
 - Masonry layout using [Astro Masonry](https://github.com/OlivierEstevez/astro-masonry)
 

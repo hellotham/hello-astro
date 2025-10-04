@@ -35,6 +35,9 @@ importers:
       astro-icon:
         specifier: ^1.1.5
         version: 1.1.5
+      astro-leaflet:
+        specifier: ^1.8.1
+        version: 1.8.1
       astro-masonry:
         specifier: ^1.2.2
         version: 1.2.2
@@ -47,33 +50,21 @@ importers:
       astro-seo:
         specifier: ^0.8.4
         version: 0.8.4(prettier-plugin-astro@0.14.1)(prettier@3.6.2)(typescript@5.9.3)
+      astro-swiper:
+        specifier: ^1.1.0
+        version: 1.1.0
       hero-patterns:
         specifier: ^2.1.0
         version: 2.1.0
-      katex:
-        specifier: ^0.16.23
-        version: 0.16.23
-      leaflet:
-        specifier: ^1.9.4
-        version: 1.9.4
       lunr:
         specifier: ^2.3.9
         version: 2.3.9
-      mermaid:
-        specifier: ^11.12.0
-        version: 11.12.0
       photoswipe:
         specifier: ^5.4.4
         version: 5.4.4
       photoswipe-dynamic-caption-plugin:
         specifier: ^1.2.7
         version: 1.2.7
-      playwright:
-        specifier: ^1.55.1
-        version: 1.55.1
-      swiper:
-        specifier: ^12.0.2
-        version: 12.0.2
       tailwindcss:
         specifier: ^4.1.14
         version: 4.1.14
@@ -96,9 +87,6 @@ importers:
       '@types/alpinejs':
         specifier: ^3.13.11
         version: 3.13.11
-      '@types/leaflet':
-        specifier: ^1.9.20
-        version: 1.9.20
       '@typescript-eslint/parser':
         specifier: ^8.45.0
         version: 8.45.0(eslint@9.37.0(jiti@2.6.1))(typescript@5.9.3)
@@ -1411,6 +1399,9 @@ packages:
   astro-icon@1.1.5:
     resolution: {integrity: sha512-CJYS5nWOw9jz4RpGWmzNQY7D0y2ZZacH7atL2K9DeJXJVaz7/5WrxeyIxO8KASk1jCM96Q4LjRx/F3R+InjJrw==}
 
+  astro-leaflet@1.8.1:
+    resolution: {integrity: sha512-aemdhzI+SmxDBARBz7Azohy3EayQsciR1uQC+buY7PzJ7aYl4/Ib8798QNgUQ7VDY4Y0VogJceHS/RM36XH31A==}
+
   astro-masonry@1.2.2:
     resolution: {integrity: sha512-416VOoR+6dVjOyM2pxlQFj4AiFIV6NdA6WFUFqkVTitaG61o+5Sz0YTA20FAW7xnbIVWru9h6XIWNeEy3hiPmA==}
 
@@ -1434,6 +1425,9 @@ packages:
 
   astro-seo@0.8.4:
     resolution: {integrity: sha512-Ou1vzQSXAxa0K8rtNtXNvSpYqOGEgMhh0immMxJeXmbVZac3UKCNWAoXWyOQDFYsZvBugCRSg0N1phBqPMVgCw==}
+
+  astro-swiper@1.1.0:
+    resolution: {integrity: sha512-GYQZ2P1H4KiGf9P7boGfdXnSxap+7bYqirQwIyrrDCdwE16IF+33Ns9CNYhqoHoCeAnfmsd3tQ8vwenxD8/hFg==}
 
   astro@5.14.1:
     resolution: {integrity: sha512-gPa8NY7/lP8j8g81iy8UwANF3+aukKRWS68IlthZQNgykpg80ne6lbHOp6FErYycxQ1TUhgEfkXVDQZAoJx8Bg==}
@@ -2363,11 +2357,6 @@ packages:
   fs-minipass@2.1.0:
     resolution: {integrity: sha512-V/JgOLFCS+R6Vcq0slCuaeWEdNC3ouDlJMNIsacH2VtALiu9mV4LPrHc5cDl8k5aw6J8jwgWWpiTo5RYhmIzvg==}
     engines: {node: '>= 8'}
-
-  fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
-    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
-    os: [darwin]
 
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -3483,16 +3472,6 @@ packages:
   pkg-types@2.3.0:
     resolution: {integrity: sha512-SIqCzDRg0s9npO5XQ3tNZioRY1uK06lA41ynBC1YmFTmnY6FjUjVt6s4LoADmwoig1qqD0oK8h1p/8mlMx8Oig==}
 
-  playwright-core@1.55.1:
-    resolution: {integrity: sha512-Z6Mh9mkwX+zxSlHqdr5AOcJnfp+xUWLCt9uKV18fhzA8eyxUd8NUWzAjxUh55RZKSYwDGX0cfaySdhZJGMoJ+w==}
-    engines: {node: '>=18'}
-    hasBin: true
-
-  playwright@1.55.1:
-    resolution: {integrity: sha512-cJW4Xd/G3v5ovXtJJ52MAOclqeac9S/aGGgRzLabuF8TnIb6xHvMzKIa6JmrRzUkeXJgfL1MhukP0NK6l39h3A==}
-    engines: {node: '>=18'}
-    hasBin: true
-
   points-on-curve@0.2.0:
     resolution: {integrity: sha512-0mYKnYYe9ZcqMCWhUjItv/oHjvgEsfKvnUTg8sAtnHr3GVy7rGkXCb6d5cSyqrWqL4k81b9CPg3urd+T7aop3A==}
 
@@ -4040,8 +4019,8 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
-  swiper@12.0.2:
-    resolution: {integrity: sha512-y8F6fDGXmTVVgwqJj6I00l4FdGuhpFJn0U/9Ucn1MwWOw3NdLV8aH88pZOjyhBgU/6PyBlUx+JuAQ5KMWz906Q==}
+  swiper@11.2.10:
+    resolution: {integrity: sha512-RMeVUUjTQH+6N3ckimK93oxz6Sn5la4aDlgPzB+rBrG/smPdCTicXyhxa+woIpopz+jewEloiEE3lKo1h9w2YQ==}
     engines: {node: '>= 4.7.0'}
 
   synckit@0.11.11:
@@ -6073,6 +6052,11 @@ snapshots:
       - debug
       - supports-color
 
+  astro-leaflet@1.8.1:
+    dependencies:
+      '@types/leaflet': 1.9.20
+      leaflet: 1.9.4
+
   astro-masonry@1.2.2: {}
 
   astro-mermaid@1.1.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.4)(typescript@5.9.3)(yaml@2.8.1))(mermaid@11.12.0):
@@ -6103,6 +6087,10 @@ snapshots:
       - prettier
       - prettier-plugin-astro
       - typescript
+
+  astro-swiper@1.1.0:
+    dependencies:
+      swiper: 11.2.10
 
   astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.4)(typescript@5.9.3)(yaml@2.8.1):
     dependencies:
@@ -7342,9 +7330,6 @@ snapshots:
   fs-minipass@2.1.0:
     dependencies:
       minipass: 3.3.6
-
-  fsevents@2.3.2:
-    optional: true
 
   fsevents@2.3.3:
     optional: true
@@ -8849,14 +8834,6 @@ snapshots:
       exsolve: 1.0.7
       pathe: 2.0.3
 
-  playwright-core@1.55.1: {}
-
-  playwright@1.55.1:
-    dependencies:
-      playwright-core: 1.55.1
-    optionalDependencies:
-      fsevents: 2.3.2
-
   points-on-curve@0.2.0: {}
 
   points-on-path@0.2.1:
@@ -9549,7 +9526,7 @@ snapshots:
       csso: 5.0.5
       picocolors: 1.1.1
 
-  swiper@12.0.2: {}
+  swiper@11.2.10: {}
 
   synckit@0.11.11:
     dependencies:

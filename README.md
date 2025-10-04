@@ -56,8 +56,8 @@ This project initially started as a bare bones port of [hello-gatsby-starter](ht
 - Display map at geo coordinates and zoom level using `Map` component (need to also include `extra: ['map']` is frontmatter to load CSS/JS assets for page)
 - Calculates and show reading time for blog posts
 - CSS/JS assets of external libraries loaded only when needed on a per page and per package basis - no unnecessary bloat
-- Masonry Photo gallery and lightbox using PhotoSwipe (including display of EXIF tags)
-- Carousel component using Swiper
+- Masonry Photo gallery and lightbox using [PhotoSwipe](https://photoswipe.com) (including display of EXIF tags)
+- Carousel component using [Swiper](https://swiperjs.com/)
 - Documentation pages (modelled after astro docs starter but using Tailwind)
 
 ## External Packages
@@ -78,11 +78,11 @@ The start uses the following external packages:
 - Local full text search using [Lunr](https://lunrjs.com)
 - Math equations using [KaTeX](https://katex.org) via [remark-math and rehype-katex](https://github.com/remarkjs/remark-math)
 - Diagrams using [Mermaid](https://mermaid-js.github.io/mermaid/#/), [Markmap](https://markmap.js.org) and [PlantUML](https://plantuml.com)
-- Open Street Map using [Leaflet](https://leafletjs.com/)
+- Open Street Map using [Leaflet](https://leafletjs.com/) via [Astro Leaflet](https://github.com/pascal-brand38/astro-leaflet)
 - [reading-time](https://github.com/ngryman/reading-time)
 - [PhotoSwipe](https://photoswipe.com)
 - [exifr](https://mutiny.cz/exifr/)
-- [Swiper](https://swiperjs.com/)
+- [Swiper](https://swiperjs.com/) via [Astro Swiper](https://github.com/pascal-brand38/astro-swiper)
 - [Remark Emoji](https://github.com/rhysd/remark-emoji)
 - Masonry layout using [Astro Masonry](https://github.com/OlivierEstevez/astro-masonry)
 
@@ -266,3 +266,5 @@ All commands are run from the root of the project, from a terminal:
   - Improved photoswipe implementation
   - replaced TailwindCSS masonry with astro-masonry
   - Updated Katex CSS to 0.16.23
+  - Replaced bespoke leaflet integration with [Astro Leaflet](https://github.com/pascal-brand38/astro-leaflet)
+  - Replaced bespoke Swiper integration with [Astro Swiper](https://github.com/pascal-brand38/astro-swiper)
