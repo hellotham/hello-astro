@@ -21,6 +21,9 @@ export default defineConfig({
   },
   site: 'https://hellotham.github.io',
   base: '/hello-astro/',
+  image: {
+    layout: 'constrained'
+  },
   integrations: [
     icon(),
     sitemap(),
@@ -32,7 +35,6 @@ export default defineConfig({
     mermaid()
   ],
   markdown: {
-    extendDefaultPlugins: true,
     remarkPlugins: [remarkReadingTime, remarkMath, remarkDiagram, remarkEmoji],
     rehypePlugins: [rehypeKatex],
     shikiConfig: {
