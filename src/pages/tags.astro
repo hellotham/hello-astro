@@ -116,6 +116,8 @@ posts.forEach((post) => {
 })
 
 const tags = Array.from(tagmap.values())
+
+const baseUrl = import.meta.env.BASE_URL
 ---
 
 <Base frontmatter={frontmatter} schema="CollectionPage">
@@ -138,7 +140,7 @@ const tags = Array.from(tagmap.values())
         tags
           .sort((a, b) => b.count - a.count)
           .map((tag, i) => (
-            <a href={`${import.meta.env.BASE_URL}tag/${tag.tag}/`} class="group">
+            <a href={`${baseUrl}tag/${tag.tag}/`} class="group">
               <section
                 class="group relative h-24 w-full overflow-hidden rounded-lg bg-cover bg-center shadow-lg transition duration-300 ease-in-out hover:shadow-2xl"
                 style={{

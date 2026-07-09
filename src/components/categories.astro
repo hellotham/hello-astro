@@ -4,6 +4,8 @@ import { getEntries } from 'astro:content'
 const { categories } = Astro.props
 
 const cats = await getEntries(categories)
+
+const baseUrl = import.meta.env.BASE_URL
 ---
 
 {
@@ -12,7 +14,7 @@ const cats = await getEntries(categories)
       {cats.map((category) => (
         <a
           itemprop="articleSection"
-          href={`${import.meta.env.BASE_URL}category/${encodeURIComponent(category.id)}/`}
+          href={`${baseUrl}category/${encodeURIComponent(category.id)}/`}
           class="inline-block rounded bg-purple-600 px-3 py-1 text-xs font-medium tracking-tight text-white uppercase hover:bg-pink-600"
         >
           {category.data.title}

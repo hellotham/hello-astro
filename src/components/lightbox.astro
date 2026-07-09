@@ -113,12 +113,12 @@ const imagetitles = images.map((image) => image.src.split('/').reverse()[0].spli
   import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin'
 
   class LightboxInner extends HTMLElement {
-    constructor() {
-      super()
+    lightbox: PhotoSwipeLightbox | null = null
 
+    connectedCallback() {
       const id = this.dataset.id
 
-      const lightbox = new PhotoSwipeLightbox({
+      this.lightbox = new PhotoSwipeLightbox({
         mainClass: 'pswp--custom-icon-colors',
         gallery: '#' + id,
         children: 'a',
@@ -133,12 +133,19 @@ const imagetitles = images.map((image) => image.src.split('/').reverse()[0].spli
         }
       })
 
-      new PhotoSwipeDynamicCaption(lightbox, {
+      new PhotoSwipeDynamicCaption(this.lightbox, {
         captionContent: '.pswp-caption-content',
         type: 'below'
       })
 
-      lightbox.init()
+      this.lightbox.init()
+    }
+
+    disconnectedCallback() {
+      if (this.lightbox) {
+        this.lightbox.destroy()
+        this.lightbox = null
+      }
     }
   }
   customElements.define('lightbox-inner', LightboxInner)

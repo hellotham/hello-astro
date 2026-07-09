@@ -269,3 +269,9 @@ All commands are run from the root of the project, from a terminal:
   - Replaced bespoke leaflet integration with [Astro Leaflet](https://github.com/pascal-brand38/astro-leaflet)
   - Replaced bespoke Swiper integration with [Astro Swiper](https://github.com/pascal-brand38/astro-swiper)
   - Updated eslint config and fixed lint errors
+- 5.3.0: Major changes:
+  - Upgraded to Astro 7.X
+  - Upgraded to latest version of all dependencies via `pnpm refresh`
+  - Refactored `Lightbox` Custom Element using lifecycle callbacks (`connectedCallback`/`disconnectedCallback`) to prevent Client Router hydration/revisit bugs
+  - Resolved ESLint config warnings and missing packages (`@eslint/js`, `globals`)
+

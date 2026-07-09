@@ -54,6 +54,8 @@ const basefm: CollectionEntry<'page'>['data'] = {
   title: frontmatter.title,
   description: frontmatter.description
 }
+
+const baseUrl = import.meta.env.BASE_URL
 ---
 
 <Base frontmatter={basefm}>
@@ -70,7 +72,7 @@ const basefm: CollectionEntry<'page'>['data'] = {
         >
           <slot />
         </section>
-        <NextPrev base={import.meta.env.BASE_URL + 'doc/'} prev={prev} next={next} />
+        <NextPrev base={baseUrl + 'doc/'} prev={prev} next={next} />
       </PageContent>
     </div>
     <aside id="grid-right" class="grid-sidebar" title="Table of Contents">
