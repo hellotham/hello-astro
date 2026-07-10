@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
 import axios from 'axios'
-import { escapeHtml, satteriDiagram } from './satteri-diagram.mjs'
+import { escapeHtml, satteriDiagram } from '../../satteri-plugins/satteri-diagram.mjs'
 
 vi.mock('axios')
 

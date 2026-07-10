@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { satteriEmoji } from './satteri-emoji.mjs'
+import { satteriEmoji } from '../../satteri-plugins/satteri-emoji.mjs'
 
 describe('satteri-emoji utility tests', () => {
   it('initializes correctly', () => {

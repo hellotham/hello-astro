@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { satteriReadingTime } from './satteri-reading-time.mjs'
+import { satteriReadingTime } from '../../satteri-plugins/satteri-reading-time.mjs'
 
 describe('satteri-reading-time utility tests', () => {
   it('initializes and calculates reading time correctly', () => {

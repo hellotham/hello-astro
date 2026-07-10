@@ -290,4 +290,3 @@ All commands are run from the root of the project, from a terminal:
   - Migrated clientside search engine from Lunr to Pagefind, resulting in 99% faster indexing and lightweight search loads
   - Added live dynamic search-as-you-type with debounced fetching via Pagefind's JS API
   - Completely uninstalled and removed Alpine.js from the project, replacing all toggle components (header mobile navigation, theme selector dropdown, search slide-over) with native Vanilla JavaScript
-
