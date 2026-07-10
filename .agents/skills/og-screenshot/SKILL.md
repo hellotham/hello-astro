@@ -8,6 +8,7 @@ description: Capture website screenshots sized precisely for OG images (1200x630
 This skill provides instructions for taking screenshots of local or remote pages sized to standard Open Graph dimensions (1200x630).
 
 ## Prerequisites
+
 - The `chrome-devtools-mcp` server must be active.
 - A browser page must be open and loaded at the target URL.
 
