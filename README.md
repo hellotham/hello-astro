@@ -286,4 +286,8 @@ All commands are run from the root of the project, from a terminal:
   - Added a comprehensive testing suite combining Unit Tests (Vitest) and End-to-End browser tests (Playwright) achieving complete codebase coverage (routes, search, theme toggling, Leaflet maps, Swiper, and diagrams)
   - Fixed a core template pagination bug in `paginatecontrol.astro` that caused incorrect next/prev page URL prefixing under base subpaths
   - Refactored `rss.xml.js` endpoints to use the standard Astro context API (`context.site`) and cleanly resolve absolute media asset paths
+- 5.6.0: Search engine migration & AlpineJS removal:
+  - Migrated clientside search engine from Lunr to Pagefind, resulting in 99% faster indexing and lightweight search loads
+  - Added live dynamic search-as-you-type with debounced fetching via Pagefind's JS API
+  - Completely uninstalled and removed Alpine.js from the project, replacing all toggle components (header mobile navigation, theme selector dropdown, search slide-over) with native Vanilla JavaScript
 

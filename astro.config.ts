@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config'
 import sitemap from '@astrojs/sitemap'
 import mdx from '@astrojs/mdx'
 import tailwindcss from '@tailwindcss/vite'
-import alpinejs from '@astrojs/alpinejs'
 import robotsTxt from 'astro-robots-txt'
 import mermaid from 'astro-mermaid'
 import icon from 'astro-icon'
@@ -25,7 +24,7 @@ export default defineConfig({
   image: {
     layout: 'constrained'
   },
-  integrations: [icon(), sitemap(), alpinejs(), robotsTxt(), markdoc(), mdx(), mermaid()],
+  integrations: [icon(), sitemap(), robotsTxt(), markdoc(), mdx(), mermaid()],
   markdown: {
     processor: satteri({
       features: {

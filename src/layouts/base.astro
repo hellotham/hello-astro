@@ -19,7 +19,12 @@ import '../styles/global.css'
 ---
 
 <!doctype html>
-<html lang="en" itemscope itemtype={`https://schema.org/${schema}`}>
+<html
+  lang="en"
+  itemscope
+  itemtype={`https://schema.org/${schema}`}
+  data-base-url={import.meta.env.BASE_URL}
+>
   <head>
     <meta charset="UTF-8" />
     <meta

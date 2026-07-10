@@ -19,41 +19,38 @@ test.describe('Home Page E2E Tests', () => {
 
   test('should toggle dark/light theme correctly', async ({ page }) => {
     const htmlElement = page.locator('html')
-    const themeBtn = page.locator('button#menu-button')
+    const themeBtn = page.locator('button#theme-menu-button')
     await expect(themeBtn).toBeVisible()
 
     // Click theme button to open dropdown
     await themeBtn.click()
-    const darkOption = page.locator('li', { hasText: 'Dark' })
+    const darkOption = page.locator('li#theme-opt-dark')
     await expect(darkOption).toBeVisible()
 
-    // Select Dark mode and reload (triggered automatically by code reload)
+    // Select Dark mode and reload
     await darkOption.click()
     await expect(htmlElement).toHaveClass(/dark/)
 
     // Click theme button again, select Light mode
     await themeBtn.click()
-    const lightOption = page.locator('li', { hasText: 'Light' })
+    const lightOption = page.locator('li#theme-opt-light')
     await expect(lightOption).toBeVisible()
     await lightOption.click()
     await expect(htmlElement).not.toHaveClass(/dark/)
   })
 
   test('should execute full-text client search', async ({ page }) => {
-    const searchInput = page.locator('input#lunrsearch')
-    const searchButton = page.locator('button#lunrbutton')
-    const searchResultsModal = page.locator('#lunrsearchresults')
+    const searchInput = page.locator('input#search-input')
+    const resultsContainer = page.locator('#search-results')
 
     await expect(searchInput).toBeVisible()
-    await expect(searchButton).toBeVisible()
 
-    // Perform search query
+    // Perform search query (typing triggers live search)
     await searchInput.fill('mermaid')
-    await searchButton.click()
 
-    // Verify search modal is visible and contains search results
-    await expect(searchResultsModal).toBeVisible()
-    const resultItem = searchResultsModal.locator('li').first()
+    // Verify search modal results contain search results
+    await expect(resultsContainer).toBeVisible()
+    const resultItem = resultsContainer.locator('li').first()
     await expect(resultItem).toBeVisible()
     await expect(resultItem).toContainText(/Mermaid/)
   })

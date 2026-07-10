@@ -2,173 +2,96 @@
 import { Icon } from 'astro-icon/components'
 ---
 
-<script>
-  import lunr from 'lunr'
-  const w = window as unknown as Record<string, unknown>
-  w.lunr = lunr
-</script>
-<div
-  x-data={`
-{
-  searchResults: false,
-  searchText: '',
-  idx: null,
-  doc: null,
-  async lunr_search(term) {
-    if (!this.doc) {
-      const res = await fetch('${import.meta.env.BASE_URL + 'search-docs.json'}')
-      this.doc = await res.json()
-    }
-    if (!this.idx) {
-      const res = await fetch('${import.meta.env.BASE_URL + 'search-index.json'}')
-      const data = await res.json()
-      this.idx = lunr.Index.load(data)
-    }
-    document.getElementById('lunrsearchresults').innerHTML =
-      '<ul class="relative grid gap-6 bg-white dark:bg-gray-700 dark:text-gray-100 px-5 py-6 sm:gap-8 sm:p-8"></ul>'
-    if (term) {
-      document.getElementById('lunrsearchtitle').innerHTML =
-        "Search results for '" + term + "'"
-      const results = this.idx.search(term)
-      if (results.length > 0) {
-        for (var i = 0; i < results.length; i++) {
-          const url = results[i]['ref']
-          const doc = this.doc.filter(doc => doc.url == url)[0]
-          document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML =
-            document.querySelectorAll('#lunrsearchresults ul')[0]
-              .innerHTML +
-            '<li class="-m-3 p-3 flex items-start rounded-lg hover:bg-purple-200 dark:hover:bg-purple-900"><a href="' +
-            url +
-            '"><p class="text-base font-medium text-gray-900 dark:text-gray-100">' +
-            doc.title +
-            '<p><p class="mt-1 text-sm text-gray-500 dark:text-gray-400">' +
-            doc.description +
-            '</p></a></li>'
-        }
-      } else {
-        document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML =
-          'No results found...'
-      }
-    }
-
-    return false
-  },
-}
-`}
->
-  <div class="flex justify-center">
-    <div class="w-48">
-      <div class="input-group relative flex w-full items-stretch">
-        <input
-          type="search"
-          x-model="searchText"
-          class="form-control relative m-0 block w-full max-w-xs min-w-0 flex-auto rounded border border-solid border-purple-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-500 transition ease-in-out focus:border-purple-500 focus:text-gray-700 focus:outline-none dark:border-purple-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-purple-600 dark:focus:text-gray-100"
-          id="lunrsearch"
-          name="q"
-          maxlength="255"
-          value=""
-          placeholder="Search"
-          aria-label="Search"
-          aria-describedby="lunrbutton"
-        />
-        <button
-          class="btn inline-block items-center rounded bg-purple-600 px-2 py-2 text-xs leading-tight font-medium text-white uppercase shadow-md transition duration-150 ease-in-out hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:ring-0 focus:outline-none active:bg-purple-800 active:shadow-lg"
-          type="button"
-          name="search"
-          id="lunrbutton"
-          x-on:click="lunr_search(searchText); searchResults = true"
-          aria-label="Search Button"
+<div class="flex justify-center">
+  <div class="w-48">
+    <div class="input-group relative flex w-full items-stretch">
+      <input
+        type="search"
+        class="form-control relative m-0 block w-full max-w-xs min-w-0 flex-auto rounded border border-solid border-purple-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-500 transition ease-in-out focus:border-purple-500 focus:text-gray-700 focus:outline-none dark:border-purple-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-purple-600 dark:focus:text-gray-100"
+        id="search-input"
+        name="q"
+        maxlength="255"
+        value=""
+        placeholder="Search"
+        aria-label="Search"
+        aria-describedby="search-button"
+      />
+      <button
+        class="btn inline-block items-center rounded bg-purple-600 px-2 py-2 text-xs leading-tight font-medium text-white uppercase shadow-md transition duration-150 ease-in-out hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:ring-0 focus:outline-none active:bg-purple-800 active:shadow-lg"
+        type="button"
+        name="search"
+        id="search-button"
+        aria-label="Search Button"
+      >
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="search"
+          class="h-4 w-4"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
         >
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            data-icon="search"
-            class="h-4 w-4"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <path
-              fill="currentColor"
-              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-            ></path>
-          </svg>
-        </button>
-      </div>
+          <path
+            fill="currentColor"
+            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+          ></path>
+        </svg>
+      </button>
     </div>
   </div>
+</div>
+
+<div
+  id="search-modal"
+  class="relative z-50 hidden"
+  aria-labelledby="slide-over-title"
+  role="dialog"
+  aria-modal="true"
+>
   <div
-    x-show="searchResults"
-    x-cloak
-    class="relative z-50"
-    aria-labelledby="slide-over-title"
-    role="dialog"
-    aria-modal="true"
+    id="search-backdrop"
+    class="bg-opacity-75 fixed inset-0 bg-gray-500 opacity-0 transition-opacity duration-500 ease-in-out"
   >
-    <div
-      x-show="searchResults"
-      x-transition:enter="ease-in-out duration-500"
-      x-transition:enter-start="opacity-0"
-      x-transition:enter-end="opacity-100"
-      x-transition:leave="ease-in-out duration-500"
-      x-transition:leave-start="opacity-100"
-      x-transition:leave-end="opacity-0"
-      class="bg-opacity-75 fixed inset-0 bg-gray-500 transition-opacity"
-    >
-    </div>
+  </div>
 
-    <div class="fixed inset-0 overflow-hidden">
-      <div class="absolute inset-0 overflow-hidden">
-        <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+  <div class="fixed inset-0 overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+        <div
+          id="search-panel"
+          class="pointer-events-auto relative w-screen max-w-md translate-x-full transform transition duration-500 ease-in-out sm:duration-700"
+        >
           <div
-            x-show="searchResults"
-            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
-            x-transition:enter-start="translate-x-full"
-            x-transition:enter-end="translate-x-0"
-            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
-            x-transition:leave-start="translate-x-0"
-            x-transition:leave-end="translate-x-full"
-            class="pointer-events-auto relative w-screen max-w-md"
+            id="search-close-wrapper"
+            class="absolute top-0 left-0 -ml-8 flex pt-4 pr-2 opacity-0 transition-opacity duration-500 ease-in-out sm:-ml-10 sm:pr-4"
           >
-            <div
-              x-show="searchResults"
-              x-transition:enter="ease-in-out duration-500"
-              x-transition:enter-start="opacity-0"
-              x-transition:enter-end="opacity-100"
-              x-transition:leave="ease-in-out duration-500"
-              x-transition:leave-start="opacity-100"
-              x-transition:leave-end="opacity-0"
-              class="absolute top-0 left-0 -ml-8 flex pt-4 pr-2 sm:-ml-10 sm:pr-4"
+            <button
+              type="button"
+              class="rounded-md text-purple-300 hover:text-pink-300 focus:ring-2 focus:ring-white focus:outline-none"
+              id="search-close"
             >
-              <button
-                type="button"
-                class="rounded-md text-purple-300 hover:text-pink-300 focus:ring-2 focus:ring-white focus:outline-none"
-                x-on:click="searchResults = false"
-              >
-                <span class="sr-only">Close panel</span>
-                <Icon class="h-6 w-6" name="heroicons:x-mark" />
-              </button>
-            </div>
+              <span class="sr-only">Close panel</span>
+              <Icon class="h-6 w-6" name="heroicons:x-mark" />
+            </button>
+          </div>
 
-            <div
-              class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl dark:bg-gray-800"
-            >
-              <div class="px-4 sm:px-6">
-                <h2
-                  class="text-lg font-medium text-gray-900 dark:text-gray-100"
-                  id="lunrsearchtitle"
-                  class="modal-title"
-                >
-                  Search results
-                </h2>
-              </div>
-              <div id="lunrsearchmodal" class="relative mt-6 flex-1 px-4 sm:px-6">
+          <div
+            class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl dark:bg-gray-800"
+          >
+            <div class="px-4 sm:px-6">
+              <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100" id="search-title">
+                Search results
+              </h2>
+            </div>
+            <div class="relative mt-6 flex-1 px-4 sm:px-6">
+              <div class="ring-opacity-5 overflow-hidden rounded-lg shadow-lg ring-1 ring-black">
                 <div
-                  id="lunrsearchresults"
-                  class="ring-opacity-5 overflow-hidden rounded-lg shadow-lg ring-1 ring-black"
+                  id="search-results"
+                  class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 dark:bg-gray-700 dark:text-gray-100"
                 >
-                  <ul></ul>
+                  <ul class="w-full space-y-4"></ul>
                 </div>
               </div>
             </div>
@@ -178,16 +101,145 @@ import { Icon } from 'astro-icon/components'
     </div>
   </div>
 </div>
+
 <script>
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  let pagefind: any = null
+  let debounceTimeout: any = null
+
+  async function initPagefind() {
+    if (!pagefind) {
+      try {
+        const baseUrl = document.documentElement.dataset.baseUrl || '/'
+        pagefind = await import(/* @vite-ignore */ `${baseUrl}pagefind/pagefind.js`)
+        await pagefind.init()
+      } catch (err) {
+        console.error('Failed to load pagefind:', err)
+      }
+    }
+  }
+
+  function openModal() {
+    const modal = document.getElementById('search-modal')
+    const backdrop = document.getElementById('search-backdrop')
+    const panel = document.getElementById('search-panel')
+    const closeBtnWrapper = document.getElementById('search-close-wrapper')
+
+    if (modal && backdrop && panel && closeBtnWrapper) {
+      modal.classList.remove('hidden')
+      void modal.offsetWidth // Trigger reflow
+      backdrop.classList.remove('opacity-0')
+      backdrop.classList.add('opacity-100')
+      panel.classList.remove('translate-x-full')
+      panel.classList.add('translate-x-0')
+      closeBtnWrapper.classList.remove('opacity-0')
+      closeBtnWrapper.classList.add('opacity-100')
+    }
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('search-modal')
+    const backdrop = document.getElementById('search-backdrop')
+    const panel = document.getElementById('search-panel')
+    const closeBtnWrapper = document.getElementById('search-close-wrapper')
+
+    if (modal && backdrop && panel && closeBtnWrapper) {
+      backdrop.classList.remove('opacity-100')
+      backdrop.classList.add('opacity-0')
+      panel.classList.remove('translate-x-0')
+      panel.classList.add('translate-x-full')
+      closeBtnWrapper.classList.remove('opacity-100')
+      closeBtnWrapper.classList.add('opacity-0')
+
+      setTimeout(() => {
+        modal.classList.add('hidden')
+      }, 500)
+    }
+  }
+
+  async function performSearch(term: string) {
+    if (!term.trim()) {
+      closeModal()
+      return
+    }
+
+    await initPagefind()
+    if (!pagefind) return
+
+    openModal()
+    const titleEl = document.getElementById('search-title')
+    if (titleEl) {
+      titleEl.textContent = `Search results for '${term}'`
+    }
+
+    const resultsContainer = document.querySelector('#search-results ul')
+    if (resultsContainer) {
+      resultsContainer.innerHTML = '<p class="text-gray-500 dark:text-gray-400">Searching...</p>'
+    }
+
+    const searchResponse = await pagefind.search(term)
+
+    if (resultsContainer) {
+      if (searchResponse.results.length === 0) {
+        resultsContainer.innerHTML =
+          '<p class="text-gray-500 dark:text-gray-400">No results found...</p>'
+        return
+      }
+
+      // Load first 10 results in parallel
+      const resultsToLoad = searchResponse.results.slice(0, 10)
+      const resultsData = await Promise.all(resultsToLoad.map((r: any) => r.data()))
+
+      resultsContainer.innerHTML = resultsData
+        .map(
+          (doc: any) => `
+        <li class="-m-3 p-3 flex items-start rounded-lg hover:bg-purple-200 dark:hover:bg-purple-900 transition-colors">
+          <a href="${doc.url}" class="w-full">
+            <p class="text-base font-medium text-gray-900 dark:text-gray-100">${doc.meta.title || 'Untitled'}</p>
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">${doc.excerpt || ''}</p>
+          </a>
+        </li>
+      `
+        )
+        .join('')
+    }
+  }
+
   function setupSearch() {
-    const input = document.getElementById('lunrsearch')
+    const input = document.getElementById('search-input') as HTMLInputElement
+    const button = document.getElementById('search-button')
+    const closeBtn = document.getElementById('search-close')
+    const backdrop = document.getElementById('search-backdrop')
+
     if (input) {
-      input.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-          event.preventDefault()
-          document.getElementById('lunrbutton')?.click()
+      input.addEventListener('input', (e) => {
+        const val = (e.target as HTMLInputElement).value
+        clearTimeout(debounceTimeout)
+        debounceTimeout = setTimeout(() => {
+          performSearch(val)
+        }, 300)
+      })
+
+      input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault()
+          performSearch(input.value)
         }
       })
+    }
+
+    if (button) {
+      button.addEventListener('click', () => {
+        if (input) performSearch(input.value)
+      })
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeModal)
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeModal)
     }
   }
 
