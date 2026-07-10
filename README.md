@@ -282,3 +282,8 @@ All commands are run from the root of the project, from a terminal:
   - Optimized SEO JSON-LD Article generation to automatically distinguish between generic pages and blog posts
   - Migrated Sätteri PlantUML compile-time fetching from raster PNGs to direct embedded vector SVGs
   - Simplified flat ESLint/Prettier configuration directives to support global folder checks (`pnpm run lint`)
+- 5.5.0: Testing suite & core fixes:
+  - Added a comprehensive testing suite combining Unit Tests (Vitest) and End-to-End browser tests (Playwright) achieving complete codebase coverage (routes, search, theme toggling, Leaflet maps, Swiper, and diagrams)
+  - Fixed a core template pagination bug in `paginatecontrol.astro` that caused incorrect next/prev page URL prefixing under base subpaths
+  - Refactored `rss.xml.js` endpoints to use the standard Astro context API (`context.site`) and cleanly resolve absolute media asset paths
+
