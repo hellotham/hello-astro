@@ -41,7 +41,7 @@ const baseUrl = import.meta.env.BASE_URL
           aria-label="Pagination"
         >
           <a
-            href={page.url.prev ? baseUrl + page.url.prev.slice(1) : '#'}
+            href={page.url.prev || '#'}
             class:list={[
               'relative inline-flex items-center rounded-l-md border px-2 py-2 text-sm font-medium',
               page.url.prev
@@ -67,7 +67,7 @@ const baseUrl = import.meta.env.BASE_URL
             </a>
           ))}
           <a
-            href={page.url.next ? baseUrl + page.url.next.slice(1) : '#'}
+            href={page.url.next || '#'}
             class:list={[
               'relative inline-flex items-center rounded-r-md border px-2 py-2 text-sm font-medium',
               page.url.next
