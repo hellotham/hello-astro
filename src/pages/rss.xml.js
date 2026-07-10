@@ -14,7 +14,7 @@ export async function GET(context) {
     description: SiteMetadata.description,
     // base URL for RSS <item> links
     // SITE will use "site" from your project's astro.config.
-    site: import.meta.env.SITE,
+    site: context.site,
     xmlns: {
       media: 'http://search.yahoo.com/mrss/',
       atom: 'http://www.w3.org/2005/Atom'
@@ -49,8 +49,11 @@ export async function GET(context) {
           format: 'jpg'
         })
 
+        const siteStr = context.site.toString()
+        const cleanedSiteUrl = siteStr.endsWith('/') ? siteStr.slice(0, -1) : siteStr
+
         return {
-          link: import.meta.env.BASE_URL + '/blog/' + post.id,
+          link: `${import.meta.env.BASE_URL}blog/${post.id}/`,
           title: post.data.title,
           author: `${author.data.title} (${author.data.contact})`,
           description: post.data.description,
@@ -62,7 +65,7 @@ export async function GET(context) {
               width="${image.attributes.width}"
               height="${image.attributes.height}"
               medium="image"
-              url="${context.site + image.src.slice(1)}" />
+              url="${cleanedSiteUrl}${image.src}" />
             ${categories ? categories.map((category) => '<category>' + category.data.title + '</category>').join('\n') : ''}
       `
         }
