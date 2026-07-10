@@ -5,6 +5,7 @@ import SEO from '../components/seo.astro'
 import Header from '../components/header.astro'
 import Footer from '../components/footer.astro'
 import Gallery from '../components/gallery.astro'
+import MarkmapLoader from '../components/markmap.astro'
 import { SiteMetadata } from '../config'
 
 export interface Props {
@@ -21,11 +22,15 @@ import '../styles/global.css'
 <html lang="en" itemscope itemtype={`https://schema.org/${schema}`}>
   <head>
     <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.plantuml.com https://*.tile.openstreetmap.org; font-src 'self'; connect-src 'self';"
+    />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href={`${Astro.site}favicon.ico`} sizes="any" />
-    <link rel="icon" href={`${Astro.site}favicon.svg`} type="image/svg+xml" />
-    <link rel="apple-touch-icon" href={`${Astro.site}apple-touchicon.png`} />
-    <link rel="manifest" href={`${Astro.site}site.webmanifest`} />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} sizes="any" />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}apple-touchicon.png`} />
+    <link rel="manifest" href={`${import.meta.env.BASE_URL}site.webmanifest`} />
     <link rel="sitemap" href={`${Astro.site}sitemap-indexxml`} />
     <link
       rel="alternate"
@@ -58,16 +63,7 @@ import '../styles/global.css'
         height: 400px;
       }
     </style>
-    {
-      frontmatter.extra?.includes('math') && (
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/katex@0.16.23/dist/katex.min.css"
-          integrity="sha384-//SZkxyB7axjCAopkAL1E1rve+ZSPKapD89Lo/lLhcsXR+zOYl5z6zJZEFXil+q0"
-          crossorigin="anonymous"
-        />
-      )
-    }
+    {frontmatter.extra?.includes('math') && <style>@import "katex/dist/katex.min.css";</style>}
     <slot name="in-head" />
   </head>
   <body class="dark:bg-gray-900">
@@ -76,10 +72,6 @@ import '../styles/global.css'
     {frontmatter.gallery && <Gallery folder={frontmatter.gallery} />}
     <slot name="before-footer" />
     <Footer />
-    {
-      frontmatter.extra?.includes('markmap') && (
-        <script is:inline data-astro-rerun src="https://cdn.jsdelivr.net/npm/markmap-autoloader" />
-      )
-    }
+    {frontmatter.extra?.includes('markmap') && <MarkmapLoader />}
   </body>
 </html>

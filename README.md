@@ -137,12 +137,12 @@ All commands are run from the root of the project, from a terminal:
 
 | Command             | Action                                             |
 | :------------------ | :------------------------------------------------- |
-| `pnpm install`              | Installs dependencies                              |
+| `pnpm install`      | Installs dependencies                              |
 | `pnpm dev`          | Starts local dev server at `localhost:3000`        |
 | `pnpm build`        | Build your production site to `./dist/`            |
 | `pnpm preview`      | Preview your build locally, before deploying       |
 | `pnpm lint`         | Pretty print the source code                       |
-| `pnpm check`        | Check the source code for errors                   |                 |
+| `pnpm check`        | Check the source code for errors                   |     |
 | `pnpm astro ...`    | Run CLI commands like `astro add`, `astro preview` |
 | `pnpm astro --help` | Get help using the Astro CLI                       |
 
@@ -274,4 +274,11 @@ All commands are run from the root of the project, from a terminal:
   - Upgraded to latest version of all dependencies via `pnpm refresh`
   - Refactored `Lightbox` Custom Element using lifecycle callbacks (`connectedCallback`/`disconnectedCallback`) to prevent Client Router hydration/revisit bugs
   - Resolved ESLint config warnings and missing packages (`@eslint/js`, `globals`)
-
+- 5.4.0: Major changes & optimizations:
+  - Achieved 100% Lighthouse audit scores across all categories (Performance, Accessibility, Best Practices, SEO)
+  - Configured a secure manual `<meta>` Content Security Policy (CSP) tag to enable dynamic inline style attributes for Alpine.js, Leaflet, and Photoswipe while preventing browser warnings
+  - Shifted Lunr search indexing dependencies from external unpkg CDN to local ESM bundler imports, ensuring offline/private search execution
+  - Refactored Markmap scripts to run dynamically on client-side swap router events via a dedicated `<MarkmapLoader />` component to avoid JSX block compilation issues
+  - Optimized SEO JSON-LD Article generation to automatically distinguish between generic pages and blog posts
+  - Migrated Sätteri PlantUML compile-time fetching from raster PNGs to direct embedded vector SVGs
+  - Simplified flat ESLint/Prettier configuration directives to support global folder checks (`pnpm run lint`)

@@ -47,8 +47,8 @@ This starter is open source (MIT licence) - fork it and customise for your needs
 
 - Author content in a mix of Markdown, MDX and Markdoc
 - Full-featured blog with frontmatter (title, description, author, date, image, tags)
-- High performance low overhead with minimal Javascript (AlpineJS)
-- Full text client based search of blog pages via lunrjs (search index only loaded on first invocation of search on a page)
+- High performance low overhead with minimal Javascript (AlpineJS) - fully optimized to hit 100% scores on all Lighthouse audit categories
+- Full text client based search of blog pages via locally bundled lunrjs (avoiding external CDN loading, fully CSP compliant and offline-capable)
 - Index page and individual pages for authors, categories and tags, including pagination
 - Support for RSS feed, sitemap and robots.txt
 - SVG design (unDraw, Hero Patterns, Iconify)
@@ -57,7 +57,7 @@ This starter is open source (MIT licence) - fork it and customise for your needs
 - Full support for light and dark UI modes, as well as following system preferences, in accordance to TailwindCSS recommendation
 - Customised 404 error page
 - Display math equations using KaTeX via remark-math/rehype-katex (enclosed in `$`...`$` or `$$`...`$$`)
-- Display Mermaid, Markmap, PlantUML diagrams (authored as a code block with language `mermaid`, `markmap` and `plantuml`)
+- Display Mermaid, Markmap, PlantUML diagrams (authored as a code block with language `mermaid`, `markmap` and `plantuml`). PlantUML diagrams are compiled at build time into high-quality vector SVGs rather than raster PNGs.
 - Display map at geo coordinates and zoom level using `Map` component (need to also include `extra: ['map']` in frontmatter to load CSS/JS assets for page)
 - Calculates and show reading time for blog posts
 - CSS/JS assets of external libraries loaded only when needed on a per page and per package basis - no unnecessary bloat

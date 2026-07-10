@@ -2,7 +2,11 @@
 import { Icon } from 'astro-icon/components'
 ---
 
-<script is:inline src="https://unpkg.com/lunr/lunr.min.js"></script>
+<script>
+  import lunr from 'lunr'
+  const w = window as unknown as Record<string, unknown>
+  w.lunr = lunr
+</script>
 <div
   x-data={`
 {
@@ -174,18 +178,19 @@ import { Icon } from 'astro-icon/components'
     </div>
   </div>
 </div>
-<script is:inline>
-  // Get the input field
-  const input = document.getElementById('lunrsearch')
-
-  // Execute a function when the user presses a key on the keyboard
-  input.addEventListener('keypress', function (event) {
-    // If the user presses the "Enter" key on the keyboard
-    if (event.key === 'Enter') {
-      // Cancel the default action, if needed
-      event.preventDefault()
-      // Trigger the button element with a click
-      document.getElementById('lunrbutton').click()
+<script>
+  function setupSearch() {
+    const input = document.getElementById('lunrsearch')
+    if (input) {
+      input.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+          event.preventDefault()
+          document.getElementById('lunrbutton')?.click()
+        }
+      })
     }
-  })
+  }
+
+  setupSearch()
+  document.addEventListener('astro:after-swap', setupSearch)
 </script>

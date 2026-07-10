@@ -29,7 +29,7 @@ const { post, prev, next } = Astro.props
 
 const { Content, remarkPluginFrontmatter } = await render(post)
 let fm = post.data
-const rfm = remarkPluginFrontmatter as CollectionEntry<'blog'>['data']
+const rfm = remarkPluginFrontmatter as any
 if (rfm) {
   fm.minutesRead = rfm.minutesRead
   fm.extra = rfm.extra

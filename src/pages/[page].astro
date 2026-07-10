@@ -9,7 +9,12 @@ export interface Props {
 
 const { page } = Astro.props
 
-const { Content } = await render(page)
+const { Content, remarkPluginFrontmatter } = await render(page)
+let fm = page.data
+const rfm = remarkPluginFrontmatter as any
+if (rfm) {
+  fm.extra = rfm.extra
+}
 
 export async function getStaticPaths() {
   const pages = await getCollection('page')

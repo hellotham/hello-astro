@@ -49,10 +49,11 @@ docs.forEach((doc, i) => {
     }
   }
 })
-const basefm: CollectionEntry<'page'>['data'] = {
+const basefm: any = {
   // draft: frontmatter.draft,
   title: frontmatter.title,
-  description: frontmatter.description
+  description: frontmatter.description,
+  extra: (frontmatter as any).extra
 }
 
 const baseUrl = import.meta.env.BASE_URL

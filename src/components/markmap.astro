@@ -1,0 +1,27 @@
+---
+
+---
+
+<script>
+  import { Transformer } from 'markmap-lib'
+  import { Markmap } from 'markmap-view'
+
+  function initMarkmaps() {
+    const divs = document.querySelectorAll('.markmap')
+    divs.forEach((div) => {
+      const markdown = div.textContent || ''
+      div.innerHTML = ''
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+      div.appendChild(svg)
+
+      const transformer = new Transformer()
+      const { root } = transformer.transform(markdown)
+      Markmap.create(svg, undefined, root)
+    })
+  }
+
+  // Initial load
+  initMarkmaps()
+  // Astro View Transitions page swap
+  document.addEventListener('astro:after-swap', initMarkmaps)
+</script>

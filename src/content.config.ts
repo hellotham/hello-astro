@@ -18,13 +18,13 @@ const blog = defineCollection({
       gallery: z.string().optional(),
       categories: z.array(reference('category')).optional(),
       tags: z.array(z.string()).optional(),
-      extra: z.array(z.enum(['math', 'markmap', 'mermaid', 'gallery'])).optional(),
-      minutesRead: z.string().optional()
+      minutesRead: z.string().optional(),
+      extra: z.array(z.string()).optional()
     })
 })
 
 const page = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/page' }),
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/page' }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -37,7 +37,7 @@ const page = defineCollection({
       images: z.array(image()).optional(),
       gallery: z.string().optional(),
       tags: z.array(z.string()).optional(),
-      extra: z.array(z.enum(['math', 'markmap', 'mermaid', 'gallery'])).optional()
+      extra: z.array(z.string()).optional()
     })
 })
 const doc = defineCollection({
@@ -50,7 +50,8 @@ const doc = defineCollection({
       title: z.string(),
       description: z.string(),
       images: z.array(image()).optional(),
-      gallery: z.string().optional()
+      gallery: z.string().optional(),
+      extra: z.array(z.string()).optional()
     })
 })
 

@@ -2,4 +2,4 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@plugin "@tailwindcss/typography";
+@plugin '@tailwindcss/typography';

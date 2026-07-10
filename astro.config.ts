@@ -4,22 +4,20 @@ import mdx from '@astrojs/mdx'
 import tailwindcss from '@tailwindcss/vite'
 import alpinejs from '@astrojs/alpinejs'
 import robotsTxt from 'astro-robots-txt'
-import plantuml from 'astro-plantuml'
 import mermaid from 'astro-mermaid'
-import remarkMath from 'remark-math'
-import remarkEmoji from 'remark-emoji'
-import rehypeKatex from 'rehype-katex'
-import { remarkReadingTime } from './remark-plugins/remark-reading-time.mjs'
-import { remarkDiagram } from './remark-plugins/remark-diagram.mjs'
 import icon from 'astro-icon'
 import markdoc from '@astrojs/markdoc'
+import { satteri } from '@astrojs/markdown-satteri'
+import { satteriReadingTime } from './satteri-plugins/satteri-reading-time.mjs'
+import { satteriDiagram } from './satteri-plugins/satteri-diagram.mjs'
+import { satteriEmoji } from './satteri-plugins/satteri-emoji.mjs'
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {
-      include: ['astro-leaflet > leaflet'],
+      include: ['astro-leaflet > leaflet']
     }
   },
   site: 'https://hellotham.github.io',
@@ -27,19 +25,14 @@ export default defineConfig({
   image: {
     layout: 'constrained'
   },
-  integrations: [
-    icon(),
-    sitemap(),
-    alpinejs(),
-    robotsTxt(),
-    markdoc(),
-    mdx(),
-    plantuml(),
-    mermaid()
-  ],
+  integrations: [icon(), sitemap(), alpinejs(), robotsTxt(), markdoc(), mdx(), mermaid()],
   markdown: {
-    remarkPlugins: [remarkReadingTime, remarkMath, remarkDiagram, remarkEmoji],
-    rehypePlugins: [rehypeKatex],
+    processor: satteri({
+      features: {
+        math: true
+      },
+      mdastPlugins: [satteriReadingTime(), satteriDiagram(), satteriEmoji()]
+    }),
     shikiConfig: {
       themes: {
         light: 'github-light',

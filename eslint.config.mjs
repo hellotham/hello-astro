@@ -69,15 +69,15 @@ export default defineConfig([
       'no-html': 'off'
     }
   },
-  // {
-  //   ...mdx.flat,
-  //   rules: {
-  //     '@typescript-eslint/no-unused-expression': 'off',
-  //     '@typescript-eslint/no-unused-vars': 'off'
-  //   }
-  // },
   // Ignore patterns
   {
-    ignores: ['dist/**', '**/*.d.ts', '.github/']
+    ignores: [
+      'dist/**',
+      '.astro/**',
+      'node_modules/**',
+      'pnpm-lock.yaml',
+      '**/*.d.ts',
+      '.github/**'
+    ]
   }
 ])
