@@ -13,12 +13,16 @@
     "lint:prettier": "prettier --write .",
     "lint:eslint": "eslint --fix .",
     "refresh": "pnpm dlx @astrojs/upgrade; pnpm up -L",
+    "test": "pnpm run test:unit && pnpm run test:e2e",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
     "astro": "astro"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@eslint/js": "^10.0.1",
     "@eslint/markdown": "^8.0.3",
+    "@playwright/test": "^1.61.1",
     "@tailwindcss/typography": "^0.5.20",
     "@types/alpinejs": "^3.13.11",
     "eslint": "^10.6.0",
@@ -32,7 +36,8 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.63.0"
+    "typescript-eslint": "^8.63.0",
+    "vitest": "^4.1.10"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^1.0.0",

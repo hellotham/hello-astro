@@ -81,7 +81,9 @@ export default defineConfig([
       'node_modules/**',
       'pnpm-lock.yaml',
       '**/*.d.ts',
-      '.github/**'
+      '.github/**',
+      'playwright-report/**',
+      'test-results/**'
     ]
   }
 ])
