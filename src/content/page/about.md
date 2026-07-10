@@ -20,16 +20,14 @@ This is multi-purpose Astro starter template based on the following:
 - [Schema.org](https://schema.org/) and [JSON for Linking Data](https://json-ld.org/), type-checked using [schema-dts](https://github.com/google/schema-dts)
 - [Open Graph](https://ogp.me/) used by [Facebook](https://developers.facebook.com/docs/sharing/webmasters/#markup)
 - [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards)
-- [AlpineJS](https://alpinejs.dev)
-- Local full text search using [Lunr](https://lunrjs.com)
-- Math equations using [KaTeX](https://katex.org) via [remark-math and rehype-katex](https://github.com/remarkjs/remark-math)
-- Diagrams using [Mermaid](https://mermaid-js.github.io/mermaid/#/) via [astro-mermaid](https://github.com/joesaby/astro-mermaid), [Markmap](https://markmap.js.org) and [PlantUML](https://plantuml.com) via [astro-plantuml](https://github.com/joesaby/astro-plantuml)
+- Local full text search using [Pagefind](https://pagefind.app)
+- Math equations using [KaTeX](https://katex.org) via [Sätteri](https://github.com/satteri/satteri) markdown processor
+- Diagrams using [Mermaid](https://mermaid-js.github.io/mermaid/#/) via [astro-mermaid](https://github.com/joesaby/astro-mermaid), [Markmap](https://markmap.js.org) and [PlantUML](https://plantuml.com) via custom [Sätteri](https://github.com/satteri/satteri) diagram plugins
 - Open Street Map using [Leaflet](https://leafletjs.com/) via [Astro Leaflet](https://github.com/pascal-brand38/astro-leaflet)
 - [reading-time](https://github.com/ngryman/reading-time)
 - [PhotoSwipe](https://photoswipe.com)
 - [exifr](https://mutiny.cz/exifr/)
 - [Swiper](https://swiperjs.com/) via [Astro Swiper](https://github.com/pascal-brand38/astro-swiper)
-- [Remark Emoji](https://github.com/rhysd/remark-emoji)
 - Masonry layout using [Astro Masonry](https://github.com/OlivierEstevez/astro-masonry)
 
 It follows the [JAMstack architecture](https://jamstack.org) by automatically building a static version from the Git repository. The demo is deployed on [Github Pages](https://pages.github.com).
@@ -47,8 +45,8 @@ This starter is open source (MIT licence) - fork it and customise for your needs
 
 - Author content in a mix of Markdown, MDX and Markdoc
 - Full-featured blog with frontmatter (title, description, author, date, image, tags)
-- High performance low overhead with minimal Javascript (AlpineJS) - fully optimized to hit 100% scores on all Lighthouse audit categories
-- Full text client based search of blog pages via locally bundled lunrjs (avoiding external CDN loading, fully CSP compliant and offline-capable)
+- High performance low overhead with minimal Javascript (Vanilla JS) - fully optimized to hit 100% scores on all Lighthouse audit categories
+- Full text client based search of blog pages via Pagefind client-side search (avoiding external CDN loading, fully CSP compliant and offline-capable)
 - Index page and individual pages for authors, categories and tags, including pagination
 - Support for RSS feed, sitemap and robots.txt
 - SVG design (unDraw, Hero Patterns, Iconify)
@@ -56,7 +54,7 @@ This starter is open source (MIT licence) - fork it and customise for your needs
 - Full SEO support including Open Graph, Twitter Cards and Schema.org via JSON-LD
 - Full support for light and dark UI modes, as well as following system preferences, in accordance to TailwindCSS recommendation
 - Customised 404 error page
-- Display math equations using KaTeX via remark-math/rehype-katex (enclosed in `$`...`$` or `$$`...`$$`)
+- Display math equations using KaTeX via the Sätteri markdown processor (enclosed in `$`...`$` or `$$`...`$$`)
 - Display Mermaid, Markmap, PlantUML diagrams (authored as a code block with language `mermaid`, `markmap` and `plantuml`). PlantUML diagrams are compiled at build time into high-quality vector SVGs rather than raster PNGs.
 - Display map at geo coordinates and zoom level using `Map` component (need to also include `extra: ['map']` in frontmatter to load CSS/JS assets for page)
 - Calculates and show reading time for blog posts

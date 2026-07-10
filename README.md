@@ -28,7 +28,6 @@ Uses the following integrations:
 - @astrojs/sitemap
 - @astrojs/rss
 - @astrojs/tailwind
-- @astrojs/alpinejs
 - astro-icon
 - astro-seo
 - astro-robots-txt
@@ -42,8 +41,8 @@ This project initially started as a bare bones port of [hello-gatsby-starter](ht
 ## Features
 
 - Full-featured blog with frontmatter (title, description, author, date, image, tags)
-- High performance low overhead with minimal Javascript (AlpineJS)
-- Full text client based search of blog pages via lunrjs (search index only loaded on first invocation of search on a page)
+- High performance low overhead with minimal Javascript (Vanilla JS)
+- Full text client based search of blog pages via Pagefind (live dynamic search as you type)
 - Index page and individual pages for authors, categories and tags, including pagination
 - Support for RSS feed, sitemap and robots.txt
 - SVG design (unDraw, Hero Patterns, Iconify)
@@ -51,7 +50,7 @@ This project initially started as a bare bones port of [hello-gatsby-starter](ht
 - Full SEO support including Open Graph, Twitter Cards and Schema.org via JSON-LD
 - Full support for Light and dark UI modes, as well as following system preferences, in accordance to TailwindCSS recommendation
 - Customised 404 error page
-- Display math equations using KaTeX via remark-math/rehype-katex (enclosed in `$`...`$` or `$$`...`$$`)
+- Display math equations using KaTeX via the Sätteri markdown processor (enclosed in `$`...`$` or `$$`...`$$`)
 - Display Mermaid, Markmap, PlantUML diagrams (authored as a code block with language `mermaid`, `markmap` and `plantuml`)
 - Display map at geo coordinates and zoom level using `Map` component (need to also include `extra: ['map']` is frontmatter to load CSS/JS assets for page)
 - Calculates and show reading time for blog posts
@@ -74,10 +73,9 @@ The start uses the following external packages:
 - [Schema.org](https://schema.org/) and [JSON for Linking Data](https://json-ld.org/), type-checked using [schema-dts](https://github.com/google/schema-dts)
 - [Open Graph](https://ogp.me/) used by [Facebook](https://developers.facebook.com/docs/sharing/webmasters/#markup)
 - [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards)
-- [AlpineJS](https://alpinejs.dev)
-- Local full text search using [Lunr](https://lunrjs.com)
-- Math equations using [KaTeX](https://katex.org) via [remark-math and rehype-katex](https://github.com/remarkjs/remark-math)
-- Diagrams using [Mermaid](https://mermaid-js.github.io/mermaid/#/), [Markmap](https://markmap.js.org) and [PlantUML](https://plantuml.com)
+- Local full text search using [Pagefind](https://pagefind.app)
+- Math equations using [KaTeX](https://katex.org) via [Sätteri](https://github.com/satteri/satteri) markdown processor
+- Diagrams using [Mermaid](https://mermaid-js.github.io/mermaid/#/), [Markmap](https://markmap.js.org) and [PlantUML](https://plantuml.com) via custom [Sätteri](https://github.com/satteri/satteri) diagram plugins
 - Open Street Map using [Leaflet](https://leafletjs.com/) via [Astro Leaflet](https://github.com/pascal-brand38/astro-leaflet)
 - [reading-time](https://github.com/ngryman/reading-time)
 - [PhotoSwipe](https://photoswipe.com)
@@ -276,17 +274,16 @@ All commands are run from the root of the project, from a terminal:
   - Resolved ESLint config warnings and missing packages (`@eslint/js`, `globals`)
 - 5.4.0: Major changes & optimizations:
   - Achieved 100% Lighthouse audit scores across all categories (Performance, Accessibility, Best Practices, SEO)
-  - Configured a secure manual `<meta>` Content Security Policy (CSP) tag to enable dynamic inline style attributes for Alpine.js, Leaflet, and Photoswipe while preventing browser warnings
+  - Configured a secure manual `<meta>` Content Security Policy (CSP) tag to enable dynamic inline style attributes for Leaflet and Photoswipe while preventing browser warnings
   - Shifted Lunr search indexing dependencies from external unpkg CDN to local ESM bundler imports, ensuring offline/private search execution
   - Refactored Markmap scripts to run dynamically on client-side swap router events via a dedicated `<MarkmapLoader />` component to avoid JSX block compilation issues
   - Optimized SEO JSON-LD Article generation to automatically distinguish between generic pages and blog posts
   - Migrated Sätteri PlantUML compile-time fetching from raster PNGs to direct embedded vector SVGs
   - Simplified flat ESLint/Prettier configuration directives to support global folder checks (`pnpm run lint`)
-- 5.5.0: Testing suite & core fixes:
+- 6.0.0: Major upgrades, testing suite & Pagefind migration:
   - Added a comprehensive testing suite combining Unit Tests (Vitest) and End-to-End browser tests (Playwright) achieving complete codebase coverage (routes, search, theme toggling, Leaflet maps, Swiper, and diagrams)
+  - Migrated client-side search engine from Lunr to Pagefind, introducing live, debounced search-as-you-type and reducing asset weight
+  - Completely removed Alpine.js from the project, refactoring the header mobile navigation, theme selector dropdown, and search slide-over to use native Vanilla JavaScript
   - Fixed a core template pagination bug in `paginatecontrol.astro` that caused incorrect next/prev page URL prefixing under base subpaths
   - Refactored `rss.xml.js` endpoints to use the standard Astro context API (`context.site`) and cleanly resolve absolute media asset paths
-- 5.6.0: Search engine migration & AlpineJS removal:
-  - Migrated clientside search engine from Lunr to Pagefind, resulting in 99% faster indexing and lightweight search loads
-  - Added live dynamic search-as-you-type with debounced fetching via Pagefind's JS API
-  - Completely uninstalled and removed Alpine.js from the project, replacing all toggle components (header mobile navigation, theme selector dropdown, search slide-over) with native Vanilla JavaScript
+
